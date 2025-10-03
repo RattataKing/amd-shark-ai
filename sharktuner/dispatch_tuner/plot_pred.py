@@ -7,6 +7,7 @@ import numpy as np
 from scipy.stats import rankdata
 import matplotlib.pyplot as plt
 from functools import cmp_to_key
+from dataclasses import dataclass
 
 RANKMETHOD = "ordinal"
 
@@ -58,8 +59,8 @@ def draw(ax, true_rank, pred_rank, label, df, color=None):
 
     # Masks
     mask_valid = df["benchmark_status"].to_numpy()
-    optimal_time = df["benchmark_time_ms"].min()
-    mask_near = (df["benchmark_time_ms"].to_numpy() <= optimal_time * 1.5)
+    optimal_time = df["benchmark_speedup"].min()
+    mask_near = (df["benchmark_speedup"].to_numpy() <= optimal_time * 1.5)
 
     # valid points
     ax.scatter(true_rank[mask_valid], pred_rank[mask_valid],
@@ -73,8 +74,54 @@ def draw(ax, true_rank, pred_rank, label, df, color=None):
     ax.scatter(true_rank[~mask_valid], pred_rank[~mask_valid],
                color=color, alpha=0.1)
 
+@dataclass
+class features:
+    M: int = 0
+    N: int = 0
+    K: int = 0
+    m: int = 0
+    n: int = 0
+    k: int = 0
+    intr_mn: int = 0
+    intr_k: int = 0
+    qi: float = 0.0
+    lds_util: float = 0.0
+    sub4: int = 0 
+    mnk_cube: int=0
+    mn_ratio: float = 0.0
+    cube_close: float = 0.0
+    t_ai: float=0.0
+
+    @staticmethod
+    def get(r):
+        return features(r["cfg.M"], r["cfg.N"], r["cfg.K"], r["cfg.m"], r["cfg.n"], r["cfg.k"],
+                        r["cfg.intrinsic_mn"], r["cfg.intrinsic_k"],
+                        r["cfg.quantization_inefficiency"], r["cfg.lds_utilization"],
+                        r["num_subgroups_mult4"], r["mnk_cube"], r["mn_ratio"],r["closeness_to_cube_volume"],
+                        r["t_ai"])
 
 def cmp_rows(row1, row2) -> bool:
+    f1 = features.get(row1)
+    f2 = features.get(row2)
+    get_tile_size = lambda x: x.m * x.n * x.k
+
+    is_pow2 = lambda x: 1 if (int(x) != 0 and (int(x) & (int(x)-1)) == 0) else 0    # Zero = False, Non-zero = True
+    m_pow2 = lambda x: is_pow2(x.m)
+    n_pow2 = lambda x: is_pow2(x.n)
+    k_pow2 = lambda x: is_pow2(x.k)
+    # is_tile_pow2 = lambda x: m_pow2(x) and n_pow2(x) and k_pow2(x)
+
+    num_flops = lambda x, y, z: 2* x * y * z
+    num_byte_access = lambda x, y, z: 2 * (x * y + y * z + x * z)
+    arith_intensity = lambda x,y,z: num_flops(x,y,z)/num_byte_access(x,y,z)
+    # t_ai = lambda x: arith_intensity(x.m, x.n, x.k)
+    intrinsic_ai = lambda x: arith_intensity(x.intr_mn, x.intr_mn, x.intr_k)
+
+    #not x.mnk_cube, x.cube_close, x.m,x.n,x.k, x.mn_ratio
+    get_criteria = lambda x: (not k_pow2(x), not x.sub4, intrinsic_ai(x), x.qi)
+
+    return get_criteria(f1) < get_criteria(f2)
+
     get_tile_size = lambda x: x["cfg.m"] * x["cfg.n"] * x["cfg.k"]
 
     is_pow2 = lambda x: 1 if (int(x) != 0 and (int(x) & (int(x)-1)) == 0) else 0    # Zero = False, Non-zero = True
@@ -90,7 +137,11 @@ def cmp_rows(row1, row2) -> bool:
     t_ai = lambda x: arith_intensity(x["cfg.m"], x["cfg.n"], x["cfg.k"])
     intrinsic_ai = lambda x: arith_intensity(x["cfg.intrinsic_mn"], x["cfg.intrinsic_mn"], x["cfg.intrinsic_k"])
 
-    return k_pow2(row1) > k_pow2(row2)
+    return (row1["cfg.m"], row1["cfg.n"], -row1["cfg.n"], ~row1["mnk_cube"], row1["closeness_to_cube_volume"], -row1["mn_ratio"], row1["cfg.quantization_inefficiency"],
+            ~row1["num_subgroups_mult4"]) \
+          < \
+            (row2["cfg.m"], row2["cfg.n"], -row2["cfg.n"], ~row1["mnk_cube"], row2["closeness_to_cube_volume"], -row2["mn_ratio"], row2["cfg.quantization_inefficiency"],
+            ~row1["num_subgroups_mult4"])
 
 def stable_sort(rows: list[dict], cmp_func):
     if len(rows) <= 1:
@@ -157,7 +208,8 @@ def manual_rank(df):
 test_sort()
 
 print("Ranking...")
-rng = random.Random(secrets.randbits(64))
+# rng = random.Random(secrets.randbits(64))
+rng = np.random.default_rng(seed=42)
 rng.shuffle(files)
 script_dir = os.path.dirname(os.path.abspath(__file__))
 results = []
@@ -167,8 +219,8 @@ for i, f in enumerate(files):
     true_rank = get_rank(df["norm_speedup"].tolist())
     benchmark_status=df["benchmark_status"].to_numpy()
 
-    optimal_tol = float(df["benchmark_time_ms"].min() * 1.05)
-    opt_candidates = df[df["benchmark_time_ms"] <= optimal_tol]["candidate_id"]
+    optimal_tol = float(df["benchmark_speedup"].min() * 1.05)
+    opt_candidates = df[df["benchmark_speedup"] <= optimal_tol]["candidate_id"]
 
     shuffle_pred_rank = true_rank.copy()
     rng.shuffle(shuffle_pred_rank)
@@ -224,35 +276,36 @@ print(f"Saved results to {save_path}")
 
 
 f = files[0]
-df = pd.read_csv(f)
-# df = df[df["benchmark_status"] == True]
+for i,f in enumerate(files[:4]):
+    df = pd.read_csv(f)
+    # df = df[df["benchmark_status"] == True]
 
-rank_max = []
-true_rank = get_rank(df["norm_speedup"].tolist())
-benchmark_status=df["benchmark_status"].to_numpy()
-rank_max.append(true_rank.max())
-fig, ax = plt.subplots()
+    rank_max = []
+    true_rank = get_rank(df["norm_speedup"].tolist())
+    benchmark_status=df["benchmark_status"].to_numpy()
+    rank_max.append(true_rank.max())
+    fig, ax = plt.subplots()
 
-# Shuffle
-pred_rank = true_rank.copy()
-rng.shuffle(pred_rank)
-rank_max.append(pred_rank.max())
-draw(ax, true_rank, pred_rank, "shuffle", df, color="C0")
+    # Shuffle
+    pred_rank = true_rank.copy()
+    rng.shuffle(pred_rank)
+    rank_max.append(pred_rank.max())
+    draw(ax, true_rank, pred_rank, "shuffle", df, color="C0")
 
-pred_rank = manual_rank(df)
-rank_max.append(pred_rank.max())
-draw(ax, true_rank, pred_rank, "heuristic", df, color="C1")
+    pred_rank = manual_rank(df)
+    rank_max.append(pred_rank.max())
+    draw(ax, true_rank, pred_rank, "heuristic", df, color="C1")
 
-max_val = max(rank_max)
-ax.plot([1, max_val], [1, max_val], 'r--')
-ax.set(xlim=(1, max_val), ylim=(1, max_val),
-    xlabel="True Rank", ylabel="Predicted Rank",
-    title=f"True vs Predicted Rank\n{Path(f).stem}")
-ax.legend(frameon=False)
+    max_val = max(rank_max)
+    ax.plot([1, max_val], [1, max_val], 'r--')
+    ax.set(xlim=(1, max_val), ylim=(1, max_val),
+        xlabel="True Rank", ylabel="Predicted Rank",
+        title=f"True vs Predicted Rank\n{Path(f).stem}")
+    ax.legend(frameon=False)
 
-save_path = os.path.join(script_dir, f"true_vs_pred_sim.png")
-fig.savefig(save_path, dpi=300, bbox_inches="tight")
-plt.close(fig)
-print(f"Saved plot to {save_path}")
+    save_path = os.path.join(script_dir, f"true_vs_pred_sim_{i}.png")
+    fig.savefig(save_path, dpi=300, bbox_inches="tight")
+    plt.close(fig)
+    print(f"Saved plot to {save_path}")
 
 exit()
