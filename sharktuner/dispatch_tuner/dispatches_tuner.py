@@ -1,43 +1,128 @@
 import subprocess
 from pathlib import Path
 import os
+import random
+import time
+from datetime import datetime
+import logging
 
+random.seed(42) 
 redo_list = [
 ]
+ok_list = [
+
+]
+failed_list = [
+
+]
+PICK_SAMPLE = False
+MAX_SAMPLE_SIZE = 5
+
+
+def setup_logging() -> logging.Logger:
+    base_dir = Path(os.path.abspath(__file__)).parent
+    log_file_name = "tuning.log"
+    run_log_path = base_dir / log_file_name
+
+    # Create file handler for logging to a file.
+    # file_handler = logging.FileHandler(run_log_path, mode="w")
+    file_handler = logging.FileHandler(run_log_path)
+    file_handler.setLevel(logging.DEBUG)
+
+    # Create stream handler for logging to the console (only warnings and higher).
+    console_handler = logging.StreamHandler()
+    console_handler.setLevel(logging.INFO)
+
+    # Create a formatter that dynamically adds [levelname] for ERROR and WARNING.
+    class CustomFormatter(logging.Formatter):
+        def format(self, record):
+            if record.levelno == logging.INFO:
+                return f"{record.message}"
+            else:
+                return f"[{record.levelname}] {record.message}"
+
+    file_formatter = logging.Formatter("%(asctime)s - %(levelname)s - %(message)s")
+    console_formatter = CustomFormatter()
+
+    # Set formatters to handlers.
+    file_handler.setFormatter(file_formatter)
+    console_handler.setFormatter(console_formatter)
+
+    # Configure the root logger.
+    logging.basicConfig(
+        level=logging.DEBUG,  # Set the root logger to the lowest level.
+        handlers=[file_handler, console_handler],
+    )
+
+    return logging.getLogger()
+
 
 def main():
+    logger = setup_logging()
     mlir_folder_path = Path("~/iree-kernel-benchmark/dump_dispatch/problem_mlir_dump").expanduser().resolve()
+    logger.debug(f"In MLIR folder {mlir_folder_path}: ")
     mlir_files = sorted(mlir_folder_path.glob("*.mlir"))
-    mlir_benchmark_folder_path = Path("~/shark-ai/sharktuner/dispatch_tuner/dump").expanduser().resolve()
-    mlir_benchmark_files = sorted(mlir_benchmark_folder_path.glob("*.mlir"))
+    for f in mlir_files:
+        logger.debug(f"{f.stem}")
 
-    print(f"[INFO] Found {len(mlir_files)} file(s) in {mlir_folder_path}")
-    print(f"[INFO] Found {len(mlir_benchmark_files)} file(s) in {mlir_benchmark_folder_path}")
+
+    mlir_benchmark_folder_path = Path("~/shark-ai/sharktuner/dispatch_tuner/dump").expanduser().resolve()
+    logger.debug(f"In MLIR_benchmark folder {mlir_benchmark_folder_path}: ")
+    mlir_benchmark_files = sorted(mlir_benchmark_folder_path.glob("*.mlir"))
+    for f in mlir_benchmark_files:
+        logger.debug(f"{f.stem}")
+
+    logger.info(f"Found {len(mlir_files)} mlir file(s)")
+    logger.info(f"Found {len(mlir_benchmark_files)} benchmark file(s)")
 
     if len(mlir_files) != len(mlir_benchmark_files):
-        print("[ERROR] Mismatch between number of MLIR files and benchmark files!")
-        return
+        logger.warning("Mismatch between number of MLIR files and benchmark files!")
+
+    # if PICK_SAMPLE:
+    #     pick_size = min(max(int(len(mlir_benchmark_files) * 0.3), 1), MAX_SAMPLE_SIZE)
+    #     mlir_benchmark_files = random.sample(mlir_benchmark_files, pick_size)
+    #     logger.info(f"Tuning file number cap: {pick_size} / {len(mlir_benchmark_files)}")
 
     failed_files = []
     ok = fail = 0
 
+    # --- timing + logging setup ---
+    start_dt = datetime.now()
+    start_perf = time.perf_counter()
+    logger.debug(f"Tuning started at {start_dt.isoformat(timespec='seconds')}")
+
     base_path = os.path.dirname(os.path.abspath(__file__))
-    csv_dir = Path(base_path) / "tuning_database_tf"
+    csv_dir = Path(base_path) / "tuning_database"
     csv_dir.mkdir(exist_ok=True)
+
     for bench in mlir_benchmark_files:
-        mlir=bench.stem.replace("_benchmark","")
-        mlir = Path(f"{mlir_folder_path}/{mlir}.mlir")
+        file_start = time.perf_counter()
+        logger.debug(f"File {bench} started at {start_dt.isoformat(timespec='seconds')}")
+
+        mlir_filename = bench.stem.replace("_benchmark","")
+        if mlir_filename in ok_list:
+            logger.debug(f"Skipping file {mlir_filename} in OK list")
+            continue
+        if mlir_filename in failed_list:
+            logger.debug(f"Skipping file {mlir_filename} in failed list")
+            continue
+        mlir = Path(f"{mlir_folder_path}/{mlir_filename}.mlir")
+
         if not mlir.exists():
             print(f"Can't find {mlir}, skipping")
             fail += 1
             failed_files.append(mlir.name)
-        if (f"tuning_{mlir.stem}.csv" not in redo_list) and ((csv_dir / f"tuning_{mlir.stem}.csv").exists()):
-            print(f"{mlir.stem} already tuned, skipping...")
-            ok += 1
+            finished_at = datetime.now()
+            elapsed = time.perf_counter() - file_start
+            logger.warning(f"{finished_at.isoformat(timespec='seconds')} - {mlir.name}: MISSING in {elapsed:.2f}")
             continue
-        print("\n" + "=" * 80)
-        print(f"[INFO] Tuning: {mlir.name} with {bench.name}")
-        print("=" * 80)
+        # if (f"tuning_{mlir.stem}.csv" not in redo_list) and ((csv_dir / f"tuning_{mlir.stem}.csv").exists()):
+        #     print(f"{mlir.stem} already tuned, skipping...")
+        #     ok += 1
+        #     continue
+        logger.info("=" * 80)
+        logger.info(f"Tuning: {mlir.name} with {bench.name}")
+        logger.info("=" * 80)
 
         cmd = [
             "python3", "-m", "dispatch_tuner",
@@ -45,31 +130,54 @@ def main():
             str(bench),
             "--compile-flags-file=dispatch_tuner/compile_flags.txt",
             "--devices=hip://2,hip://5,hip://6,hip://7",
-            "--num-candidates=2048",
-            "--codegen-pipeline=llvmgpu_tile_and_fuse"
+            "--num-candidates=4096",
+            "--codegen-pipeline=llvmgpu_vector_distribute"
         ]
 
         rc = subprocess.call(cmd, cwd=Path("~/shark-ai/sharktuner").expanduser())
+        finished_at = datetime.now()
+        elapsed = time.perf_counter() - file_start
         if rc == 0:
             ok += 1
+            status = "OK"
+            logger.info(f"{finished_at.isoformat(timespec='seconds')} - {mlir.name}: {status} in {elapsed:.2f}")
         else:
-            print(f"[WARN] Failed ({rc}) for {mlir.name}")
             fail += 1
+            status = f"FAIL({rc})"
             failed_files.append(mlir.name)
+            logger.warning(f"{finished_at.isoformat(timespec='seconds')} - {mlir.name}: {status} in {elapsed:.2f}")
 
-    # Save failed MLIRs to a file
+    # # Save failed MLIRs to a file
+    # if failed_files:
+    #     failed_log = Path("./dispatch_tuner/failed_mlirs.txt")
+    #     with failed_log.open("w") as f:
+    #         for name in failed_files:
+    #             f.write(name + "\n")
+    #     print(f"\n[INFO] Wrote failed MLIR filenames to {failed_log.resolve()}")
+
+    # print("\n" + "-" * 80)
+    # print(f"[SUMMARY] Success: {ok} | Fail: {fail}")
+    # print("[SUMMARY] Each successful run should have written "
+    #       f"`tuning_<mlir-name>.csv` in dispatch_tuner.py's folder.")
+    # print("-" * 80)
+    # --- summary logging ---
     if failed_files:
-        failed_log = Path("./dispatch_tuner/failed_mlirs.txt")
-        with failed_log.open("w") as f:
-            for name in failed_files:
-                f.write(name + "\n")
-        print(f"\n[INFO] Wrote failed MLIR filenames to {failed_log.resolve()}")
+        logger.warning(f"Failed MLIR files {len(failed_files)}):")
+        for name in failed_files:
+            logger.warning(f"- {name}")
 
-    print("\n" + "-" * 80)
-    print(f"[SUMMARY] Success: {ok} | Fail: {fail}")
-    print("[SUMMARY] Each successful run should have written "
-          f"`tuning_<mlir-name>.csv` in dispatch_tuner.py's folder.")
-    print("-" * 80)
+    end_perf = time.perf_counter()
+    total_elapsed = end_perf - start_perf
+
+    logger.info("-" * 80)
+    logger.info(f"SUMMARY: Success: {ok} | Fail: {fail}")
+    logger.info(
+        "SUMMARY: Each successful run should have written "
+        "`tuning_<mlir-name>.csv` in dispatch_tuner.py's folder."
+    )
+    logger.info(f"SUMMARY: Total elapsed: {total_elapsed:.2f}s")
+    logger.info("-" * 80)
+
 
 if __name__ == "__main__":
     main()

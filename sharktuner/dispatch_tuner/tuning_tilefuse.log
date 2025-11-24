@@ -1,0 +1,1019 @@
+2025-11-20 09:50:44,471 - DEBUG - In MLIR folder /home/amily/iree-kernel-benchmark/dump_dispatch/problem_mlir_dump: 
+2025-11-20 09:50:44,472 - DEBUG - compute_gemm_4096_4096_8192_f16_f32_tB
+2025-11-20 09:50:44,472 - DEBUG - compute_gemm_4096_4096_8192_f32_f32_tB
+2025-11-20 09:50:44,472 - DEBUG - compute_gemm_4096_4096_8192_f8E4M3FNUZ_f32_tB
+2025-11-20 09:50:44,472 - DEBUG - compute_gemm_4096_4096_8192_i32_i32_tB
+2025-11-20 09:50:44,472 - DEBUG - compute_gemm_4096_4096_8192_i8_i32_tB
+2025-11-20 09:50:44,472 - DEBUG - square_gemm_1024_1024_1024_f16_f32_tB
+2025-11-20 09:50:44,472 - DEBUG - square_gemm_1024_1024_1024_f32_f32_tB
+2025-11-20 09:50:44,472 - DEBUG - square_gemm_1024_1024_1024_f8E4M3FNUZ_f32_tB
+2025-11-20 09:50:44,472 - DEBUG - square_gemm_1024_1024_1024_i32_i32_tB
+2025-11-20 09:50:44,472 - DEBUG - square_gemm_1024_1024_1024_i8_i32_tB
+2025-11-20 09:50:44,472 - DEBUG - square_gemm_128_128_128_f16_f32_tB
+2025-11-20 09:50:44,472 - DEBUG - square_gemm_128_128_128_f32_f32_tB
+2025-11-20 09:50:44,472 - DEBUG - square_gemm_128_128_128_f8E4M3FNUZ_f32_tB
+2025-11-20 09:50:44,472 - DEBUG - square_gemm_128_128_128_i32_i32_tB
+2025-11-20 09:50:44,472 - DEBUG - square_gemm_128_128_128_i8_i32_tB
+2025-11-20 09:50:44,472 - DEBUG - square_gemm_2048_2048_2048_f16_f32_tB
+2025-11-20 09:50:44,472 - DEBUG - square_gemm_2048_2048_2048_f32_f32_tB
+2025-11-20 09:50:44,472 - DEBUG - square_gemm_2048_2048_2048_f8E4M3FNUZ_f32_tB
+2025-11-20 09:50:44,472 - DEBUG - square_gemm_2048_2048_2048_i32_i32_tB
+2025-11-20 09:50:44,472 - DEBUG - square_gemm_2048_2048_2048_i8_i32_tB
+2025-11-20 09:50:44,472 - DEBUG - square_gemm_256_256_256_f16_f32_tB
+2025-11-20 09:50:44,472 - DEBUG - square_gemm_256_256_256_f32_f32_tB
+2025-11-20 09:50:44,472 - DEBUG - square_gemm_256_256_256_f8E4M3FNUZ_f32_tB
+2025-11-20 09:50:44,472 - DEBUG - square_gemm_256_256_256_i32_i32_tB
+2025-11-20 09:50:44,472 - DEBUG - square_gemm_256_256_256_i8_i32_tB
+2025-11-20 09:50:44,472 - DEBUG - square_gemm_4096_4096_4096_f16_f32_tB
+2025-11-20 09:50:44,472 - DEBUG - square_gemm_4096_4096_4096_f32_f32_tB
+2025-11-20 09:50:44,472 - DEBUG - square_gemm_4096_4096_4096_f8E4M3FNUZ_f32_tB
+2025-11-20 09:50:44,472 - DEBUG - square_gemm_4096_4096_4096_i32_i32_tB
+2025-11-20 09:50:44,472 - DEBUG - square_gemm_4096_4096_4096_i8_i32_tB
+2025-11-20 09:50:44,472 - DEBUG - square_gemm_512_512_512_f16_f32_tB
+2025-11-20 09:50:44,472 - DEBUG - square_gemm_512_512_512_f32_f32_tB
+2025-11-20 09:50:44,472 - DEBUG - square_gemm_512_512_512_f8E4M3FNUZ_f32_tB
+2025-11-20 09:50:44,472 - DEBUG - square_gemm_512_512_512_i32_i32_tB
+2025-11-20 09:50:44,472 - DEBUG - square_gemm_512_512_512_i8_i32_tB
+2025-11-20 09:50:44,472 - DEBUG - square_gemm_8192_8192_8192_f16_f32_tB
+2025-11-20 09:50:44,472 - DEBUG - square_gemm_8192_8192_8192_f32_f32_tB
+2025-11-20 09:50:44,472 - DEBUG - square_gemm_8192_8192_8192_f8E4M3FNUZ_f32_tB
+2025-11-20 09:50:44,472 - DEBUG - square_gemm_8192_8192_8192_i32_i32_tB
+2025-11-20 09:50:44,472 - DEBUG - square_gemm_8192_8192_8192_i8_i32_tB
+2025-11-20 09:50:44,472 - DEBUG - tk_gemm_128_1280_2048_f16_f32_tB
+2025-11-20 09:50:44,472 - DEBUG - tk_gemm_128_1280_2048_f32_f32_tB
+2025-11-20 09:50:44,472 - DEBUG - tk_gemm_128_1280_2048_f8E4M3FNUZ_f32_tB
+2025-11-20 09:50:44,473 - DEBUG - tk_gemm_128_1280_2048_i32_i32_tB
+2025-11-20 09:50:44,473 - DEBUG - tk_gemm_128_1280_2048_i8_i32_tB
+2025-11-20 09:50:44,473 - DEBUG - tk_gemm_2048_10240_1280_f16_f32_tB
+2025-11-20 09:50:44,473 - DEBUG - tk_gemm_2048_10240_1280_f32_f32_tB
+2025-11-20 09:50:44,473 - DEBUG - tk_gemm_2048_10240_1280_f8E4M3FNUZ_f32_tB
+2025-11-20 09:50:44,473 - DEBUG - tk_gemm_2048_10240_1280_i32_i32_tB
+2025-11-20 09:50:44,473 - DEBUG - tk_gemm_2048_10240_1280_i8_i32_tB
+2025-11-20 09:50:44,473 - DEBUG - tk_gemm_2048_1280_1280_f16_f32_tB
+2025-11-20 09:50:44,473 - DEBUG - tk_gemm_2048_1280_1280_f32_f32_tB
+2025-11-20 09:50:44,473 - DEBUG - tk_gemm_2048_1280_1280_f8E4M3FNUZ_f32_tB
+2025-11-20 09:50:44,473 - DEBUG - tk_gemm_2048_1280_1280_i32_i32_tB
+2025-11-20 09:50:44,473 - DEBUG - tk_gemm_2048_1280_1280_i8_i32_tB
+2025-11-20 09:50:44,473 - DEBUG - tk_gemm_2048_1280_5120_f16_f32_tB
+2025-11-20 09:50:44,473 - DEBUG - tk_gemm_2048_1280_5120_f32_f32_tB
+2025-11-20 09:50:44,473 - DEBUG - tk_gemm_2048_1280_5120_f8E4M3FNUZ_f32_tB
+2025-11-20 09:50:44,473 - DEBUG - tk_gemm_2048_1280_5120_i32_i32_tB
+2025-11-20 09:50:44,473 - DEBUG - tk_gemm_2048_1280_5120_i8_i32_tB
+2025-11-20 09:50:44,473 - DEBUG - tk_gemm_8192_5120_640_f16_f32_tB
+2025-11-20 09:50:44,473 - DEBUG - tk_gemm_8192_5120_640_f32_f32_tB
+2025-11-20 09:50:44,473 - DEBUG - tk_gemm_8192_5120_640_f8E4M3FNUZ_f32_tB
+2025-11-20 09:50:44,473 - DEBUG - tk_gemm_8192_5120_640_i32_i32_tB
+2025-11-20 09:50:44,473 - DEBUG - tk_gemm_8192_5120_640_i8_i32_tB
+2025-11-20 09:50:44,473 - DEBUG - unet_gemm_1024_10240_1280_f16_f32_tB
+2025-11-20 09:50:44,473 - DEBUG - unet_gemm_1024_10240_1280_f32_f32_tB
+2025-11-20 09:50:44,473 - DEBUG - unet_gemm_1024_10240_1280_f8E4M3FNUZ_f32_tB
+2025-11-20 09:50:44,473 - DEBUG - unet_gemm_1024_10240_1280_i32_i32_tB
+2025-11-20 09:50:44,473 - DEBUG - unet_gemm_1024_10240_1280_i8_i32_tB
+2025-11-20 09:50:44,473 - DEBUG - unet_gemm_1024_1280_1280_f16_f32_tB
+2025-11-20 09:50:44,473 - DEBUG - unet_gemm_1024_1280_1280_f32_f32_tB
+2025-11-20 09:50:44,473 - DEBUG - unet_gemm_1024_1280_1280_f8E4M3FNUZ_f32_tB
+2025-11-20 09:50:44,473 - DEBUG - unet_gemm_1024_1280_1280_i32_i32_tB
+2025-11-20 09:50:44,473 - DEBUG - unet_gemm_1024_1280_1280_i8_i32_tB
+2025-11-20 09:50:44,473 - DEBUG - unet_gemm_1024_1280_5120_f16_f32_tB
+2025-11-20 09:50:44,473 - DEBUG - unet_gemm_1024_1280_5120_f32_f32_tB
+2025-11-20 09:50:44,473 - DEBUG - unet_gemm_1024_1280_5120_f8E4M3FNUZ_f32_tB
+2025-11-20 09:50:44,473 - DEBUG - unet_gemm_1024_1280_5120_i32_i32_tB
+2025-11-20 09:50:44,473 - DEBUG - unet_gemm_1024_1280_5120_i8_i32_tB
+2025-11-20 09:50:44,473 - DEBUG - unet_gemm_128_1280_2048_f16_f32_tB
+2025-11-20 09:50:44,473 - DEBUG - unet_gemm_128_1280_2048_f32_f32_tB
+2025-11-20 09:50:44,473 - DEBUG - unet_gemm_128_1280_2048_f8E4M3FNUZ_f32_tB
+2025-11-20 09:50:44,473 - DEBUG - unet_gemm_128_1280_2048_i32_i32_tB
+2025-11-20 09:50:44,473 - DEBUG - unet_gemm_128_1280_2048_i8_i32_tB
+2025-11-20 09:50:44,473 - DEBUG - unet_gemm_2048_10240_1280_f16_f32_tB
+2025-11-20 09:50:44,473 - DEBUG - unet_gemm_2048_10240_1280_f32_f32_tB
+2025-11-20 09:50:44,473 - DEBUG - unet_gemm_2048_10240_1280_f8E4M3FNUZ_f32_tB
+2025-11-20 09:50:44,473 - DEBUG - unet_gemm_2048_10240_1280_i32_i32_tB
+2025-11-20 09:50:44,473 - DEBUG - unet_gemm_2048_10240_1280_i8_i32_tB
+2025-11-20 09:50:44,473 - DEBUG - unet_gemm_2048_1280_1280_f16_f32_tB
+2025-11-20 09:50:44,473 - DEBUG - unet_gemm_2048_1280_1280_f32_f32_tB
+2025-11-20 09:50:44,473 - DEBUG - unet_gemm_2048_1280_1280_f8E4M3FNUZ_f32_tB
+2025-11-20 09:50:44,473 - DEBUG - unet_gemm_2048_1280_1280_i32_i32_tB
+2025-11-20 09:50:44,473 - DEBUG - unet_gemm_2048_1280_1280_i8_i32_tB
+2025-11-20 09:50:44,473 - DEBUG - unet_gemm_2048_1280_5120_f16_f32_tB
+2025-11-20 09:50:44,473 - DEBUG - unet_gemm_2048_1280_5120_f32_f32_tB
+2025-11-20 09:50:44,473 - DEBUG - unet_gemm_2048_1280_5120_f8E4M3FNUZ_f32_tB
+2025-11-20 09:50:44,473 - DEBUG - unet_gemm_2048_1280_5120_i32_i32_tB
+2025-11-20 09:50:44,473 - DEBUG - unet_gemm_2048_1280_5120_i8_i32_tB
+2025-11-20 09:50:44,473 - DEBUG - unet_gemm_4096_5120_640_f16_f32_tB
+2025-11-20 09:50:44,473 - DEBUG - unet_gemm_4096_5120_640_f32_f32_tB
+2025-11-20 09:50:44,473 - DEBUG - unet_gemm_4096_5120_640_f8E4M3FNUZ_f32_tB
+2025-11-20 09:50:44,473 - DEBUG - unet_gemm_4096_5120_640_i32_i32_tB
+2025-11-20 09:50:44,473 - DEBUG - unet_gemm_4096_5120_640_i8_i32_tB
+2025-11-20 09:50:44,473 - DEBUG - unet_gemm_4096_640_2560_f16_f32_tB
+2025-11-20 09:50:44,473 - DEBUG - unet_gemm_4096_640_2560_f32_f32_tB
+2025-11-20 09:50:44,473 - DEBUG - unet_gemm_4096_640_2560_f8E4M3FNUZ_f32_tB
+2025-11-20 09:50:44,473 - DEBUG - unet_gemm_4096_640_2560_i32_i32_tB
+2025-11-20 09:50:44,473 - DEBUG - unet_gemm_4096_640_2560_i8_i32_tB
+2025-11-20 09:50:44,473 - DEBUG - unet_gemm_4096_640_640_f16_f32_tB
+2025-11-20 09:50:44,473 - DEBUG - unet_gemm_4096_640_640_f32_f32_tB
+2025-11-20 09:50:44,473 - DEBUG - unet_gemm_4096_640_640_f8E4M3FNUZ_f32_tB
+2025-11-20 09:50:44,473 - DEBUG - unet_gemm_4096_640_640_i32_i32_tB
+2025-11-20 09:50:44,473 - DEBUG - unet_gemm_4096_640_640_i8_i32_tB
+2025-11-20 09:50:44,473 - DEBUG - unet_gemm_64_1280_2048_f16_f32_tB
+2025-11-20 09:50:44,473 - DEBUG - unet_gemm_64_1280_2048_f32_f32_tB
+2025-11-20 09:50:44,473 - DEBUG - unet_gemm_64_1280_2048_f8E4M3FNUZ_f32_tB
+2025-11-20 09:50:44,473 - DEBUG - unet_gemm_64_1280_2048_i32_i32_tB
+2025-11-20 09:50:44,473 - DEBUG - unet_gemm_64_1280_2048_i8_i32_tB
+2025-11-20 09:50:44,474 - DEBUG - unet_gemm_64_640_2048_f16_f32_tB
+2025-11-20 09:50:44,474 - DEBUG - unet_gemm_64_640_2048_f32_f32_tB
+2025-11-20 09:50:44,474 - DEBUG - unet_gemm_64_640_2048_f8E4M3FNUZ_f32_tB
+2025-11-20 09:50:44,474 - DEBUG - unet_gemm_64_640_2048_i32_i32_tB
+2025-11-20 09:50:44,474 - DEBUG - unet_gemm_64_640_2048_i8_i32_tB
+2025-11-20 09:50:44,474 - DEBUG - unet_gemm_8192_5120_640_f16_f32_tB
+2025-11-20 09:50:44,474 - DEBUG - unet_gemm_8192_5120_640_f32_f32_tB
+2025-11-20 09:50:44,474 - DEBUG - unet_gemm_8192_5120_640_f8E4M3FNUZ_f32_tB
+2025-11-20 09:50:44,474 - DEBUG - unet_gemm_8192_5120_640_i32_i32_tB
+2025-11-20 09:50:44,474 - DEBUG - unet_gemm_8192_5120_640_i8_i32_tB
+2025-11-20 09:50:44,474 - DEBUG - unet_gemm_8192_640_2560_f16_f32_tB
+2025-11-20 09:50:44,474 - DEBUG - unet_gemm_8192_640_2560_f32_f32_tB
+2025-11-20 09:50:44,474 - DEBUG - unet_gemm_8192_640_2560_f8E4M3FNUZ_f32_tB
+2025-11-20 09:50:44,474 - DEBUG - unet_gemm_8192_640_2560_i32_i32_tB
+2025-11-20 09:50:44,474 - DEBUG - unet_gemm_8192_640_2560_i8_i32_tB
+2025-11-20 09:50:44,474 - DEBUG - unet_gemm_8192_640_640_f16_f32_tB
+2025-11-20 09:50:44,474 - DEBUG - unet_gemm_8192_640_640_f32_f32_tB
+2025-11-20 09:50:44,474 - DEBUG - unet_gemm_8192_640_640_f8E4M3FNUZ_f32_tB
+2025-11-20 09:50:44,474 - DEBUG - unet_gemm_8192_640_640_i32_i32_tB
+2025-11-20 09:50:44,474 - DEBUG - unet_gemm_8192_640_640_i8_i32_tB
+2025-11-20 09:50:44,474 - DEBUG - In MLIR_benchmark folder /home/amily/shark-ai/sharktuner/dispatch_tuner/dump: 
+2025-11-20 09:50:44,474 - DEBUG - compute_gemm_4096_4096_8192_f16_f32_tB_benchmark
+2025-11-20 09:50:44,474 - DEBUG - compute_gemm_4096_4096_8192_f32_f32_tB_benchmark
+2025-11-20 09:50:44,474 - DEBUG - compute_gemm_4096_4096_8192_f8E4M3FNUZ_f32_tB_benchmark
+2025-11-20 09:50:44,474 - DEBUG - compute_gemm_4096_4096_8192_i32_i32_tB_benchmark
+2025-11-20 09:50:44,474 - DEBUG - compute_gemm_4096_4096_8192_i8_i32_tB_benchmark
+2025-11-20 09:50:44,474 - DEBUG - square_gemm_1024_1024_1024_f16_f32_tB_benchmark
+2025-11-20 09:50:44,474 - DEBUG - square_gemm_1024_1024_1024_f32_f32_tB_benchmark
+2025-11-20 09:50:44,474 - DEBUG - square_gemm_1024_1024_1024_f8E4M3FNUZ_f32_tB_benchmark
+2025-11-20 09:50:44,475 - DEBUG - square_gemm_1024_1024_1024_i32_i32_tB_benchmark
+2025-11-20 09:50:44,475 - DEBUG - square_gemm_1024_1024_1024_i8_i32_tB_benchmark
+2025-11-20 09:50:44,475 - DEBUG - square_gemm_128_128_128_f16_f32_tB_benchmark
+2025-11-20 09:50:44,475 - DEBUG - square_gemm_128_128_128_f32_f32_tB_benchmark
+2025-11-20 09:50:44,475 - DEBUG - square_gemm_128_128_128_f8E4M3FNUZ_f32_tB_benchmark
+2025-11-20 09:50:44,475 - DEBUG - square_gemm_128_128_128_i32_i32_tB_benchmark
+2025-11-20 09:50:44,475 - DEBUG - square_gemm_128_128_128_i8_i32_tB_benchmark
+2025-11-20 09:50:44,475 - DEBUG - square_gemm_2048_2048_2048_f16_f32_tB_benchmark
+2025-11-20 09:50:44,475 - DEBUG - square_gemm_2048_2048_2048_f32_f32_tB_benchmark
+2025-11-20 09:50:44,475 - DEBUG - square_gemm_2048_2048_2048_f8E4M3FNUZ_f32_tB_benchmark
+2025-11-20 09:50:44,475 - DEBUG - square_gemm_2048_2048_2048_i32_i32_tB_benchmark
+2025-11-20 09:50:44,475 - DEBUG - square_gemm_2048_2048_2048_i8_i32_tB_benchmark
+2025-11-20 09:50:44,475 - DEBUG - square_gemm_256_256_256_f16_f32_tB_benchmark
+2025-11-20 09:50:44,475 - DEBUG - square_gemm_256_256_256_f32_f32_tB_benchmark
+2025-11-20 09:50:44,475 - DEBUG - square_gemm_256_256_256_f8E4M3FNUZ_f32_tB_benchmark
+2025-11-20 09:50:44,475 - DEBUG - square_gemm_256_256_256_i32_i32_tB_benchmark
+2025-11-20 09:50:44,475 - DEBUG - square_gemm_256_256_256_i8_i32_tB_benchmark
+2025-11-20 09:50:44,475 - DEBUG - square_gemm_4096_4096_4096_f16_f32_tB_benchmark
+2025-11-20 09:50:44,475 - DEBUG - square_gemm_4096_4096_4096_f32_f32_tB_benchmark
+2025-11-20 09:50:44,475 - DEBUG - square_gemm_4096_4096_4096_f8E4M3FNUZ_f32_tB_benchmark
+2025-11-20 09:50:44,475 - DEBUG - square_gemm_4096_4096_4096_i32_i32_tB_benchmark
+2025-11-20 09:50:44,475 - DEBUG - square_gemm_4096_4096_4096_i8_i32_tB_benchmark
+2025-11-20 09:50:44,475 - DEBUG - square_gemm_512_512_512_f16_f32_tB_benchmark
+2025-11-20 09:50:44,475 - DEBUG - square_gemm_512_512_512_f32_f32_tB_benchmark
+2025-11-20 09:50:44,475 - DEBUG - square_gemm_512_512_512_f8E4M3FNUZ_f32_tB_benchmark
+2025-11-20 09:50:44,475 - DEBUG - square_gemm_512_512_512_i32_i32_tB_benchmark
+2025-11-20 09:50:44,475 - DEBUG - square_gemm_512_512_512_i8_i32_tB_benchmark
+2025-11-20 09:50:44,475 - DEBUG - square_gemm_8192_8192_8192_f16_f32_tB_benchmark
+2025-11-20 09:50:44,475 - DEBUG - square_gemm_8192_8192_8192_f32_f32_tB_benchmark
+2025-11-20 09:50:44,475 - DEBUG - square_gemm_8192_8192_8192_f8E4M3FNUZ_f32_tB_benchmark
+2025-11-20 09:50:44,475 - DEBUG - square_gemm_8192_8192_8192_i32_i32_tB_benchmark
+2025-11-20 09:50:44,475 - DEBUG - square_gemm_8192_8192_8192_i8_i32_tB_benchmark
+2025-11-20 09:50:44,475 - DEBUG - tk_gemm_128_1280_2048_f16_f32_tB_benchmark
+2025-11-20 09:50:44,475 - DEBUG - tk_gemm_128_1280_2048_f32_f32_tB_benchmark
+2025-11-20 09:50:44,475 - DEBUG - tk_gemm_128_1280_2048_f8E4M3FNUZ_f32_tB_benchmark
+2025-11-20 09:50:44,475 - DEBUG - tk_gemm_128_1280_2048_i32_i32_tB_benchmark
+2025-11-20 09:50:44,475 - DEBUG - tk_gemm_128_1280_2048_i8_i32_tB_benchmark
+2025-11-20 09:50:44,475 - DEBUG - tk_gemm_2048_10240_1280_f16_f32_tB_benchmark
+2025-11-20 09:50:44,475 - DEBUG - tk_gemm_2048_10240_1280_f32_f32_tB_benchmark
+2025-11-20 09:50:44,475 - DEBUG - tk_gemm_2048_10240_1280_f8E4M3FNUZ_f32_tB_benchmark
+2025-11-20 09:50:44,475 - DEBUG - tk_gemm_2048_10240_1280_i32_i32_tB_benchmark
+2025-11-20 09:50:44,475 - DEBUG - tk_gemm_2048_10240_1280_i8_i32_tB_benchmark
+2025-11-20 09:50:44,475 - DEBUG - tk_gemm_2048_1280_1280_f16_f32_tB_benchmark
+2025-11-20 09:50:44,475 - DEBUG - tk_gemm_2048_1280_1280_f32_f32_tB_benchmark
+2025-11-20 09:50:44,475 - DEBUG - tk_gemm_2048_1280_1280_f8E4M3FNUZ_f32_tB_benchmark
+2025-11-20 09:50:44,475 - DEBUG - tk_gemm_2048_1280_1280_i32_i32_tB_benchmark
+2025-11-20 09:50:44,475 - DEBUG - tk_gemm_2048_1280_1280_i8_i32_tB_benchmark
+2025-11-20 09:50:44,475 - DEBUG - tk_gemm_2048_1280_5120_f16_f32_tB_benchmark
+2025-11-20 09:50:44,475 - DEBUG - tk_gemm_2048_1280_5120_f32_f32_tB_benchmark
+2025-11-20 09:50:44,475 - DEBUG - tk_gemm_2048_1280_5120_f8E4M3FNUZ_f32_tB_benchmark
+2025-11-20 09:50:44,475 - DEBUG - tk_gemm_2048_1280_5120_i32_i32_tB_benchmark
+2025-11-20 09:50:44,475 - DEBUG - tk_gemm_2048_1280_5120_i8_i32_tB_benchmark
+2025-11-20 09:50:44,475 - DEBUG - tk_gemm_8192_5120_640_f16_f32_tB_benchmark
+2025-11-20 09:50:44,475 - DEBUG - tk_gemm_8192_5120_640_f32_f32_tB_benchmark
+2025-11-20 09:50:44,475 - DEBUG - tk_gemm_8192_5120_640_f8E4M3FNUZ_f32_tB_benchmark
+2025-11-20 09:50:44,475 - DEBUG - tk_gemm_8192_5120_640_i32_i32_tB_benchmark
+2025-11-20 09:50:44,475 - DEBUG - tk_gemm_8192_5120_640_i8_i32_tB_benchmark
+2025-11-20 09:50:44,475 - DEBUG - unet_gemm_1024_10240_1280_f16_f32_tB_benchmark
+2025-11-20 09:50:44,475 - DEBUG - unet_gemm_1024_10240_1280_f32_f32_tB_benchmark
+2025-11-20 09:50:44,475 - DEBUG - unet_gemm_1024_10240_1280_f8E4M3FNUZ_f32_tB_benchmark
+2025-11-20 09:50:44,475 - DEBUG - unet_gemm_1024_10240_1280_i32_i32_tB_benchmark
+2025-11-20 09:50:44,475 - DEBUG - unet_gemm_1024_10240_1280_i8_i32_tB_benchmark
+2025-11-20 09:50:44,475 - DEBUG - unet_gemm_1024_1280_1280_f16_f32_tB_benchmark
+2025-11-20 09:50:44,475 - DEBUG - unet_gemm_1024_1280_1280_f32_f32_tB_benchmark
+2025-11-20 09:50:44,475 - DEBUG - unet_gemm_1024_1280_1280_f8E4M3FNUZ_f32_tB_benchmark
+2025-11-20 09:50:44,475 - DEBUG - unet_gemm_1024_1280_1280_i32_i32_tB_benchmark
+2025-11-20 09:50:44,475 - DEBUG - unet_gemm_1024_1280_1280_i8_i32_tB_benchmark
+2025-11-20 09:50:44,475 - DEBUG - unet_gemm_1024_1280_5120_f16_f32_tB_benchmark
+2025-11-20 09:50:44,475 - DEBUG - unet_gemm_1024_1280_5120_f32_f32_tB_benchmark
+2025-11-20 09:50:44,475 - DEBUG - unet_gemm_1024_1280_5120_f8E4M3FNUZ_f32_tB_benchmark
+2025-11-20 09:50:44,475 - DEBUG - unet_gemm_1024_1280_5120_i32_i32_tB_benchmark
+2025-11-20 09:50:44,475 - DEBUG - unet_gemm_1024_1280_5120_i8_i32_tB_benchmark
+2025-11-20 09:50:44,475 - DEBUG - unet_gemm_128_1280_2048_f16_f32_tB_benchmark
+2025-11-20 09:50:44,475 - DEBUG - unet_gemm_128_1280_2048_f32_f32_tB_benchmark
+2025-11-20 09:50:44,475 - DEBUG - unet_gemm_128_1280_2048_f8E4M3FNUZ_f32_tB_benchmark
+2025-11-20 09:50:44,476 - DEBUG - unet_gemm_128_1280_2048_i32_i32_tB_benchmark
+2025-11-20 09:50:44,476 - DEBUG - unet_gemm_128_1280_2048_i8_i32_tB_benchmark
+2025-11-20 09:50:44,476 - DEBUG - unet_gemm_2048_10240_1280_f16_f32_tB_benchmark
+2025-11-20 09:50:44,476 - DEBUG - unet_gemm_2048_10240_1280_f32_f32_tB_benchmark
+2025-11-20 09:50:44,476 - DEBUG - unet_gemm_2048_10240_1280_f8E4M3FNUZ_f32_tB_benchmark
+2025-11-20 09:50:44,476 - DEBUG - unet_gemm_2048_10240_1280_i32_i32_tB_benchmark
+2025-11-20 09:50:44,476 - DEBUG - unet_gemm_2048_10240_1280_i8_i32_tB_benchmark
+2025-11-20 09:50:44,476 - DEBUG - unet_gemm_2048_1280_1280_f16_f32_tB_benchmark
+2025-11-20 09:50:44,476 - DEBUG - unet_gemm_2048_1280_1280_f32_f32_tB_benchmark
+2025-11-20 09:50:44,476 - DEBUG - unet_gemm_2048_1280_1280_f8E4M3FNUZ_f32_tB_benchmark
+2025-11-20 09:50:44,476 - DEBUG - unet_gemm_2048_1280_1280_i32_i32_tB_benchmark
+2025-11-20 09:50:44,476 - DEBUG - unet_gemm_2048_1280_1280_i8_i32_tB_benchmark
+2025-11-20 09:50:44,476 - DEBUG - unet_gemm_2048_1280_5120_f16_f32_tB_benchmark
+2025-11-20 09:50:44,476 - DEBUG - unet_gemm_2048_1280_5120_f32_f32_tB_benchmark
+2025-11-20 09:50:44,476 - DEBUG - unet_gemm_2048_1280_5120_f8E4M3FNUZ_f32_tB_benchmark
+2025-11-20 09:50:44,476 - DEBUG - unet_gemm_2048_1280_5120_i32_i32_tB_benchmark
+2025-11-20 09:50:44,476 - DEBUG - unet_gemm_2048_1280_5120_i8_i32_tB_benchmark
+2025-11-20 09:50:44,476 - DEBUG - unet_gemm_4096_5120_640_f16_f32_tB_benchmark
+2025-11-20 09:50:44,476 - DEBUG - unet_gemm_4096_5120_640_f32_f32_tB_benchmark
+2025-11-20 09:50:44,476 - DEBUG - unet_gemm_4096_5120_640_f8E4M3FNUZ_f32_tB_benchmark
+2025-11-20 09:50:44,476 - DEBUG - unet_gemm_4096_5120_640_i32_i32_tB_benchmark
+2025-11-20 09:50:44,476 - DEBUG - unet_gemm_4096_5120_640_i8_i32_tB_benchmark
+2025-11-20 09:50:44,476 - DEBUG - unet_gemm_4096_640_2560_f16_f32_tB_benchmark
+2025-11-20 09:50:44,476 - DEBUG - unet_gemm_4096_640_2560_f32_f32_tB_benchmark
+2025-11-20 09:50:44,476 - DEBUG - unet_gemm_4096_640_2560_f8E4M3FNUZ_f32_tB_benchmark
+2025-11-20 09:50:44,476 - DEBUG - unet_gemm_4096_640_2560_i32_i32_tB_benchmark
+2025-11-20 09:50:44,476 - DEBUG - unet_gemm_4096_640_2560_i8_i32_tB_benchmark
+2025-11-20 09:50:44,476 - DEBUG - unet_gemm_4096_640_640_f16_f32_tB_benchmark
+2025-11-20 09:50:44,476 - DEBUG - unet_gemm_4096_640_640_f32_f32_tB_benchmark
+2025-11-20 09:50:44,476 - DEBUG - unet_gemm_4096_640_640_f8E4M3FNUZ_f32_tB_benchmark
+2025-11-20 09:50:44,476 - DEBUG - unet_gemm_4096_640_640_i32_i32_tB_benchmark
+2025-11-20 09:50:44,476 - DEBUG - unet_gemm_4096_640_640_i8_i32_tB_benchmark
+2025-11-20 09:50:44,476 - DEBUG - unet_gemm_64_1280_2048_f16_f32_tB_benchmark
+2025-11-20 09:50:44,476 - DEBUG - unet_gemm_64_1280_2048_f32_f32_tB_benchmark
+2025-11-20 09:50:44,476 - DEBUG - unet_gemm_64_1280_2048_f8E4M3FNUZ_f32_tB_benchmark
+2025-11-20 09:50:44,476 - DEBUG - unet_gemm_64_1280_2048_i32_i32_tB_benchmark
+2025-11-20 09:50:44,476 - DEBUG - unet_gemm_64_1280_2048_i8_i32_tB_benchmark
+2025-11-20 09:50:44,476 - DEBUG - unet_gemm_64_640_2048_f16_f32_tB_benchmark
+2025-11-20 09:50:44,476 - DEBUG - unet_gemm_64_640_2048_f32_f32_tB_benchmark
+2025-11-20 09:50:44,476 - DEBUG - unet_gemm_64_640_2048_f8E4M3FNUZ_f32_tB_benchmark
+2025-11-20 09:50:44,476 - DEBUG - unet_gemm_64_640_2048_i32_i32_tB_benchmark
+2025-11-20 09:50:44,476 - DEBUG - unet_gemm_64_640_2048_i8_i32_tB_benchmark
+2025-11-20 09:50:44,476 - DEBUG - unet_gemm_8192_5120_640_f16_f32_tB_benchmark
+2025-11-20 09:50:44,476 - DEBUG - unet_gemm_8192_5120_640_f32_f32_tB_benchmark
+2025-11-20 09:50:44,476 - DEBUG - unet_gemm_8192_5120_640_f8E4M3FNUZ_f32_tB_benchmark
+2025-11-20 09:50:44,476 - DEBUG - unet_gemm_8192_5120_640_i32_i32_tB_benchmark
+2025-11-20 09:50:44,476 - DEBUG - unet_gemm_8192_5120_640_i8_i32_tB_benchmark
+2025-11-20 09:50:44,476 - DEBUG - unet_gemm_8192_640_2560_f16_f32_tB_benchmark
+2025-11-20 09:50:44,476 - DEBUG - unet_gemm_8192_640_2560_f32_f32_tB_benchmark
+2025-11-20 09:50:44,476 - DEBUG - unet_gemm_8192_640_2560_f8E4M3FNUZ_f32_tB_benchmark
+2025-11-20 09:50:44,476 - DEBUG - unet_gemm_8192_640_2560_i32_i32_tB_benchmark
+2025-11-20 09:50:44,476 - DEBUG - unet_gemm_8192_640_2560_i8_i32_tB_benchmark
+2025-11-20 09:50:44,476 - DEBUG - unet_gemm_8192_640_640_f16_f32_tB_benchmark
+2025-11-20 09:50:44,476 - DEBUG - unet_gemm_8192_640_640_f32_f32_tB_benchmark
+2025-11-20 09:50:44,476 - DEBUG - unet_gemm_8192_640_640_f8E4M3FNUZ_f32_tB_benchmark
+2025-11-20 09:50:44,476 - DEBUG - unet_gemm_8192_640_640_i32_i32_tB_benchmark
+2025-11-20 09:50:44,476 - DEBUG - unet_gemm_8192_640_640_i8_i32_tB_benchmark
+2025-11-20 09:50:44,476 - INFO - Found 140 mlir file(s)
+2025-11-20 09:50:44,476 - INFO - Found 140 benchmark file(s)
+2025-11-20 09:50:44,476 - DEBUG - Tuning started at 2025-11-20T09:50:44
+2025-11-20 09:50:44,476 - DEBUG - File /home/amily/shark-ai/sharktuner/dispatch_tuner/dump/compute_gemm_4096_4096_8192_f16_f32_tB_benchmark.mlir started at 2025-11-20T09:50:44
+2025-11-20 09:50:44,476 - INFO - ================================================================================
+2025-11-20 09:50:44,476 - INFO - Tuning: compute_gemm_4096_4096_8192_f16_f32_tB.mlir with compute_gemm_4096_4096_8192_f16_f32_tB_benchmark.mlir
+2025-11-20 09:50:44,477 - INFO - ================================================================================
+2025-11-20 10:09:50,986 - INFO - 2025-11-20T10:09:50 - compute_gemm_4096_4096_8192_f16_f32_tB.mlir: OK in 1146.51
+2025-11-20 10:09:50,986 - DEBUG - File /home/amily/shark-ai/sharktuner/dispatch_tuner/dump/compute_gemm_4096_4096_8192_f32_f32_tB_benchmark.mlir started at 2025-11-20T09:50:44
+2025-11-20 10:09:50,986 - INFO - ================================================================================
+2025-11-20 10:09:50,986 - INFO - Tuning: compute_gemm_4096_4096_8192_f32_f32_tB.mlir with compute_gemm_4096_4096_8192_f32_f32_tB_benchmark.mlir
+2025-11-20 10:09:50,986 - INFO - ================================================================================
+2025-11-20 10:24:26,781 - INFO - 2025-11-20T10:24:26 - compute_gemm_4096_4096_8192_f32_f32_tB.mlir: OK in 875.79
+2025-11-20 10:24:26,783 - DEBUG - File /home/amily/shark-ai/sharktuner/dispatch_tuner/dump/compute_gemm_4096_4096_8192_f8E4M3FNUZ_f32_tB_benchmark.mlir started at 2025-11-20T09:50:44
+2025-11-20 10:24:26,783 - INFO - ================================================================================
+2025-11-20 10:24:26,783 - INFO - Tuning: compute_gemm_4096_4096_8192_f8E4M3FNUZ_f32_tB.mlir with compute_gemm_4096_4096_8192_f8E4M3FNUZ_f32_tB_benchmark.mlir
+2025-11-20 10:24:26,783 - INFO - ================================================================================
+2025-11-20 10:43:26,636 - INFO - 2025-11-20T10:43:26 - compute_gemm_4096_4096_8192_f8E4M3FNUZ_f32_tB.mlir: OK in 1139.85
+2025-11-20 10:43:26,636 - DEBUG - File /home/amily/shark-ai/sharktuner/dispatch_tuner/dump/compute_gemm_4096_4096_8192_i32_i32_tB_benchmark.mlir started at 2025-11-20T09:50:44
+2025-11-20 10:43:26,636 - INFO - ================================================================================
+2025-11-20 10:43:26,636 - INFO - Tuning: compute_gemm_4096_4096_8192_i32_i32_tB.mlir with compute_gemm_4096_4096_8192_i32_i32_tB_benchmark.mlir
+2025-11-20 10:43:26,636 - INFO - ================================================================================
+2025-11-20 10:43:27,414 - WARNING - 2025-11-20T10:43:27 - compute_gemm_4096_4096_8192_i32_i32_tB.mlir: FAIL(1) in 0.78
+2025-11-20 10:43:27,414 - DEBUG - File /home/amily/shark-ai/sharktuner/dispatch_tuner/dump/compute_gemm_4096_4096_8192_i8_i32_tB_benchmark.mlir started at 2025-11-20T09:50:44
+2025-11-20 10:43:27,414 - INFO - ================================================================================
+2025-11-20 10:43:27,414 - INFO - Tuning: compute_gemm_4096_4096_8192_i8_i32_tB.mlir with compute_gemm_4096_4096_8192_i8_i32_tB_benchmark.mlir
+2025-11-20 10:43:27,414 - INFO - ================================================================================
+2025-11-20 11:02:28,842 - INFO - 2025-11-20T11:02:28 - compute_gemm_4096_4096_8192_i8_i32_tB.mlir: OK in 1141.43
+2025-11-20 11:02:28,842 - DEBUG - File /home/amily/shark-ai/sharktuner/dispatch_tuner/dump/square_gemm_1024_1024_1024_f16_f32_tB_benchmark.mlir started at 2025-11-20T09:50:44
+2025-11-20 11:02:28,842 - INFO - ================================================================================
+2025-11-20 11:02:28,842 - INFO - Tuning: square_gemm_1024_1024_1024_f16_f32_tB.mlir with square_gemm_1024_1024_1024_f16_f32_tB_benchmark.mlir
+2025-11-20 11:02:28,842 - INFO - ================================================================================
+2025-11-20 11:21:33,019 - INFO - 2025-11-20T11:21:33 - square_gemm_1024_1024_1024_f16_f32_tB.mlir: OK in 1144.18
+2025-11-20 11:21:33,019 - DEBUG - File /home/amily/shark-ai/sharktuner/dispatch_tuner/dump/square_gemm_1024_1024_1024_f32_f32_tB_benchmark.mlir started at 2025-11-20T09:50:44
+2025-11-20 11:21:33,019 - INFO - ================================================================================
+2025-11-20 11:21:33,020 - INFO - Tuning: square_gemm_1024_1024_1024_f32_f32_tB.mlir with square_gemm_1024_1024_1024_f32_f32_tB_benchmark.mlir
+2025-11-20 11:21:33,020 - INFO - ================================================================================
+2025-11-20 11:35:30,012 - INFO - 2025-11-20T11:35:30 - square_gemm_1024_1024_1024_f32_f32_tB.mlir: OK in 836.99
+2025-11-20 11:35:30,012 - DEBUG - File /home/amily/shark-ai/sharktuner/dispatch_tuner/dump/square_gemm_1024_1024_1024_f8E4M3FNUZ_f32_tB_benchmark.mlir started at 2025-11-20T09:50:44
+2025-11-20 11:35:30,012 - INFO - ================================================================================
+2025-11-20 11:35:30,012 - INFO - Tuning: square_gemm_1024_1024_1024_f8E4M3FNUZ_f32_tB.mlir with square_gemm_1024_1024_1024_f8E4M3FNUZ_f32_tB_benchmark.mlir
+2025-11-20 11:35:30,012 - INFO - ================================================================================
+2025-11-20 11:54:35,702 - INFO - 2025-11-20T11:54:35 - square_gemm_1024_1024_1024_f8E4M3FNUZ_f32_tB.mlir: OK in 1145.69
+2025-11-20 11:54:35,703 - DEBUG - File /home/amily/shark-ai/sharktuner/dispatch_tuner/dump/square_gemm_1024_1024_1024_i32_i32_tB_benchmark.mlir started at 2025-11-20T09:50:44
+2025-11-20 11:54:35,704 - INFO - ================================================================================
+2025-11-20 11:54:35,704 - INFO - Tuning: square_gemm_1024_1024_1024_i32_i32_tB.mlir with square_gemm_1024_1024_1024_i32_i32_tB_benchmark.mlir
+2025-11-20 11:54:35,704 - INFO - ================================================================================
+2025-11-20 11:54:36,451 - WARNING - 2025-11-20T11:54:36 - square_gemm_1024_1024_1024_i32_i32_tB.mlir: FAIL(1) in 0.75
+2025-11-20 11:54:36,451 - DEBUG - File /home/amily/shark-ai/sharktuner/dispatch_tuner/dump/square_gemm_1024_1024_1024_i8_i32_tB_benchmark.mlir started at 2025-11-20T09:50:44
+2025-11-20 11:54:36,451 - INFO - ================================================================================
+2025-11-20 11:54:36,451 - INFO - Tuning: square_gemm_1024_1024_1024_i8_i32_tB.mlir with square_gemm_1024_1024_1024_i8_i32_tB_benchmark.mlir
+2025-11-20 11:54:36,451 - INFO - ================================================================================
+2025-11-20 12:13:32,484 - INFO - 2025-11-20T12:13:32 - square_gemm_1024_1024_1024_i8_i32_tB.mlir: OK in 1136.03
+2025-11-20 12:13:32,485 - DEBUG - File /home/amily/shark-ai/sharktuner/dispatch_tuner/dump/square_gemm_128_128_128_f16_f32_tB_benchmark.mlir started at 2025-11-20T09:50:44
+2025-11-20 12:13:32,485 - INFO - ================================================================================
+2025-11-20 12:13:32,485 - INFO - Tuning: square_gemm_128_128_128_f16_f32_tB.mlir with square_gemm_128_128_128_f16_f32_tB_benchmark.mlir
+2025-11-20 12:13:32,485 - INFO - ================================================================================
+2025-11-20 12:21:21,428 - INFO - 2025-11-20T12:21:21 - square_gemm_128_128_128_f16_f32_tB.mlir: OK in 468.94
+2025-11-20 12:21:21,429 - DEBUG - File /home/amily/shark-ai/sharktuner/dispatch_tuner/dump/square_gemm_128_128_128_f32_f32_tB_benchmark.mlir started at 2025-11-20T09:50:44
+2025-11-20 12:21:21,429 - INFO - ================================================================================
+2025-11-20 12:21:21,429 - INFO - Tuning: square_gemm_128_128_128_f32_f32_tB.mlir with square_gemm_128_128_128_f32_f32_tB_benchmark.mlir
+2025-11-20 12:21:21,429 - INFO - ================================================================================
+2025-11-20 12:28:08,293 - INFO - 2025-11-20T12:28:08 - square_gemm_128_128_128_f32_f32_tB.mlir: OK in 406.86
+2025-11-20 12:28:08,294 - DEBUG - File /home/amily/shark-ai/sharktuner/dispatch_tuner/dump/square_gemm_128_128_128_f8E4M3FNUZ_f32_tB_benchmark.mlir started at 2025-11-20T09:50:44
+2025-11-20 12:28:08,294 - INFO - ================================================================================
+2025-11-20 12:28:08,294 - INFO - Tuning: square_gemm_128_128_128_f8E4M3FNUZ_f32_tB.mlir with square_gemm_128_128_128_f8E4M3FNUZ_f32_tB_benchmark.mlir
+2025-11-20 12:28:08,294 - INFO - ================================================================================
+2025-11-20 12:34:08,591 - INFO - 2025-11-20T12:34:08 - square_gemm_128_128_128_f8E4M3FNUZ_f32_tB.mlir: OK in 360.30
+2025-11-20 12:34:08,592 - DEBUG - File /home/amily/shark-ai/sharktuner/dispatch_tuner/dump/square_gemm_128_128_128_i32_i32_tB_benchmark.mlir started at 2025-11-20T09:50:44
+2025-11-20 12:34:08,592 - INFO - ================================================================================
+2025-11-20 12:34:08,592 - INFO - Tuning: square_gemm_128_128_128_i32_i32_tB.mlir with square_gemm_128_128_128_i32_i32_tB_benchmark.mlir
+2025-11-20 12:34:08,592 - INFO - ================================================================================
+2025-11-20 12:34:09,343 - WARNING - 2025-11-20T12:34:09 - square_gemm_128_128_128_i32_i32_tB.mlir: FAIL(1) in 0.75
+2025-11-20 12:34:09,343 - DEBUG - File /home/amily/shark-ai/sharktuner/dispatch_tuner/dump/square_gemm_128_128_128_i8_i32_tB_benchmark.mlir started at 2025-11-20T09:50:44
+2025-11-20 12:34:09,343 - INFO - ================================================================================
+2025-11-20 12:34:09,343 - INFO - Tuning: square_gemm_128_128_128_i8_i32_tB.mlir with square_gemm_128_128_128_i8_i32_tB_benchmark.mlir
+2025-11-20 12:34:09,343 - INFO - ================================================================================
+2025-11-20 12:40:08,241 - INFO - 2025-11-20T12:40:08 - square_gemm_128_128_128_i8_i32_tB.mlir: OK in 358.90
+2025-11-20 12:40:08,241 - DEBUG - File /home/amily/shark-ai/sharktuner/dispatch_tuner/dump/square_gemm_2048_2048_2048_f16_f32_tB_benchmark.mlir started at 2025-11-20T09:50:44
+2025-11-20 12:40:08,242 - INFO - ================================================================================
+2025-11-20 12:40:08,242 - INFO - Tuning: square_gemm_2048_2048_2048_f16_f32_tB.mlir with square_gemm_2048_2048_2048_f16_f32_tB_benchmark.mlir
+2025-11-20 12:40:08,242 - INFO - ================================================================================
+2025-11-20 12:59:45,957 - INFO - 2025-11-20T12:59:45 - square_gemm_2048_2048_2048_f16_f32_tB.mlir: OK in 1177.72
+2025-11-20 12:59:45,957 - DEBUG - File /home/amily/shark-ai/sharktuner/dispatch_tuner/dump/square_gemm_2048_2048_2048_f32_f32_tB_benchmark.mlir started at 2025-11-20T09:50:44
+2025-11-20 12:59:45,957 - INFO - ================================================================================
+2025-11-20 12:59:45,957 - INFO - Tuning: square_gemm_2048_2048_2048_f32_f32_tB.mlir with square_gemm_2048_2048_2048_f32_f32_tB_benchmark.mlir
+2025-11-20 12:59:45,957 - INFO - ================================================================================
+2025-11-20 13:14:02,574 - INFO - 2025-11-20T13:14:02 - square_gemm_2048_2048_2048_f32_f32_tB.mlir: OK in 856.62
+2025-11-20 13:14:02,574 - DEBUG - File /home/amily/shark-ai/sharktuner/dispatch_tuner/dump/square_gemm_2048_2048_2048_f8E4M3FNUZ_f32_tB_benchmark.mlir started at 2025-11-20T09:50:44
+2025-11-20 13:14:02,574 - INFO - ================================================================================
+2025-11-20 13:14:02,574 - INFO - Tuning: square_gemm_2048_2048_2048_f8E4M3FNUZ_f32_tB.mlir with square_gemm_2048_2048_2048_f8E4M3FNUZ_f32_tB_benchmark.mlir
+2025-11-20 13:14:02,574 - INFO - ================================================================================
+2025-11-20 13:33:03,612 - INFO - 2025-11-20T13:33:03 - square_gemm_2048_2048_2048_f8E4M3FNUZ_f32_tB.mlir: OK in 1141.04
+2025-11-20 13:33:03,612 - DEBUG - File /home/amily/shark-ai/sharktuner/dispatch_tuner/dump/square_gemm_2048_2048_2048_i32_i32_tB_benchmark.mlir started at 2025-11-20T09:50:44
+2025-11-20 13:33:03,612 - INFO - ================================================================================
+2025-11-20 13:33:03,612 - INFO - Tuning: square_gemm_2048_2048_2048_i32_i32_tB.mlir with square_gemm_2048_2048_2048_i32_i32_tB_benchmark.mlir
+2025-11-20 13:33:03,612 - INFO - ================================================================================
+2025-11-20 13:33:04,398 - WARNING - 2025-11-20T13:33:04 - square_gemm_2048_2048_2048_i32_i32_tB.mlir: FAIL(1) in 0.79
+2025-11-20 13:33:04,398 - DEBUG - File /home/amily/shark-ai/sharktuner/dispatch_tuner/dump/square_gemm_2048_2048_2048_i8_i32_tB_benchmark.mlir started at 2025-11-20T09:50:44
+2025-11-20 13:33:04,398 - INFO - ================================================================================
+2025-11-20 13:33:04,399 - INFO - Tuning: square_gemm_2048_2048_2048_i8_i32_tB.mlir with square_gemm_2048_2048_2048_i8_i32_tB_benchmark.mlir
+2025-11-20 13:33:04,399 - INFO - ================================================================================
+2025-11-20 13:52:03,992 - INFO - 2025-11-20T13:52:03 - square_gemm_2048_2048_2048_i8_i32_tB.mlir: OK in 1139.59
+2025-11-20 13:52:03,992 - DEBUG - File /home/amily/shark-ai/sharktuner/dispatch_tuner/dump/square_gemm_256_256_256_f16_f32_tB_benchmark.mlir started at 2025-11-20T09:50:44
+2025-11-20 13:52:03,992 - INFO - ================================================================================
+2025-11-20 13:52:03,992 - INFO - Tuning: square_gemm_256_256_256_f16_f32_tB.mlir with square_gemm_256_256_256_f16_f32_tB_benchmark.mlir
+2025-11-20 13:52:03,992 - INFO - ================================================================================
+2025-11-20 14:06:11,242 - INFO - 2025-11-20T14:06:11 - square_gemm_256_256_256_f16_f32_tB.mlir: OK in 847.25
+2025-11-20 14:06:11,242 - DEBUG - File /home/amily/shark-ai/sharktuner/dispatch_tuner/dump/square_gemm_256_256_256_f32_f32_tB_benchmark.mlir started at 2025-11-20T09:50:44
+2025-11-20 14:06:11,242 - INFO - ================================================================================
+2025-11-20 14:06:11,242 - INFO - Tuning: square_gemm_256_256_256_f32_f32_tB.mlir with square_gemm_256_256_256_f32_f32_tB_benchmark.mlir
+2025-11-20 14:06:11,242 - INFO - ================================================================================
+2025-11-20 14:16:37,689 - INFO - 2025-11-20T14:16:37 - square_gemm_256_256_256_f32_f32_tB.mlir: OK in 626.45
+2025-11-20 14:16:37,690 - DEBUG - File /home/amily/shark-ai/sharktuner/dispatch_tuner/dump/square_gemm_256_256_256_f8E4M3FNUZ_f32_tB_benchmark.mlir started at 2025-11-20T09:50:44
+2025-11-20 14:16:37,690 - INFO - ================================================================================
+2025-11-20 14:16:37,690 - INFO - Tuning: square_gemm_256_256_256_f8E4M3FNUZ_f32_tB.mlir with square_gemm_256_256_256_f8E4M3FNUZ_f32_tB_benchmark.mlir
+2025-11-20 14:16:37,690 - INFO - ================================================================================
+2025-11-20 14:30:08,621 - INFO - 2025-11-20T14:30:08 - square_gemm_256_256_256_f8E4M3FNUZ_f32_tB.mlir: OK in 810.93
+2025-11-20 14:30:08,621 - DEBUG - File /home/amily/shark-ai/sharktuner/dispatch_tuner/dump/square_gemm_256_256_256_i32_i32_tB_benchmark.mlir started at 2025-11-20T09:50:44
+2025-11-20 14:30:08,622 - INFO - ================================================================================
+2025-11-20 14:30:08,622 - INFO - Tuning: square_gemm_256_256_256_i32_i32_tB.mlir with square_gemm_256_256_256_i32_i32_tB_benchmark.mlir
+2025-11-20 14:30:08,622 - INFO - ================================================================================
+2025-11-20 14:30:09,471 - WARNING - 2025-11-20T14:30:09 - square_gemm_256_256_256_i32_i32_tB.mlir: FAIL(1) in 0.85
+2025-11-20 14:30:09,472 - DEBUG - File /home/amily/shark-ai/sharktuner/dispatch_tuner/dump/square_gemm_256_256_256_i8_i32_tB_benchmark.mlir started at 2025-11-20T09:50:44
+2025-11-20 14:30:09,472 - INFO - ================================================================================
+2025-11-20 14:30:09,472 - INFO - Tuning: square_gemm_256_256_256_i8_i32_tB.mlir with square_gemm_256_256_256_i8_i32_tB_benchmark.mlir
+2025-11-20 14:30:09,472 - INFO - ================================================================================
+2025-11-20 14:43:39,368 - INFO - 2025-11-20T14:43:39 - square_gemm_256_256_256_i8_i32_tB.mlir: OK in 809.90
+2025-11-20 14:43:39,368 - DEBUG - File /home/amily/shark-ai/sharktuner/dispatch_tuner/dump/square_gemm_4096_4096_4096_f16_f32_tB_benchmark.mlir started at 2025-11-20T09:50:44
+2025-11-20 14:43:39,368 - INFO - ================================================================================
+2025-11-20 14:43:39,368 - INFO - Tuning: square_gemm_4096_4096_4096_f16_f32_tB.mlir with square_gemm_4096_4096_4096_f16_f32_tB_benchmark.mlir
+2025-11-20 14:43:39,368 - INFO - ================================================================================
+2025-11-20 15:03:31,676 - INFO - 2025-11-20T15:03:31 - square_gemm_4096_4096_4096_f16_f32_tB.mlir: OK in 1192.31
+2025-11-20 15:03:31,676 - DEBUG - File /home/amily/shark-ai/sharktuner/dispatch_tuner/dump/square_gemm_4096_4096_4096_f32_f32_tB_benchmark.mlir started at 2025-11-20T09:50:44
+2025-11-20 15:03:31,676 - INFO - ================================================================================
+2025-11-20 15:03:31,676 - INFO - Tuning: square_gemm_4096_4096_4096_f32_f32_tB.mlir with square_gemm_4096_4096_4096_f32_f32_tB_benchmark.mlir
+2025-11-20 15:03:31,676 - INFO - ================================================================================
+2025-11-20 15:17:43,511 - INFO - 2025-11-20T15:17:43 - square_gemm_4096_4096_4096_f32_f32_tB.mlir: OK in 851.84
+2025-11-20 15:17:43,511 - DEBUG - File /home/amily/shark-ai/sharktuner/dispatch_tuner/dump/square_gemm_4096_4096_4096_f8E4M3FNUZ_f32_tB_benchmark.mlir started at 2025-11-20T09:50:44
+2025-11-20 15:17:43,511 - INFO - ================================================================================
+2025-11-20 15:17:43,512 - INFO - Tuning: square_gemm_4096_4096_4096_f8E4M3FNUZ_f32_tB.mlir with square_gemm_4096_4096_4096_f8E4M3FNUZ_f32_tB_benchmark.mlir
+2025-11-20 15:17:43,512 - INFO - ================================================================================
+2025-11-20 15:37:08,290 - INFO - 2025-11-20T15:37:08 - square_gemm_4096_4096_4096_f8E4M3FNUZ_f32_tB.mlir: OK in 1164.78
+2025-11-20 15:37:08,290 - DEBUG - File /home/amily/shark-ai/sharktuner/dispatch_tuner/dump/square_gemm_4096_4096_4096_i32_i32_tB_benchmark.mlir started at 2025-11-20T09:50:44
+2025-11-20 15:37:08,290 - INFO - ================================================================================
+2025-11-20 15:37:08,290 - INFO - Tuning: square_gemm_4096_4096_4096_i32_i32_tB.mlir with square_gemm_4096_4096_4096_i32_i32_tB_benchmark.mlir
+2025-11-20 15:37:08,290 - INFO - ================================================================================
+2025-11-20 15:37:09,080 - WARNING - 2025-11-20T15:37:09 - square_gemm_4096_4096_4096_i32_i32_tB.mlir: FAIL(1) in 0.79
+2025-11-20 15:37:09,080 - DEBUG - File /home/amily/shark-ai/sharktuner/dispatch_tuner/dump/square_gemm_4096_4096_4096_i8_i32_tB_benchmark.mlir started at 2025-11-20T09:50:44
+2025-11-20 15:37:09,080 - INFO - ================================================================================
+2025-11-20 15:37:09,081 - INFO - Tuning: square_gemm_4096_4096_4096_i8_i32_tB.mlir with square_gemm_4096_4096_4096_i8_i32_tB_benchmark.mlir
+2025-11-20 15:37:09,081 - INFO - ================================================================================
+2025-11-20 15:56:30,878 - INFO - 2025-11-20T15:56:30 - square_gemm_4096_4096_4096_i8_i32_tB.mlir: OK in 1161.80
+2025-11-20 15:56:30,878 - DEBUG - File /home/amily/shark-ai/sharktuner/dispatch_tuner/dump/square_gemm_512_512_512_f16_f32_tB_benchmark.mlir started at 2025-11-20T09:50:44
+2025-11-20 15:56:30,878 - INFO - ================================================================================
+2025-11-20 15:56:30,879 - INFO - Tuning: square_gemm_512_512_512_f16_f32_tB.mlir with square_gemm_512_512_512_f16_f32_tB_benchmark.mlir
+2025-11-20 15:56:30,879 - INFO - ================================================================================
+2025-11-20 16:15:50,084 - INFO - 2025-11-20T16:15:50 - square_gemm_512_512_512_f16_f32_tB.mlir: OK in 1159.21
+2025-11-20 16:15:50,084 - DEBUG - File /home/amily/shark-ai/sharktuner/dispatch_tuner/dump/square_gemm_512_512_512_f32_f32_tB_benchmark.mlir started at 2025-11-20T09:50:44
+2025-11-20 16:15:50,084 - INFO - ================================================================================
+2025-11-20 16:15:50,084 - INFO - Tuning: square_gemm_512_512_512_f32_f32_tB.mlir with square_gemm_512_512_512_f32_f32_tB_benchmark.mlir
+2025-11-20 16:15:50,084 - INFO - ================================================================================
+2025-11-20 16:29:45,731 - INFO - 2025-11-20T16:29:45 - square_gemm_512_512_512_f32_f32_tB.mlir: OK in 835.65
+2025-11-20 16:29:45,731 - DEBUG - File /home/amily/shark-ai/sharktuner/dispatch_tuner/dump/square_gemm_512_512_512_f8E4M3FNUZ_f32_tB_benchmark.mlir started at 2025-11-20T09:50:44
+2025-11-20 16:29:45,731 - INFO - ================================================================================
+2025-11-20 16:29:45,731 - INFO - Tuning: square_gemm_512_512_512_f8E4M3FNUZ_f32_tB.mlir with square_gemm_512_512_512_f8E4M3FNUZ_f32_tB_benchmark.mlir
+2025-11-20 16:29:45,731 - INFO - ================================================================================
+2025-11-20 16:48:52,870 - INFO - 2025-11-20T16:48:52 - square_gemm_512_512_512_f8E4M3FNUZ_f32_tB.mlir: OK in 1147.14
+2025-11-20 16:48:52,870 - DEBUG - File /home/amily/shark-ai/sharktuner/dispatch_tuner/dump/square_gemm_512_512_512_i32_i32_tB_benchmark.mlir started at 2025-11-20T09:50:44
+2025-11-20 16:48:52,870 - INFO - ================================================================================
+2025-11-20 16:48:52,871 - INFO - Tuning: square_gemm_512_512_512_i32_i32_tB.mlir with square_gemm_512_512_512_i32_i32_tB_benchmark.mlir
+2025-11-20 16:48:52,871 - INFO - ================================================================================
+2025-11-20 16:48:53,655 - WARNING - 2025-11-20T16:48:53 - square_gemm_512_512_512_i32_i32_tB.mlir: FAIL(1) in 0.79
+2025-11-20 16:48:53,656 - DEBUG - File /home/amily/shark-ai/sharktuner/dispatch_tuner/dump/square_gemm_512_512_512_i8_i32_tB_benchmark.mlir started at 2025-11-20T09:50:44
+2025-11-20 16:48:53,656 - INFO - ================================================================================
+2025-11-20 16:48:53,656 - INFO - Tuning: square_gemm_512_512_512_i8_i32_tB.mlir with square_gemm_512_512_512_i8_i32_tB_benchmark.mlir
+2025-11-20 16:48:53,656 - INFO - ================================================================================
+2025-11-20 17:08:19,475 - INFO - 2025-11-20T17:08:19 - square_gemm_512_512_512_i8_i32_tB.mlir: OK in 1165.82
+2025-11-20 17:08:19,475 - DEBUG - File /home/amily/shark-ai/sharktuner/dispatch_tuner/dump/square_gemm_8192_8192_8192_f16_f32_tB_benchmark.mlir started at 2025-11-20T09:50:44
+2025-11-20 17:08:19,475 - INFO - ================================================================================
+2025-11-20 17:08:19,475 - INFO - Tuning: square_gemm_8192_8192_8192_f16_f32_tB.mlir with square_gemm_8192_8192_8192_f16_f32_tB_benchmark.mlir
+2025-11-20 17:08:19,475 - INFO - ================================================================================
+2025-11-20 17:28:08,364 - INFO - 2025-11-20T17:28:08 - square_gemm_8192_8192_8192_f16_f32_tB.mlir: OK in 1188.89
+2025-11-20 17:28:08,364 - DEBUG - File /home/amily/shark-ai/sharktuner/dispatch_tuner/dump/square_gemm_8192_8192_8192_f32_f32_tB_benchmark.mlir started at 2025-11-20T09:50:44
+2025-11-20 17:28:08,364 - INFO - ================================================================================
+2025-11-20 17:28:08,364 - INFO - Tuning: square_gemm_8192_8192_8192_f32_f32_tB.mlir with square_gemm_8192_8192_8192_f32_f32_tB_benchmark.mlir
+2025-11-20 17:28:08,364 - INFO - ================================================================================
+2025-11-20 17:41:59,367 - INFO - 2025-11-20T17:41:59 - square_gemm_8192_8192_8192_f32_f32_tB.mlir: OK in 831.00
+2025-11-20 17:41:59,367 - DEBUG - File /home/amily/shark-ai/sharktuner/dispatch_tuner/dump/square_gemm_8192_8192_8192_f8E4M3FNUZ_f32_tB_benchmark.mlir started at 2025-11-20T09:50:44
+2025-11-20 17:41:59,367 - INFO - ================================================================================
+2025-11-20 17:41:59,367 - INFO - Tuning: square_gemm_8192_8192_8192_f8E4M3FNUZ_f32_tB.mlir with square_gemm_8192_8192_8192_f8E4M3FNUZ_f32_tB_benchmark.mlir
+2025-11-20 17:41:59,367 - INFO - ================================================================================
+2025-11-20 18:01:10,530 - INFO - 2025-11-20T18:01:10 - square_gemm_8192_8192_8192_f8E4M3FNUZ_f32_tB.mlir: OK in 1151.16
+2025-11-20 18:01:10,530 - DEBUG - File /home/amily/shark-ai/sharktuner/dispatch_tuner/dump/square_gemm_8192_8192_8192_i32_i32_tB_benchmark.mlir started at 2025-11-20T09:50:44
+2025-11-20 18:01:10,530 - INFO - ================================================================================
+2025-11-20 18:01:10,530 - INFO - Tuning: square_gemm_8192_8192_8192_i32_i32_tB.mlir with square_gemm_8192_8192_8192_i32_i32_tB_benchmark.mlir
+2025-11-20 18:01:10,530 - INFO - ================================================================================
+2025-11-20 18:01:11,295 - WARNING - 2025-11-20T18:01:11 - square_gemm_8192_8192_8192_i32_i32_tB.mlir: FAIL(1) in 0.76
+2025-11-20 18:01:11,295 - DEBUG - File /home/amily/shark-ai/sharktuner/dispatch_tuner/dump/square_gemm_8192_8192_8192_i8_i32_tB_benchmark.mlir started at 2025-11-20T09:50:44
+2025-11-20 18:01:11,295 - INFO - ================================================================================
+2025-11-20 18:01:11,295 - INFO - Tuning: square_gemm_8192_8192_8192_i8_i32_tB.mlir with square_gemm_8192_8192_8192_i8_i32_tB_benchmark.mlir
+2025-11-20 18:01:11,295 - INFO - ================================================================================
+2025-11-20 18:20:51,649 - INFO - 2025-11-20T18:20:51 - square_gemm_8192_8192_8192_i8_i32_tB.mlir: OK in 1180.35
+2025-11-20 18:20:51,649 - DEBUG - File /home/amily/shark-ai/sharktuner/dispatch_tuner/dump/tk_gemm_128_1280_2048_f16_f32_tB_benchmark.mlir started at 2025-11-20T09:50:44
+2025-11-20 18:20:51,649 - INFO - ================================================================================
+2025-11-20 18:20:51,649 - INFO - Tuning: tk_gemm_128_1280_2048_f16_f32_tB.mlir with tk_gemm_128_1280_2048_f16_f32_tB_benchmark.mlir
+2025-11-20 18:20:51,649 - INFO - ================================================================================
+2025-11-20 18:37:14,656 - INFO - 2025-11-20T18:37:14 - tk_gemm_128_1280_2048_f16_f32_tB.mlir: OK in 983.01
+2025-11-20 18:37:14,658 - DEBUG - File /home/amily/shark-ai/sharktuner/dispatch_tuner/dump/tk_gemm_128_1280_2048_f32_f32_tB_benchmark.mlir started at 2025-11-20T09:50:44
+2025-11-20 18:37:14,658 - INFO - ================================================================================
+2025-11-20 18:37:14,659 - INFO - Tuning: tk_gemm_128_1280_2048_f32_f32_tB.mlir with tk_gemm_128_1280_2048_f32_f32_tB_benchmark.mlir
+2025-11-20 18:37:14,659 - INFO - ================================================================================
+2025-11-20 18:50:51,166 - INFO - 2025-11-20T18:50:51 - tk_gemm_128_1280_2048_f32_f32_tB.mlir: OK in 816.51
+2025-11-20 18:50:51,166 - DEBUG - File /home/amily/shark-ai/sharktuner/dispatch_tuner/dump/tk_gemm_128_1280_2048_f8E4M3FNUZ_f32_tB_benchmark.mlir started at 2025-11-20T09:50:44
+2025-11-20 18:50:51,166 - INFO - ================================================================================
+2025-11-20 18:50:51,166 - INFO - Tuning: tk_gemm_128_1280_2048_f8E4M3FNUZ_f32_tB.mlir with tk_gemm_128_1280_2048_f8E4M3FNUZ_f32_tB_benchmark.mlir
+2025-11-20 18:50:51,166 - INFO - ================================================================================
+2025-11-20 19:06:51,776 - INFO - 2025-11-20T19:06:51 - tk_gemm_128_1280_2048_f8E4M3FNUZ_f32_tB.mlir: OK in 960.61
+2025-11-20 19:06:51,776 - DEBUG - File /home/amily/shark-ai/sharktuner/dispatch_tuner/dump/tk_gemm_128_1280_2048_i32_i32_tB_benchmark.mlir started at 2025-11-20T09:50:44
+2025-11-20 19:06:51,777 - INFO - ================================================================================
+2025-11-20 19:06:51,777 - INFO - Tuning: tk_gemm_128_1280_2048_i32_i32_tB.mlir with tk_gemm_128_1280_2048_i32_i32_tB_benchmark.mlir
+2025-11-20 19:06:51,777 - INFO - ================================================================================
+2025-11-20 19:06:52,569 - WARNING - 2025-11-20T19:06:52 - tk_gemm_128_1280_2048_i32_i32_tB.mlir: FAIL(1) in 0.79
+2025-11-20 19:06:52,570 - DEBUG - File /home/amily/shark-ai/sharktuner/dispatch_tuner/dump/tk_gemm_128_1280_2048_i8_i32_tB_benchmark.mlir started at 2025-11-20T09:50:44
+2025-11-20 19:06:52,570 - INFO - ================================================================================
+2025-11-20 19:06:52,570 - INFO - Tuning: tk_gemm_128_1280_2048_i8_i32_tB.mlir with tk_gemm_128_1280_2048_i8_i32_tB_benchmark.mlir
+2025-11-20 19:06:52,570 - INFO - ================================================================================
+2025-11-20 19:23:07,335 - INFO - 2025-11-20T19:23:07 - tk_gemm_128_1280_2048_i8_i32_tB.mlir: OK in 974.76
+2025-11-20 19:23:07,335 - DEBUG - File /home/amily/shark-ai/sharktuner/dispatch_tuner/dump/tk_gemm_2048_10240_1280_f16_f32_tB_benchmark.mlir started at 2025-11-20T09:50:44
+2025-11-20 19:23:07,335 - INFO - ================================================================================
+2025-11-20 19:23:07,335 - INFO - Tuning: tk_gemm_2048_10240_1280_f16_f32_tB.mlir with tk_gemm_2048_10240_1280_f16_f32_tB_benchmark.mlir
+2025-11-20 19:23:07,335 - INFO - ================================================================================
+2025-11-20 19:58:35,129 - INFO - 2025-11-20T19:58:35 - tk_gemm_2048_10240_1280_f16_f32_tB.mlir: OK in 2127.79
+2025-11-20 19:58:35,129 - DEBUG - File /home/amily/shark-ai/sharktuner/dispatch_tuner/dump/tk_gemm_2048_10240_1280_f32_f32_tB_benchmark.mlir started at 2025-11-20T09:50:44
+2025-11-20 19:58:35,129 - INFO - ================================================================================
+2025-11-20 19:58:35,130 - INFO - Tuning: tk_gemm_2048_10240_1280_f32_f32_tB.mlir with tk_gemm_2048_10240_1280_f32_f32_tB_benchmark.mlir
+2025-11-20 19:58:35,130 - INFO - ================================================================================
+2025-11-20 20:31:08,189 - INFO - 2025-11-20T20:31:08 - tk_gemm_2048_10240_1280_f32_f32_tB.mlir: OK in 1953.06
+2025-11-20 20:31:08,189 - DEBUG - File /home/amily/shark-ai/sharktuner/dispatch_tuner/dump/tk_gemm_2048_10240_1280_f8E4M3FNUZ_f32_tB_benchmark.mlir started at 2025-11-20T09:50:44
+2025-11-20 20:31:08,190 - INFO - ================================================================================
+2025-11-20 20:31:08,190 - INFO - Tuning: tk_gemm_2048_10240_1280_f8E4M3FNUZ_f32_tB.mlir with tk_gemm_2048_10240_1280_f8E4M3FNUZ_f32_tB_benchmark.mlir
+2025-11-20 20:31:08,190 - INFO - ================================================================================
+2025-11-20 21:08:24,833 - INFO - 2025-11-20T21:08:24 - tk_gemm_2048_10240_1280_f8E4M3FNUZ_f32_tB.mlir: OK in 2236.64
+2025-11-20 21:08:24,833 - DEBUG - File /home/amily/shark-ai/sharktuner/dispatch_tuner/dump/tk_gemm_2048_10240_1280_i32_i32_tB_benchmark.mlir started at 2025-11-20T09:50:44
+2025-11-20 21:08:24,833 - INFO - ================================================================================
+2025-11-20 21:08:24,833 - INFO - Tuning: tk_gemm_2048_10240_1280_i32_i32_tB.mlir with tk_gemm_2048_10240_1280_i32_i32_tB_benchmark.mlir
+2025-11-20 21:08:24,833 - INFO - ================================================================================
+2025-11-20 21:08:25,635 - WARNING - 2025-11-20T21:08:25 - tk_gemm_2048_10240_1280_i32_i32_tB.mlir: FAIL(1) in 0.80
+2025-11-20 21:08:25,635 - DEBUG - File /home/amily/shark-ai/sharktuner/dispatch_tuner/dump/tk_gemm_2048_10240_1280_i8_i32_tB_benchmark.mlir started at 2025-11-20T09:50:44
+2025-11-20 21:08:25,635 - INFO - ================================================================================
+2025-11-20 21:08:25,635 - INFO - Tuning: tk_gemm_2048_10240_1280_i8_i32_tB.mlir with tk_gemm_2048_10240_1280_i8_i32_tB_benchmark.mlir
+2025-11-20 21:08:25,635 - INFO - ================================================================================
+2025-11-20 21:43:58,969 - INFO - 2025-11-20T21:43:58 - tk_gemm_2048_10240_1280_i8_i32_tB.mlir: OK in 2133.33
+2025-11-20 21:43:58,969 - DEBUG - File /home/amily/shark-ai/sharktuner/dispatch_tuner/dump/tk_gemm_2048_1280_1280_f16_f32_tB_benchmark.mlir started at 2025-11-20T09:50:44
+2025-11-20 21:43:58,969 - INFO - ================================================================================
+2025-11-20 21:43:58,969 - INFO - Tuning: tk_gemm_2048_1280_1280_f16_f32_tB.mlir with tk_gemm_2048_1280_1280_f16_f32_tB_benchmark.mlir
+2025-11-20 21:43:58,969 - INFO - ================================================================================
+2025-11-20 22:17:22,494 - INFO - 2025-11-20T22:17:22 - tk_gemm_2048_1280_1280_f16_f32_tB.mlir: OK in 2003.52
+2025-11-20 22:17:22,494 - DEBUG - File /home/amily/shark-ai/sharktuner/dispatch_tuner/dump/tk_gemm_2048_1280_1280_f32_f32_tB_benchmark.mlir started at 2025-11-20T09:50:44
+2025-11-20 22:17:22,494 - INFO - ================================================================================
+2025-11-20 22:17:22,494 - INFO - Tuning: tk_gemm_2048_1280_1280_f32_f32_tB.mlir with tk_gemm_2048_1280_1280_f32_f32_tB_benchmark.mlir
+2025-11-20 22:17:22,494 - INFO - ================================================================================
+2025-11-20 22:46:16,223 - INFO - 2025-11-20T22:46:16 - tk_gemm_2048_1280_1280_f32_f32_tB.mlir: OK in 1733.73
+2025-11-20 22:46:16,224 - DEBUG - File /home/amily/shark-ai/sharktuner/dispatch_tuner/dump/tk_gemm_2048_1280_1280_f8E4M3FNUZ_f32_tB_benchmark.mlir started at 2025-11-20T09:50:44
+2025-11-20 22:46:16,224 - INFO - ================================================================================
+2025-11-20 22:46:16,224 - INFO - Tuning: tk_gemm_2048_1280_1280_f8E4M3FNUZ_f32_tB.mlir with tk_gemm_2048_1280_1280_f8E4M3FNUZ_f32_tB_benchmark.mlir
+2025-11-20 22:46:16,224 - INFO - ================================================================================
+2025-11-20 23:18:13,527 - INFO - 2025-11-20T23:18:13 - tk_gemm_2048_1280_1280_f8E4M3FNUZ_f32_tB.mlir: OK in 1917.30
+2025-11-20 23:18:13,528 - DEBUG - File /home/amily/shark-ai/sharktuner/dispatch_tuner/dump/tk_gemm_2048_1280_1280_i32_i32_tB_benchmark.mlir started at 2025-11-20T09:50:44
+2025-11-20 23:18:13,528 - INFO - ================================================================================
+2025-11-20 23:18:13,528 - INFO - Tuning: tk_gemm_2048_1280_1280_i32_i32_tB.mlir with tk_gemm_2048_1280_1280_i32_i32_tB_benchmark.mlir
+2025-11-20 23:18:13,528 - INFO - ================================================================================
+2025-11-20 23:18:14,275 - WARNING - 2025-11-20T23:18:14 - tk_gemm_2048_1280_1280_i32_i32_tB.mlir: FAIL(1) in 0.75
+2025-11-20 23:18:14,275 - DEBUG - File /home/amily/shark-ai/sharktuner/dispatch_tuner/dump/tk_gemm_2048_1280_1280_i8_i32_tB_benchmark.mlir started at 2025-11-20T09:50:44
+2025-11-20 23:18:14,275 - INFO - ================================================================================
+2025-11-20 23:18:14,275 - INFO - Tuning: tk_gemm_2048_1280_1280_i8_i32_tB.mlir with tk_gemm_2048_1280_1280_i8_i32_tB_benchmark.mlir
+2025-11-20 23:18:14,275 - INFO - ================================================================================
+2025-11-20 23:50:09,904 - INFO - 2025-11-20T23:50:09 - tk_gemm_2048_1280_1280_i8_i32_tB.mlir: OK in 1915.63
+2025-11-20 23:50:09,905 - DEBUG - File /home/amily/shark-ai/sharktuner/dispatch_tuner/dump/tk_gemm_2048_1280_5120_f16_f32_tB_benchmark.mlir started at 2025-11-20T09:50:44
+2025-11-20 23:50:09,905 - INFO - ================================================================================
+2025-11-20 23:50:09,905 - INFO - Tuning: tk_gemm_2048_1280_5120_f16_f32_tB.mlir with tk_gemm_2048_1280_5120_f16_f32_tB_benchmark.mlir
+2025-11-20 23:50:09,905 - INFO - ================================================================================
+2025-11-21 00:24:29,063 - INFO - 2025-11-21T00:24:29 - tk_gemm_2048_1280_5120_f16_f32_tB.mlir: OK in 2059.16
+2025-11-21 00:24:29,063 - DEBUG - File /home/amily/shark-ai/sharktuner/dispatch_tuner/dump/tk_gemm_2048_1280_5120_f32_f32_tB_benchmark.mlir started at 2025-11-20T09:50:44
+2025-11-21 00:24:29,063 - INFO - ================================================================================
+2025-11-21 00:24:29,063 - INFO - Tuning: tk_gemm_2048_1280_5120_f32_f32_tB.mlir with tk_gemm_2048_1280_5120_f32_f32_tB_benchmark.mlir
+2025-11-21 00:24:29,063 - INFO - ================================================================================
+2025-11-21 00:52:56,456 - INFO - 2025-11-21T00:52:56 - tk_gemm_2048_1280_5120_f32_f32_tB.mlir: OK in 1707.39
+2025-11-21 00:52:56,456 - DEBUG - File /home/amily/shark-ai/sharktuner/dispatch_tuner/dump/tk_gemm_2048_1280_5120_f8E4M3FNUZ_f32_tB_benchmark.mlir started at 2025-11-20T09:50:44
+2025-11-21 00:52:56,456 - INFO - ================================================================================
+2025-11-21 00:52:56,456 - INFO - Tuning: tk_gemm_2048_1280_5120_f8E4M3FNUZ_f32_tB.mlir with tk_gemm_2048_1280_5120_f8E4M3FNUZ_f32_tB_benchmark.mlir
+2025-11-21 00:52:56,456 - INFO - ================================================================================
+2025-11-21 01:25:43,600 - INFO - 2025-11-21T01:25:43 - tk_gemm_2048_1280_5120_f8E4M3FNUZ_f32_tB.mlir: OK in 1967.14
+2025-11-21 01:25:43,600 - DEBUG - File /home/amily/shark-ai/sharktuner/dispatch_tuner/dump/tk_gemm_2048_1280_5120_i32_i32_tB_benchmark.mlir started at 2025-11-20T09:50:44
+2025-11-21 01:25:43,600 - INFO - ================================================================================
+2025-11-21 01:25:43,600 - INFO - Tuning: tk_gemm_2048_1280_5120_i32_i32_tB.mlir with tk_gemm_2048_1280_5120_i32_i32_tB_benchmark.mlir
+2025-11-21 01:25:43,600 - INFO - ================================================================================
+2025-11-21 01:25:44,392 - WARNING - 2025-11-21T01:25:44 - tk_gemm_2048_1280_5120_i32_i32_tB.mlir: FAIL(1) in 0.79
+2025-11-21 01:25:44,392 - DEBUG - File /home/amily/shark-ai/sharktuner/dispatch_tuner/dump/tk_gemm_2048_1280_5120_i8_i32_tB_benchmark.mlir started at 2025-11-20T09:50:44
+2025-11-21 01:25:44,392 - INFO - ================================================================================
+2025-11-21 01:25:44,392 - INFO - Tuning: tk_gemm_2048_1280_5120_i8_i32_tB.mlir with tk_gemm_2048_1280_5120_i8_i32_tB_benchmark.mlir
+2025-11-21 01:25:44,392 - INFO - ================================================================================
+2025-11-21 01:58:36,175 - INFO - 2025-11-21T01:58:36 - tk_gemm_2048_1280_5120_i8_i32_tB.mlir: OK in 1971.78
+2025-11-21 01:58:36,175 - DEBUG - File /home/amily/shark-ai/sharktuner/dispatch_tuner/dump/tk_gemm_8192_5120_640_f16_f32_tB_benchmark.mlir started at 2025-11-20T09:50:44
+2025-11-21 01:58:36,175 - INFO - ================================================================================
+2025-11-21 01:58:36,175 - INFO - Tuning: tk_gemm_8192_5120_640_f16_f32_tB.mlir with tk_gemm_8192_5120_640_f16_f32_tB_benchmark.mlir
+2025-11-21 01:58:36,175 - INFO - ================================================================================
+2025-11-21 02:34:05,160 - INFO - 2025-11-21T02:34:05 - tk_gemm_8192_5120_640_f16_f32_tB.mlir: OK in 2128.99
+2025-11-21 02:34:05,161 - DEBUG - File /home/amily/shark-ai/sharktuner/dispatch_tuner/dump/tk_gemm_8192_5120_640_f32_f32_tB_benchmark.mlir started at 2025-11-20T09:50:44
+2025-11-21 02:34:05,161 - INFO - ================================================================================
+2025-11-21 02:34:05,161 - INFO - Tuning: tk_gemm_8192_5120_640_f32_f32_tB.mlir with tk_gemm_8192_5120_640_f32_f32_tB_benchmark.mlir
+2025-11-21 02:34:05,161 - INFO - ================================================================================
+2025-11-21 03:04:04,097 - INFO - 2025-11-21T03:04:04 - tk_gemm_8192_5120_640_f32_f32_tB.mlir: OK in 1798.94
+2025-11-21 03:04:04,097 - DEBUG - File /home/amily/shark-ai/sharktuner/dispatch_tuner/dump/tk_gemm_8192_5120_640_f8E4M3FNUZ_f32_tB_benchmark.mlir started at 2025-11-20T09:50:44
+2025-11-21 03:04:04,097 - INFO - ================================================================================
+2025-11-21 03:04:04,097 - INFO - Tuning: tk_gemm_8192_5120_640_f8E4M3FNUZ_f32_tB.mlir with tk_gemm_8192_5120_640_f8E4M3FNUZ_f32_tB_benchmark.mlir
+2025-11-21 03:04:04,097 - INFO - ================================================================================
+2025-11-21 03:37:23,069 - INFO - 2025-11-21T03:37:23 - tk_gemm_8192_5120_640_f8E4M3FNUZ_f32_tB.mlir: OK in 1998.97
+2025-11-21 03:37:23,069 - DEBUG - File /home/amily/shark-ai/sharktuner/dispatch_tuner/dump/tk_gemm_8192_5120_640_i32_i32_tB_benchmark.mlir started at 2025-11-20T09:50:44
+2025-11-21 03:37:23,069 - INFO - ================================================================================
+2025-11-21 03:37:23,069 - INFO - Tuning: tk_gemm_8192_5120_640_i32_i32_tB.mlir with tk_gemm_8192_5120_640_i32_i32_tB_benchmark.mlir
+2025-11-21 03:37:23,069 - INFO - ================================================================================
+2025-11-21 03:37:23,882 - WARNING - 2025-11-21T03:37:23 - tk_gemm_8192_5120_640_i32_i32_tB.mlir: FAIL(1) in 0.81
+2025-11-21 03:37:23,882 - DEBUG - File /home/amily/shark-ai/sharktuner/dispatch_tuner/dump/tk_gemm_8192_5120_640_i8_i32_tB_benchmark.mlir started at 2025-11-20T09:50:44
+2025-11-21 03:37:23,882 - INFO - ================================================================================
+2025-11-21 03:37:23,882 - INFO - Tuning: tk_gemm_8192_5120_640_i8_i32_tB.mlir with tk_gemm_8192_5120_640_i8_i32_tB_benchmark.mlir
+2025-11-21 03:37:23,882 - INFO - ================================================================================
+2025-11-21 04:10:39,951 - INFO - 2025-11-21T04:10:39 - tk_gemm_8192_5120_640_i8_i32_tB.mlir: OK in 1996.07
+2025-11-21 04:10:39,951 - DEBUG - File /home/amily/shark-ai/sharktuner/dispatch_tuner/dump/unet_gemm_1024_10240_1280_f16_f32_tB_benchmark.mlir started at 2025-11-20T09:50:44
+2025-11-21 04:10:39,951 - INFO - ================================================================================
+2025-11-21 04:10:39,951 - INFO - Tuning: unet_gemm_1024_10240_1280_f16_f32_tB.mlir with unet_gemm_1024_10240_1280_f16_f32_tB_benchmark.mlir
+2025-11-21 04:10:39,951 - INFO - ================================================================================
+2025-11-21 04:45:28,530 - INFO - 2025-11-21T04:45:28 - unet_gemm_1024_10240_1280_f16_f32_tB.mlir: OK in 2088.58
+2025-11-21 04:45:28,530 - DEBUG - File /home/amily/shark-ai/sharktuner/dispatch_tuner/dump/unet_gemm_1024_10240_1280_f32_f32_tB_benchmark.mlir started at 2025-11-20T09:50:44
+2025-11-21 04:45:28,531 - INFO - ================================================================================
+2025-11-21 04:45:28,531 - INFO - Tuning: unet_gemm_1024_10240_1280_f32_f32_tB.mlir with unet_gemm_1024_10240_1280_f32_f32_tB_benchmark.mlir
+2025-11-21 04:45:28,531 - INFO - ================================================================================
+2025-11-21 05:17:02,782 - INFO - 2025-11-21T05:17:02 - unet_gemm_1024_10240_1280_f32_f32_tB.mlir: OK in 1894.25
+2025-11-21 05:17:02,782 - DEBUG - File /home/amily/shark-ai/sharktuner/dispatch_tuner/dump/unet_gemm_1024_10240_1280_f8E4M3FNUZ_f32_tB_benchmark.mlir started at 2025-11-20T09:50:44
+2025-11-21 05:17:02,782 - INFO - ================================================================================
+2025-11-21 05:17:02,782 - INFO - Tuning: unet_gemm_1024_10240_1280_f8E4M3FNUZ_f32_tB.mlir with unet_gemm_1024_10240_1280_f8E4M3FNUZ_f32_tB_benchmark.mlir
+2025-11-21 05:17:02,782 - INFO - ================================================================================
+2025-11-21 05:52:36,035 - INFO - 2025-11-21T05:52:36 - unet_gemm_1024_10240_1280_f8E4M3FNUZ_f32_tB.mlir: OK in 2133.25
+2025-11-21 05:52:36,035 - DEBUG - File /home/amily/shark-ai/sharktuner/dispatch_tuner/dump/unet_gemm_1024_10240_1280_i32_i32_tB_benchmark.mlir started at 2025-11-20T09:50:44
+2025-11-21 05:52:36,035 - INFO - ================================================================================
+2025-11-21 05:52:36,035 - INFO - Tuning: unet_gemm_1024_10240_1280_i32_i32_tB.mlir with unet_gemm_1024_10240_1280_i32_i32_tB_benchmark.mlir
+2025-11-21 05:52:36,035 - INFO - ================================================================================
+2025-11-21 05:52:36,791 - WARNING - 2025-11-21T05:52:36 - unet_gemm_1024_10240_1280_i32_i32_tB.mlir: FAIL(1) in 0.76
+2025-11-21 05:52:36,791 - DEBUG - File /home/amily/shark-ai/sharktuner/dispatch_tuner/dump/unet_gemm_1024_10240_1280_i8_i32_tB_benchmark.mlir started at 2025-11-20T09:50:44
+2025-11-21 05:52:36,791 - INFO - ================================================================================
+2025-11-21 05:52:36,791 - INFO - Tuning: unet_gemm_1024_10240_1280_i8_i32_tB.mlir with unet_gemm_1024_10240_1280_i8_i32_tB_benchmark.mlir
+2025-11-21 05:52:36,791 - INFO - ================================================================================
+2025-11-21 06:27:41,509 - INFO - 2025-11-21T06:27:41 - unet_gemm_1024_10240_1280_i8_i32_tB.mlir: OK in 2104.72
+2025-11-21 06:27:41,509 - DEBUG - File /home/amily/shark-ai/sharktuner/dispatch_tuner/dump/unet_gemm_1024_1280_1280_f16_f32_tB_benchmark.mlir started at 2025-11-20T09:50:44
+2025-11-21 06:27:41,509 - INFO - ================================================================================
+2025-11-21 06:27:41,509 - INFO - Tuning: unet_gemm_1024_1280_1280_f16_f32_tB.mlir with unet_gemm_1024_1280_1280_f16_f32_tB_benchmark.mlir
+2025-11-21 06:27:41,509 - INFO - ================================================================================
+2025-11-21 07:00:38,580 - INFO - 2025-11-21T07:00:38 - unet_gemm_1024_1280_1280_f16_f32_tB.mlir: OK in 1977.07
+2025-11-21 07:00:38,581 - DEBUG - File /home/amily/shark-ai/sharktuner/dispatch_tuner/dump/unet_gemm_1024_1280_1280_f32_f32_tB_benchmark.mlir started at 2025-11-20T09:50:44
+2025-11-21 07:00:38,581 - INFO - ================================================================================
+2025-11-21 07:00:38,581 - INFO - Tuning: unet_gemm_1024_1280_1280_f32_f32_tB.mlir with unet_gemm_1024_1280_1280_f32_f32_tB_benchmark.mlir
+2025-11-21 07:00:38,581 - INFO - ================================================================================
+2025-11-21 07:29:14,604 - INFO - 2025-11-21T07:29:14 - unet_gemm_1024_1280_1280_f32_f32_tB.mlir: OK in 1716.02
+2025-11-21 07:29:14,604 - DEBUG - File /home/amily/shark-ai/sharktuner/dispatch_tuner/dump/unet_gemm_1024_1280_1280_f8E4M3FNUZ_f32_tB_benchmark.mlir started at 2025-11-20T09:50:44
+2025-11-21 07:29:14,604 - INFO - ================================================================================
+2025-11-21 07:29:14,604 - INFO - Tuning: unet_gemm_1024_1280_1280_f8E4M3FNUZ_f32_tB.mlir with unet_gemm_1024_1280_1280_f8E4M3FNUZ_f32_tB_benchmark.mlir
+2025-11-21 07:29:14,604 - INFO - ================================================================================
+2025-11-21 08:01:08,444 - INFO - 2025-11-21T08:01:08 - unet_gemm_1024_1280_1280_f8E4M3FNUZ_f32_tB.mlir: OK in 1913.84
+2025-11-21 08:01:08,444 - DEBUG - File /home/amily/shark-ai/sharktuner/dispatch_tuner/dump/unet_gemm_1024_1280_1280_i32_i32_tB_benchmark.mlir started at 2025-11-20T09:50:44
+2025-11-21 08:01:08,445 - INFO - ================================================================================
+2025-11-21 08:01:08,445 - INFO - Tuning: unet_gemm_1024_1280_1280_i32_i32_tB.mlir with unet_gemm_1024_1280_1280_i32_i32_tB_benchmark.mlir
+2025-11-21 08:01:08,445 - INFO - ================================================================================
+2025-11-21 08:01:09,210 - WARNING - 2025-11-21T08:01:09 - unet_gemm_1024_1280_1280_i32_i32_tB.mlir: FAIL(1) in 0.77
+2025-11-21 08:01:09,210 - DEBUG - File /home/amily/shark-ai/sharktuner/dispatch_tuner/dump/unet_gemm_1024_1280_1280_i8_i32_tB_benchmark.mlir started at 2025-11-20T09:50:44
+2025-11-21 08:01:09,210 - INFO - ================================================================================
+2025-11-21 08:01:09,210 - INFO - Tuning: unet_gemm_1024_1280_1280_i8_i32_tB.mlir with unet_gemm_1024_1280_1280_i8_i32_tB_benchmark.mlir
+2025-11-21 08:01:09,210 - INFO - ================================================================================
+2025-11-21 08:32:59,714 - INFO - 2025-11-21T08:32:59 - unet_gemm_1024_1280_1280_i8_i32_tB.mlir: OK in 1910.50
+2025-11-21 08:32:59,715 - DEBUG - File /home/amily/shark-ai/sharktuner/dispatch_tuner/dump/unet_gemm_1024_1280_5120_f16_f32_tB_benchmark.mlir started at 2025-11-20T09:50:44
+2025-11-21 08:32:59,715 - INFO - ================================================================================
+2025-11-21 08:32:59,715 - INFO - Tuning: unet_gemm_1024_1280_5120_f16_f32_tB.mlir with unet_gemm_1024_1280_5120_f16_f32_tB_benchmark.mlir
+2025-11-21 08:32:59,715 - INFO - ================================================================================
+2025-11-21 09:07:01,833 - INFO - 2025-11-21T09:07:01 - unet_gemm_1024_1280_5120_f16_f32_tB.mlir: OK in 2042.12
+2025-11-21 09:07:01,834 - DEBUG - File /home/amily/shark-ai/sharktuner/dispatch_tuner/dump/unet_gemm_1024_1280_5120_f32_f32_tB_benchmark.mlir started at 2025-11-20T09:50:44
+2025-11-21 09:07:01,834 - INFO - ================================================================================
+2025-11-21 09:07:01,834 - INFO - Tuning: unet_gemm_1024_1280_5120_f32_f32_tB.mlir with unet_gemm_1024_1280_5120_f32_f32_tB_benchmark.mlir
+2025-11-21 09:07:01,834 - INFO - ================================================================================
+2025-11-21 09:35:51,470 - INFO - 2025-11-21T09:35:51 - unet_gemm_1024_1280_5120_f32_f32_tB.mlir: OK in 1729.64
+2025-11-21 09:35:51,470 - DEBUG - File /home/amily/shark-ai/sharktuner/dispatch_tuner/dump/unet_gemm_1024_1280_5120_f8E4M3FNUZ_f32_tB_benchmark.mlir started at 2025-11-20T09:50:44
+2025-11-21 09:35:51,470 - INFO - ================================================================================
+2025-11-21 09:35:51,470 - INFO - Tuning: unet_gemm_1024_1280_5120_f8E4M3FNUZ_f32_tB.mlir with unet_gemm_1024_1280_5120_f8E4M3FNUZ_f32_tB_benchmark.mlir
+2025-11-21 09:35:51,470 - INFO - ================================================================================
+2025-11-21 10:08:20,486 - INFO - 2025-11-21T10:08:20 - unet_gemm_1024_1280_5120_f8E4M3FNUZ_f32_tB.mlir: OK in 1949.02
+2025-11-21 10:08:20,486 - DEBUG - File /home/amily/shark-ai/sharktuner/dispatch_tuner/dump/unet_gemm_1024_1280_5120_i32_i32_tB_benchmark.mlir started at 2025-11-20T09:50:44
+2025-11-21 10:08:20,486 - INFO - ================================================================================
+2025-11-21 10:08:20,486 - INFO - Tuning: unet_gemm_1024_1280_5120_i32_i32_tB.mlir with unet_gemm_1024_1280_5120_i32_i32_tB_benchmark.mlir
+2025-11-21 10:08:20,486 - INFO - ================================================================================
+2025-11-21 10:08:21,264 - WARNING - 2025-11-21T10:08:21 - unet_gemm_1024_1280_5120_i32_i32_tB.mlir: FAIL(1) in 0.78
+2025-11-21 10:08:21,264 - DEBUG - File /home/amily/shark-ai/sharktuner/dispatch_tuner/dump/unet_gemm_1024_1280_5120_i8_i32_tB_benchmark.mlir started at 2025-11-20T09:50:44
+2025-11-21 10:08:21,264 - INFO - ================================================================================
+2025-11-21 10:08:21,264 - INFO - Tuning: unet_gemm_1024_1280_5120_i8_i32_tB.mlir with unet_gemm_1024_1280_5120_i8_i32_tB_benchmark.mlir
+2025-11-21 10:08:21,264 - INFO - ================================================================================
+2025-11-21 10:40:58,949 - INFO - 2025-11-21T10:40:58 - unet_gemm_1024_1280_5120_i8_i32_tB.mlir: OK in 1957.68
+2025-11-21 10:40:58,949 - DEBUG - File /home/amily/shark-ai/sharktuner/dispatch_tuner/dump/unet_gemm_128_1280_2048_f16_f32_tB_benchmark.mlir started at 2025-11-20T09:50:44
+2025-11-21 10:40:58,949 - INFO - ================================================================================
+2025-11-21 10:40:58,949 - INFO - Tuning: unet_gemm_128_1280_2048_f16_f32_tB.mlir with unet_gemm_128_1280_2048_f16_f32_tB_benchmark.mlir
+2025-11-21 10:40:58,949 - INFO - ================================================================================
+2025-11-21 10:57:02,158 - INFO - 2025-11-21T10:57:02 - unet_gemm_128_1280_2048_f16_f32_tB.mlir: OK in 963.21
+2025-11-21 10:57:02,159 - DEBUG - File /home/amily/shark-ai/sharktuner/dispatch_tuner/dump/unet_gemm_128_1280_2048_f32_f32_tB_benchmark.mlir started at 2025-11-20T09:50:44
+2025-11-21 10:57:02,159 - INFO - ================================================================================
+2025-11-21 10:57:02,159 - INFO - Tuning: unet_gemm_128_1280_2048_f32_f32_tB.mlir with unet_gemm_128_1280_2048_f32_f32_tB_benchmark.mlir
+2025-11-21 10:57:02,159 - INFO - ================================================================================
+2025-11-21 11:10:26,213 - INFO - 2025-11-21T11:10:26 - unet_gemm_128_1280_2048_f32_f32_tB.mlir: OK in 804.05
+2025-11-21 11:10:26,213 - DEBUG - File /home/amily/shark-ai/sharktuner/dispatch_tuner/dump/unet_gemm_128_1280_2048_f8E4M3FNUZ_f32_tB_benchmark.mlir started at 2025-11-20T09:50:44
+2025-11-21 11:10:26,214 - INFO - ================================================================================
+2025-11-21 11:10:26,214 - INFO - Tuning: unet_gemm_128_1280_2048_f8E4M3FNUZ_f32_tB.mlir with unet_gemm_128_1280_2048_f8E4M3FNUZ_f32_tB_benchmark.mlir
+2025-11-21 11:10:26,214 - INFO - ================================================================================
+2025-11-21 11:26:28,914 - INFO - 2025-11-21T11:26:28 - unet_gemm_128_1280_2048_f8E4M3FNUZ_f32_tB.mlir: OK in 962.70
+2025-11-21 11:26:28,914 - DEBUG - File /home/amily/shark-ai/sharktuner/dispatch_tuner/dump/unet_gemm_128_1280_2048_i32_i32_tB_benchmark.mlir started at 2025-11-20T09:50:44
+2025-11-21 11:26:28,914 - INFO - ================================================================================
+2025-11-21 11:26:28,914 - INFO - Tuning: unet_gemm_128_1280_2048_i32_i32_tB.mlir with unet_gemm_128_1280_2048_i32_i32_tB_benchmark.mlir
+2025-11-21 11:26:28,914 - INFO - ================================================================================
+2025-11-21 11:26:29,683 - WARNING - 2025-11-21T11:26:29 - unet_gemm_128_1280_2048_i32_i32_tB.mlir: FAIL(1) in 0.77
+2025-11-21 11:26:29,683 - DEBUG - File /home/amily/shark-ai/sharktuner/dispatch_tuner/dump/unet_gemm_128_1280_2048_i8_i32_tB_benchmark.mlir started at 2025-11-20T09:50:44
+2025-11-21 11:26:29,683 - INFO - ================================================================================
+2025-11-21 11:26:29,683 - INFO - Tuning: unet_gemm_128_1280_2048_i8_i32_tB.mlir with unet_gemm_128_1280_2048_i8_i32_tB_benchmark.mlir
+2025-11-21 11:26:29,683 - INFO - ================================================================================
+2025-11-21 11:42:34,172 - INFO - 2025-11-21T11:42:34 - unet_gemm_128_1280_2048_i8_i32_tB.mlir: OK in 964.49
+2025-11-21 11:42:34,172 - DEBUG - File /home/amily/shark-ai/sharktuner/dispatch_tuner/dump/unet_gemm_2048_10240_1280_f16_f32_tB_benchmark.mlir started at 2025-11-20T09:50:44
+2025-11-21 11:42:34,172 - INFO - ================================================================================
+2025-11-21 11:42:34,172 - INFO - Tuning: unet_gemm_2048_10240_1280_f16_f32_tB.mlir with unet_gemm_2048_10240_1280_f16_f32_tB_benchmark.mlir
+2025-11-21 11:42:34,172 - INFO - ================================================================================
+2025-11-21 12:17:55,286 - INFO - 2025-11-21T12:17:55 - unet_gemm_2048_10240_1280_f16_f32_tB.mlir: OK in 2121.11
+2025-11-21 12:17:55,286 - DEBUG - File /home/amily/shark-ai/sharktuner/dispatch_tuner/dump/unet_gemm_2048_10240_1280_f32_f32_tB_benchmark.mlir started at 2025-11-20T09:50:44
+2025-11-21 12:17:55,286 - INFO - ================================================================================
+2025-11-21 12:17:55,286 - INFO - Tuning: unet_gemm_2048_10240_1280_f32_f32_tB.mlir with unet_gemm_2048_10240_1280_f32_f32_tB_benchmark.mlir
+2025-11-21 12:17:55,286 - INFO - ================================================================================
+2025-11-21 12:48:03,315 - INFO - 2025-11-21T12:48:03 - unet_gemm_2048_10240_1280_f32_f32_tB.mlir: OK in 1808.03
+2025-11-21 12:48:03,316 - DEBUG - File /home/amily/shark-ai/sharktuner/dispatch_tuner/dump/unet_gemm_2048_10240_1280_f8E4M3FNUZ_f32_tB_benchmark.mlir started at 2025-11-20T09:50:44
+2025-11-21 12:48:03,316 - INFO - ================================================================================
+2025-11-21 12:48:03,316 - INFO - Tuning: unet_gemm_2048_10240_1280_f8E4M3FNUZ_f32_tB.mlir with unet_gemm_2048_10240_1280_f8E4M3FNUZ_f32_tB_benchmark.mlir
+2025-11-21 12:48:03,316 - INFO - ================================================================================
+2025-11-21 13:23:32,214 - INFO - 2025-11-21T13:23:32 - unet_gemm_2048_10240_1280_f8E4M3FNUZ_f32_tB.mlir: OK in 2128.90
+2025-11-21 13:23:32,214 - DEBUG - File /home/amily/shark-ai/sharktuner/dispatch_tuner/dump/unet_gemm_2048_10240_1280_i32_i32_tB_benchmark.mlir started at 2025-11-20T09:50:44
+2025-11-21 13:23:32,215 - INFO - ================================================================================
+2025-11-21 13:23:32,215 - INFO - Tuning: unet_gemm_2048_10240_1280_i32_i32_tB.mlir with unet_gemm_2048_10240_1280_i32_i32_tB_benchmark.mlir
+2025-11-21 13:23:32,215 - INFO - ================================================================================
+2025-11-21 13:23:32,963 - WARNING - 2025-11-21T13:23:32 - unet_gemm_2048_10240_1280_i32_i32_tB.mlir: FAIL(1) in 0.75
+2025-11-21 13:23:32,963 - DEBUG - File /home/amily/shark-ai/sharktuner/dispatch_tuner/dump/unet_gemm_2048_10240_1280_i8_i32_tB_benchmark.mlir started at 2025-11-20T09:50:44
+2025-11-21 13:23:32,963 - INFO - ================================================================================
+2025-11-21 13:23:32,963 - INFO - Tuning: unet_gemm_2048_10240_1280_i8_i32_tB.mlir with unet_gemm_2048_10240_1280_i8_i32_tB_benchmark.mlir
+2025-11-21 13:23:32,963 - INFO - ================================================================================
+2025-11-21 13:58:59,726 - INFO - 2025-11-21T13:58:59 - unet_gemm_2048_10240_1280_i8_i32_tB.mlir: OK in 2126.76
+2025-11-21 13:58:59,726 - DEBUG - File /home/amily/shark-ai/sharktuner/dispatch_tuner/dump/unet_gemm_2048_1280_1280_f16_f32_tB_benchmark.mlir started at 2025-11-20T09:50:44
+2025-11-21 13:58:59,727 - INFO - ================================================================================
+2025-11-21 13:58:59,727 - INFO - Tuning: unet_gemm_2048_1280_1280_f16_f32_tB.mlir with unet_gemm_2048_1280_1280_f16_f32_tB_benchmark.mlir
+2025-11-21 13:58:59,727 - INFO - ================================================================================
+2025-11-21 14:32:12,162 - INFO - 2025-11-21T14:32:12 - unet_gemm_2048_1280_1280_f16_f32_tB.mlir: OK in 1992.44
+2025-11-21 14:32:12,162 - DEBUG - File /home/amily/shark-ai/sharktuner/dispatch_tuner/dump/unet_gemm_2048_1280_1280_f32_f32_tB_benchmark.mlir started at 2025-11-20T09:50:44
+2025-11-21 14:32:12,162 - INFO - ================================================================================
+2025-11-21 14:32:12,162 - INFO - Tuning: unet_gemm_2048_1280_1280_f32_f32_tB.mlir with unet_gemm_2048_1280_1280_f32_f32_tB_benchmark.mlir
+2025-11-21 14:32:12,162 - INFO - ================================================================================
+2025-11-21 15:00:59,119 - INFO - 2025-11-21T15:00:59 - unet_gemm_2048_1280_1280_f32_f32_tB.mlir: OK in 1726.96
+2025-11-21 15:00:59,120 - DEBUG - File /home/amily/shark-ai/sharktuner/dispatch_tuner/dump/unet_gemm_2048_1280_1280_f8E4M3FNUZ_f32_tB_benchmark.mlir started at 2025-11-20T09:50:44
+2025-11-21 15:00:59,120 - INFO - ================================================================================
+2025-11-21 15:00:59,120 - INFO - Tuning: unet_gemm_2048_1280_1280_f8E4M3FNUZ_f32_tB.mlir with unet_gemm_2048_1280_1280_f8E4M3FNUZ_f32_tB_benchmark.mlir
+2025-11-21 15:00:59,120 - INFO - ================================================================================
+2025-11-21 15:32:51,151 - INFO - 2025-11-21T15:32:51 - unet_gemm_2048_1280_1280_f8E4M3FNUZ_f32_tB.mlir: OK in 1912.03
+2025-11-21 15:32:51,152 - DEBUG - File /home/amily/shark-ai/sharktuner/dispatch_tuner/dump/unet_gemm_2048_1280_1280_i32_i32_tB_benchmark.mlir started at 2025-11-20T09:50:44
+2025-11-21 15:32:51,152 - INFO - ================================================================================
+2025-11-21 15:32:51,152 - INFO - Tuning: unet_gemm_2048_1280_1280_i32_i32_tB.mlir with unet_gemm_2048_1280_1280_i32_i32_tB_benchmark.mlir
+2025-11-21 15:32:51,152 - INFO - ================================================================================
+2025-11-21 15:32:51,921 - WARNING - 2025-11-21T15:32:51 - unet_gemm_2048_1280_1280_i32_i32_tB.mlir: FAIL(1) in 0.77
+2025-11-21 15:32:51,921 - DEBUG - File /home/amily/shark-ai/sharktuner/dispatch_tuner/dump/unet_gemm_2048_1280_1280_i8_i32_tB_benchmark.mlir started at 2025-11-20T09:50:44
+2025-11-21 15:32:51,921 - INFO - ================================================================================
+2025-11-21 15:32:51,921 - INFO - Tuning: unet_gemm_2048_1280_1280_i8_i32_tB.mlir with unet_gemm_2048_1280_1280_i8_i32_tB_benchmark.mlir
+2025-11-21 15:32:51,921 - INFO - ================================================================================
+2025-11-21 16:05:13,004 - INFO - 2025-11-21T16:05:13 - unet_gemm_2048_1280_1280_i8_i32_tB.mlir: OK in 1941.08
+2025-11-21 16:05:13,007 - DEBUG - File /home/amily/shark-ai/sharktuner/dispatch_tuner/dump/unet_gemm_2048_1280_5120_f16_f32_tB_benchmark.mlir started at 2025-11-20T09:50:44
+2025-11-21 16:05:13,007 - INFO - ================================================================================
+2025-11-21 16:05:13,007 - INFO - Tuning: unet_gemm_2048_1280_5120_f16_f32_tB.mlir with unet_gemm_2048_1280_5120_f16_f32_tB_benchmark.mlir
+2025-11-21 16:05:13,007 - INFO - ================================================================================
+2025-11-21 16:39:32,896 - INFO - 2025-11-21T16:39:32 - unet_gemm_2048_1280_5120_f16_f32_tB.mlir: OK in 2059.89
+2025-11-21 16:39:32,896 - DEBUG - File /home/amily/shark-ai/sharktuner/dispatch_tuner/dump/unet_gemm_2048_1280_5120_f32_f32_tB_benchmark.mlir started at 2025-11-20T09:50:44
+2025-11-21 16:39:32,897 - INFO - ================================================================================
+2025-11-21 16:39:32,897 - INFO - Tuning: unet_gemm_2048_1280_5120_f32_f32_tB.mlir with unet_gemm_2048_1280_5120_f32_f32_tB_benchmark.mlir
+2025-11-21 16:39:32,897 - INFO - ================================================================================
+2025-11-21 17:08:03,802 - INFO - 2025-11-21T17:08:03 - unet_gemm_2048_1280_5120_f32_f32_tB.mlir: OK in 1710.91
+2025-11-21 17:08:03,802 - DEBUG - File /home/amily/shark-ai/sharktuner/dispatch_tuner/dump/unet_gemm_2048_1280_5120_f8E4M3FNUZ_f32_tB_benchmark.mlir started at 2025-11-20T09:50:44
+2025-11-21 17:08:03,802 - INFO - ================================================================================
+2025-11-21 17:08:03,802 - INFO - Tuning: unet_gemm_2048_1280_5120_f8E4M3FNUZ_f32_tB.mlir with unet_gemm_2048_1280_5120_f8E4M3FNUZ_f32_tB_benchmark.mlir
+2025-11-21 17:08:03,803 - INFO - ================================================================================
+2025-11-21 17:40:54,347 - INFO - 2025-11-21T17:40:54 - unet_gemm_2048_1280_5120_f8E4M3FNUZ_f32_tB.mlir: OK in 1970.54
+2025-11-21 17:40:54,347 - DEBUG - File /home/amily/shark-ai/sharktuner/dispatch_tuner/dump/unet_gemm_2048_1280_5120_i32_i32_tB_benchmark.mlir started at 2025-11-20T09:50:44
+2025-11-21 17:40:54,347 - INFO - ================================================================================
+2025-11-21 17:40:54,347 - INFO - Tuning: unet_gemm_2048_1280_5120_i32_i32_tB.mlir with unet_gemm_2048_1280_5120_i32_i32_tB_benchmark.mlir
+2025-11-21 17:40:54,347 - INFO - ================================================================================
+2025-11-21 17:40:55,118 - WARNING - 2025-11-21T17:40:55 - unet_gemm_2048_1280_5120_i32_i32_tB.mlir: FAIL(1) in 0.77
+2025-11-21 17:40:55,118 - DEBUG - File /home/amily/shark-ai/sharktuner/dispatch_tuner/dump/unet_gemm_2048_1280_5120_i8_i32_tB_benchmark.mlir started at 2025-11-20T09:50:44
+2025-11-21 17:40:55,118 - INFO - ================================================================================
+2025-11-21 17:40:55,118 - INFO - Tuning: unet_gemm_2048_1280_5120_i8_i32_tB.mlir with unet_gemm_2048_1280_5120_i8_i32_tB_benchmark.mlir
+2025-11-21 17:40:55,118 - INFO - ================================================================================
+2025-11-21 18:13:47,419 - INFO - 2025-11-21T18:13:47 - unet_gemm_2048_1280_5120_i8_i32_tB.mlir: OK in 1972.30
+2025-11-21 18:13:47,419 - DEBUG - File /home/amily/shark-ai/sharktuner/dispatch_tuner/dump/unet_gemm_4096_5120_640_f16_f32_tB_benchmark.mlir started at 2025-11-20T09:50:44
+2025-11-21 18:13:47,419 - INFO - ================================================================================
+2025-11-21 18:13:47,419 - INFO - Tuning: unet_gemm_4096_5120_640_f16_f32_tB.mlir with unet_gemm_4096_5120_640_f16_f32_tB_benchmark.mlir
+2025-11-21 18:13:47,419 - INFO - ================================================================================
+2025-11-21 18:48:27,447 - INFO - 2025-11-21T18:48:27 - unet_gemm_4096_5120_640_f16_f32_tB.mlir: OK in 2080.03
+2025-11-21 18:48:27,447 - DEBUG - File /home/amily/shark-ai/sharktuner/dispatch_tuner/dump/unet_gemm_4096_5120_640_f32_f32_tB_benchmark.mlir started at 2025-11-20T09:50:44
+2025-11-21 18:48:27,447 - INFO - ================================================================================
+2025-11-21 18:48:27,447 - INFO - Tuning: unet_gemm_4096_5120_640_f32_f32_tB.mlir with unet_gemm_4096_5120_640_f32_f32_tB_benchmark.mlir
+2025-11-21 18:48:27,447 - INFO - ================================================================================
+2025-11-21 19:20:06,321 - INFO - 2025-11-21T19:20:06 - unet_gemm_4096_5120_640_f32_f32_tB.mlir: OK in 1898.87
+2025-11-21 19:20:06,321 - DEBUG - File /home/amily/shark-ai/sharktuner/dispatch_tuner/dump/unet_gemm_4096_5120_640_f8E4M3FNUZ_f32_tB_benchmark.mlir started at 2025-11-20T09:50:44
+2025-11-21 19:20:06,322 - INFO - ================================================================================
+2025-11-21 19:20:06,322 - INFO - Tuning: unet_gemm_4096_5120_640_f8E4M3FNUZ_f32_tB.mlir with unet_gemm_4096_5120_640_f8E4M3FNUZ_f32_tB_benchmark.mlir
+2025-11-21 19:20:06,322 - INFO - ================================================================================
+2025-11-21 19:53:26,281 - INFO - 2025-11-21T19:53:26 - unet_gemm_4096_5120_640_f8E4M3FNUZ_f32_tB.mlir: OK in 1999.96
+2025-11-21 19:53:26,281 - DEBUG - File /home/amily/shark-ai/sharktuner/dispatch_tuner/dump/unet_gemm_4096_5120_640_i32_i32_tB_benchmark.mlir started at 2025-11-20T09:50:44
+2025-11-21 19:53:26,281 - INFO - ================================================================================
+2025-11-21 19:53:26,281 - INFO - Tuning: unet_gemm_4096_5120_640_i32_i32_tB.mlir with unet_gemm_4096_5120_640_i32_i32_tB_benchmark.mlir
+2025-11-21 19:53:26,281 - INFO - ================================================================================
+2025-11-21 19:53:27,062 - WARNING - 2025-11-21T19:53:27 - unet_gemm_4096_5120_640_i32_i32_tB.mlir: FAIL(1) in 0.78
+2025-11-21 19:53:27,062 - DEBUG - File /home/amily/shark-ai/sharktuner/dispatch_tuner/dump/unet_gemm_4096_5120_640_i8_i32_tB_benchmark.mlir started at 2025-11-20T09:50:44
+2025-11-21 19:53:27,062 - INFO - ================================================================================
+2025-11-21 19:53:27,062 - INFO - Tuning: unet_gemm_4096_5120_640_i8_i32_tB.mlir with unet_gemm_4096_5120_640_i8_i32_tB_benchmark.mlir
+2025-11-21 19:53:27,062 - INFO - ================================================================================
+2025-11-21 20:26:40,263 - INFO - 2025-11-21T20:26:40 - unet_gemm_4096_5120_640_i8_i32_tB.mlir: OK in 1993.20
+2025-11-21 20:26:40,264 - DEBUG - File /home/amily/shark-ai/sharktuner/dispatch_tuner/dump/unet_gemm_4096_640_2560_f16_f32_tB_benchmark.mlir started at 2025-11-20T09:50:44
+2025-11-21 20:26:40,264 - INFO - ================================================================================
+2025-11-21 20:26:40,264 - INFO - Tuning: unet_gemm_4096_640_2560_f16_f32_tB.mlir with unet_gemm_4096_640_2560_f16_f32_tB_benchmark.mlir
+2025-11-21 20:26:40,264 - INFO - ================================================================================
+2025-11-21 20:55:25,519 - INFO - 2025-11-21T20:55:25 - unet_gemm_4096_640_2560_f16_f32_tB.mlir: OK in 1725.25
+2025-11-21 20:55:25,519 - DEBUG - File /home/amily/shark-ai/sharktuner/dispatch_tuner/dump/unet_gemm_4096_640_2560_f32_f32_tB_benchmark.mlir started at 2025-11-20T09:50:44
+2025-11-21 20:55:25,519 - INFO - ================================================================================
+2025-11-21 20:55:25,519 - INFO - Tuning: unet_gemm_4096_640_2560_f32_f32_tB.mlir with unet_gemm_4096_640_2560_f32_f32_tB_benchmark.mlir
+2025-11-21 20:55:25,519 - INFO - ================================================================================
+2025-11-21 21:20:55,714 - INFO - 2025-11-21T21:20:55 - unet_gemm_4096_640_2560_f32_f32_tB.mlir: OK in 1530.20
+2025-11-21 21:20:55,714 - DEBUG - File /home/amily/shark-ai/sharktuner/dispatch_tuner/dump/unet_gemm_4096_640_2560_f8E4M3FNUZ_f32_tB_benchmark.mlir started at 2025-11-20T09:50:44
+2025-11-21 21:20:55,715 - INFO - ================================================================================
+2025-11-21 21:20:55,715 - INFO - Tuning: unet_gemm_4096_640_2560_f8E4M3FNUZ_f32_tB.mlir with unet_gemm_4096_640_2560_f8E4M3FNUZ_f32_tB_benchmark.mlir
+2025-11-21 21:20:55,715 - INFO - ================================================================================
+2025-11-21 21:48:27,519 - INFO - 2025-11-21T21:48:27 - unet_gemm_4096_640_2560_f8E4M3FNUZ_f32_tB.mlir: OK in 1651.80
+2025-11-21 21:48:27,519 - DEBUG - File /home/amily/shark-ai/sharktuner/dispatch_tuner/dump/unet_gemm_4096_640_2560_i32_i32_tB_benchmark.mlir started at 2025-11-20T09:50:44
+2025-11-21 21:48:27,519 - INFO - ================================================================================
+2025-11-21 21:48:27,519 - INFO - Tuning: unet_gemm_4096_640_2560_i32_i32_tB.mlir with unet_gemm_4096_640_2560_i32_i32_tB_benchmark.mlir
+2025-11-21 21:48:27,519 - INFO - ================================================================================
+2025-11-21 21:48:28,286 - WARNING - 2025-11-21T21:48:28 - unet_gemm_4096_640_2560_i32_i32_tB.mlir: FAIL(1) in 0.77
+2025-11-21 21:48:28,286 - DEBUG - File /home/amily/shark-ai/sharktuner/dispatch_tuner/dump/unet_gemm_4096_640_2560_i8_i32_tB_benchmark.mlir started at 2025-11-20T09:50:44
+2025-11-21 21:48:28,287 - INFO - ================================================================================
+2025-11-21 21:48:28,287 - INFO - Tuning: unet_gemm_4096_640_2560_i8_i32_tB.mlir with unet_gemm_4096_640_2560_i8_i32_tB_benchmark.mlir
+2025-11-21 21:48:28,287 - INFO - ================================================================================
+2025-11-21 22:16:30,346 - INFO - 2025-11-21T22:16:30 - unet_gemm_4096_640_2560_i8_i32_tB.mlir: OK in 1682.06
+2025-11-21 22:16:30,346 - DEBUG - File /home/amily/shark-ai/sharktuner/dispatch_tuner/dump/unet_gemm_4096_640_640_f16_f32_tB_benchmark.mlir started at 2025-11-20T09:50:44
+2025-11-21 22:16:30,346 - INFO - ================================================================================
+2025-11-21 22:16:30,346 - INFO - Tuning: unet_gemm_4096_640_640_f16_f32_tB.mlir with unet_gemm_4096_640_640_f16_f32_tB_benchmark.mlir
+2025-11-21 22:16:30,346 - INFO - ================================================================================
+2025-11-21 22:47:19,500 - INFO - 2025-11-21T22:47:19 - unet_gemm_4096_640_640_f16_f32_tB.mlir: OK in 1849.15
+2025-11-21 22:47:19,500 - DEBUG - File /home/amily/shark-ai/sharktuner/dispatch_tuner/dump/unet_gemm_4096_640_640_f32_f32_tB_benchmark.mlir started at 2025-11-20T09:50:44
+2025-11-21 22:47:19,501 - INFO - ================================================================================
+2025-11-21 22:47:19,501 - INFO - Tuning: unet_gemm_4096_640_640_f32_f32_tB.mlir with unet_gemm_4096_640_640_f32_f32_tB_benchmark.mlir
+2025-11-21 22:47:19,501 - INFO - ================================================================================
+2025-11-21 23:12:07,301 - INFO - 2025-11-21T23:12:07 - unet_gemm_4096_640_640_f32_f32_tB.mlir: OK in 1487.80
+2025-11-21 23:12:07,301 - DEBUG - File /home/amily/shark-ai/sharktuner/dispatch_tuner/dump/unet_gemm_4096_640_640_f8E4M3FNUZ_f32_tB_benchmark.mlir started at 2025-11-20T09:50:44
+2025-11-21 23:12:07,301 - INFO - ================================================================================
+2025-11-21 23:12:07,302 - INFO - Tuning: unet_gemm_4096_640_640_f8E4M3FNUZ_f32_tB.mlir with unet_gemm_4096_640_640_f8E4M3FNUZ_f32_tB_benchmark.mlir
+2025-11-21 23:12:07,302 - INFO - ================================================================================
+2025-11-21 23:37:19,382 - INFO - 2025-11-21T23:37:19 - unet_gemm_4096_640_640_f8E4M3FNUZ_f32_tB.mlir: OK in 1512.08
+2025-11-21 23:37:19,383 - DEBUG - File /home/amily/shark-ai/sharktuner/dispatch_tuner/dump/unet_gemm_4096_640_640_i32_i32_tB_benchmark.mlir started at 2025-11-20T09:50:44
+2025-11-21 23:37:19,383 - INFO - ================================================================================
+2025-11-21 23:37:19,383 - INFO - Tuning: unet_gemm_4096_640_640_i32_i32_tB.mlir with unet_gemm_4096_640_640_i32_i32_tB_benchmark.mlir
+2025-11-21 23:37:19,383 - INFO - ================================================================================
+2025-11-21 23:37:20,135 - WARNING - 2025-11-21T23:37:20 - unet_gemm_4096_640_640_i32_i32_tB.mlir: FAIL(1) in 0.75
+2025-11-21 23:37:20,135 - DEBUG - File /home/amily/shark-ai/sharktuner/dispatch_tuner/dump/unet_gemm_4096_640_640_i8_i32_tB_benchmark.mlir started at 2025-11-20T09:50:44
+2025-11-21 23:37:20,135 - INFO - ================================================================================
+2025-11-21 23:37:20,136 - INFO - Tuning: unet_gemm_4096_640_640_i8_i32_tB.mlir with unet_gemm_4096_640_640_i8_i32_tB_benchmark.mlir
+2025-11-21 23:37:20,136 - INFO - ================================================================================
+2025-11-22 00:02:10,347 - INFO - 2025-11-22T00:02:10 - unet_gemm_4096_640_640_i8_i32_tB.mlir: OK in 1490.21
+2025-11-22 00:02:10,347 - DEBUG - File /home/amily/shark-ai/sharktuner/dispatch_tuner/dump/unet_gemm_64_1280_2048_f16_f32_tB_benchmark.mlir started at 2025-11-20T09:50:44
+2025-11-22 00:02:10,347 - INFO - ================================================================================
+2025-11-22 00:02:10,347 - INFO - Tuning: unet_gemm_64_1280_2048_f16_f32_tB.mlir with unet_gemm_64_1280_2048_f16_f32_tB_benchmark.mlir
+2025-11-22 00:02:10,347 - INFO - ================================================================================
+2025-11-22 00:12:46,592 - INFO - 2025-11-22T00:12:46 - unet_gemm_64_1280_2048_f16_f32_tB.mlir: OK in 636.25
+2025-11-22 00:12:46,592 - DEBUG - File /home/amily/shark-ai/sharktuner/dispatch_tuner/dump/unet_gemm_64_1280_2048_f32_f32_tB_benchmark.mlir started at 2025-11-20T09:50:44
+2025-11-22 00:12:46,593 - INFO - ================================================================================
+2025-11-22 00:12:46,593 - INFO - Tuning: unet_gemm_64_1280_2048_f32_f32_tB.mlir with unet_gemm_64_1280_2048_f32_f32_tB_benchmark.mlir
+2025-11-22 00:12:46,593 - INFO - ================================================================================
+2025-11-22 00:22:00,087 - INFO - 2025-11-22T00:22:00 - unet_gemm_64_1280_2048_f32_f32_tB.mlir: OK in 553.49
+2025-11-22 00:22:00,087 - DEBUG - File /home/amily/shark-ai/sharktuner/dispatch_tuner/dump/unet_gemm_64_1280_2048_f8E4M3FNUZ_f32_tB_benchmark.mlir started at 2025-11-20T09:50:44
+2025-11-22 00:22:00,087 - INFO - ================================================================================
+2025-11-22 00:22:00,087 - INFO - Tuning: unet_gemm_64_1280_2048_f8E4M3FNUZ_f32_tB.mlir with unet_gemm_64_1280_2048_f8E4M3FNUZ_f32_tB_benchmark.mlir
+2025-11-22 00:22:00,087 - INFO - ================================================================================
+2025-11-22 00:32:16,143 - INFO - 2025-11-22T00:32:16 - unet_gemm_64_1280_2048_f8E4M3FNUZ_f32_tB.mlir: OK in 616.06
+2025-11-22 00:32:16,143 - DEBUG - File /home/amily/shark-ai/sharktuner/dispatch_tuner/dump/unet_gemm_64_1280_2048_i32_i32_tB_benchmark.mlir started at 2025-11-20T09:50:44
+2025-11-22 00:32:16,143 - INFO - ================================================================================
+2025-11-22 00:32:16,143 - INFO - Tuning: unet_gemm_64_1280_2048_i32_i32_tB.mlir with unet_gemm_64_1280_2048_i32_i32_tB_benchmark.mlir
+2025-11-22 00:32:16,143 - INFO - ================================================================================
+2025-11-22 00:32:16,943 - WARNING - 2025-11-22T00:32:16 - unet_gemm_64_1280_2048_i32_i32_tB.mlir: FAIL(1) in 0.80
+2025-11-22 00:32:16,944 - DEBUG - File /home/amily/shark-ai/sharktuner/dispatch_tuner/dump/unet_gemm_64_1280_2048_i8_i32_tB_benchmark.mlir started at 2025-11-20T09:50:44
+2025-11-22 00:32:16,944 - INFO - ================================================================================
+2025-11-22 00:32:16,944 - INFO - Tuning: unet_gemm_64_1280_2048_i8_i32_tB.mlir with unet_gemm_64_1280_2048_i8_i32_tB_benchmark.mlir
+2025-11-22 00:32:16,944 - INFO - ================================================================================
+2025-11-22 00:42:39,149 - INFO - 2025-11-22T00:42:39 - unet_gemm_64_1280_2048_i8_i32_tB.mlir: OK in 622.21
+2025-11-22 00:42:39,149 - DEBUG - File /home/amily/shark-ai/sharktuner/dispatch_tuner/dump/unet_gemm_64_640_2048_f16_f32_tB_benchmark.mlir started at 2025-11-20T09:50:44
+2025-11-22 00:42:39,150 - INFO - ================================================================================
+2025-11-22 00:42:39,150 - INFO - Tuning: unet_gemm_64_640_2048_f16_f32_tB.mlir with unet_gemm_64_640_2048_f16_f32_tB_benchmark.mlir
+2025-11-22 00:42:39,150 - INFO - ================================================================================
+2025-11-22 00:51:45,258 - INFO - 2025-11-22T00:51:45 - unet_gemm_64_640_2048_f16_f32_tB.mlir: OK in 546.11
+2025-11-22 00:51:45,258 - DEBUG - File /home/amily/shark-ai/sharktuner/dispatch_tuner/dump/unet_gemm_64_640_2048_f32_f32_tB_benchmark.mlir started at 2025-11-20T09:50:44
+2025-11-22 00:51:45,258 - INFO - ================================================================================
+2025-11-22 00:51:45,258 - INFO - Tuning: unet_gemm_64_640_2048_f32_f32_tB.mlir with unet_gemm_64_640_2048_f32_f32_tB_benchmark.mlir
+2025-11-22 00:51:45,258 - INFO - ================================================================================
+2025-11-22 00:59:54,367 - INFO - 2025-11-22T00:59:54 - unet_gemm_64_640_2048_f32_f32_tB.mlir: OK in 489.11
+2025-11-22 00:59:54,367 - DEBUG - File /home/amily/shark-ai/sharktuner/dispatch_tuner/dump/unet_gemm_64_640_2048_f8E4M3FNUZ_f32_tB_benchmark.mlir started at 2025-11-20T09:50:44
+2025-11-22 00:59:54,367 - INFO - ================================================================================
+2025-11-22 00:59:54,367 - INFO - Tuning: unet_gemm_64_640_2048_f8E4M3FNUZ_f32_tB.mlir with unet_gemm_64_640_2048_f8E4M3FNUZ_f32_tB_benchmark.mlir
+2025-11-22 00:59:54,367 - INFO - ================================================================================
+2025-11-22 01:08:58,127 - INFO - 2025-11-22T01:08:58 - unet_gemm_64_640_2048_f8E4M3FNUZ_f32_tB.mlir: OK in 543.76
+2025-11-22 01:08:58,127 - DEBUG - File /home/amily/shark-ai/sharktuner/dispatch_tuner/dump/unet_gemm_64_640_2048_i32_i32_tB_benchmark.mlir started at 2025-11-20T09:50:44
+2025-11-22 01:08:58,127 - INFO - ================================================================================
+2025-11-22 01:08:58,127 - INFO - Tuning: unet_gemm_64_640_2048_i32_i32_tB.mlir with unet_gemm_64_640_2048_i32_i32_tB_benchmark.mlir
+2025-11-22 01:08:58,127 - INFO - ================================================================================
+2025-11-22 01:08:58,894 - WARNING - 2025-11-22T01:08:58 - unet_gemm_64_640_2048_i32_i32_tB.mlir: FAIL(1) in 0.77
+2025-11-22 01:08:58,894 - DEBUG - File /home/amily/shark-ai/sharktuner/dispatch_tuner/dump/unet_gemm_64_640_2048_i8_i32_tB_benchmark.mlir started at 2025-11-20T09:50:44
+2025-11-22 01:08:58,894 - INFO - ================================================================================
+2025-11-22 01:08:58,894 - INFO - Tuning: unet_gemm_64_640_2048_i8_i32_tB.mlir with unet_gemm_64_640_2048_i8_i32_tB_benchmark.mlir
+2025-11-22 01:08:58,894 - INFO - ================================================================================
+2025-11-22 01:18:01,640 - INFO - 2025-11-22T01:18:01 - unet_gemm_64_640_2048_i8_i32_tB.mlir: OK in 542.75
+2025-11-22 01:18:01,640 - DEBUG - File /home/amily/shark-ai/sharktuner/dispatch_tuner/dump/unet_gemm_8192_5120_640_f16_f32_tB_benchmark.mlir started at 2025-11-20T09:50:44
+2025-11-22 01:18:01,640 - INFO - ================================================================================
+2025-11-22 01:18:01,640 - INFO - Tuning: unet_gemm_8192_5120_640_f16_f32_tB.mlir with unet_gemm_8192_5120_640_f16_f32_tB_benchmark.mlir
+2025-11-22 01:18:01,640 - INFO - ================================================================================
+2025-11-22 01:53:32,182 - INFO - 2025-11-22T01:53:32 - unet_gemm_8192_5120_640_f16_f32_tB.mlir: OK in 2130.54
+2025-11-22 01:53:32,184 - DEBUG - File /home/amily/shark-ai/sharktuner/dispatch_tuner/dump/unet_gemm_8192_5120_640_f32_f32_tB_benchmark.mlir started at 2025-11-20T09:50:44
+2025-11-22 01:53:32,184 - INFO - ================================================================================
+2025-11-22 01:53:32,184 - INFO - Tuning: unet_gemm_8192_5120_640_f32_f32_tB.mlir with unet_gemm_8192_5120_640_f32_f32_tB_benchmark.mlir
+2025-11-22 01:53:32,185 - INFO - ================================================================================
+2025-11-22 02:23:34,052 - INFO - 2025-11-22T02:23:34 - unet_gemm_8192_5120_640_f32_f32_tB.mlir: OK in 1801.87
+2025-11-22 02:23:34,052 - DEBUG - File /home/amily/shark-ai/sharktuner/dispatch_tuner/dump/unet_gemm_8192_5120_640_f8E4M3FNUZ_f32_tB_benchmark.mlir started at 2025-11-20T09:50:44
+2025-11-22 02:23:34,052 - INFO - ================================================================================
+2025-11-22 02:23:34,052 - INFO - Tuning: unet_gemm_8192_5120_640_f8E4M3FNUZ_f32_tB.mlir with unet_gemm_8192_5120_640_f8E4M3FNUZ_f32_tB_benchmark.mlir
+2025-11-22 02:23:34,052 - INFO - ================================================================================
+2025-11-22 02:56:52,483 - INFO - 2025-11-22T02:56:52 - unet_gemm_8192_5120_640_f8E4M3FNUZ_f32_tB.mlir: OK in 1998.43
+2025-11-22 02:56:52,483 - DEBUG - File /home/amily/shark-ai/sharktuner/dispatch_tuner/dump/unet_gemm_8192_5120_640_i32_i32_tB_benchmark.mlir started at 2025-11-20T09:50:44
+2025-11-22 02:56:52,483 - INFO - ================================================================================
+2025-11-22 02:56:52,483 - INFO - Tuning: unet_gemm_8192_5120_640_i32_i32_tB.mlir with unet_gemm_8192_5120_640_i32_i32_tB_benchmark.mlir
+2025-11-22 02:56:52,483 - INFO - ================================================================================
+2025-11-22 02:56:53,249 - WARNING - 2025-11-22T02:56:53 - unet_gemm_8192_5120_640_i32_i32_tB.mlir: FAIL(1) in 0.77
+2025-11-22 02:56:53,250 - DEBUG - File /home/amily/shark-ai/sharktuner/dispatch_tuner/dump/unet_gemm_8192_5120_640_i8_i32_tB_benchmark.mlir started at 2025-11-20T09:50:44
+2025-11-22 02:56:53,250 - INFO - ================================================================================
+2025-11-22 02:56:53,250 - INFO - Tuning: unet_gemm_8192_5120_640_i8_i32_tB.mlir with unet_gemm_8192_5120_640_i8_i32_tB_benchmark.mlir
+2025-11-22 02:56:53,250 - INFO - ================================================================================
+2025-11-22 03:30:21,918 - INFO - 2025-11-22T03:30:21 - unet_gemm_8192_5120_640_i8_i32_tB.mlir: OK in 2008.67
+2025-11-22 03:30:21,919 - DEBUG - File /home/amily/shark-ai/sharktuner/dispatch_tuner/dump/unet_gemm_8192_640_2560_f16_f32_tB_benchmark.mlir started at 2025-11-20T09:50:44
+2025-11-22 03:30:21,919 - INFO - ================================================================================
+2025-11-22 03:30:21,919 - INFO - Tuning: unet_gemm_8192_640_2560_f16_f32_tB.mlir with unet_gemm_8192_640_2560_f16_f32_tB_benchmark.mlir
+2025-11-22 03:30:21,919 - INFO - ================================================================================
+2025-11-22 03:59:13,066 - INFO - 2025-11-22T03:59:13 - unet_gemm_8192_640_2560_f16_f32_tB.mlir: OK in 1731.15
+2025-11-22 03:59:13,066 - DEBUG - File /home/amily/shark-ai/sharktuner/dispatch_tuner/dump/unet_gemm_8192_640_2560_f32_f32_tB_benchmark.mlir started at 2025-11-20T09:50:44
+2025-11-22 03:59:13,066 - INFO - ================================================================================
+2025-11-22 03:59:13,066 - INFO - Tuning: unet_gemm_8192_640_2560_f32_f32_tB.mlir with unet_gemm_8192_640_2560_f32_f32_tB_benchmark.mlir
+2025-11-22 03:59:13,066 - INFO - ================================================================================
+2025-11-22 04:24:22,210 - INFO - 2025-11-22T04:24:22 - unet_gemm_8192_640_2560_f32_f32_tB.mlir: OK in 1509.14
+2025-11-22 04:24:22,210 - DEBUG - File /home/amily/shark-ai/sharktuner/dispatch_tuner/dump/unet_gemm_8192_640_2560_f8E4M3FNUZ_f32_tB_benchmark.mlir started at 2025-11-20T09:50:44
+2025-11-22 04:24:22,210 - INFO - ================================================================================
+2025-11-22 04:24:22,210 - INFO - Tuning: unet_gemm_8192_640_2560_f8E4M3FNUZ_f32_tB.mlir with unet_gemm_8192_640_2560_f8E4M3FNUZ_f32_tB_benchmark.mlir
+2025-11-22 04:24:22,210 - INFO - ================================================================================
+2025-11-22 04:51:56,748 - INFO - 2025-11-22T04:51:56 - unet_gemm_8192_640_2560_f8E4M3FNUZ_f32_tB.mlir: OK in 1654.54
+2025-11-22 04:51:56,748 - DEBUG - File /home/amily/shark-ai/sharktuner/dispatch_tuner/dump/unet_gemm_8192_640_2560_i32_i32_tB_benchmark.mlir started at 2025-11-20T09:50:44
+2025-11-22 04:51:56,748 - INFO - ================================================================================
+2025-11-22 04:51:56,748 - INFO - Tuning: unet_gemm_8192_640_2560_i32_i32_tB.mlir with unet_gemm_8192_640_2560_i32_i32_tB_benchmark.mlir
+2025-11-22 04:51:56,748 - INFO - ================================================================================
+2025-11-22 04:51:57,503 - WARNING - 2025-11-22T04:51:57 - unet_gemm_8192_640_2560_i32_i32_tB.mlir: FAIL(1) in 0.75
+2025-11-22 04:51:57,503 - DEBUG - File /home/amily/shark-ai/sharktuner/dispatch_tuner/dump/unet_gemm_8192_640_2560_i8_i32_tB_benchmark.mlir started at 2025-11-20T09:50:44
+2025-11-22 04:51:57,503 - INFO - ================================================================================
+2025-11-22 04:51:57,503 - INFO - Tuning: unet_gemm_8192_640_2560_i8_i32_tB.mlir with unet_gemm_8192_640_2560_i8_i32_tB_benchmark.mlir
+2025-11-22 04:51:57,503 - INFO - ================================================================================
+2025-11-22 05:19:38,741 - INFO - 2025-11-22T05:19:38 - unet_gemm_8192_640_2560_i8_i32_tB.mlir: OK in 1661.24
+2025-11-22 05:19:38,742 - DEBUG - File /home/amily/shark-ai/sharktuner/dispatch_tuner/dump/unet_gemm_8192_640_640_f16_f32_tB_benchmark.mlir started at 2025-11-20T09:50:44
+2025-11-22 05:19:38,742 - INFO - ================================================================================
+2025-11-22 05:19:38,742 - INFO - Tuning: unet_gemm_8192_640_640_f16_f32_tB.mlir with unet_gemm_8192_640_640_f16_f32_tB_benchmark.mlir
+2025-11-22 05:19:38,742 - INFO - ================================================================================
+2025-11-22 05:47:30,324 - INFO - 2025-11-22T05:47:30 - unet_gemm_8192_640_640_f16_f32_tB.mlir: OK in 1671.58
+2025-11-22 05:47:30,324 - DEBUG - File /home/amily/shark-ai/sharktuner/dispatch_tuner/dump/unet_gemm_8192_640_640_f32_f32_tB_benchmark.mlir started at 2025-11-20T09:50:44
+2025-11-22 05:47:30,324 - INFO - ================================================================================
+2025-11-22 05:47:30,324 - INFO - Tuning: unet_gemm_8192_640_640_f32_f32_tB.mlir with unet_gemm_8192_640_640_f32_f32_tB_benchmark.mlir
+2025-11-22 05:47:30,324 - INFO - ================================================================================
+2025-11-22 06:12:28,127 - INFO - 2025-11-22T06:12:28 - unet_gemm_8192_640_640_f32_f32_tB.mlir: OK in 1497.80
+2025-11-22 06:12:28,127 - DEBUG - File /home/amily/shark-ai/sharktuner/dispatch_tuner/dump/unet_gemm_8192_640_640_f8E4M3FNUZ_f32_tB_benchmark.mlir started at 2025-11-20T09:50:44
+2025-11-22 06:12:28,127 - INFO - ================================================================================
+2025-11-22 06:12:28,127 - INFO - Tuning: unet_gemm_8192_640_640_f8E4M3FNUZ_f32_tB.mlir with unet_gemm_8192_640_640_f8E4M3FNUZ_f32_tB_benchmark.mlir
+2025-11-22 06:12:28,127 - INFO - ================================================================================
+2025-11-22 06:37:25,522 - INFO - 2025-11-22T06:37:25 - unet_gemm_8192_640_640_f8E4M3FNUZ_f32_tB.mlir: OK in 1497.39
+2025-11-22 06:37:25,522 - DEBUG - File /home/amily/shark-ai/sharktuner/dispatch_tuner/dump/unet_gemm_8192_640_640_i32_i32_tB_benchmark.mlir started at 2025-11-20T09:50:44
+2025-11-22 06:37:25,522 - INFO - ================================================================================
+2025-11-22 06:37:25,522 - INFO - Tuning: unet_gemm_8192_640_640_i32_i32_tB.mlir with unet_gemm_8192_640_640_i32_i32_tB_benchmark.mlir
+2025-11-22 06:37:25,522 - INFO - ================================================================================
+2025-11-22 06:37:26,275 - WARNING - 2025-11-22T06:37:26 - unet_gemm_8192_640_640_i32_i32_tB.mlir: FAIL(1) in 0.75
+2025-11-22 06:37:26,275 - DEBUG - File /home/amily/shark-ai/sharktuner/dispatch_tuner/dump/unet_gemm_8192_640_640_i8_i32_tB_benchmark.mlir started at 2025-11-20T09:50:44
+2025-11-22 06:37:26,275 - INFO - ================================================================================
+2025-11-22 06:37:26,275 - INFO - Tuning: unet_gemm_8192_640_640_i8_i32_tB.mlir with unet_gemm_8192_640_640_i8_i32_tB_benchmark.mlir
+2025-11-22 06:37:26,275 - INFO - ================================================================================
+2025-11-22 07:02:21,899 - INFO - 2025-11-22T07:02:21 - unet_gemm_8192_640_640_i8_i32_tB.mlir: OK in 1495.62
+2025-11-22 07:02:21,899 - WARNING - Failed MLIR files 28):
+2025-11-22 07:02:21,899 - WARNING - - compute_gemm_4096_4096_8192_i32_i32_tB.mlir
+2025-11-22 07:02:21,899 - WARNING - - square_gemm_1024_1024_1024_i32_i32_tB.mlir
+2025-11-22 07:02:21,899 - WARNING - - square_gemm_128_128_128_i32_i32_tB.mlir
+2025-11-22 07:02:21,899 - WARNING - - square_gemm_2048_2048_2048_i32_i32_tB.mlir
+2025-11-22 07:02:21,899 - WARNING - - square_gemm_256_256_256_i32_i32_tB.mlir
+2025-11-22 07:02:21,899 - WARNING - - square_gemm_4096_4096_4096_i32_i32_tB.mlir
+2025-11-22 07:02:21,899 - WARNING - - square_gemm_512_512_512_i32_i32_tB.mlir
+2025-11-22 07:02:21,899 - WARNING - - square_gemm_8192_8192_8192_i32_i32_tB.mlir
+2025-11-22 07:02:21,899 - WARNING - - tk_gemm_128_1280_2048_i32_i32_tB.mlir
+2025-11-22 07:02:21,899 - WARNING - - tk_gemm_2048_10240_1280_i32_i32_tB.mlir
+2025-11-22 07:02:21,900 - WARNING - - tk_gemm_2048_1280_1280_i32_i32_tB.mlir
+2025-11-22 07:02:21,900 - WARNING - - tk_gemm_2048_1280_5120_i32_i32_tB.mlir
+2025-11-22 07:02:21,900 - WARNING - - tk_gemm_8192_5120_640_i32_i32_tB.mlir
+2025-11-22 07:02:21,900 - WARNING - - unet_gemm_1024_10240_1280_i32_i32_tB.mlir
+2025-11-22 07:02:21,900 - WARNING - - unet_gemm_1024_1280_1280_i32_i32_tB.mlir
+2025-11-22 07:02:21,900 - WARNING - - unet_gemm_1024_1280_5120_i32_i32_tB.mlir
+2025-11-22 07:02:21,900 - WARNING - - unet_gemm_128_1280_2048_i32_i32_tB.mlir
+2025-11-22 07:02:21,900 - WARNING - - unet_gemm_2048_10240_1280_i32_i32_tB.mlir
+2025-11-22 07:02:21,900 - WARNING - - unet_gemm_2048_1280_1280_i32_i32_tB.mlir
+2025-11-22 07:02:21,900 - WARNING - - unet_gemm_2048_1280_5120_i32_i32_tB.mlir
+2025-11-22 07:02:21,900 - WARNING - - unet_gemm_4096_5120_640_i32_i32_tB.mlir
+2025-11-22 07:02:21,900 - WARNING - - unet_gemm_4096_640_2560_i32_i32_tB.mlir
+2025-11-22 07:02:21,900 - WARNING - - unet_gemm_4096_640_640_i32_i32_tB.mlir
+2025-11-22 07:02:21,900 - WARNING - - unet_gemm_64_1280_2048_i32_i32_tB.mlir
+2025-11-22 07:02:21,900 - WARNING - - unet_gemm_64_640_2048_i32_i32_tB.mlir
+2025-11-22 07:02:21,900 - WARNING - - unet_gemm_8192_5120_640_i32_i32_tB.mlir
+2025-11-22 07:02:21,900 - WARNING - - unet_gemm_8192_640_2560_i32_i32_tB.mlir
+2025-11-22 07:02:21,900 - WARNING - - unet_gemm_8192_640_640_i32_i32_tB.mlir
+2025-11-22 07:02:21,900 - INFO - --------------------------------------------------------------------------------
+2025-11-22 07:02:21,900 - INFO - SUMMARY: Success: 112 | Fail: 28
+2025-11-22 07:02:21,900 - INFO - SUMMARY: Each successful run should have written `tuning_<mlir-name>.csv` in dispatch_tuner.py's folder.
+2025-11-22 07:02:21,900 - INFO - SUMMARY: Total elapsed: 162697.42s
+2025-11-22 07:02:21,900 - INFO - --------------------------------------------------------------------------------
