@@ -57,12 +57,12 @@ def geometric_mean(nums):
     return product ** (1/n)
 
 
-files = glob.glob('./dispatch_tuner/tuning_database_small/*.csv')
+files = glob.glob('./dispatch_tuner/tuning_database/*.csv')
 files = [
     f for f in files
-    if all(pd.read_csv(f)[col].iloc[0] > 512 for col in ["knob_M", "knob_N", "knob_K"])
+    if all(pd.read_csv(f)[col].iloc[0] > 648 for col in ["knob_M", "knob_N", "knob_K"])
 ]
-files = files[:7] + files[10:]
+# files = files[:7] + files[10:]
 print(f"Found {len(files)} CSV files")
 
 results = []

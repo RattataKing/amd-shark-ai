@@ -25,11 +25,11 @@ ok_list = [
     # "compute_gemm_4096_4096_8192_i8_i32_tB.mlir",
     # "tk_gemm_128_1280_2048_i8_i32_tB.mlir",
 ]
-# failed_list = [
-#     "unet_gemm_4096_5120_640_f32_f32_tB.mlir",
-#     "square_gemm_2048_2048_2048_i32_i32_tB.mlir",
-#     "unet_gemm_64_1280_2048_i32_i32_tB.mlir"
-# ]
+failed_list = [
+    # "unet_gemm_4096_5120_640_f32_f32_tB.mlir",
+    # "square_gemm_2048_2048_2048_i32_i32_tB.mlir",
+    # "unet_gemm_64_1280_2048_i32_i32_tB.mlir"
+]
 PICK_SAMPLE = False
 MAX_SAMPLE_SIZE = 5
 

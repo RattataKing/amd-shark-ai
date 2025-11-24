@@ -7,7 +7,7 @@ from pathlib import Path
 import math
 import numpy as np
 
-files = glob.glob('./dispatch_tuner/tuning_database_small/*.csv')
+files = glob.glob('./dispatch_tuner/tuning_database/*.csv')
 files = [
     f for f in files
     if all(pd.read_csv(f)[col].iloc[0] > 512 for col in ["knob_M", "knob_N", "knob_K"])
