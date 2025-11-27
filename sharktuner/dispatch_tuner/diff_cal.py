@@ -28,7 +28,7 @@ def compute_sort_columns(df):
     df = df.copy()
     df["tile_k_is_pow2"] = df["knob_tile_k"].apply(is_pow2)
 
-    df["is_mult_simd"] = (
+    df["simd_is_mult4"] = (
         (df["knob_subgroup_m_cnt"] * df["knob_subgroup_n_cnt"])
         .apply(lambda x: is_mult_simd_num(x))
     )
@@ -57,10 +57,10 @@ def geometric_mean(nums):
     return product ** (1/n)
 
 
-files = glob.glob('./dispatch_tuner/tuning_database/*.csv')
+files = glob.glob('./dispatch_tuner/tuning_database_vecdis/*.csv')
 files = [
     f for f in files
-    if all(pd.read_csv(f)[col].iloc[0] > 1 for col in ["knob_M", "knob_N", "knob_K"])
+    if all(pd.read_csv(f)[col].iloc[0] > 648 for col in ["knob_M", "knob_N", "knob_K"])
 ]
 # files = files[:7] + files[10:]
 print(f"Found {len(files)} CSV files")
@@ -68,47 +68,51 @@ print(f"Found {len(files)} CSV files")
 results = []
 for i, f in enumerate(files):
     df = pd.read_csv(f)
+
+    # df = df[df["to_benchmark"] == True]
+    max_rank = int(df["benchmark_rank_order"].max(skipna=True))
+    df["benchmark_rank_order"] = df["benchmark_rank_order"].fillna(max_rank + 1)
+    df["benchmark_rank_order"] = df["benchmark_rank_order"].astype(int)
+    # df["benchmark_queue_position"] = df["benchmark_queue_position"].astype(int)
+
+
     df2 = compute_sort_columns(df)
 
+    # df_sorted = df2.sort_values(
+    #     by=["tile_k_is_pow2", "simd_is_mult4", "ai", "q_ie"],
+    #     ascending=[False, False, True, True]
+    # )
+
     df_sorted = df2.sort_values(
-        by=["tile_k_is_pow2", "is_mult_simd", "ai", "q_ie"],
-        ascending=[False, False, True, True]
+        by=["tile_k_is_pow2", "simd_is_mult4", "ai"],
+        ascending=[False, False, True]
     )
 
-    heuristic_pred_rank = list(range(1, len(df_sorted) + 1))
-    heuristic_true_rank = df_sorted["benchmark_rank_order"].tolist().copy()
-    if not [r for r in heuristic_true_rank if not pd.isna(r)]:
-        continue
-    max_rank = int(max(r for r in heuristic_true_rank if not pd.isna(r)))
-    heuristic_true_rank = [
-        int(r) if not pd.isna(r) else max_rank + 1
-        for r in heuristic_true_rank
-    ]
+    # df_sorted = df2.sort_values(
+    #     by=["tile_k_is_pow2"],
+    #     ascending=[False]
+    # )
+
+    df_sorted["heuristic_pred_rank"] = range(1, len(df_sorted) + 1)
 
 
+    # base_path = os.path.dirname(os.path.abspath(__file__))
+    # save_path = os.path.join(base_path, f"df_sorted.csv")
+    # df_sorted.to_csv(save_path, index=False)
+    # print(f)
+    # print(f"Saved results to {save_path}")
+    # exit()
 
 
-    shuffle_pred_rank = df.index.tolist()
-    shuffle_true_rank = df["benchmark_rank_order"].tolist().copy()
-    shuffle_true_rank = [
-        int(r) if not pd.isna(r) else max_rank + 1
-        for r in shuffle_true_rank
-    ]
-
-
-    df["shuffle_pred_rank"] = shuffle_pred_rank
-    df["heuristic_pred_rank"] = (
-        df_sorted
-        .assign(heuristic_pred_rank=heuristic_pred_rank)
-        .sort_index()
-        ["heuristic_pred_rank"]
-        .reindex(df.index)
-        .values
-    )
-
-
+    df["shuffle_pred_rank"] = df["candidate_id"]
+    assert len(df) == len(df_sorted)
+    df["heuristic_pred_rank"] = df_sorted.sort_values("candidate_id")["heuristic_pred_rank"].values
+    
     optimal_tol = float(df["benchmark_speedup"].min() * 1.05)
+    # print(optimal_tol)
     opt_candidates = df[df["benchmark_speedup"] <= optimal_tol]["candidate_id"]
+    # print(opt_candidates)
+    # exit()
 
     opt_candidates_pred_ranks = df[df["candidate_id"].isin(opt_candidates)]["shuffle_pred_rank"]
     shuffle_min_search_space  = opt_candidates_pred_ranks.min()
@@ -128,7 +132,6 @@ for i, f in enumerate(files):
         "heuristic_min_search_space_%": round(heuristic_min_search_space / len(df), 5)
     })
     # exit()
-
 
 out_df = pd.DataFrame(results)
 
