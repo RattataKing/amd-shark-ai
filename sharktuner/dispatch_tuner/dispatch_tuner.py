@@ -166,7 +166,7 @@ def main() -> None:
         csv_dir.mkdir(exist_ok=True)
 
 
-        output_csv_name = f"tuning_{args.dispatch_file.stem.removesuffix('_benchmark')}.csv"
+        output_csv_name = f"tuning_{args.dispatch_file.stem.removesuffix('_benchmark')}_4.csv"
         output_path = csv_dir/output_csv_name
         
         libtuner.candidate_ordering.export_record_to_csv(
