@@ -682,6 +682,83 @@ def run_iree_benchmark_module_command(benchmark_pack: BenchmarkPack):
         device_id=str(device_id),
     )
 
+import pandas as pd
+def compute_avg_kernel_time(trace_path) -> float:
+    if not os.path.exists(trace_path):
+        raise FileNotFoundError(f"File not found: {trace_path}")
+
+    # Read CSV
+    df = pd.read_csv(trace_path, low_memory=False)
+
+    # Ensure required columns exist
+    required_cols = ["Start_Timestamp", "End_Timestamp"]
+    if not all(col in df.columns for col in required_cols):
+        raise ValueError(f"Missing required columns in CSV: {required_cols}")
+
+    # Compute clk_diff (nanoseconds)
+    df["clk_diff"] = df["End_Timestamp"] - df["Start_Timestamp"]
+
+    # Skip warm-up dispatches
+    if len(df) > 11:
+        df = df.iloc[10:]  # drop first 10 rows
+
+    # Compute average in ns → convert to µs
+    avg_clk_ns = df["clk_diff"].mean()
+    avg_clk_us = avg_clk_ns / 1000.0
+
+    return avg_clk_us
+
+def run_iree_benchmark_module_command(benchmark_pack: BenchmarkPack):
+    candidate_tracker = benchmark_pack.candidate_tracker
+    candidate_id = candidate_tracker.candidate_id
+    # Load the candidate's vmfb and create vm_module.
+    vmfb_path = candidate_tracker.compiled_vmfb_path
+
+    # iree_compile = ireec.binaries.find_tool("iree-benchmark-module")  # type: ignore
+    # assert iree_compile, "iree-compile tool not found"
+    os.makedirs("prof_out", exist_ok=True)
+    rocprof_command = [
+        "rocprofv3",
+        "--kernel-trace",
+        f"--output-file=prof_out/res_{candidate_id}",
+        "--output-format=csv",
+    ]
+    benchmark_command = [
+        "iree-benchmark-module",
+        f"--module={vmfb_path}",
+        f"--device={device_id}",
+    ]
+    benchmark_command += benchmark_pack.iree_benchmark_module_flags
+
+    measure_cmd = rocprof_command + ["--"] + benchmark_command
+    # logging.debug(
+    #     f"Run Benchmark commands: {' '.join(measure_cmd)}"
+    # )
+
+    result = candidate_gen.run_command(
+        candidate_gen.RunPack(
+            command=measure_cmd,
+            check=True,
+            timeout_seconds=30,
+        )
+    )
+
+    if result.is_timeout:
+        return BenchmarkResult(
+            candidate_id=candidate_id,
+            time=math.inf,
+            device_id=str(device_id),
+        )
+
+    time = compute_avg_kernel_time(f"prof_out/res_{candidate_id}_kernel_trace.csv")
+    logging.debug(
+        f"Benchmark time of candidate {candidate_id}: {time:.2f} us"
+    )
+    return BenchmarkResult(
+        candidate_id=candidate_id,
+        time=time,
+        device_id=str(device_id),
+    )
 
 def multiprocess_progress_wrapper(
     num_worker: int,
