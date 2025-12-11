@@ -137,7 +137,7 @@ def main() -> None:
         message = "Benchmarking compiled dispatch candidates..."
         print(message)
         logging.info(message)
-        dispatch_tuner.benchmark_flags = ["--input=1", "--benchmark_repetitions=20"]
+        dispatch_tuner.benchmark_flags = ["--input=1", "--benchmark_repetitions=3"]
         top_candidates = libtuner.benchmark(
             args,
             compiled_candidates,

@@ -1,12 +1,18 @@
 import pandas as pd
 import math
 
+TOP_NUM = 10
 # ---- Load CSVs ----
-# df1 = pd.read_csv("/home/amily/amd-shark-ai/amdsharktuner/tuning_2025_12_05_20_55/tk_gemm_2048_1280_1280_f8E4M3FNUZ_f32_tB_candidate_analysis.csv")
-# df2 = pd.read_csv("/home/amily/amd-shark-ai/amdsharktuner/tuning_2025_12_08_07_42/tk_gemm_2048_1280_1280_f8E4M3FNUZ_f32_tB_candidate_analysis.csv")
-df1 = pd.read_csv("/home/amily/amd-shark-ai/amdsharktuner/tuning_2025_12_test/reserve_mi300x_2_rep20.csv")
-df2 = pd.read_csv("/home/amily/amd-shark-ai/amdsharktuner/tuning_2025_12_test/reserve_mi300x_3_rep20.csv")
-
+# df1 = pd.read_csv("/home/amily/amd-shark-ai/amdsharktuner/tuning_2025_12_05_20_55/tk_gemm_2048_1280_1280_f8E4M3FNUZ_f32_tB_candidate_analysis_gpu2567_rep20.csv")
+# df2 = pd.read_csv("/home/amily/amd-shark-ai/amdsharktuner/tuning_2025_12_08_07_42/tk_gemm_2048_1280_1280_f8E4M3FNUZ_f32_tB_candidate_analysis_gpu2567_rep20.csv")
+# df1 = pd.read_csv("/home/amily/amd-shark-ai/amdsharktuner/tuning_2025_12_test/reserve_mi300x_2_rep20.csv")
+# df2 = pd.read_csv("/home/amily/amd-shark-ai/amdsharktuner/tuning_2025_12_test/reserve_mi300x_3_rep20.csv")
+# df1 = pd.read_csv("/home/amily/amd-shark-ai/amdsharktuner/tuning_2025_12_08_21_20/tk_gemm_2048_1280_1280_f8E4M3FNUZ_f32_tB_candidate_analysis_gpu2567_rep1.csv")
+# df1 = pd.read_csv("/home/amily/amd-shark-ai/amdsharktuner/tuning_2025_12_08_21_20/tk_gemm_2048_1280_1280_f8E4M3FNUZ_f32_tB_candidate_analysis_gpu2567_rep1.csv")
+# df2 = pd.read_csv("/home/amily/amd-shark-ai/amdsharktuner/tuning_2025_12_09_21_00/tk_gemm_2048_1280_1280_f8E4M3FNUZ_f32_tB_candidate_analysis_gpu2567_rep1.csv")
+# df2 = pd.read_csv("/home/amily/amd-shark-ai/amdsharktuner/tuning_2025_12_09_01_46/tk_gemm_2048_1280_1280_f8E4M3FNUZ_f32_tB_candidate_analysis_gpu2567_rep5.csv")
+# df2 = pd.read_csv("/home/amily/amd-shark-ai/amdsharktuner/tuning_2025_12_09_05_52/tk_gemm_2048_1280_1280_f8E4M3FNUZ_f32_tB_candidate_analysis_gpu2567_rep5.csv")
+# df2 = pd.read_csv("/home/amily/amd-shark-ai/amdsharktuner/tuning_2025_12_09_21_13/tk_gemm_2048_1280_1280_f8E4M3FNUZ_f32_tB_candidate_analysis_gpu2567_rep3.csv")
 # ---- Ensure candidate_id exists ----
 if "candidate_id" not in df1.columns or "candidate_id" not in df2.columns:
     raise ValueError("Both CSVs must contain column 'candidate_id'")
@@ -17,6 +23,7 @@ knob_cols_2 = [c for c in df2.columns if c.startswith("knob_")]
 
 # Only compare knobs that exist in BOTH files
 common_knob_cols = list(set(knob_cols_1).intersection(knob_cols_2))
+assert knob_cols_1 == knob_cols_2
 
 # ---- Merge the two CSVs on candidate_id ----
 merged = df1.merge(df2, on="candidate_id", suffixes=("_1", "_2"))
@@ -61,7 +68,7 @@ print("comparison_output.csv")
 
 
 # --- Top 30 in df1 ---
-top30_df1 = df1.nsmallest(500, "benchmark_rank_order")
+top30_df1 = df1.nsmallest(TOP_NUM, "benchmark_rank_order")
 
 # keep only candidates that appear in df2
 top30_df1_common = top30_df1.merge(
@@ -80,7 +87,7 @@ avg_diff_df1 = top30_df1_common["rank_diff"].mean()
 
 
 # --- Top 30 in df2 ---
-top30_df2 = df2.nsmallest(500, "benchmark_rank_order")
+top30_df2 = df2.nsmallest(TOP_NUM, "benchmark_rank_order")
 
 # keep only candidates that appear in df1
 top30_df2_common = top30_df2.merge(
@@ -99,5 +106,5 @@ avg_diff_df2 = top30_df2_common["rank_diff"].mean()
 
 
 # --- Print results ---
-print("Average rank diff for df1's top-30 candidates:", avg_diff_df1)
-print("Average rank diff for df2's top-30 candidates:", avg_diff_df2)
+print(f"Average rank diff for df1's top-{TOP_NUM} candidates:", avg_diff_df1)
+print(f"Average rank diff for df2's top-{TOP_NUM} candidates:", avg_diff_df2)
