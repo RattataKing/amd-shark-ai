@@ -127,7 +127,7 @@ def main():
                 str(bench),
                 "--compile-flags-file=dispatch_tuner/compile_flags.txt",
                 "--devices=hip://2,hip://5,hip://6,hip://7",
-                "--num-candidates=8192",
+                "--num-candidates=2",
                 f"--codegen-pipeline={codegen_pipeline}",
                 "--benchmark-timing-method=rocprof",
                 "--candidate-order=heuristic",
