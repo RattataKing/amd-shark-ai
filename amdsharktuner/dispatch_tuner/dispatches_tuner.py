@@ -27,7 +27,7 @@ def setup_logging() -> logging.Logger:
 
     # Create file handler for logging to a file.
     # file_handler = logging.FileHandler(run_log_path, mode="w")
-    file_handler = logging.FileHandler(run_log_path)
+    file_handler = logging.FileHandler(run_log_path, mode="w")
     file_handler.setLevel(logging.DEBUG)
 
     # Create stream handler for logging to the console (only warnings and higher).
@@ -66,8 +66,8 @@ def main():
     for f in mlir_files:
         logger.debug(f"{f.stem}")
 
-
-    mlir_benchmark_folder_path = Path(" ").expanduser().resolve()
+    base_path = os.path.dirname(os.path.abspath(__file__))
+    mlir_benchmark_folder_path = (Path(base_path) / "dump").expanduser().resolve()
     logger.debug(f"In MLIR_benchmark folder {mlir_benchmark_folder_path}: ")
     mlir_benchmark_files = sorted(mlir_benchmark_folder_path.glob("*.mlir"))
     for f in mlir_benchmark_files:
@@ -82,7 +82,6 @@ def main():
     failed_files = []
     ok = fail = 0
 
-    base_path = os.path.dirname(os.path.abspath(__file__))
     csv_dir_tf = Path(base_path) / "tuning_database_tf"
     csv_dir_tf.mkdir(exist_ok=True)
     
@@ -117,8 +116,8 @@ def main():
         # logger.info("=" * 80)
         # logger.info("=" * 80)
         tuning_tasks = ["llvmgpu_vector_distribute", "llvmgpu_tile_and_fuse"]
-        for j, codegen_pipeline in enumerate(tuning_tasks):
-            logger.info(f"Tuning {i}({j}/{len(tuning_tasks)}) / {len(mlir_benchmark_files)}: {mlir.name}")
+        for j, codegen_pipeline in enumerate(tuning_tasks, start=1):
+            logger.info(f"Tuning {i} ({j}/{len(tuning_tasks)}) / {len(mlir_benchmark_files)}: {mlir.name}")
             file_start = time.perf_counter()
             logger.debug(f"File {bench} started at {start_dt.isoformat(timespec='seconds')}")
             cmd = [
@@ -183,10 +182,6 @@ def main():
 
     logger.info("-" * 80)
     logger.info(f"SUMMARY: Success: {ok} | Fail: {fail}")
-    logger.info(
-        "SUMMARY: Each successful run should have written "
-        "`tuning_<mlir-name>.csv` in dispatch_tuner.py's folder."
-    )
     logger.info(f"SUMMARY: Total elapsed: {total_elapsed:.2f}s")
     logger.info("-" * 80)
 
