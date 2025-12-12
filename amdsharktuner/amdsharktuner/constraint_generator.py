@@ -314,28 +314,50 @@ def generate_generic_contraction_solutions(
         i += 1
         knob_assignment = None
         for compilation_info in compilation_infos:
-            if (
-                codegen_pipeline
-                == iree_codegen.DispatchLoweringPassPipeline.LLVMGPUVectorDistribute
-            ):
-                knob_assignment = common.LLVMGPUVectorDistributeContractionKnobs(
-                    M=int(math.prod(M)),
-                    N=int(math.prod(N)),
-                    K=int(math.prod(K)),
-                    tile_m=workgroup_tile_sizes[0],
-                    tile_n=workgroup_tile_sizes[1],
-                    tile_k=reduction_tile_sizes[2],
-                    wg_x=lookup(wg_x),
-                    wg_y=lookup(wg_y),
-                    wg_z=lookup(wg_z),
-                    subgroup_m_cnt=lookup(sg_m_cnt),
-                    subgroup_n_cnt=lookup(sg_n_cnt),
-                    intrinsic_mn=lookup(intrinsic_mn),
-                    intrinsic_k=lookup(intrinsic_k),
-                    subgroup_m=subgroup_tile_sizes[0],
-                    subgroup_n=subgroup_tile_sizes[1],
-                    subgroup_k=subgroup_tile_sizes[2],
-                )
+            match codegen_pipeline:
+                case iree_codegen.DispatchLoweringPassPipeline.LLVMGPUVectorDistribute:
+                    knob_assignment = common.LLVMGPUVectorDistributeContractionKnobs(
+                        M=int(math.prod(M)),
+                        N=int(math.prod(N)),
+                        K=int(math.prod(K)),
+                        tile_m=workgroup_tile_sizes[0],
+                        tile_n=workgroup_tile_sizes[1],
+                        tile_k=reduction_tile_sizes[2],
+                        wg_x=lookup(wg_x),
+                        wg_y=lookup(wg_y),
+                        wg_z=lookup(wg_z),
+                        subgroup_m_cnt=lookup(sg_m_cnt),
+                        subgroup_n_cnt=lookup(sg_n_cnt),
+                        intrinsic_mn=lookup(intrinsic_mn),
+                        intrinsic_k=lookup(intrinsic_k),
+                        subgroup_m=subgroup_tile_sizes[0],
+                        subgroup_n=subgroup_tile_sizes[1],
+                        subgroup_k=subgroup_tile_sizes[2],
+                    )
+                case iree_codegen.DispatchLoweringPassPipeline.LLVMGPUTileAndFuse:
+                    knob_assignment = common.LLVMGPUTileAndFuseContractionKnobs(
+                        M=int(math.prod(M)),
+                        N=int(math.prod(N)),
+                        K=int(math.prod(K)),
+                        tile_m=workgroup_tile_sizes[0],
+                        tile_n=workgroup_tile_sizes[1],
+                        tile_k=reduction_tile_sizes[2],
+                        wg_x=lookup(wg_x),
+                        wg_y=lookup(wg_y),
+                        wg_z=lookup(wg_z),
+                        subgroup_m_cnt=lookup(sg_m_cnt),
+                        subgroup_n_cnt=lookup(sg_n_cnt),
+                        intrinsic_mn=lookup(intrinsic_mn),
+                        intrinsic_k=lookup(intrinsic_k),
+                        subgroup_m=subgroup_tile_sizes[0],
+                        subgroup_n=subgroup_tile_sizes[1],
+                        subgroup_k=subgroup_tile_sizes[2],
+                        workgroup_tile_sizes=workgroup_tile_sizes,
+                        subgroup_tile_sizes=subgroup_tile_sizes,
+                        reduction_tile_sizes=reduction_tile_sizes,
+                    )
+                case _:
+                    knob_assignment = None
             yield [
                 common.TuningConfiguration(
                     name="compilation_info",

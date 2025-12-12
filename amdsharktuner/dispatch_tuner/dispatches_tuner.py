@@ -19,6 +19,13 @@ failed_list = [
 PICK_SAMPLE = False
 MAX_SAMPLE_SIZE = 5
 
+DEVICE="hip://2,hip://5"
+TUNING_TASKS=["llvmgpu_vector_distribute", "llvmgpu_tile_and_fuse"]
+NUM_CAN=10000
+TIMING_METHOD="rocprof"
+SORT_METHOD="heuristic"
+REP=5
+
 
 def setup_logging() -> logging.Logger:
     base_dir = Path(os.path.abspath(__file__)).parent
@@ -66,8 +73,8 @@ def main():
     for f in mlir_files:
         logger.debug(f"{f.stem}")
 
-    base_path = os.path.dirname(os.path.abspath(__file__))
-    mlir_benchmark_folder_path = (Path(base_path) / "dump").expanduser().resolve()
+    base_path = Path(os.path.dirname(os.path.abspath(__file__)))
+    mlir_benchmark_folder_path = (base_path / "dump").expanduser().resolve()
     logger.debug(f"In MLIR_benchmark folder {mlir_benchmark_folder_path}: ")
     mlir_benchmark_files = sorted(mlir_benchmark_folder_path.glob("*.mlir"))
     for f in mlir_benchmark_files:
@@ -82,18 +89,20 @@ def main():
     failed_files = []
     ok = fail = 0
 
-    csv_dir_tf = Path(base_path) / "tuning_database_tf"
+    csv_dir_tf = base_path / "tuning_database_tf"
     csv_dir_tf.mkdir(exist_ok=True)
     
-    csv_dir_vd = Path(base_path) / "tuning_database_vd"
+    csv_dir_vd = base_path / "tuning_database_vd"
     csv_dir_vd.mkdir(exist_ok=True)
 
     # --- timing + logging setup ---
     start_dt = datetime.now()
     start_perf = time.perf_counter()
     logger.debug(f"Tuning started at {start_dt.isoformat(timespec='seconds')}")
+    var_list = [DEVICE, TUNING_TASKS, NUM_CAN, TIMING_METHOD, SORT_METHOD, REP]
+    logger.info(f"Tuning Vars: {var_list}")
 
-    for i, bench in enumerate(mlir_benchmark_files, start=1):
+    for i, bench in enumerate(mlir_benchmark_files[:2], start=1):
         mlir_filename = bench.stem.replace("_benchmark","")
         logger.info(f"Checking file {i} / {len(mlir_benchmark_files)}")
 
@@ -115,9 +124,9 @@ def main():
 
         # logger.info("=" * 80)
         # logger.info("=" * 80)
-        tuning_tasks = ["llvmgpu_vector_distribute", "llvmgpu_tile_and_fuse"]
+        tuning_tasks = TUNING_TASKS
         for j, codegen_pipeline in enumerate(tuning_tasks, start=1):
-            logger.info(f"Tuning {i} ({j}/{len(tuning_tasks)}) / {len(mlir_benchmark_files)}: {mlir.name}")
+            logger.info(f"Tuning {i} ({j}/{len(tuning_tasks)}) / {len(mlir_benchmark_files)}: {mlir.name} - {codegen_pipeline}")
             file_start = time.perf_counter()
             logger.debug(f"File {bench} started at {start_dt.isoformat(timespec='seconds')}")
             cmd = [
@@ -125,11 +134,11 @@ def main():
                 str(mlir),
                 str(bench),
                 "--compile-flags-file=dispatch_tuner/compile_flags.txt",
-                "--devices=hip://2,hip://5,hip://6,hip://7",
-                "--num-candidates=2",
+                f"--devices={DEVICE}",
+                F"--num-candidates={NUM_CAN}",
                 f"--codegen-pipeline={codegen_pipeline}",
-                "--benchmark-timing-method=rocprof",
-                "--candidate-order=heuristic",
+                f"--benchmark-timing-method={TIMING_METHOD}",
+                f"--candidate-order={SORT_METHOD}",
             ]
             rc = subprocess.call(
                 cmd,
@@ -145,12 +154,12 @@ def main():
             if rc == 0:
                 ok += 1
                 logger.info(f"{finished_at.isoformat(timespec='seconds')} - {mlir.name}: completed in {elapsed:.2f}")
-                if elapsed < 60:
-                    time.sleep(60 - elapsed) # Make sure next tuning folder is a new folder
+                # if elapsed < 60:
+                #     time.sleep(60 - elapsed) # Make sure next tuning folder is a new folder
 
                 # Move CSV to tuning database
                 folders = sorted(
-                    base_path.glob("tuning_2025_*"),
+                    base_path.parent.glob("tuning_2025_*"),
                     key=lambda p: p.stat().st_mtime,
                     reverse=True
                 )

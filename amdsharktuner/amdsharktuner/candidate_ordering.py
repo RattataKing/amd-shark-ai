@@ -51,6 +51,7 @@ def llvm_gpu_vector_distribute_contraction_sort_key(
 
 SORT_KEY_MAP: dict[type[common.KnobAssignment | None], Callable | None] = {
     common.LLVMGPUVectorDistributeContractionKnobs: llvm_gpu_vector_distribute_contraction_sort_key,
+    common.LLVMGPUTileAndFuseContractionKnobs: llvm_gpu_vector_distribute_contraction_sort_key,
     type(None): None,
     # TODO: Add key() for conv, attention, and other dispatch kinds.
 }
