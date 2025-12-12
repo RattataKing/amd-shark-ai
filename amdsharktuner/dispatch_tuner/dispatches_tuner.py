@@ -154,8 +154,8 @@ def main():
             if rc == 0:
                 ok += 1
                 logger.info(f"{finished_at.isoformat(timespec='seconds')} - {mlir.name}: completed in {elapsed:.2f}")
-                # if elapsed < 60:
-                #     time.sleep(60 - elapsed) # Make sure next tuning folder is a new folder
+                if elapsed < 60:
+                    time.sleep(60 - elapsed) # Make sure next tuning folder is a new folder
 
                 # Move CSV to tuning database
                 folders = sorted(
