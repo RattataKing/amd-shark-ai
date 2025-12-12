@@ -5,6 +5,7 @@ import random
 import time
 from datetime import datetime
 import logging
+import shutil
 
 random.seed(42) 
 redo_list = [
@@ -78,28 +79,26 @@ def main():
     if len(mlir_files) != len(mlir_benchmark_files):
         logger.warning("Mismatch between number of MLIR files and benchmark files!")
 
-    # if PICK_SAMPLE:
-    #     pick_size = min(max(int(len(mlir_benchmark_files) * 0.3), 1), MAX_SAMPLE_SIZE)
-    #     mlir_benchmark_files = random.sample(mlir_benchmark_files, pick_size)
-    #     logger.info(f"Tuning file number cap: {pick_size} / {len(mlir_benchmark_files)}")
-
     failed_files = []
     ok = fail = 0
+
+    base_path = os.path.dirname(os.path.abspath(__file__))
+    csv_dir_tf = Path(base_path) / "tuning_database_tf"
+    csv_dir_tf.mkdir(exist_ok=True)
+    
+    csv_dir_vd = Path(base_path) / "tuning_database_vd"
+    csv_dir_vd.mkdir(exist_ok=True)
 
     # --- timing + logging setup ---
     start_dt = datetime.now()
     start_perf = time.perf_counter()
     logger.debug(f"Tuning started at {start_dt.isoformat(timespec='seconds')}")
 
-    base_path = os.path.dirname(os.path.abspath(__file__))
-    csv_dir = Path(base_path) / "tuning_database"
-    csv_dir.mkdir(exist_ok=True)
-
-    for bench in mlir_benchmark_files:
-        file_start = time.perf_counter()
-        logger.debug(f"File {bench} started at {start_dt.isoformat(timespec='seconds')}")
-
+    for i, bench in enumerate(mlir_benchmark_files, start=1):
         mlir_filename = bench.stem.replace("_benchmark","")
+        logger.info(f"Checking file {i} / {len(mlir_benchmark_files)}")
+
+        # Check list
         if mlir_filename in ok_list:
             logger.debug(f"Skipping file {mlir_filename} in OK list")
             continue
@@ -108,58 +107,71 @@ def main():
             continue
         mlir = Path(f"{mlir_folder_path}/{mlir_filename}.mlir")
 
+        # Check file
         if not mlir.exists():
-            print(f"Can't find {mlir}, skipping")
+            logger.warning(f"Can't find {mlir}, skipping")
             fail += 1
             failed_files.append(mlir.name)
+            continue
+
+        # logger.info("=" * 80)
+        # logger.info("=" * 80)
+        tuning_tasks = ["llvmgpu_vector_distribute", "llvmgpu_tile_and_fuse"]
+        for j, codegen_pipeline in enumerate(tuning_tasks):
+            logger.info(f"Tuning {i}({j}/{len(tuning_tasks)}) / {len(mlir_benchmark_files)}: {mlir.name}")
+            file_start = time.perf_counter()
+            logger.debug(f"File {bench} started at {start_dt.isoformat(timespec='seconds')}")
+            cmd = [
+                "python3", "-m", "dispatch_tuner",
+                str(mlir),
+                str(bench),
+                "--compile-flags-file=dispatch_tuner/compile_flags.txt",
+                "--devices=hip://2,hip://5,hip://6,hip://7",
+                "--num-candidates=8192",
+                f"--codegen-pipeline={codegen_pipeline}",
+                "--benchmark-timing-method=rocprof",
+                "--candidate-order=heuristic",
+            ]
+            rc = subprocess.call(
+                cmd,
+                cwd=Path("~/amd-shark-ai/amdsharktuner").expanduser(),
+                stdout=subprocess.DEVNULL
+            )
+        
+            # End timer
             finished_at = datetime.now()
             elapsed = time.perf_counter() - file_start
-            logger.warning(f"{finished_at.isoformat(timespec='seconds')} - {mlir.name}: MISSING in {elapsed:.2f}")
-            continue
-        # if (f"tuning_{mlir.stem}.csv" not in redo_list) and ((csv_dir / f"tuning_{mlir.stem}.csv").exists()):
-        #     print(f"{mlir.stem} already tuned, skipping...")
-        #     ok += 1
-        #     continue
-        logger.info("=" * 80)
-        logger.info(f"Tuning: {mlir.name} with {bench.name}")
-        logger.info("=" * 80)
+        
+            # Handle result
+            if rc == 0:
+                ok += 1
+                logger.info(f"{finished_at.isoformat(timespec='seconds')} - {mlir.name}: completed in {elapsed:.2f}")
+                if elapsed < 60:
+                    time.sleep(60 - elapsed) # Make sure next tuning folder is a new folder
 
-        cmd = [
-            "python3", "-m", "dispatch_tuner",
-            str(mlir),
-            str(bench),
-            "--compile-flags-file=dispatch_tuner/compile_flags.txt",
-            "--devices=hip://2,hip://5,hip://6,hip://7",
-            "--num-candidates=4096",
-            "--codegen-pipeline=llvmgpu_vector_distribute"
-        ]
+                # Move CSV to tuning database
+                folders = sorted(
+                    base_path.glob("tuning_2025_*"),
+                    key=lambda p: p.stat().st_mtime,
+                    reverse=True
+                )
+                latest_folder = folders[0]
+                csv_files = list(latest_folder.glob("*.csv"))
+                if len(csv_files) > 1:
+                    logger.warning(f"{latest_folder} has multiple csv")
+                for csv_file in csv_files:
+                    if codegen_pipeline == "llvmgpu_vector_distribute":
+                        dst_dir = csv_dir_vd
+                    elif codegen_pipeline == "llvmgpu_tile_and_fuse":
+                        dst_dir = csv_dir_tf
+                    shutil.copy2(csv_file, dst_dir)
+                    logging.debug(f"Copied {csv_file.name} -> {dst_dir}")
+            else:
+                fail += 1
+                failed_files.append(f"{mlir.name} - {codegen_pipeline}")
+                logger.warning(f"{finished_at.isoformat(timespec='seconds')} - {mlir.name}: 'FAIL({rc})' in {elapsed:.2f}")
 
-        rc = subprocess.call(cmd, cwd=Path("~/shark-ai/sharktuner").expanduser())
-        finished_at = datetime.now()
-        elapsed = time.perf_counter() - file_start
-        if rc == 0:
-            ok += 1
-            status = "OK"
-            logger.info(f"{finished_at.isoformat(timespec='seconds')} - {mlir.name}: {status} in {elapsed:.2f}")
-        else:
-            fail += 1
-            status = f"FAIL({rc})"
-            failed_files.append(mlir.name)
-            logger.warning(f"{finished_at.isoformat(timespec='seconds')} - {mlir.name}: {status} in {elapsed:.2f}")
 
-    # # Save failed MLIRs to a file
-    # if failed_files:
-    #     failed_log = Path("./dispatch_tuner/failed_mlirs.txt")
-    #     with failed_log.open("w") as f:
-    #         for name in failed_files:
-    #             f.write(name + "\n")
-    #     print(f"\n[INFO] Wrote failed MLIR filenames to {failed_log.resolve()}")
-
-    # print("\n" + "-" * 80)
-    # print(f"[SUMMARY] Success: {ok} | Fail: {fail}")
-    # print("[SUMMARY] Each successful run should have written "
-    #       f"`tuning_<mlir-name>.csv` in dispatch_tuner.py's folder.")
-    # print("-" * 80)
     # --- summary logging ---
     if failed_files:
         logger.warning(f"Failed MLIR files {len(failed_files)}):")
