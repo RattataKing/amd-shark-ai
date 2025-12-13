@@ -19,7 +19,7 @@ failed_list = [
 PICK_SAMPLE = False
 MAX_SAMPLE_SIZE = 5
 
-DEVICE="hip://2,hip://5"
+DEVICE="hip://0,hip://1,hip://2,hip://3,hip://4,hip://5,hip://6,hip://7"
 TUNING_TASKS=["llvmgpu_vector_distribute", "llvmgpu_tile_and_fuse"]
 NUM_CAN=10000
 TIMING_METHOD="rocprof"
@@ -102,7 +102,7 @@ def main():
     var_list = [DEVICE, TUNING_TASKS, NUM_CAN, TIMING_METHOD, SORT_METHOD, REP]
     logger.info(f"Tuning Vars: {var_list}")
 
-    for i, bench in enumerate(mlir_benchmark_files[:2], start=1):
+    for i, bench in enumerate(mlir_benchmark_files, start=1):
         mlir_filename = bench.stem.replace("_benchmark","")
         logger.info(f"Checking file {i} / {len(mlir_benchmark_files)}")
 

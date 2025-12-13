@@ -6,10 +6,7 @@ Processes MLIR files in a given folder with iree-compile and extracts benchmark 
 
 import os
 import subprocess
-import sys
 from pathlib import Path
-import argparse
-
 
 
 def run_iree_compile(mlir_file, dump_dir):
