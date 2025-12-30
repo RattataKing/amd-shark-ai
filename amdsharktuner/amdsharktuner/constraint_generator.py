@@ -7,7 +7,8 @@
 import z3  # type: ignore
 import math
 from abc import ABC, abstractmethod
-from typing import Iterator, Optional, Protocol
+from typing import Iterator, Optional, Protocol, Callable
+from dataclasses import dataclass
 
 from iree.compiler import ir  # type: ignore
 from iree.compiler.dialects import iree_codegen, iree_gpu, linalg  # type: ignore
@@ -15,7 +16,8 @@ from iree.compiler.dialects import iree_codegen, iree_gpu, linalg  # type: ignor
 from . import common, dispatch_constraints, dispatch_parser
 
 
-from dataclasses import dataclass
+class Z3Vals(Protocol):
+    """Marker base class for values extracted from Z3 model."""
 
 
 class Z3Vars(Protocol):
@@ -23,7 +25,30 @@ class Z3Vars(Protocol):
 
     @property
     def all_vars(self) -> list[z3.ExprRef]:
+        """All Z3 variables that participate in this problem."""
         pass
+
+    def eval(self, model: z3.ModelRef) -> Z3Vals:
+        """Convert Z3 variables in the given model to values."""
+        pass
+
+
+@dataclass
+class ContractionZ3Vals(Z3Vals):
+    m_vals: list[int]
+    n_vals: list[int]
+    k_vals: list[int]
+    subgroup_m_vals: list[int]
+    subgroup_n_vals: list[int]
+
+    subgroup_size: int
+    intrinsic_mn: int
+    intrinsic_k: int
+    wg_x: int
+    wg_y: int
+    wg_z: int
+    sg_m_cnt: int
+    sg_n_cnt: int
 
 
 @dataclass
@@ -59,6 +84,24 @@ class ContractionZ3Vars(Z3Vars):
                 self.sg_m_cnt,
                 self.sg_n_cnt,
             ]
+        )
+
+    def eval(self, model: z3.ModelRef) -> ContractionZ3Vals:
+        get = lambda v: model[v].as_long()
+        return ContractionZ3Vals(
+            m_vals=[get(v) for v in self.m_vars],
+            n_vals=[get(v) for v in self.n_vars],
+            k_vals=[get(v) for v in self.k_vars],
+            subgroup_m_vals=[get(v) for v in self.subgroup_m_vars],
+            subgroup_n_vals=[get(v) for v in self.subgroup_n_vars],
+            subgroup_size=get(self.subgroup_size),
+            intrinsic_mn=get(self.intrinsic_mn),
+            intrinsic_k=get(self.intrinsic_k),
+            wg_x=get(self.wg_x),
+            wg_y=get(self.wg_y),
+            wg_z=get(self.wg_z),
+            sg_m_cnt=get(self.sg_m_cnt),
+            sg_n_cnt=get(self.sg_n_cnt),
         )
 
 
@@ -216,6 +259,29 @@ def generate_generic_contraction_z3_constraints(
     return Z3Solver(solver, z3_vars)
 
 
+def get_z3_solutions(z3_solver: Z3Solver) -> Z3Vals:
+    solver = z3_solver.solver
+    z3_vars = z3_solver.z3_vars
+    z3_all_vars = z3_solver.z3_vars.all_vars
+
+    z3_solutions: list[Z3Vals] = []
+
+    while solver.check() == z3.sat:
+        model = solver.model()
+
+        z3_vals = z3_vars.eval(model)
+
+        # Add new constraints to find the next solution.
+        solver.add(z3.Or([v != model[v] for v in z3_all_vars]))
+
+        z3_solutions.append(z3_vals)
+
+    return z3_solutions
+
+
+import time
+
+
 def generate_generic_contraction_solutions(
     tuner_ctx: common.TunerContext,
     gpu_target_info: iree_gpu.TargetInfo,
@@ -265,6 +331,7 @@ def generate_generic_contraction_solutions(
         f"M={M}, N={N}, K={K}, overpadding_applied={overpadding_applied}"
     )
 
+    start_time = time.perf_counter()
     constraints = generate_generic_contraction_z3_constraints(
         tuner_ctx,
         gpu_target_info,
@@ -276,7 +343,10 @@ def generate_generic_contraction_solutions(
         codegen_pipeline,
         num_subgroups=num_subgroups,
     )
-    solver = constraints.solver
+    end_time = time.perf_counter()
+
+    elapsed_time = end_time - start_time
+    print(f"generate constraints time: {elapsed_time:.4f} seconds")
     z3_vars = constraints.z3_vars
 
     num_loops = (
@@ -285,15 +355,19 @@ def generate_generic_contraction_solutions(
         + len(contraction_dims.k)
         + len(contraction_dims.batch)
     )
+    start_time = time.perf_counter()
+    z3_solutions: list[ContractionZ3Vals] = get_z3_solutions(constraints)
 
-    i = 0
-    while solver.check() == z3.sat:
-        model = solver.model()
-        lookup = lambda var: model[var].as_long()
+    end_time = time.perf_counter()
+
+    elapsed_time = end_time - start_time
+    print(f"get z3 val time: {elapsed_time:.4f} seconds")
+    start_time = time.perf_counter()
+    for z3_vals in z3_solutions:
         intrinsic_mnk_shape = (
-            lookup(z3_vars.intrinsic_mn),
-            lookup(z3_vars.intrinsic_mn),
-            lookup(z3_vars.intrinsic_k),
+            z3_vals.intrinsic_mn,
+            z3_vals.intrinsic_mn,
+            z3_vals.intrinsic_k,
         )
         mma_attr = dispatch_constraints.getMMAAttr(
             res_type.element_type,
@@ -323,12 +397,12 @@ def generate_generic_contraction_solutions(
         set_cdim_tile_sizes(
             workgroup_tile_sizes,
             contraction_dims.m,
-            [lookup(v) for v in z3_vars.m_vars],
+            z3_vals.m_vals,
         )
         set_cdim_tile_sizes(
             workgroup_tile_sizes,
             contraction_dims.n,
-            [lookup(v) for v in z3_vars.n_vars],
+            z3_vals.n_vals,
         )
         set_cdim_tile_sizes(
             workgroup_tile_sizes,
@@ -343,12 +417,12 @@ def generate_generic_contraction_solutions(
         set_cdim_tile_sizes(
             subgroup_tile_sizes,
             contraction_dims.m,
-            [lookup(v) for v in z3_vars.subgroup_m_vars],
+            z3_vals.subgroup_m_vals,
         )
         set_cdim_tile_sizes(
             subgroup_tile_sizes,
             contraction_dims.n,
-            [lookup(v) for v in z3_vars.subgroup_n_vars],
+            z3_vals.subgroup_n_vals,
         )
         set_cdim_tile_sizes(
             subgroup_tile_sizes,
@@ -363,7 +437,7 @@ def generate_generic_contraction_solutions(
         set_cdim_tile_sizes(
             reduction_tile_sizes,
             contraction_dims.k,
-            [lookup(v) for v in z3_vars.k_vars],
+            z3_vals.k_vals,
         )
 
         promote_operands = [0, 1]
@@ -397,9 +471,9 @@ def generate_generic_contraction_solutions(
         # TODO(Bangtian): Sync changes from IREE PR: https://github.com/iree-org/iree/pull/22000.
         subgroup_basis_counts = [1] * num_loops
         m_dim = contraction_dims.m[-1]
-        subgroup_basis_counts[m_dim] = lookup(z3_vars.sg_m_cnt)
+        subgroup_basis_counts[m_dim] = z3_vals.sg_m_cnt
         n_dim = contraction_dims.n[-1]
-        subgroup_basis_counts[n_dim] = lookup(z3_vars.sg_n_cnt)
+        subgroup_basis_counts[n_dim] = z3_vals.sg_n_cnt
         subgroup_basis_mapping = list(range(num_loops))
 
         compilation_infos = dispatch_constraints.generate_compilation_infos(
@@ -408,8 +482,8 @@ def generate_generic_contraction_solutions(
             workgroup_tile_sizes,
             reduction_tile_sizes,
             subgroup_tile_sizes,
-            (lookup(z3_vars.wg_x), lookup(z3_vars.wg_y), lookup(z3_vars.wg_z)),
-            lookup(z3_vars.subgroup_size),
+            (z3_vals.wg_x, z3_vals.wg_y, z3_vals.wg_z),
+            z3_vals.subgroup_size,
             subgroup_basis_counts,
             subgroup_basis_mapping,
             promote_operands,
@@ -420,10 +494,6 @@ def generate_generic_contraction_solutions(
             padding_conv=padding_conv,
         )
 
-        solver.add(
-            z3.simplify(z3.Not(z3.And(list(x == model[x] for x in z3_vars.all_vars))))
-        )
-        i += 1
         knob_assignment = None
         for compilation_info in compilation_infos:
             if (
@@ -437,13 +507,13 @@ def generate_generic_contraction_solutions(
                     tile_m=workgroup_tile_sizes[0],
                     tile_n=workgroup_tile_sizes[1],
                     tile_k=reduction_tile_sizes[2],
-                    wg_x=lookup(z3_vars.wg_x),
-                    wg_y=lookup(z3_vars.wg_y),
-                    wg_z=lookup(z3_vars.wg_z),
-                    subgroup_m_cnt=lookup(z3_vars.sg_m_cnt),
-                    subgroup_n_cnt=lookup(z3_vars.sg_n_cnt),
-                    intrinsic_mn=lookup(z3_vars.intrinsic_mn),
-                    intrinsic_k=lookup(z3_vars.intrinsic_k),
+                    wg_x=z3_vals.wg_x,
+                    wg_y=z3_vals.wg_y,
+                    wg_z=z3_vals.wg_z,
+                    subgroup_m_cnt=z3_vals.sg_m_cnt,
+                    subgroup_n_cnt=z3_vals.sg_n_cnt,
+                    intrinsic_mn=z3_vals.intrinsic_mn,
+                    intrinsic_k=z3_vals.intrinsic_k,
                     subgroup_m=subgroup_tile_sizes[0],
                     subgroup_n=subgroup_tile_sizes[1],
                     subgroup_k=subgroup_tile_sizes[2],
@@ -455,6 +525,11 @@ def generate_generic_contraction_solutions(
                     knob_assignment=knob_assignment,
                 )
             ]
+
+    end_time = time.perf_counter()
+
+    elapsed_time = end_time - start_time
+    print(f"rest overhead time: {elapsed_time:.4f} seconds")
 
 
 def generate_attention_solutions(
