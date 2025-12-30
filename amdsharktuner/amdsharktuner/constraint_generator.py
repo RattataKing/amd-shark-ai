@@ -7,12 +7,65 @@
 import z3  # type: ignore
 import math
 from abc import ABC, abstractmethod
-from typing import Iterator, Optional
+from typing import Iterator, Optional, Protocol
 
 from iree.compiler import ir  # type: ignore
 from iree.compiler.dialects import iree_codegen, iree_gpu, linalg  # type: ignore
 
 from . import common, dispatch_constraints, dispatch_parser
+
+
+from dataclasses import dataclass
+
+
+class Z3Vars(Protocol):
+    """Marker base class for Z3 variables."""
+
+    @property
+    def all_vars(self) -> list[z3.ExprRef]:
+        pass
+
+
+@dataclass
+class ContractionZ3Vars(Z3Vars):
+    m_vars: list[z3.ExprRef]
+    n_vars: list[z3.ExprRef]
+    k_vars: list[z3.ExprRef]
+    subgroup_m_vars: list[z3.ExprRef]
+    subgroup_n_vars: list[z3.ExprRef]
+
+    subgroup_size: z3.ExprRef
+    intrinsic_mn: z3.ExprRef
+    intrinsic_k: z3.ExprRef
+    wg_x: z3.ExprRef
+    wg_y: z3.ExprRef
+    wg_z: z3.ExprRef
+    sg_m_cnt: z3.ExprRef
+    sg_n_cnt: z3.ExprRef
+
+    @property
+    def all_vars(self) -> list[z3.ExprRef]:
+        return (
+            self.m_vars
+            + self.n_vars
+            + self.k_vars
+            + [
+                self.subgroup_size,
+                self.intrinsic_mn,
+                self.intrinsic_k,
+                self.wg_x,
+                self.wg_y,
+                self.wg_z,
+                self.sg_m_cnt,
+                self.sg_n_cnt,
+            ]
+        )
+
+
+@dataclass
+class Z3Solver:
+    solver: z3.Solver
+    z3_vars: Z3Vars
 
 
 def adjust_problem_size_for_pipeline(
@@ -67,6 +120,102 @@ def adjust_problem_size_for_pipeline(
     matmul_size.K = [math.prod(matmul_size.K)]
 
 
+def make_contraction_z3_vars(
+    matmul_size: common.ContractionSizes,
+) -> ContractionZ3Vars:
+    M, N, K = matmul_size.M, matmul_size.N, matmul_size.K
+
+    m_vars = [z3.Int(f"m{i}") for i in range(len(M))]
+    n_vars = [z3.Int(f"n{i}") for i in range(len(N))]
+    k_vars = [z3.Int(f"k{i}") for i in range(len(K))]
+    subgroup_m_vars = [z3.Int(f"subgroup_m{i}") for i in range(len(M))]
+    subgroup_n_vars = [z3.Int(f"subgroup_n{i}") for i in range(len(N))]
+
+    subgroup_size = z3.Int("subgroup_size")
+    intrinsic_mn = z3.Int("intrinsic_mn")
+    intrinsic_k = z3.Int("intrinsic_k")
+    wg_x, wg_y, wg_z = z3.Int("wg_x"), z3.Int("wg_y"), z3.Int("wg_z")
+    sg_m_cnt = z3.Int("sg_m_cnt")
+    sg_n_cnt = z3.Int("sg_n_cnt")
+
+    return ContractionZ3Vars(
+        m_vars=m_vars,
+        n_vars=n_vars,
+        k_vars=k_vars,
+        subgroup_m_vars=subgroup_m_vars,
+        subgroup_n_vars=subgroup_n_vars,
+        subgroup_size=subgroup_size,
+        intrinsic_mn=intrinsic_mn,
+        intrinsic_k=intrinsic_k,
+        wg_x=wg_x,
+        wg_y=wg_y,
+        wg_z=wg_z,
+        sg_m_cnt=sg_m_cnt,
+        sg_n_cnt=sg_n_cnt,
+    )
+
+
+def generate_generic_contraction_z3_constraints(
+    tuner_ctx: common.TunerContext,
+    gpu_target_info: iree_gpu.TargetInfo,
+    dispatch_kind: common.DispatchKind,
+    matmul_size: common.ContractionSizes,
+    lhs_type: common.ShapedType,
+    rhs_type: common.ShapedType,
+    res_type: common.ShapedType,
+    codegen_pipeline: iree_codegen.DispatchLoweringPassPipeline = iree_codegen.DispatchLoweringPassPipeline.LLVMGPUVectorDistribute,
+    num_subgroups: int = 4,
+) -> Z3Solver:
+    z3_vars = make_contraction_z3_vars(matmul_size)
+    solver = z3.Solver()
+    match codegen_pipeline:
+        case iree_codegen.DispatchLoweringPassPipeline.LLVMGPUVectorDistribute:
+            constraints = dispatch_constraints.generate_vector_distribute_constraints(
+                matmul_size,
+                lhs_type,
+                rhs_type,
+                res_type,
+                [z3_vars.m_vars, z3_vars.n_vars, z3_vars.k_vars],
+                num_subgroups,
+                z3_vars.subgroup_size,
+                [z3_vars.intrinsic_mn, z3_vars.intrinsic_k],
+                [z3_vars.wg_x, z3_vars.wg_y, z3_vars.wg_z],
+                z3_vars.sg_m_cnt,
+                z3_vars.sg_n_cnt,
+                gpu_target_info,
+                dispatch_kind,
+            )
+            constraints += [
+                v == 0 for v in z3_vars.subgroup_m_vars + z3_vars.subgroup_n_vars
+            ]
+        case iree_codegen.DispatchLoweringPassPipeline.LLVMGPUTileAndFuse:
+            constraints = dispatch_constraints.generate_tile_and_fuse_constraints(
+                matmul_size,
+                lhs_type,
+                rhs_type,
+                res_type,
+                [
+                    z3_vars.m_vars,
+                    z3_vars.n_vars,
+                    z3_vars.k_vars,
+                    z3_vars.subgroup_m_vars,
+                    z3_vars.subgroup_n_vars,
+                ],
+                num_subgroups,
+                z3_vars.subgroup_size,
+                [z3_vars.intrinsic_mn, z3_vars.intrinsic_k],
+                [z3_vars.wg_x, z3_vars.wg_y, z3_vars.wg_z],
+                z3_vars.sg_m_cnt,
+                z3_vars.sg_n_cnt,
+                gpu_target_info,
+            )
+
+    solver.add(z3.simplify(z3.And(constraints)))
+    tuner_ctx.logger.debug(f"Initial constraints: {solver}")
+
+    return Z3Solver(solver, z3_vars)
+
+
 def generate_generic_contraction_solutions(
     tuner_ctx: common.TunerContext,
     gpu_target_info: iree_gpu.TargetInfo,
@@ -116,71 +265,19 @@ def generate_generic_contraction_solutions(
         f"M={M}, N={N}, K={K}, overpadding_applied={overpadding_applied}"
     )
 
-    m_vars = [z3.Int(f"m{i}") for i in range(len(M))]
-    n_vars = [z3.Int(f"n{i}") for i in range(len(N))]
-    k_vars = [z3.Int(f"k{i}") for i in range(len(K))]
-    subgroup_m_vars = [z3.Int(f"subgroup_m{i}") for i in range(len(M))]
-    subgroup_n_vars = [z3.Int(f"subgroup_n{i}") for i in range(len(N))]
-
-    subgroup_size = z3.Int("subgroup_size")
-    intrinsic_mn = z3.Int("intrinsic_mn")
-    intrinsic_k = z3.Int("intrinsic_k")
-    wg_x, wg_y, wg_z = z3.Int("wg_x"), z3.Int("wg_y"), z3.Int("wg_z")
-    sg_m_cnt = z3.Int("sg_m_cnt")
-    sg_n_cnt = z3.Int("sg_n_cnt")
-    all_vars = (
-        m_vars
-        + n_vars
-        + k_vars
-        + [
-            subgroup_size,
-            intrinsic_mn,
-            intrinsic_k,
-            wg_x,
-            wg_y,
-            wg_z,
-            sg_m_cnt,
-            sg_n_cnt,
-        ]
+    constraints = generate_generic_contraction_z3_constraints(
+        tuner_ctx,
+        gpu_target_info,
+        dispatch_kind,
+        matmul_size,
+        lhs_type,
+        rhs_type,
+        res_type,
+        codegen_pipeline,
+        num_subgroups=num_subgroups,
     )
-
-    solver = z3.Solver()
-    match codegen_pipeline:
-        case iree_codegen.DispatchLoweringPassPipeline.LLVMGPUVectorDistribute:
-            constraints = dispatch_constraints.generate_vector_distribute_constraints(
-                matmul_size,
-                lhs_type,
-                rhs_type,
-                res_type,
-                [m_vars, n_vars, k_vars],
-                num_subgroups,
-                subgroup_size,
-                [intrinsic_mn, intrinsic_k],
-                [wg_x, wg_y, wg_z],
-                sg_m_cnt,
-                sg_n_cnt,
-                gpu_target_info,
-                dispatch_kind,
-            )
-            constraints += [v == 0 for v in subgroup_m_vars + subgroup_n_vars]
-        case iree_codegen.DispatchLoweringPassPipeline.LLVMGPUTileAndFuse:
-            constraints = dispatch_constraints.generate_tile_and_fuse_constraints(
-                matmul_size,
-                lhs_type,
-                rhs_type,
-                res_type,
-                [m_vars, n_vars, k_vars, subgroup_m_vars, subgroup_n_vars],
-                num_subgroups,
-                subgroup_size,
-                [intrinsic_mn, intrinsic_k],
-                [wg_x, wg_y, wg_z],
-                sg_m_cnt,
-                sg_n_cnt,
-                gpu_target_info,
-            )
-
-    solver.add(z3.simplify(z3.And(constraints)))
-    tuner_ctx.logger.debug(f"Initial constraints: {solver}")
+    solver = constraints.solver
+    z3_vars = constraints.z3_vars
 
     num_loops = (
         len(contraction_dims.m)
@@ -194,9 +291,9 @@ def generate_generic_contraction_solutions(
         model = solver.model()
         lookup = lambda var: model[var].as_long()
         intrinsic_mnk_shape = (
-            lookup(intrinsic_mn),
-            lookup(intrinsic_mn),
-            lookup(intrinsic_k),
+            lookup(z3_vars.intrinsic_mn),
+            lookup(z3_vars.intrinsic_mn),
+            lookup(z3_vars.intrinsic_k),
         )
         mma_attr = dispatch_constraints.getMMAAttr(
             res_type.element_type,
@@ -226,12 +323,12 @@ def generate_generic_contraction_solutions(
         set_cdim_tile_sizes(
             workgroup_tile_sizes,
             contraction_dims.m,
-            [lookup(v) for v in m_vars],
+            [lookup(v) for v in z3_vars.m_vars],
         )
         set_cdim_tile_sizes(
             workgroup_tile_sizes,
             contraction_dims.n,
-            [lookup(v) for v in n_vars],
+            [lookup(v) for v in z3_vars.n_vars],
         )
         set_cdim_tile_sizes(
             workgroup_tile_sizes,
@@ -246,12 +343,12 @@ def generate_generic_contraction_solutions(
         set_cdim_tile_sizes(
             subgroup_tile_sizes,
             contraction_dims.m,
-            [lookup(v) for v in subgroup_m_vars],
+            [lookup(v) for v in z3_vars.subgroup_m_vars],
         )
         set_cdim_tile_sizes(
             subgroup_tile_sizes,
             contraction_dims.n,
-            [lookup(v) for v in subgroup_n_vars],
+            [lookup(v) for v in z3_vars.subgroup_n_vars],
         )
         set_cdim_tile_sizes(
             subgroup_tile_sizes,
@@ -266,7 +363,7 @@ def generate_generic_contraction_solutions(
         set_cdim_tile_sizes(
             reduction_tile_sizes,
             contraction_dims.k,
-            [lookup(v) for v in k_vars],
+            [lookup(v) for v in z3_vars.k_vars],
         )
 
         promote_operands = [0, 1]
@@ -300,9 +397,9 @@ def generate_generic_contraction_solutions(
         # TODO(Bangtian): Sync changes from IREE PR: https://github.com/iree-org/iree/pull/22000.
         subgroup_basis_counts = [1] * num_loops
         m_dim = contraction_dims.m[-1]
-        subgroup_basis_counts[m_dim] = lookup(sg_m_cnt)
+        subgroup_basis_counts[m_dim] = lookup(z3_vars.sg_m_cnt)
         n_dim = contraction_dims.n[-1]
-        subgroup_basis_counts[n_dim] = lookup(sg_n_cnt)
+        subgroup_basis_counts[n_dim] = lookup(z3_vars.sg_n_cnt)
         subgroup_basis_mapping = list(range(num_loops))
 
         compilation_infos = dispatch_constraints.generate_compilation_infos(
@@ -311,8 +408,8 @@ def generate_generic_contraction_solutions(
             workgroup_tile_sizes,
             reduction_tile_sizes,
             subgroup_tile_sizes,
-            (lookup(wg_x), lookup(wg_y), lookup(wg_z)),
-            lookup(subgroup_size),
+            (lookup(z3_vars.wg_x), lookup(z3_vars.wg_y), lookup(z3_vars.wg_z)),
+            lookup(z3_vars.subgroup_size),
             subgroup_basis_counts,
             subgroup_basis_mapping,
             promote_operands,
@@ -323,7 +420,9 @@ def generate_generic_contraction_solutions(
             padding_conv=padding_conv,
         )
 
-        solver.add(z3.simplify(z3.Not(z3.And(list(x == model[x] for x in all_vars)))))
+        solver.add(
+            z3.simplify(z3.Not(z3.And(list(x == model[x] for x in z3_vars.all_vars))))
+        )
         i += 1
         knob_assignment = None
         for compilation_info in compilation_infos:
@@ -338,13 +437,13 @@ def generate_generic_contraction_solutions(
                     tile_m=workgroup_tile_sizes[0],
                     tile_n=workgroup_tile_sizes[1],
                     tile_k=reduction_tile_sizes[2],
-                    wg_x=lookup(wg_x),
-                    wg_y=lookup(wg_y),
-                    wg_z=lookup(wg_z),
-                    subgroup_m_cnt=lookup(sg_m_cnt),
-                    subgroup_n_cnt=lookup(sg_n_cnt),
-                    intrinsic_mn=lookup(intrinsic_mn),
-                    intrinsic_k=lookup(intrinsic_k),
+                    wg_x=lookup(z3_vars.wg_x),
+                    wg_y=lookup(z3_vars.wg_y),
+                    wg_z=lookup(z3_vars.wg_z),
+                    subgroup_m_cnt=lookup(z3_vars.sg_m_cnt),
+                    subgroup_n_cnt=lookup(z3_vars.sg_n_cnt),
+                    intrinsic_mn=lookup(z3_vars.intrinsic_mn),
+                    intrinsic_k=lookup(z3_vars.intrinsic_k),
                     subgroup_m=subgroup_tile_sizes[0],
                     subgroup_n=subgroup_tile_sizes[1],
                     subgroup_k=subgroup_tile_sizes[2],
