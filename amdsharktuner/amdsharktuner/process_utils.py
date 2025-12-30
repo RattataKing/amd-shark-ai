@@ -8,6 +8,7 @@
 # in the code and runs it.
 
 import multiprocessing
+import threading
 import subprocess
 import logging
 import signal
@@ -114,6 +115,42 @@ class MultiprocessExecutor:
                     sys.exit(1)  # Exit the script.
 
         return results
+    
+class MultithreadExecutor:
+    def __init__(self, num_workers: int):
+        self.num_workers = num_workers
+    
+    def run(self, task_list, worker_fn):
+        results = [None] * len(task_list)
+        threads = []
+        lock = threading.Lock()
+        task_index = 0
+        
+        def worker():
+            nonlocal task_index
+            while True:
+                with lock:
+                    if task_index >= len(task_list):
+                        return
+                    i = task_index
+                    task_index += 1
+
+                # Execute worker_fn(task_list) without holding the lock
+                results[i] = worker_fn(task_list[i])
+
+        # Start threads
+        for _ in range(self.num_workers):
+            t = threading.Thread(target=worker)
+            t.daemon = True
+            t.start()
+            threads.append(t)
+
+        # Wait for completion
+        for t in threads:
+            t.join()
+
+        return results
+    
 
 
 @dataclass

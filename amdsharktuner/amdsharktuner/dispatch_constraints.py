@@ -75,9 +75,18 @@ def get_mfma_intrinsic_constraints(
     rhs_layout: MMASingleSubgroupLayout | None = None,
     acc_layout: MMASingleSubgroupLayout | None = None,
 ) -> z3.BoolRef:
+    # print(lhs_type)
+    # print(rhs_type)
+    # print(res_type)
+    # exit()
+    # for abc in mma_intrinsics:
+    #     print(abc)
+    
     compatible_intrinsics = common.get_compatible_mfma_intrinsics(
         lhs_type, rhs_type, res_type, mma_intrinsics
     )
+    # print(compatible_intrinsics)
+    # exit()
     assert len(compatible_intrinsics) > 0, "No compatible intrinsics found"
 
     def get_mma_attr(instrinsic):
@@ -133,6 +142,9 @@ def get_mfma_intrinsic_constraints(
 
         constraints.append(z3.And(*base_constraints))
 
+    # print(constraints)
+    # exit()
+    return constraints
     return z3.Or(*constraints)
 
 
@@ -225,17 +237,17 @@ def generate_vector_distribute_constraints(
         subgroup_size == target_subgroup_size,
         wg_threads <= gpu_target_info.max_thread_count_per_workgroup,
     ]
-    constraints += [
-        get_mfma_intrinsic_constraints(
-            lhs_type,
-            rhs_type,
-            res_type,
-            intrinsic_mn,
-            intrinsic_mn,
-            intrinsic_k,
-            gpu_target_info.mma_intrinsics,
-        )
-    ]
+    # constraints += [
+    #     get_mfma_intrinsic_constraints(
+    #         lhs_type,
+    #         rhs_type,
+    #         res_type,
+    #         intrinsic_mn,
+    #         intrinsic_mn,
+    #         intrinsic_k,
+    #         gpu_target_info.mma_intrinsics,
+    #     )
+    # ]
     subgroup_k_count = 1
     m = m_vars[-1]
     n = n_vars[-1]
@@ -316,17 +328,17 @@ def generate_tile_and_fuse_constraints(
         subgroup_size == target_subgroup_size,
         wg_threads <= gpu_target_info.max_thread_count_per_workgroup,
     ]
-    constraints += [
-        get_mfma_intrinsic_constraints(
-            lhs_type,
-            rhs_type,
-            res_type,
-            intrinsic_mn,
-            intrinsic_mn,
-            intrinsic_k,
-            gpu_target_info.mma_intrinsics,
-        )
-    ]
+    # constraints += [
+    #     get_mfma_intrinsic_constraints(
+    #         lhs_type,
+    #         rhs_type,
+    #         res_type,
+    #         intrinsic_mn,
+    #         intrinsic_mn,
+    #         intrinsic_k,
+    #         gpu_target_info.mma_intrinsics,
+    #     )
+    # ]
 
     constraints += [
         m_tiles[-1] >= intrinsic_mn,

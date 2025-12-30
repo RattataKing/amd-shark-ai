@@ -897,7 +897,12 @@ def generate_candidate_specs(
             return []
 
         tuning_client.target_info = common.get_target_info(mlir_module)
+        # ti = tuning_client.target_info
+        # for abc in ti.mma_intrinsics:
+        #     print(abc)
+        # exit()
         assert tuning_client.target_info, "Failed to query target info."
+        start_time = time.perf_counter()
         solutions_iter = candidate_gen.generate_solutions(
             dispatch_tuner=dispatch_tuner,
             target_info=tuning_client.target_info,
@@ -913,10 +918,36 @@ def generate_candidate_specs(
         else:
             random.seed(args.search_space_shuffle_seed)
 
-        solutions = list(solutions_iter)
+        # for i in solutions_iter:
+        #     print(i)
+        #     for j in i:
+        #         print(j)
+        # print(solutions_iter)
+        # print(list(solutions_iter))
+        # exit()
+        
+        # solutions = list(solutions_iter)
+        # print(solutions_iter)
+        solutions = []
+        for i,sol in enumerate(solutions_iter):
+        #     # if i==3:
+        #     # print(len(list(i)))
+            solutions += list(sol)
+        #     print(len(solutions))
+        #     print(solutions)
+        #     print(f"im {i}")
+
+        end_time = time.perf_counter()
+        elapsed_time = end_time - start_time
+
+        print(f"Elapsed time: {elapsed_time:.4f} seconds")
+            
+        # exit()
+        # print(solutions)
         knobs: list[Optional[common.KnobAssignment]] = [
             dispatch_tuner.get_knob_assignment(s) for s in solutions
         ]
+        # print("hi")
 
         sorted_order = candidate_ordering.reorder_assignments(
             knobs=knobs,

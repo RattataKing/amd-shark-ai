@@ -8,12 +8,12 @@ import z3  # type: ignore
 import math
 from abc import ABC, abstractmethod
 from dataclasses import dataclass
-from typing import Iterator, Optional, Sequence
+from typing import Iterator, Optional, Sequence, Any
 
 from iree.compiler import ir  # type: ignore
 from iree.compiler.dialects import iree_codegen, iree_gpu, linalg  # type: ignore
 
-from . import common, dispatch_constraints, dispatch_parser
+from . import common, dispatch_constraints, dispatch_parser, process_utils
 
 
 def adjust_problem_size_for_pipeline(
@@ -94,6 +94,11 @@ class ContractionZ3Context:
     all_vars: Sequence[z3.ExprRef]
 
     overpadding_applied: bool
+    
+@dataclass
+class ContractionZ3ConstraintsPack:
+    solver: z3.Solver
+    ctx: ContractionZ3Context
 
 def generate_generic_contraction_solution_in_mega_constraints():
     pass
@@ -177,8 +182,22 @@ def generate_generic_contraction_constraints(
             sg_n_cnt,
         ]
     )
+    
+    mfma_intrinsic_constraints_list = dispatch_constraints.get_mfma_intrinsic_constraints(
+        lhs_type,
+        rhs_type,
+        res_type,
+        intrinsic_mn,
+        intrinsic_mn,
+        intrinsic_k,
+        gpu_target_info.mma_intrinsics,
+    )
+    # for i in mfma_intrinsic_constraints_list:
+    #     print(i)
+    #     print("hi")
+        
+    # exit()
 
-    solver = z3.Solver()
     match codegen_pipeline:
         case iree_codegen.DispatchLoweringPassPipeline.LLVMGPUVectorDistribute:
             constraints = dispatch_constraints.generate_vector_distribute_constraints(
@@ -213,31 +232,59 @@ def generate_generic_contraction_constraints(
                 gpu_target_info,
             )
 
-    solver.add(z3.simplify(z3.And(constraints)))
-    tuner_ctx.logger.debug(f"Initial constraints: {solver}")
+    mega_constraints_list = []
+    for i, mfma_intrinsic_constraints in enumerate(mfma_intrinsic_constraints_list, start=1):
+        solver = z3.Solver()
+        final_constraints = constraints.copy() + [mfma_intrinsic_constraints]
+        solver.add(z3.simplify(z3.And(final_constraints)))
+        tuner_ctx.logger.debug(f"Z3 Constraints Solver[{i}]: {solver}")
 
-    ctx = ContractionZ3Context(
-        M=M,
-        N=N,
-        K=K,
-        m_vars=m_vars,
-        n_vars=n_vars,
-        k_vars=k_vars,
-        subgroup_m_vars=subgroup_m_vars,
-        subgroup_n_vars=subgroup_n_vars,
-        subgroup_size=subgroup_size,
-        intrinsic_mn=intrinsic_mn,
-        intrinsic_k=intrinsic_k,
-        wg_x=wg_x,
-        wg_y=wg_y,
-        wg_z=wg_z,
-        sg_m_cnt=sg_m_cnt,
-        sg_n_cnt=sg_n_cnt,
-        all_vars=all_vars,
-        overpadding_applied=overpadding_applied,
-    )
+        ctx = ContractionZ3Context(
+            M=M,
+            N=N,
+            K=K,
+            m_vars=m_vars,
+            n_vars=n_vars,
+            k_vars=k_vars,
+            subgroup_m_vars=subgroup_m_vars,
+            subgroup_n_vars=subgroup_n_vars,
+            subgroup_size=subgroup_size,
+            intrinsic_mn=intrinsic_mn,
+            intrinsic_k=intrinsic_k,
+            wg_x=wg_x,
+            wg_y=wg_y,
+            wg_z=wg_z,
+            sg_m_cnt=sg_m_cnt,
+            sg_n_cnt=sg_n_cnt,
+            all_vars=all_vars,
+            overpadding_applied=overpadding_applied,
+        )
+        mega_constraints_list.append(ContractionZ3ConstraintsPack(solver, ctx))
 
-    return solver, ctx
+    return mega_constraints_list
+
+@dataclass
+class GenerateSolutionPack:
+    tuner_ctx: common.TunerContext
+    # gpu_target_info: iree_gpu.TargetInfo
+    gpu_target_info_mma_intrinsics: Any
+    contraction_dims: common.ContractionDimensions
+    matmul_size: common.ContractionSizes
+    lhs_type: common.ShapedType
+    rhs_type: common.ShapedType
+    res_type: common.ShapedType
+    dispatch_kind: common.DispatchKind
+    indexing_maps: list[ir.AffineMap]
+    codegen_pipeline: iree_codegen.DispatchLoweringPassPipeline
+    num_subgroups: int
+    allowed_waves_per_eu: list[int]
+    pipeline_options_search_space: dispatch_constraints.PipelineOptionsSearchSpace
+    igemm_details: Optional[iree_codegen.IGEMMGenericConvDetails]
+    conv_to_igemm_info: Optional[common.ConvToIgemmInfo]
+    
+    solver: z3.Solver
+    ctx: ContractionZ3Context
+
 
 def generate_generic_contraction_solutions(
     tuner_ctx: common.TunerContext,
@@ -256,8 +303,7 @@ def generate_generic_contraction_solutions(
     igemm_details: Optional[iree_codegen.IGEMMGenericConvDetails] = None,
     conv_to_igemm_info: Optional[common.ConvToIgemmInfo] = None,
 ) -> Iterator[list[common.TuningConfiguration]]:
-
-    solver, ctx = generate_generic_contraction_constraints(
+    mega_constraints_list = generate_generic_contraction_constraints(
         tuner_ctx=tuner_ctx,
         gpu_target_info=gpu_target_info,
         contraction_dims=contraction_dims,
@@ -272,7 +318,81 @@ def generate_generic_contraction_solutions(
         pipeline_options_search_space=pipeline_options_search_space,
         igemm_details=igemm_details,
     )
+    
+    # for i in mega_constraints_list:
+    #     print(i)
+    #     exit()
+    task_list = [
+        GenerateSolutionPack(
+            tuner_ctx=tuner_ctx,
+            # gpu_target_info=gpu_target_info,
+            gpu_target_info_mma_intrinsics = gpu_target_info.mma_intrinsics,
+            contraction_dims=contraction_dims,
+            matmul_size=matmul_size,
+            lhs_type=lhs_type,
+            rhs_type=rhs_type,
+            res_type=res_type,
+            dispatch_kind=dispatch_kind,
+            indexing_maps=indexing_maps,
+            codegen_pipeline=codegen_pipeline,
+            num_subgroups=num_subgroups,
+            allowed_waves_per_eu=allowed_waves_per_eu,
+            pipeline_options_search_space=pipeline_options_search_space,
+            igemm_details=igemm_details,
+            conv_to_igemm_info=conv_to_igemm_info,
+            solver=mega_constraints_pack.solver,
+            ctx=mega_constraints_pack.ctx,
+        )
+        for mega_constraints_pack in mega_constraints_list
+    ]
+    print(f"worker_num: {len(mega_constraints_list)}")
+    executor = process_utils.MultithreadExecutor(num_workers=len(mega_constraints_list))
+    return executor.run(task_list, generate_generic_contraction_solutions_instance)
+    
+    pass
 
+
+def generate_generic_contraction_solutions_instance(
+    # tuner_ctx: common.TunerContext,
+    # gpu_target_info: iree_gpu.TargetInfo,
+    # gpu_target_info_mma_intrinsics,
+    # contraction_dims: common.ContractionDimensions,
+    # matmul_size: common.ContractionSizes,
+    # lhs_type: common.ShapedType,
+    # rhs_type: common.ShapedType,
+    # res_type: common.ShapedType,
+    # dispatch_kind: common.DispatchKind,
+    # indexing_maps: list[ir.AffineMap],
+    # codegen_pipeline: iree_codegen.DispatchLoweringPassPipeline = iree_codegen.DispatchLoweringPassPipeline.LLVMGPUVectorDistribute,
+    # num_subgroups: int = 4,
+    # allowed_waves_per_eu: list[int] = [2],
+    # pipeline_options_search_space: dispatch_constraints.PipelineOptionsSearchSpace = dispatch_constraints.PipelineOptionsSearchSpace(),
+    # igemm_details: Optional[iree_codegen.IGEMMGenericConvDetails] = None,
+    # conv_to_igemm_info: Optional[common.ConvToIgemmInfo] = None,
+    # solver=None,
+    # ctx=None,
+    generate_solution_pack: GenerateSolutionPack
+) -> Iterator[list[common.TuningConfiguration]]:
+    tuner_ctx = generate_solution_pack.tuner_ctx
+    gpu_target_info_mma_intrinsics = generate_solution_pack.gpu_target_info_mma_intrinsics
+    contraction_dims = generate_solution_pack.contraction_dims
+    matmul_size = generate_solution_pack.matmul_size
+    lhs_type = generate_solution_pack.lhs_type
+    rhs_type = generate_solution_pack.rhs_type
+    res_type = generate_solution_pack.res_type
+    dispatch_kind = generate_solution_pack.dispatch_kind
+    indexing_maps = generate_solution_pack.indexing_maps
+    codegen_pipeline = generate_solution_pack.codegen_pipeline
+    num_subgroups = generate_solution_pack.num_subgroups
+    allowed_waves_per_eu = generate_solution_pack.allowed_waves_per_eu
+    pipeline_options_search_space = generate_solution_pack.pipeline_options_search_space
+    igemm_details = generate_solution_pack.igemm_details
+    conv_to_igemm_info = generate_solution_pack.conv_to_igemm_info
+    solver = generate_solution_pack.solver
+    ctx = generate_solution_pack.ctx
+
+    # tuner_ctx = common.TunerContext()
+    # tuner_ctx.logger.debug("Hello can you")
     M, N, K = ctx.M, ctx.N, ctx.K
     m_vars = ctx.m_vars
     n_vars = ctx.n_vars
@@ -308,7 +428,7 @@ def generate_generic_contraction_solutions(
             *intrinsic_mnk_shape,
             lhs_type.element_type,
             rhs_type.element_type,
-            gpu_target_info.mma_intrinsics,
+            gpu_target_info_mma_intrinsics,
         )
 
         # Check if any dimension requires padding to align with intrinsic sizes.
