@@ -279,9 +279,6 @@ def get_z3_solutions(z3_solver: Z3Solver) -> Z3Vals:
     return z3_solutions
 
 
-import time
-
-
 def generate_generic_contraction_solutions(
     tuner_ctx: common.TunerContext,
     gpu_target_info: iree_gpu.TargetInfo,
@@ -331,7 +328,6 @@ def generate_generic_contraction_solutions(
         f"M={M}, N={N}, K={K}, overpadding_applied={overpadding_applied}"
     )
 
-    start_time = time.perf_counter()
     constraints = generate_generic_contraction_z3_constraints(
         tuner_ctx,
         gpu_target_info,
@@ -343,11 +339,6 @@ def generate_generic_contraction_solutions(
         codegen_pipeline,
         num_subgroups=num_subgroups,
     )
-    end_time = time.perf_counter()
-
-    elapsed_time = end_time - start_time
-    print(f"generate constraints time: {elapsed_time:.4f} seconds")
-    z3_vars = constraints.z3_vars
 
     num_loops = (
         len(contraction_dims.m)
@@ -355,14 +346,8 @@ def generate_generic_contraction_solutions(
         + len(contraction_dims.k)
         + len(contraction_dims.batch)
     )
-    start_time = time.perf_counter()
+
     z3_solutions: list[ContractionZ3Vals] = get_z3_solutions(constraints)
-
-    end_time = time.perf_counter()
-
-    elapsed_time = end_time - start_time
-    print(f"get z3 val time: {elapsed_time:.4f} seconds")
-    start_time = time.perf_counter()
     for z3_vals in z3_solutions:
         intrinsic_mnk_shape = (
             z3_vals.intrinsic_mn,
@@ -525,11 +510,6 @@ def generate_generic_contraction_solutions(
                     knob_assignment=knob_assignment,
                 )
             ]
-
-    end_time = time.perf_counter()
-
-    elapsed_time = end_time - start_time
-    print(f"rest overhead time: {elapsed_time:.4f} seconds")
 
 
 def generate_attention_solutions(
