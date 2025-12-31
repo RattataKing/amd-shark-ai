@@ -8,7 +8,7 @@ import z3  # type: ignore
 import math
 from abc import ABC, abstractmethod
 from typing import Iterator, Optional, Protocol, cast
-from dataclasses import dataclass
+from dataclasses import dataclass, fields
 
 from iree.compiler import ir  # type: ignore
 from iree.compiler.dialects import iree_codegen, iree_gpu, linalg  # type: ignore
@@ -103,23 +103,14 @@ class ContractionZ3Vars(Z3Vars):
 
     @property
     def all_vars(self) -> list[z3.ExprRef]:
-        return (
-            self.m_vars
-            + self.n_vars
-            + self.k_vars
-            + self.subgroup_m_vars
-            + self.subgroup_n_vars
-            + [
-                self.subgroup_size,
-                self.intrinsic_mn,
-                self.intrinsic_k,
-                self.wg_x,
-                self.wg_y,
-                self.wg_z,
-                self.sg_m_cnt,
-                self.sg_n_cnt,
-            ]
-        )
+        vars_list: list[z3.ExprRef] = []
+        for f in fields(self):
+            attr = getattr(self, f.name)
+            if isinstance(attr, list):
+                vars_list.extend(attr)
+            else:
+                vars_list.append(attr)
+        return vars_list
 
     def eval(self, model: z3.ModelRef) -> ContractionZ3Vals:
         get = lambda v: model[v].as_long()
