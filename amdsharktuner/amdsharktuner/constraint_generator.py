@@ -16,25 +16,10 @@ from iree.compiler.dialects import iree_codegen, iree_gpu, linalg  # type: ignor
 from . import common, dispatch_constraints, dispatch_parser
 
 
-class Z3Assignment(Protocol):
-    """Marker base class for interpretations of Z3 constants from a satisfying model."""
-
-
-class Z3Constants(Protocol):
-    """Marker base class for Z3 uninterpreted constants used in constraints."""
-
-    @property
-    def symbols(self) -> list[z3.ExprRef]:
-        """All constants whose values are extracted from the model."""
-        pass
-
-    def extract(self, model: z3.ModelRef) -> Z3Assignment:
-        """Extract a satisfying assignment from the model."""
-        pass
-
-
 @dataclass
-class ContractionZ3Assignment(Z3Assignment):
+class ContractionZ3Assignment:
+    """Interpretations of Z3 constants from a satisfying model."""
+
     m_vals: list[int]
     n_vals: list[int]
     k_vals: list[int]
@@ -52,7 +37,9 @@ class ContractionZ3Assignment(Z3Assignment):
 
 
 @dataclass
-class ContractionZ3Constants(Z3Constants):
+class ContractionZ3Constants:
+    """Z3 uninterpreted constants used in constraints."""
+
     m_vars: list[z3.ExprRef]
     n_vars: list[z3.ExprRef]
     k_vars: list[z3.ExprRef]
@@ -105,6 +92,7 @@ class ContractionZ3Constants(Z3Constants):
 
     @property
     def symbols(self) -> list[z3.ExprRef]:
+        """All constants whose values are extracted from the model."""
         vars_list: list[z3.ExprRef] = []
         for f in fields(self):
             attr = getattr(self, f.name)
@@ -115,6 +103,7 @@ class ContractionZ3Constants(Z3Constants):
         return vars_list
 
     def extract(self, model: z3.ModelRef) -> ContractionZ3Assignment:
+        """Extract a satisfying assignment from the model."""
         get = lambda v: model[v].as_long()
         return ContractionZ3Assignment(
             m_vals=[get(v) for v in self.m_vars],
@@ -136,7 +125,7 @@ class ContractionZ3Constants(Z3Constants):
 @dataclass
 class ConstraintSet:
     solver: z3.Solver
-    z3_constants: Z3Constants
+    z3_constants: ContractionZ3Constants
 
 
 def adjust_problem_size_for_pipeline(
@@ -253,7 +242,9 @@ def generate_generic_contraction_z3_constraints(
     return ConstraintSet(solver, z3_constants)
 
 
-def get_z3_solutions(constraint_set: ConstraintSet) -> Iterator[Z3Assignment]:
+def get_z3_solutions(
+    constraint_set: ConstraintSet,
+) -> Iterator[ContractionZ3Assignment]:
     solver = constraint_set.solver
     z3_constants = constraint_set.z3_constants
     z3_symbols = constraint_set.z3_constants.symbols
