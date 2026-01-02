@@ -104,7 +104,15 @@ class ContractionZ3Constants:
 
     def extract(self, model: z3.ModelRef) -> ContractionZ3Assignment:
         """Extract a satisfying assignment from the model."""
-        get = lambda v: model[v].as_long()
+
+        def get(v: z3.ExprRef) -> int:
+            # Evaluate arbitrary expressions over a model, convert z3 expr to int.
+            val = model.eval(v)
+            assert z3.is_int_value(
+                val
+            ), f"Unassigned or non-concrete constant: {v} -> {val}"
+            return val.as_long()
+
         return ContractionZ3Assignment(
             m_vals=[get(v) for v in self.m_vars],
             n_vals=[get(v) for v in self.n_vars],
@@ -255,7 +263,9 @@ def get_z3_solutions(
         z3_assignment = z3_constants.extract(model)
 
         # Add new constraints to find the next solution.
-        solver.add(z3.Or([v != model[v] for v in z3_symbols]))
+        solver.add(
+            z3.Or([v != model.eval(v, model_completion=True) for v in z3_symbols])
+        )
 
         yield z3_assignment
 
