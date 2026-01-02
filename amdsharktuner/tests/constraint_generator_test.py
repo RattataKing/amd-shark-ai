@@ -659,39 +659,31 @@ def test_adjust_problem_size_for_pipeline_with_igemm_details(
         assert conv_size.K == [1152]
 
 
-def test_get_z3_solutions():
-    x = constraint_generator.z3.Int("x")
-    y = constraint_generator.z3.Int("y")
+def test_get_z3_solutions() -> None:
+    matmul_size = common.ContractionSizes(M=[1], N=[1], K=[1], B=[1])
+    z3_constants = constraint_generator.ContractionZ3Constants.from_sizes(matmul_size)
 
     solver = constraint_generator.z3.Solver()
-    solver.add(constraint_generator.z3.Or(x == 0, x == 1))
-    solver.add(y == 0)
-
-    z3_constants = SimpleNamespace(
-        symbols=[x, y],
-        extract=lambda model: SimpleNamespace(
-            x=model[x].as_long(), y=model[y].as_long()
-        ),
+    for v in z3_constants.symbols:
+        if v is not z3_constants.wg_x:
+            solver.add(v == 0)
+    solver.add(
+        constraint_generator.z3.Or(z3_constants.wg_x == 0, z3_constants.wg_x == 1)
     )
-    z3_contraint_set = constraint_generator.ConstraintSet(
+
+    z3_constraint_set = constraint_generator.ConstraintSet(
         solver=solver, z3_constants=z3_constants
     )
-    results = list(constraint_generator.get_z3_solutions(z3_contraint_set))
-    pairs = {(res.x, res.y) for res in results}
+
+    results = list(constraint_generator.get_z3_solutions(z3_constraint_set))
+    pairs = {(res.wg_x, res.wg_y) for res in results}
 
     assert pairs == {(0, 0), (1, 0)}
     assert len(results) == 2
 
-    solver = constraint_generator.z3.Solver()
-    solver.add(x == 0)
-    solver.add(x == 1)
-
-    z3_constants = SimpleNamespace(
-        symbols=[x], extract=lambda model: SimpleNamespace(x=model[x].as_long())
-    )
-    z3_contraint_set = constraint_generator.ConstraintSet(
+    solver.add(z3_constants.wg_y == 1)
+    z3_constraint_set = constraint_generator.ConstraintSet(
         solver=solver, z3_constants=z3_constants
     )
-    results = list(constraint_generator.get_z3_solutions(z3_contraint_set))
-
-    assert list(results) == []
+    results = list(constraint_generator.get_z3_solutions(z3_constraint_set))
+    assert results == []
