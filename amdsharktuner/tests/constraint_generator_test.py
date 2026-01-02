@@ -667,12 +667,16 @@ def test_get_z3_solutions():
     solver.add(constraint_generator.z3.Or(x == 0, x == 1))
     solver.add(y == 0)
 
-    z3_vars = SimpleNamespace(
-        all_vars=[x, y],
-        eval=lambda model: SimpleNamespace(x=model[x].as_long(), y=model[y].as_long()),
+    z3_constants = SimpleNamespace(
+        symbols=[x, y],
+        extract=lambda model: SimpleNamespace(
+            x=model[x].as_long(), y=model[y].as_long()
+        ),
     )
-    z3_solver = constraint_generator.Z3Solver(solver=solver, z3_vars=z3_vars)
-    results = list(constraint_generator.get_z3_solutions(z3_solver))
+    z3_contraint_set = constraint_generator.ConstraintSet(
+        solver=solver, z3_constants=z3_constants
+    )
+    results = list(constraint_generator.get_z3_solutions(z3_contraint_set))
     pairs = {(res.x, res.y) for res in results}
 
     assert pairs == {(0, 0), (1, 0)}
@@ -682,10 +686,12 @@ def test_get_z3_solutions():
     solver.add(x == 0)
     solver.add(x == 1)
 
-    z3_vars = SimpleNamespace(
-        all_vars=[x], eval=lambda model: SimpleNamespace(x=model[x].as_long())
+    z3_constants = SimpleNamespace(
+        symbols=[x], extract=lambda model: SimpleNamespace(x=model[x].as_long())
     )
-    z3_solver = constraint_generator.Z3Solver(solver=solver, z3_vars=z3_vars)
-    results = list(constraint_generator.get_z3_solutions(z3_solver))
+    z3_contraint_set = constraint_generator.ConstraintSet(
+        solver=solver, z3_constants=z3_constants
+    )
+    results = list(constraint_generator.get_z3_solutions(z3_contraint_set))
 
     assert list(results) == []
