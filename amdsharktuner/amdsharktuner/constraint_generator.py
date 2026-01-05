@@ -7,7 +7,7 @@
 import z3  # type: ignore
 import math
 from abc import ABC, abstractmethod
-from typing import Iterator, Optional, TypeVar, Generic
+from typing import Generic, Iterator, Optional, TypeVar
 from dataclasses import dataclass, fields
 
 from iree.compiler import ir  # type: ignore
@@ -252,7 +252,6 @@ def get_z3_solutions(
 
     while solver.check() == z3.sat:
         model = solver.model()
-
         z3_assignment = z3_constants.extract(model)
 
         # Add new constraints to find the next solution.
