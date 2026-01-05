@@ -7,7 +7,7 @@
 import z3  # type: ignore
 import math
 from abc import ABC, abstractmethod
-from typing import Iterator, Optional, cast
+from typing import Iterator, Optional, TypeVar, Generic
 from dataclasses import dataclass, fields
 
 from iree.compiler import ir  # type: ignore
@@ -16,44 +16,37 @@ from iree.compiler.dialects import iree_codegen, iree_gpu, linalg  # type: ignor
 from . import common, dispatch_constraints, dispatch_parser
 
 
-@dataclass
-class ContractionZ3Assignment:
+TScalar = TypeVar("TScalar", int, z3.ExprRef)
+
+
+@dataclass(slots=True)
+class ContractionConstantsBase(Generic[TScalar]):
+    m_vars: list[TScalar]
+    n_vars: list[TScalar]
+    k_vars: list[TScalar]
+    subgroup_m_vars: list[TScalar]
+    subgroup_n_vars: list[TScalar]
+
+    subgroup_size: TScalar
+    intrinsic_mn: TScalar
+    intrinsic_k: TScalar
+    wg_x: TScalar
+    wg_y: TScalar
+    wg_z: TScalar
+    sg_m_cnt: TScalar
+    sg_n_cnt: TScalar
+
+
+@dataclass(slots=True)
+class ContractionZ3Assignment(ContractionConstantsBase[int]):
     """Interpretations of Z3 constants from a satisfying model."""
 
-    m_vals: list[int]
-    n_vals: list[int]
-    k_vals: list[int]
-    subgroup_m_vals: list[int]
-    subgroup_n_vals: list[int]
-
-    subgroup_size: int
-    intrinsic_mn: int
-    intrinsic_k: int
-    wg_x: int
-    wg_y: int
-    wg_z: int
-    sg_m_cnt: int
-    sg_n_cnt: int
+    pass
 
 
-@dataclass
-class ContractionZ3Constants:
+@dataclass(slots=True)
+class ContractionZ3Constants(ContractionConstantsBase[z3.ExprRef]):
     """Z3 uninterpreted constants used in constraints."""
-
-    m_vars: list[z3.ExprRef]
-    n_vars: list[z3.ExprRef]
-    k_vars: list[z3.ExprRef]
-    subgroup_m_vars: list[z3.ExprRef]
-    subgroup_n_vars: list[z3.ExprRef]
-
-    subgroup_size: z3.ExprRef
-    intrinsic_mn: z3.ExprRef
-    intrinsic_k: z3.ExprRef
-    wg_x: z3.ExprRef
-    wg_y: z3.ExprRef
-    wg_z: z3.ExprRef
-    sg_m_cnt: z3.ExprRef
-    sg_n_cnt: z3.ExprRef
 
     @classmethod
     def from_sizes(
@@ -114,11 +107,11 @@ class ContractionZ3Constants:
             return val.as_long()
 
         return ContractionZ3Assignment(
-            m_vals=[get(v) for v in self.m_vars],
-            n_vals=[get(v) for v in self.n_vars],
-            k_vals=[get(v) for v in self.k_vars],
-            subgroup_m_vals=[get(v) for v in self.subgroup_m_vars],
-            subgroup_n_vals=[get(v) for v in self.subgroup_n_vars],
+            m_vars=[get(v) for v in self.m_vars],
+            n_vars=[get(v) for v in self.n_vars],
+            k_vars=[get(v) for v in self.k_vars],
+            subgroup_m_vars=[get(v) for v in self.subgroup_m_vars],
+            subgroup_n_vars=[get(v) for v in self.subgroup_n_vars],
             subgroup_size=get(self.subgroup_size),
             intrinsic_mn=get(self.intrinsic_mn),
             intrinsic_k=get(self.intrinsic_k),
@@ -374,12 +367,12 @@ def generate_generic_contraction_solutions(
         set_cdim_tile_sizes(
             workgroup_tile_sizes,
             contraction_dims.m,
-            z3_assignment.m_vals,
+            z3_assignment.m_vars,
         )
         set_cdim_tile_sizes(
             workgroup_tile_sizes,
             contraction_dims.n,
-            z3_assignment.n_vals,
+            z3_assignment.n_vars,
         )
         set_cdim_tile_sizes(
             workgroup_tile_sizes,
@@ -394,12 +387,12 @@ def generate_generic_contraction_solutions(
         set_cdim_tile_sizes(
             subgroup_tile_sizes,
             contraction_dims.m,
-            z3_assignment.subgroup_m_vals,
+            z3_assignment.subgroup_m_vars,
         )
         set_cdim_tile_sizes(
             subgroup_tile_sizes,
             contraction_dims.n,
-            z3_assignment.subgroup_n_vals,
+            z3_assignment.subgroup_n_vars,
         )
         set_cdim_tile_sizes(
             subgroup_tile_sizes,
@@ -414,7 +407,7 @@ def generate_generic_contraction_solutions(
         set_cdim_tile_sizes(
             reduction_tile_sizes,
             contraction_dims.k,
-            z3_assignment.k_vals,
+            z3_assignment.k_vars,
         )
 
         promote_operands = [0, 1]
