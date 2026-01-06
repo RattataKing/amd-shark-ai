@@ -1,0 +1,1551 @@
+2025-12-14 00:20:22,694 - DEBUG - In MLIR folder /home/amily/iree-kernel-benchmark/dump_dispatch/problem_mlir_dump: 
+2025-12-14 00:20:22,694 - DEBUG - compute_gemm_4096_4096_8192_f16_f32_tB
+2025-12-14 00:20:22,694 - DEBUG - compute_gemm_4096_4096_8192_f32_f32_tB
+2025-12-14 00:20:22,694 - DEBUG - compute_gemm_4096_4096_8192_f8E4M3FNUZ_f32_tB
+2025-12-14 00:20:22,694 - DEBUG - compute_gemm_4096_4096_8192_i32_i32_tB
+2025-12-14 00:20:22,694 - DEBUG - compute_gemm_4096_4096_8192_i8_i32_tB
+2025-12-14 00:20:22,694 - DEBUG - square_gemm_1024_1024_1024_f16_f32_tB
+2025-12-14 00:20:22,694 - DEBUG - square_gemm_1024_1024_1024_f32_f32_tB
+2025-12-14 00:20:22,694 - DEBUG - square_gemm_1024_1024_1024_f8E4M3FNUZ_f32_tB
+2025-12-14 00:20:22,694 - DEBUG - square_gemm_1024_1024_1024_i32_i32_tB
+2025-12-14 00:20:22,694 - DEBUG - square_gemm_1024_1024_1024_i8_i32_tB
+2025-12-14 00:20:22,694 - DEBUG - square_gemm_128_128_128_f16_f32_tB
+2025-12-14 00:20:22,694 - DEBUG - square_gemm_128_128_128_f32_f32_tB
+2025-12-14 00:20:22,694 - DEBUG - square_gemm_128_128_128_f8E4M3FNUZ_f32_tB
+2025-12-14 00:20:22,694 - DEBUG - square_gemm_128_128_128_i32_i32_tB
+2025-12-14 00:20:22,694 - DEBUG - square_gemm_128_128_128_i8_i32_tB
+2025-12-14 00:20:22,694 - DEBUG - square_gemm_2048_2048_2048_f16_f32_tB
+2025-12-14 00:20:22,694 - DEBUG - square_gemm_2048_2048_2048_f32_f32_tB
+2025-12-14 00:20:22,694 - DEBUG - square_gemm_2048_2048_2048_f8E4M3FNUZ_f32_tB
+2025-12-14 00:20:22,694 - DEBUG - square_gemm_2048_2048_2048_i32_i32_tB
+2025-12-14 00:20:22,694 - DEBUG - square_gemm_2048_2048_2048_i8_i32_tB
+2025-12-14 00:20:22,694 - DEBUG - square_gemm_256_256_256_f16_f32_tB
+2025-12-14 00:20:22,695 - DEBUG - square_gemm_256_256_256_f32_f32_tB
+2025-12-14 00:20:22,695 - DEBUG - square_gemm_256_256_256_f8E4M3FNUZ_f32_tB
+2025-12-14 00:20:22,695 - DEBUG - square_gemm_256_256_256_i32_i32_tB
+2025-12-14 00:20:22,695 - DEBUG - square_gemm_256_256_256_i8_i32_tB
+2025-12-14 00:20:22,695 - DEBUG - square_gemm_4096_4096_4096_f16_f32_tB
+2025-12-14 00:20:22,695 - DEBUG - square_gemm_4096_4096_4096_f32_f32_tB
+2025-12-14 00:20:22,695 - DEBUG - square_gemm_4096_4096_4096_f8E4M3FNUZ_f32_tB
+2025-12-14 00:20:22,695 - DEBUG - square_gemm_4096_4096_4096_i32_i32_tB
+2025-12-14 00:20:22,695 - DEBUG - square_gemm_4096_4096_4096_i8_i32_tB
+2025-12-14 00:20:22,695 - DEBUG - square_gemm_512_512_512_f16_f32_tB
+2025-12-14 00:20:22,695 - DEBUG - square_gemm_512_512_512_f32_f32_tB
+2025-12-14 00:20:22,695 - DEBUG - square_gemm_512_512_512_f8E4M3FNUZ_f32_tB
+2025-12-14 00:20:22,695 - DEBUG - square_gemm_512_512_512_i32_i32_tB
+2025-12-14 00:20:22,695 - DEBUG - square_gemm_512_512_512_i8_i32_tB
+2025-12-14 00:20:22,695 - DEBUG - square_gemm_8192_8192_8192_f16_f32_tB
+2025-12-14 00:20:22,695 - DEBUG - square_gemm_8192_8192_8192_f32_f32_tB
+2025-12-14 00:20:22,695 - DEBUG - square_gemm_8192_8192_8192_f8E4M3FNUZ_f32_tB
+2025-12-14 00:20:22,695 - DEBUG - square_gemm_8192_8192_8192_i32_i32_tB
+2025-12-14 00:20:22,695 - DEBUG - square_gemm_8192_8192_8192_i8_i32_tB
+2025-12-14 00:20:22,695 - DEBUG - tk_gemm_128_1280_2048_f16_f32_tB
+2025-12-14 00:20:22,695 - DEBUG - tk_gemm_128_1280_2048_f32_f32_tB
+2025-12-14 00:20:22,695 - DEBUG - tk_gemm_128_1280_2048_f8E4M3FNUZ_f32_tB
+2025-12-14 00:20:22,695 - DEBUG - tk_gemm_128_1280_2048_i32_i32_tB
+2025-12-14 00:20:22,695 - DEBUG - tk_gemm_128_1280_2048_i8_i32_tB
+2025-12-14 00:20:22,695 - DEBUG - tk_gemm_2048_10240_1280_f16_f32_tB
+2025-12-14 00:20:22,695 - DEBUG - tk_gemm_2048_10240_1280_f32_f32_tB
+2025-12-14 00:20:22,695 - DEBUG - tk_gemm_2048_10240_1280_f8E4M3FNUZ_f32_tB
+2025-12-14 00:20:22,695 - DEBUG - tk_gemm_2048_10240_1280_i32_i32_tB
+2025-12-14 00:20:22,695 - DEBUG - tk_gemm_2048_10240_1280_i8_i32_tB
+2025-12-14 00:20:22,695 - DEBUG - tk_gemm_2048_1280_1280_f16_f32_tB
+2025-12-14 00:20:22,695 - DEBUG - tk_gemm_2048_1280_1280_f32_f32_tB
+2025-12-14 00:20:22,695 - DEBUG - tk_gemm_2048_1280_1280_f8E4M3FNUZ_f32_tB
+2025-12-14 00:20:22,695 - DEBUG - tk_gemm_2048_1280_1280_i32_i32_tB
+2025-12-14 00:20:22,695 - DEBUG - tk_gemm_2048_1280_1280_i8_i32_tB
+2025-12-14 00:20:22,695 - DEBUG - tk_gemm_2048_1280_5120_f16_f32_tB
+2025-12-14 00:20:22,695 - DEBUG - tk_gemm_2048_1280_5120_f32_f32_tB
+2025-12-14 00:20:22,695 - DEBUG - tk_gemm_2048_1280_5120_f8E4M3FNUZ_f32_tB
+2025-12-14 00:20:22,695 - DEBUG - tk_gemm_2048_1280_5120_i32_i32_tB
+2025-12-14 00:20:22,695 - DEBUG - tk_gemm_2048_1280_5120_i8_i32_tB
+2025-12-14 00:20:22,695 - DEBUG - tk_gemm_8192_5120_640_f16_f32_tB
+2025-12-14 00:20:22,695 - DEBUG - tk_gemm_8192_5120_640_f32_f32_tB
+2025-12-14 00:20:22,695 - DEBUG - tk_gemm_8192_5120_640_f8E4M3FNUZ_f32_tB
+2025-12-14 00:20:22,695 - DEBUG - tk_gemm_8192_5120_640_i32_i32_tB
+2025-12-14 00:20:22,695 - DEBUG - tk_gemm_8192_5120_640_i8_i32_tB
+2025-12-14 00:20:22,695 - DEBUG - unet_gemm_1024_10240_1280_f16_f32_tB
+2025-12-14 00:20:22,695 - DEBUG - unet_gemm_1024_10240_1280_f32_f32_tB
+2025-12-14 00:20:22,695 - DEBUG - unet_gemm_1024_10240_1280_f8E4M3FNUZ_f32_tB
+2025-12-14 00:20:22,695 - DEBUG - unet_gemm_1024_10240_1280_i32_i32_tB
+2025-12-14 00:20:22,695 - DEBUG - unet_gemm_1024_10240_1280_i8_i32_tB
+2025-12-14 00:20:22,695 - DEBUG - unet_gemm_1024_1280_1280_f16_f32_tB
+2025-12-14 00:20:22,695 - DEBUG - unet_gemm_1024_1280_1280_f32_f32_tB
+2025-12-14 00:20:22,695 - DEBUG - unet_gemm_1024_1280_1280_f8E4M3FNUZ_f32_tB
+2025-12-14 00:20:22,695 - DEBUG - unet_gemm_1024_1280_1280_i32_i32_tB
+2025-12-14 00:20:22,695 - DEBUG - unet_gemm_1024_1280_1280_i8_i32_tB
+2025-12-14 00:20:22,695 - DEBUG - unet_gemm_1024_1280_5120_f16_f32_tB
+2025-12-14 00:20:22,695 - DEBUG - unet_gemm_1024_1280_5120_f32_f32_tB
+2025-12-14 00:20:22,695 - DEBUG - unet_gemm_1024_1280_5120_f8E4M3FNUZ_f32_tB
+2025-12-14 00:20:22,695 - DEBUG - unet_gemm_1024_1280_5120_i32_i32_tB
+2025-12-14 00:20:22,695 - DEBUG - unet_gemm_1024_1280_5120_i8_i32_tB
+2025-12-14 00:20:22,695 - DEBUG - unet_gemm_128_1280_2048_f16_f32_tB
+2025-12-14 00:20:22,695 - DEBUG - unet_gemm_128_1280_2048_f32_f32_tB
+2025-12-14 00:20:22,695 - DEBUG - unet_gemm_128_1280_2048_f8E4M3FNUZ_f32_tB
+2025-12-14 00:20:22,695 - DEBUG - unet_gemm_128_1280_2048_i32_i32_tB
+2025-12-14 00:20:22,695 - DEBUG - unet_gemm_128_1280_2048_i8_i32_tB
+2025-12-14 00:20:22,695 - DEBUG - unet_gemm_2048_10240_1280_f16_f32_tB
+2025-12-14 00:20:22,695 - DEBUG - unet_gemm_2048_10240_1280_f32_f32_tB
+2025-12-14 00:20:22,695 - DEBUG - unet_gemm_2048_10240_1280_f8E4M3FNUZ_f32_tB
+2025-12-14 00:20:22,695 - DEBUG - unet_gemm_2048_10240_1280_i32_i32_tB
+2025-12-14 00:20:22,695 - DEBUG - unet_gemm_2048_10240_1280_i8_i32_tB
+2025-12-14 00:20:22,695 - DEBUG - unet_gemm_2048_1280_1280_f16_f32_tB
+2025-12-14 00:20:22,695 - DEBUG - unet_gemm_2048_1280_1280_f32_f32_tB
+2025-12-14 00:20:22,695 - DEBUG - unet_gemm_2048_1280_1280_f8E4M3FNUZ_f32_tB
+2025-12-14 00:20:22,695 - DEBUG - unet_gemm_2048_1280_1280_i32_i32_tB
+2025-12-14 00:20:22,695 - DEBUG - unet_gemm_2048_1280_1280_i8_i32_tB
+2025-12-14 00:20:22,695 - DEBUG - unet_gemm_2048_1280_5120_f16_f32_tB
+2025-12-14 00:20:22,696 - DEBUG - unet_gemm_2048_1280_5120_f32_f32_tB
+2025-12-14 00:20:22,696 - DEBUG - unet_gemm_2048_1280_5120_f8E4M3FNUZ_f32_tB
+2025-12-14 00:20:22,696 - DEBUG - unet_gemm_2048_1280_5120_i32_i32_tB
+2025-12-14 00:20:22,696 - DEBUG - unet_gemm_2048_1280_5120_i8_i32_tB
+2025-12-14 00:20:22,696 - DEBUG - unet_gemm_4096_5120_640_f16_f32_tB
+2025-12-14 00:20:22,696 - DEBUG - unet_gemm_4096_5120_640_f32_f32_tB
+2025-12-14 00:20:22,696 - DEBUG - unet_gemm_4096_5120_640_f8E4M3FNUZ_f32_tB
+2025-12-14 00:20:22,696 - DEBUG - unet_gemm_4096_5120_640_i32_i32_tB
+2025-12-14 00:20:22,696 - DEBUG - unet_gemm_4096_5120_640_i8_i32_tB
+2025-12-14 00:20:22,696 - DEBUG - unet_gemm_4096_640_2560_f16_f32_tB
+2025-12-14 00:20:22,696 - DEBUG - unet_gemm_4096_640_2560_f32_f32_tB
+2025-12-14 00:20:22,696 - DEBUG - unet_gemm_4096_640_2560_f8E4M3FNUZ_f32_tB
+2025-12-14 00:20:22,696 - DEBUG - unet_gemm_4096_640_2560_i32_i32_tB
+2025-12-14 00:20:22,696 - DEBUG - unet_gemm_4096_640_2560_i8_i32_tB
+2025-12-14 00:20:22,696 - DEBUG - unet_gemm_4096_640_640_f16_f32_tB
+2025-12-14 00:20:22,696 - DEBUG - unet_gemm_4096_640_640_f32_f32_tB
+2025-12-14 00:20:22,696 - DEBUG - unet_gemm_4096_640_640_f8E4M3FNUZ_f32_tB
+2025-12-14 00:20:22,696 - DEBUG - unet_gemm_4096_640_640_i32_i32_tB
+2025-12-14 00:20:22,696 - DEBUG - unet_gemm_4096_640_640_i8_i32_tB
+2025-12-14 00:20:22,696 - DEBUG - unet_gemm_64_1280_2048_f16_f32_tB
+2025-12-14 00:20:22,696 - DEBUG - unet_gemm_64_1280_2048_f32_f32_tB
+2025-12-14 00:20:22,696 - DEBUG - unet_gemm_64_1280_2048_f8E4M3FNUZ_f32_tB
+2025-12-14 00:20:22,696 - DEBUG - unet_gemm_64_1280_2048_i32_i32_tB
+2025-12-14 00:20:22,696 - DEBUG - unet_gemm_64_1280_2048_i8_i32_tB
+2025-12-14 00:20:22,696 - DEBUG - unet_gemm_64_640_2048_f16_f32_tB
+2025-12-14 00:20:22,696 - DEBUG - unet_gemm_64_640_2048_f32_f32_tB
+2025-12-14 00:20:22,696 - DEBUG - unet_gemm_64_640_2048_f8E4M3FNUZ_f32_tB
+2025-12-14 00:20:22,696 - DEBUG - unet_gemm_64_640_2048_i32_i32_tB
+2025-12-14 00:20:22,696 - DEBUG - unet_gemm_64_640_2048_i8_i32_tB
+2025-12-14 00:20:22,696 - DEBUG - unet_gemm_8192_5120_640_f16_f32_tB
+2025-12-14 00:20:22,696 - DEBUG - unet_gemm_8192_5120_640_f32_f32_tB
+2025-12-14 00:20:22,696 - DEBUG - unet_gemm_8192_5120_640_f8E4M3FNUZ_f32_tB
+2025-12-14 00:20:22,696 - DEBUG - unet_gemm_8192_5120_640_i32_i32_tB
+2025-12-14 00:20:22,696 - DEBUG - unet_gemm_8192_5120_640_i8_i32_tB
+2025-12-14 00:20:22,696 - DEBUG - unet_gemm_8192_640_2560_f16_f32_tB
+2025-12-14 00:20:22,696 - DEBUG - unet_gemm_8192_640_2560_f32_f32_tB
+2025-12-14 00:20:22,696 - DEBUG - unet_gemm_8192_640_2560_f8E4M3FNUZ_f32_tB
+2025-12-14 00:20:22,696 - DEBUG - unet_gemm_8192_640_2560_i32_i32_tB
+2025-12-14 00:20:22,696 - DEBUG - unet_gemm_8192_640_2560_i8_i32_tB
+2025-12-14 00:20:22,696 - DEBUG - unet_gemm_8192_640_640_f16_f32_tB
+2025-12-14 00:20:22,696 - DEBUG - unet_gemm_8192_640_640_f32_f32_tB
+2025-12-14 00:20:22,696 - DEBUG - unet_gemm_8192_640_640_f8E4M3FNUZ_f32_tB
+2025-12-14 00:20:22,696 - DEBUG - unet_gemm_8192_640_640_i32_i32_tB
+2025-12-14 00:20:22,696 - DEBUG - unet_gemm_8192_640_640_i8_i32_tB
+2025-12-14 00:20:22,696 - DEBUG - In MLIR_benchmark folder /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump: 
+2025-12-14 00:20:22,697 - DEBUG - compute_gemm_4096_4096_8192_f16_f32_tB_benchmark
+2025-12-14 00:20:22,697 - DEBUG - compute_gemm_4096_4096_8192_f32_f32_tB_benchmark
+2025-12-14 00:20:22,697 - DEBUG - compute_gemm_4096_4096_8192_f8E4M3FNUZ_f32_tB_benchmark
+2025-12-14 00:20:22,697 - DEBUG - compute_gemm_4096_4096_8192_i32_i32_tB_benchmark
+2025-12-14 00:20:22,697 - DEBUG - compute_gemm_4096_4096_8192_i8_i32_tB_benchmark
+2025-12-14 00:20:22,697 - DEBUG - square_gemm_1024_1024_1024_f16_f32_tB_benchmark
+2025-12-14 00:20:22,697 - DEBUG - square_gemm_1024_1024_1024_f32_f32_tB_benchmark
+2025-12-14 00:20:22,697 - DEBUG - square_gemm_1024_1024_1024_f8E4M3FNUZ_f32_tB_benchmark
+2025-12-14 00:20:22,697 - DEBUG - square_gemm_1024_1024_1024_i32_i32_tB_benchmark
+2025-12-14 00:20:22,697 - DEBUG - square_gemm_1024_1024_1024_i8_i32_tB_benchmark
+2025-12-14 00:20:22,697 - DEBUG - square_gemm_128_128_128_f16_f32_tB_benchmark
+2025-12-14 00:20:22,697 - DEBUG - square_gemm_128_128_128_f32_f32_tB_benchmark
+2025-12-14 00:20:22,697 - DEBUG - square_gemm_128_128_128_f8E4M3FNUZ_f32_tB_benchmark
+2025-12-14 00:20:22,697 - DEBUG - square_gemm_128_128_128_i32_i32_tB_benchmark
+2025-12-14 00:20:22,697 - DEBUG - square_gemm_128_128_128_i8_i32_tB_benchmark
+2025-12-14 00:20:22,697 - DEBUG - square_gemm_2048_2048_2048_f16_f32_tB_benchmark
+2025-12-14 00:20:22,697 - DEBUG - square_gemm_2048_2048_2048_f32_f32_tB_benchmark
+2025-12-14 00:20:22,697 - DEBUG - square_gemm_2048_2048_2048_f8E4M3FNUZ_f32_tB_benchmark
+2025-12-14 00:20:22,697 - DEBUG - square_gemm_2048_2048_2048_i32_i32_tB_benchmark
+2025-12-14 00:20:22,697 - DEBUG - square_gemm_2048_2048_2048_i8_i32_tB_benchmark
+2025-12-14 00:20:22,697 - DEBUG - square_gemm_256_256_256_f16_f32_tB_benchmark
+2025-12-14 00:20:22,697 - DEBUG - square_gemm_256_256_256_f32_f32_tB_benchmark
+2025-12-14 00:20:22,697 - DEBUG - square_gemm_256_256_256_f8E4M3FNUZ_f32_tB_benchmark
+2025-12-14 00:20:22,697 - DEBUG - square_gemm_256_256_256_i32_i32_tB_benchmark
+2025-12-14 00:20:22,697 - DEBUG - square_gemm_256_256_256_i8_i32_tB_benchmark
+2025-12-14 00:20:22,697 - DEBUG - square_gemm_4096_4096_4096_f16_f32_tB_benchmark
+2025-12-14 00:20:22,697 - DEBUG - square_gemm_4096_4096_4096_f32_f32_tB_benchmark
+2025-12-14 00:20:22,697 - DEBUG - square_gemm_4096_4096_4096_f8E4M3FNUZ_f32_tB_benchmark
+2025-12-14 00:20:22,697 - DEBUG - square_gemm_4096_4096_4096_i32_i32_tB_benchmark
+2025-12-14 00:20:22,697 - DEBUG - square_gemm_4096_4096_4096_i8_i32_tB_benchmark
+2025-12-14 00:20:22,697 - DEBUG - square_gemm_512_512_512_f16_f32_tB_benchmark
+2025-12-14 00:20:22,697 - DEBUG - square_gemm_512_512_512_f32_f32_tB_benchmark
+2025-12-14 00:20:22,697 - DEBUG - square_gemm_512_512_512_f8E4M3FNUZ_f32_tB_benchmark
+2025-12-14 00:20:22,697 - DEBUG - square_gemm_512_512_512_i32_i32_tB_benchmark
+2025-12-14 00:20:22,697 - DEBUG - square_gemm_512_512_512_i8_i32_tB_benchmark
+2025-12-14 00:20:22,697 - DEBUG - square_gemm_8192_8192_8192_f16_f32_tB_benchmark
+2025-12-14 00:20:22,697 - DEBUG - square_gemm_8192_8192_8192_f32_f32_tB_benchmark
+2025-12-14 00:20:22,697 - DEBUG - square_gemm_8192_8192_8192_f8E4M3FNUZ_f32_tB_benchmark
+2025-12-14 00:20:22,697 - DEBUG - square_gemm_8192_8192_8192_i32_i32_tB_benchmark
+2025-12-14 00:20:22,697 - DEBUG - square_gemm_8192_8192_8192_i8_i32_tB_benchmark
+2025-12-14 00:20:22,697 - DEBUG - tk_gemm_128_1280_2048_f16_f32_tB_benchmark
+2025-12-14 00:20:22,697 - DEBUG - tk_gemm_128_1280_2048_f32_f32_tB_benchmark
+2025-12-14 00:20:22,697 - DEBUG - tk_gemm_128_1280_2048_f8E4M3FNUZ_f32_tB_benchmark
+2025-12-14 00:20:22,697 - DEBUG - tk_gemm_128_1280_2048_i32_i32_tB_benchmark
+2025-12-14 00:20:22,697 - DEBUG - tk_gemm_128_1280_2048_i8_i32_tB_benchmark
+2025-12-14 00:20:22,697 - DEBUG - tk_gemm_2048_10240_1280_f16_f32_tB_benchmark
+2025-12-14 00:20:22,697 - DEBUG - tk_gemm_2048_10240_1280_f32_f32_tB_benchmark
+2025-12-14 00:20:22,697 - DEBUG - tk_gemm_2048_10240_1280_f8E4M3FNUZ_f32_tB_benchmark
+2025-12-14 00:20:22,697 - DEBUG - tk_gemm_2048_10240_1280_i32_i32_tB_benchmark
+2025-12-14 00:20:22,697 - DEBUG - tk_gemm_2048_10240_1280_i8_i32_tB_benchmark
+2025-12-14 00:20:22,697 - DEBUG - tk_gemm_2048_1280_1280_f16_f32_tB_benchmark
+2025-12-14 00:20:22,697 - DEBUG - tk_gemm_2048_1280_1280_f32_f32_tB_benchmark
+2025-12-14 00:20:22,697 - DEBUG - tk_gemm_2048_1280_1280_f8E4M3FNUZ_f32_tB_benchmark
+2025-12-14 00:20:22,697 - DEBUG - tk_gemm_2048_1280_1280_i32_i32_tB_benchmark
+2025-12-14 00:20:22,697 - DEBUG - tk_gemm_2048_1280_1280_i8_i32_tB_benchmark
+2025-12-14 00:20:22,697 - DEBUG - tk_gemm_2048_1280_5120_f16_f32_tB_benchmark
+2025-12-14 00:20:22,698 - DEBUG - tk_gemm_2048_1280_5120_f32_f32_tB_benchmark
+2025-12-14 00:20:22,698 - DEBUG - tk_gemm_2048_1280_5120_f8E4M3FNUZ_f32_tB_benchmark
+2025-12-14 00:20:22,698 - DEBUG - tk_gemm_2048_1280_5120_i32_i32_tB_benchmark
+2025-12-14 00:20:22,698 - DEBUG - tk_gemm_2048_1280_5120_i8_i32_tB_benchmark
+2025-12-14 00:20:22,698 - DEBUG - tk_gemm_8192_5120_640_f16_f32_tB_benchmark
+2025-12-14 00:20:22,698 - DEBUG - tk_gemm_8192_5120_640_f32_f32_tB_benchmark
+2025-12-14 00:20:22,698 - DEBUG - tk_gemm_8192_5120_640_f8E4M3FNUZ_f32_tB_benchmark
+2025-12-14 00:20:22,698 - DEBUG - tk_gemm_8192_5120_640_i32_i32_tB_benchmark
+2025-12-14 00:20:22,698 - DEBUG - tk_gemm_8192_5120_640_i8_i32_tB_benchmark
+2025-12-14 00:20:22,698 - DEBUG - unet_gemm_1024_10240_1280_f16_f32_tB_benchmark
+2025-12-14 00:20:22,698 - DEBUG - unet_gemm_1024_10240_1280_f32_f32_tB_benchmark
+2025-12-14 00:20:22,698 - DEBUG - unet_gemm_1024_10240_1280_f8E4M3FNUZ_f32_tB_benchmark
+2025-12-14 00:20:22,698 - DEBUG - unet_gemm_1024_10240_1280_i32_i32_tB_benchmark
+2025-12-14 00:20:22,698 - DEBUG - unet_gemm_1024_10240_1280_i8_i32_tB_benchmark
+2025-12-14 00:20:22,698 - DEBUG - unet_gemm_1024_1280_1280_f16_f32_tB_benchmark
+2025-12-14 00:20:22,698 - DEBUG - unet_gemm_1024_1280_1280_f32_f32_tB_benchmark
+2025-12-14 00:20:22,698 - DEBUG - unet_gemm_1024_1280_1280_f8E4M3FNUZ_f32_tB_benchmark
+2025-12-14 00:20:22,698 - DEBUG - unet_gemm_1024_1280_1280_i32_i32_tB_benchmark
+2025-12-14 00:20:22,698 - DEBUG - unet_gemm_1024_1280_1280_i8_i32_tB_benchmark
+2025-12-14 00:20:22,698 - DEBUG - unet_gemm_1024_1280_5120_f16_f32_tB_benchmark
+2025-12-14 00:20:22,698 - DEBUG - unet_gemm_1024_1280_5120_f32_f32_tB_benchmark
+2025-12-14 00:20:22,698 - DEBUG - unet_gemm_1024_1280_5120_f8E4M3FNUZ_f32_tB_benchmark
+2025-12-14 00:20:22,698 - DEBUG - unet_gemm_1024_1280_5120_i32_i32_tB_benchmark
+2025-12-14 00:20:22,698 - DEBUG - unet_gemm_1024_1280_5120_i8_i32_tB_benchmark
+2025-12-14 00:20:22,698 - DEBUG - unet_gemm_128_1280_2048_f16_f32_tB_benchmark
+2025-12-14 00:20:22,698 - DEBUG - unet_gemm_128_1280_2048_f32_f32_tB_benchmark
+2025-12-14 00:20:22,698 - DEBUG - unet_gemm_128_1280_2048_f8E4M3FNUZ_f32_tB_benchmark
+2025-12-14 00:20:22,698 - DEBUG - unet_gemm_128_1280_2048_i32_i32_tB_benchmark
+2025-12-14 00:20:22,698 - DEBUG - unet_gemm_128_1280_2048_i8_i32_tB_benchmark
+2025-12-14 00:20:22,698 - DEBUG - unet_gemm_2048_10240_1280_f16_f32_tB_benchmark
+2025-12-14 00:20:22,698 - DEBUG - unet_gemm_2048_10240_1280_f32_f32_tB_benchmark
+2025-12-14 00:20:22,698 - DEBUG - unet_gemm_2048_10240_1280_f8E4M3FNUZ_f32_tB_benchmark
+2025-12-14 00:20:22,698 - DEBUG - unet_gemm_2048_10240_1280_i32_i32_tB_benchmark
+2025-12-14 00:20:22,698 - DEBUG - unet_gemm_2048_10240_1280_i8_i32_tB_benchmark
+2025-12-14 00:20:22,698 - DEBUG - unet_gemm_2048_1280_1280_f16_f32_tB_benchmark
+2025-12-14 00:20:22,698 - DEBUG - unet_gemm_2048_1280_1280_f32_f32_tB_benchmark
+2025-12-14 00:20:22,698 - DEBUG - unet_gemm_2048_1280_1280_f8E4M3FNUZ_f32_tB_benchmark
+2025-12-14 00:20:22,698 - DEBUG - unet_gemm_2048_1280_1280_i32_i32_tB_benchmark
+2025-12-14 00:20:22,698 - DEBUG - unet_gemm_2048_1280_1280_i8_i32_tB_benchmark
+2025-12-14 00:20:22,698 - DEBUG - unet_gemm_2048_1280_5120_f16_f32_tB_benchmark
+2025-12-14 00:20:22,698 - DEBUG - unet_gemm_2048_1280_5120_f32_f32_tB_benchmark
+2025-12-14 00:20:22,698 - DEBUG - unet_gemm_2048_1280_5120_f8E4M3FNUZ_f32_tB_benchmark
+2025-12-14 00:20:22,698 - DEBUG - unet_gemm_2048_1280_5120_i32_i32_tB_benchmark
+2025-12-14 00:20:22,698 - DEBUG - unet_gemm_2048_1280_5120_i8_i32_tB_benchmark
+2025-12-14 00:20:22,698 - DEBUG - unet_gemm_4096_5120_640_f16_f32_tB_benchmark
+2025-12-14 00:20:22,698 - DEBUG - unet_gemm_4096_5120_640_f32_f32_tB_benchmark
+2025-12-14 00:20:22,698 - DEBUG - unet_gemm_4096_5120_640_f8E4M3FNUZ_f32_tB_benchmark
+2025-12-14 00:20:22,698 - DEBUG - unet_gemm_4096_5120_640_i32_i32_tB_benchmark
+2025-12-14 00:20:22,698 - DEBUG - unet_gemm_4096_5120_640_i8_i32_tB_benchmark
+2025-12-14 00:20:22,698 - DEBUG - unet_gemm_4096_640_2560_f16_f32_tB_benchmark
+2025-12-14 00:20:22,698 - DEBUG - unet_gemm_4096_640_2560_f32_f32_tB_benchmark
+2025-12-14 00:20:22,698 - DEBUG - unet_gemm_4096_640_2560_f8E4M3FNUZ_f32_tB_benchmark
+2025-12-14 00:20:22,698 - DEBUG - unet_gemm_4096_640_2560_i32_i32_tB_benchmark
+2025-12-14 00:20:22,698 - DEBUG - unet_gemm_4096_640_2560_i8_i32_tB_benchmark
+2025-12-14 00:20:22,698 - DEBUG - unet_gemm_4096_640_640_f16_f32_tB_benchmark
+2025-12-14 00:20:22,698 - DEBUG - unet_gemm_4096_640_640_f32_f32_tB_benchmark
+2025-12-14 00:20:22,698 - DEBUG - unet_gemm_4096_640_640_f8E4M3FNUZ_f32_tB_benchmark
+2025-12-14 00:20:22,698 - DEBUG - unet_gemm_4096_640_640_i32_i32_tB_benchmark
+2025-12-14 00:20:22,698 - DEBUG - unet_gemm_4096_640_640_i8_i32_tB_benchmark
+2025-12-14 00:20:22,698 - DEBUG - unet_gemm_64_1280_2048_f16_f32_tB_benchmark
+2025-12-14 00:20:22,698 - DEBUG - unet_gemm_64_1280_2048_f32_f32_tB_benchmark
+2025-12-14 00:20:22,698 - DEBUG - unet_gemm_64_1280_2048_f8E4M3FNUZ_f32_tB_benchmark
+2025-12-14 00:20:22,698 - DEBUG - unet_gemm_64_1280_2048_i32_i32_tB_benchmark
+2025-12-14 00:20:22,698 - DEBUG - unet_gemm_64_1280_2048_i8_i32_tB_benchmark
+2025-12-14 00:20:22,698 - DEBUG - unet_gemm_64_640_2048_f16_f32_tB_benchmark
+2025-12-14 00:20:22,698 - DEBUG - unet_gemm_64_640_2048_f32_f32_tB_benchmark
+2025-12-14 00:20:22,698 - DEBUG - unet_gemm_64_640_2048_f8E4M3FNUZ_f32_tB_benchmark
+2025-12-14 00:20:22,698 - DEBUG - unet_gemm_64_640_2048_i32_i32_tB_benchmark
+2025-12-14 00:20:22,698 - DEBUG - unet_gemm_64_640_2048_i8_i32_tB_benchmark
+2025-12-14 00:20:22,698 - DEBUG - unet_gemm_8192_5120_640_f16_f32_tB_benchmark
+2025-12-14 00:20:22,698 - DEBUG - unet_gemm_8192_5120_640_f32_f32_tB_benchmark
+2025-12-14 00:20:22,698 - DEBUG - unet_gemm_8192_5120_640_f8E4M3FNUZ_f32_tB_benchmark
+2025-12-14 00:20:22,698 - DEBUG - unet_gemm_8192_5120_640_i32_i32_tB_benchmark
+2025-12-14 00:20:22,698 - DEBUG - unet_gemm_8192_5120_640_i8_i32_tB_benchmark
+2025-12-14 00:20:22,698 - DEBUG - unet_gemm_8192_640_2560_f16_f32_tB_benchmark
+2025-12-14 00:20:22,699 - DEBUG - unet_gemm_8192_640_2560_f32_f32_tB_benchmark
+2025-12-14 00:20:22,699 - DEBUG - unet_gemm_8192_640_2560_f8E4M3FNUZ_f32_tB_benchmark
+2025-12-14 00:20:22,699 - DEBUG - unet_gemm_8192_640_2560_i32_i32_tB_benchmark
+2025-12-14 00:20:22,699 - DEBUG - unet_gemm_8192_640_2560_i8_i32_tB_benchmark
+2025-12-14 00:20:22,699 - DEBUG - unet_gemm_8192_640_640_f16_f32_tB_benchmark
+2025-12-14 00:20:22,699 - DEBUG - unet_gemm_8192_640_640_f32_f32_tB_benchmark
+2025-12-14 00:20:22,699 - DEBUG - unet_gemm_8192_640_640_f8E4M3FNUZ_f32_tB_benchmark
+2025-12-14 00:20:22,699 - DEBUG - unet_gemm_8192_640_640_i32_i32_tB_benchmark
+2025-12-14 00:20:22,699 - DEBUG - unet_gemm_8192_640_640_i8_i32_tB_benchmark
+2025-12-14 00:20:22,699 - INFO - Found 140 mlir file(s)
+2025-12-14 00:20:22,699 - INFO - Found 140 benchmark file(s)
+2025-12-14 00:20:22,699 - DEBUG - Tuning started at 2025-12-14T00:20:22
+2025-12-14 00:20:22,699 - INFO - Tuning Vars: ['hip://2,hip://5,hip://6,hip://7', ['llvmgpu_vector_distribute', 'llvmgpu_tile_and_fuse'], 10000, 'rocprof', 'heuristic', 5]
+2025-12-14 00:20:22,699 - INFO - Checking file 1 / 140
+2025-12-14 00:20:22,699 - INFO - Tuning 1 (1/2) / 140: compute_gemm_4096_4096_8192_f16_f32_tB.mlir - llvmgpu_vector_distribute
+2025-12-14 00:20:22,699 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/compute_gemm_4096_4096_8192_f16_f32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-14 00:53:48,916 - INFO - 2025-12-14T00:53:48 - compute_gemm_4096_4096_8192_f16_f32_tB.mlir: completed in 2006.22
+2025-12-14 00:53:48,918 - DEBUG - Copied compute_gemm_4096_4096_8192_f16_f32_tB.csv -> /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/tuning_database_vd
+2025-12-14 00:53:48,918 - INFO - Tuning 1 (2/2) / 140: compute_gemm_4096_4096_8192_f16_f32_tB.mlir - llvmgpu_tile_and_fuse
+2025-12-14 00:53:48,918 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/compute_gemm_4096_4096_8192_f16_f32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-14 01:26:01,321 - INFO - 2025-12-14T01:26:01 - compute_gemm_4096_4096_8192_f16_f32_tB.mlir: completed in 1932.40
+2025-12-14 01:26:01,322 - DEBUG - Copied compute_gemm_4096_4096_8192_f16_f32_tB.csv -> /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/tuning_database_tf
+2025-12-14 01:26:01,322 - INFO - Checking file 2 / 140
+2025-12-14 01:26:01,322 - INFO - Tuning 2 (1/2) / 140: compute_gemm_4096_4096_8192_f32_f32_tB.mlir - llvmgpu_vector_distribute
+2025-12-14 01:26:01,322 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/compute_gemm_4096_4096_8192_f32_f32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-14 01:35:34,867 - INFO - 2025-12-14T01:35:34 - compute_gemm_4096_4096_8192_f32_f32_tB.mlir: completed in 573.55
+2025-12-14 01:35:34,870 - DEBUG - Copied compute_gemm_4096_4096_8192_f32_f32_tB.csv -> /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/tuning_database_vd
+2025-12-14 01:35:34,870 - INFO - Tuning 2 (2/2) / 140: compute_gemm_4096_4096_8192_f32_f32_tB.mlir - llvmgpu_tile_and_fuse
+2025-12-14 01:35:34,870 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/compute_gemm_4096_4096_8192_f32_f32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-14 01:59:46,024 - INFO - 2025-12-14T01:59:46 - compute_gemm_4096_4096_8192_f32_f32_tB.mlir: completed in 1451.15
+2025-12-14 01:59:46,025 - DEBUG - Copied compute_gemm_4096_4096_8192_f32_f32_tB.csv -> /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/tuning_database_tf
+2025-12-14 01:59:46,026 - INFO - Checking file 3 / 140
+2025-12-14 01:59:46,026 - INFO - Tuning 3 (1/2) / 140: compute_gemm_4096_4096_8192_f8E4M3FNUZ_f32_tB.mlir - llvmgpu_vector_distribute
+2025-12-14 01:59:46,026 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/compute_gemm_4096_4096_8192_f8E4M3FNUZ_f32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-14 02:23:05,737 - INFO - 2025-12-14T02:23:05 - compute_gemm_4096_4096_8192_f8E4M3FNUZ_f32_tB.mlir: completed in 1399.71
+2025-12-14 02:23:05,738 - DEBUG - Copied compute_gemm_4096_4096_8192_f8E4M3FNUZ_f32_tB.csv -> /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/tuning_database_vd
+2025-12-14 02:23:05,739 - INFO - Tuning 3 (2/2) / 140: compute_gemm_4096_4096_8192_f8E4M3FNUZ_f32_tB.mlir - llvmgpu_tile_and_fuse
+2025-12-14 02:23:05,739 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/compute_gemm_4096_4096_8192_f8E4M3FNUZ_f32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-14 02:55:25,519 - INFO - 2025-12-14T02:55:25 - compute_gemm_4096_4096_8192_f8E4M3FNUZ_f32_tB.mlir: completed in 1939.78
+2025-12-14 02:55:25,521 - DEBUG - Copied compute_gemm_4096_4096_8192_f8E4M3FNUZ_f32_tB.csv -> /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/tuning_database_tf
+2025-12-14 02:55:25,521 - INFO - Checking file 4 / 140
+2025-12-14 02:55:25,521 - INFO - Tuning 4 (1/2) / 140: compute_gemm_4096_4096_8192_i32_i32_tB.mlir - llvmgpu_vector_distribute
+2025-12-14 02:55:25,521 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/compute_gemm_4096_4096_8192_i32_i32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-14 02:55:26,217 - WARNING - 2025-12-14T02:55:26 - compute_gemm_4096_4096_8192_i32_i32_tB.mlir: 'FAIL(1)' in 0.70
+2025-12-14 02:55:26,218 - INFO - Tuning 4 (2/2) / 140: compute_gemm_4096_4096_8192_i32_i32_tB.mlir - llvmgpu_tile_and_fuse
+2025-12-14 02:55:26,218 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/compute_gemm_4096_4096_8192_i32_i32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-14 02:55:26,941 - WARNING - 2025-12-14T02:55:26 - compute_gemm_4096_4096_8192_i32_i32_tB.mlir: 'FAIL(1)' in 0.72
+2025-12-14 02:55:26,942 - INFO - Checking file 5 / 140
+2025-12-14 02:55:26,942 - INFO - Tuning 5 (1/2) / 140: compute_gemm_4096_4096_8192_i8_i32_tB.mlir - llvmgpu_vector_distribute
+2025-12-14 02:55:26,942 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/compute_gemm_4096_4096_8192_i8_i32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-14 03:18:39,245 - INFO - 2025-12-14T03:18:39 - compute_gemm_4096_4096_8192_i8_i32_tB.mlir: completed in 1392.30
+2025-12-14 03:18:39,248 - DEBUG - Copied compute_gemm_4096_4096_8192_i8_i32_tB.csv -> /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/tuning_database_vd
+2025-12-14 03:18:39,248 - INFO - Tuning 5 (2/2) / 140: compute_gemm_4096_4096_8192_i8_i32_tB.mlir - llvmgpu_tile_and_fuse
+2025-12-14 03:18:39,248 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/compute_gemm_4096_4096_8192_i8_i32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-14 03:50:50,346 - INFO - 2025-12-14T03:50:50 - compute_gemm_4096_4096_8192_i8_i32_tB.mlir: completed in 1931.10
+2025-12-14 03:50:50,347 - DEBUG - Copied compute_gemm_4096_4096_8192_i8_i32_tB.csv -> /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/tuning_database_tf
+2025-12-14 03:50:50,347 - INFO - Checking file 6 / 140
+2025-12-14 03:50:50,347 - INFO - Tuning 6 (1/2) / 140: square_gemm_1024_1024_1024_f16_f32_tB.mlir - llvmgpu_vector_distribute
+2025-12-14 03:50:50,347 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/square_gemm_1024_1024_1024_f16_f32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-14 04:26:25,113 - INFO - 2025-12-14T04:26:25 - square_gemm_1024_1024_1024_f16_f32_tB.mlir: completed in 2134.77
+2025-12-14 04:26:25,114 - DEBUG - Copied square_gemm_1024_1024_1024_f16_f32_tB.csv -> /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/tuning_database_vd
+2025-12-14 04:26:25,114 - INFO - Tuning 6 (2/2) / 140: square_gemm_1024_1024_1024_f16_f32_tB.mlir - llvmgpu_tile_and_fuse
+2025-12-14 04:26:25,114 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/square_gemm_1024_1024_1024_f16_f32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-14 05:00:30,783 - INFO - 2025-12-14T05:00:30 - square_gemm_1024_1024_1024_f16_f32_tB.mlir: completed in 2045.67
+2025-12-14 05:00:30,785 - DEBUG - Copied square_gemm_1024_1024_1024_f16_f32_tB.csv -> /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/tuning_database_tf
+2025-12-14 05:00:30,785 - INFO - Checking file 7 / 140
+2025-12-14 05:00:30,785 - INFO - Tuning 7 (1/2) / 140: square_gemm_1024_1024_1024_f32_f32_tB.mlir - llvmgpu_vector_distribute
+2025-12-14 05:00:30,785 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/square_gemm_1024_1024_1024_f32_f32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-14 05:10:18,374 - INFO - 2025-12-14T05:10:18 - square_gemm_1024_1024_1024_f32_f32_tB.mlir: completed in 587.59
+2025-12-14 05:10:18,375 - DEBUG - Copied square_gemm_1024_1024_1024_f32_f32_tB.csv -> /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/tuning_database_vd
+2025-12-14 05:10:18,375 - INFO - Tuning 7 (2/2) / 140: square_gemm_1024_1024_1024_f32_f32_tB.mlir - llvmgpu_tile_and_fuse
+2025-12-14 05:10:18,375 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/square_gemm_1024_1024_1024_f32_f32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-14 05:35:02,824 - INFO - 2025-12-14T05:35:02 - square_gemm_1024_1024_1024_f32_f32_tB.mlir: completed in 1484.45
+2025-12-14 05:35:02,826 - DEBUG - Copied square_gemm_1024_1024_1024_f32_f32_tB.csv -> /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/tuning_database_tf
+2025-12-14 05:35:02,826 - INFO - Checking file 8 / 140
+2025-12-14 05:35:02,826 - INFO - Tuning 8 (1/2) / 140: square_gemm_1024_1024_1024_f8E4M3FNUZ_f32_tB.mlir - llvmgpu_vector_distribute
+2025-12-14 05:35:02,827 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/square_gemm_1024_1024_1024_f8E4M3FNUZ_f32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-14 05:59:33,404 - INFO - 2025-12-14T05:59:33 - square_gemm_1024_1024_1024_f8E4M3FNUZ_f32_tB.mlir: completed in 1470.58
+2025-12-14 05:59:33,406 - DEBUG - Copied square_gemm_1024_1024_1024_f8E4M3FNUZ_f32_tB.csv -> /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/tuning_database_vd
+2025-12-14 05:59:33,406 - INFO - Tuning 8 (2/2) / 140: square_gemm_1024_1024_1024_f8E4M3FNUZ_f32_tB.mlir - llvmgpu_tile_and_fuse
+2025-12-14 05:59:33,406 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/square_gemm_1024_1024_1024_f8E4M3FNUZ_f32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-14 06:33:45,035 - INFO - 2025-12-14T06:33:45 - square_gemm_1024_1024_1024_f8E4M3FNUZ_f32_tB.mlir: completed in 2051.63
+2025-12-14 06:33:45,036 - DEBUG - Copied square_gemm_1024_1024_1024_f8E4M3FNUZ_f32_tB.csv -> /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/tuning_database_tf
+2025-12-14 06:33:45,036 - INFO - Checking file 9 / 140
+2025-12-14 06:33:45,037 - INFO - Tuning 9 (1/2) / 140: square_gemm_1024_1024_1024_i32_i32_tB.mlir - llvmgpu_vector_distribute
+2025-12-14 06:33:45,037 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/square_gemm_1024_1024_1024_i32_i32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-14 06:33:45,737 - WARNING - 2025-12-14T06:33:45 - square_gemm_1024_1024_1024_i32_i32_tB.mlir: 'FAIL(1)' in 0.70
+2025-12-14 06:33:45,737 - INFO - Tuning 9 (2/2) / 140: square_gemm_1024_1024_1024_i32_i32_tB.mlir - llvmgpu_tile_and_fuse
+2025-12-14 06:33:45,737 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/square_gemm_1024_1024_1024_i32_i32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-14 06:33:46,441 - WARNING - 2025-12-14T06:33:46 - square_gemm_1024_1024_1024_i32_i32_tB.mlir: 'FAIL(1)' in 0.70
+2025-12-14 06:33:46,441 - INFO - Checking file 10 / 140
+2025-12-14 06:33:46,441 - INFO - Tuning 10 (1/2) / 140: square_gemm_1024_1024_1024_i8_i32_tB.mlir - llvmgpu_vector_distribute
+2025-12-14 06:33:46,442 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/square_gemm_1024_1024_1024_i8_i32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-14 06:58:15,384 - INFO - 2025-12-14T06:58:15 - square_gemm_1024_1024_1024_i8_i32_tB.mlir: completed in 1468.94
+2025-12-14 06:58:15,386 - DEBUG - Copied square_gemm_1024_1024_1024_i8_i32_tB.csv -> /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/tuning_database_vd
+2025-12-14 06:58:15,386 - INFO - Tuning 10 (2/2) / 140: square_gemm_1024_1024_1024_i8_i32_tB.mlir - llvmgpu_tile_and_fuse
+2025-12-14 06:58:15,387 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/square_gemm_1024_1024_1024_i8_i32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-14 07:32:44,138 - INFO - 2025-12-14T07:32:44 - square_gemm_1024_1024_1024_i8_i32_tB.mlir: completed in 2068.75
+2025-12-14 07:32:44,140 - DEBUG - Copied square_gemm_1024_1024_1024_i8_i32_tB.csv -> /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/tuning_database_tf
+2025-12-14 07:32:44,140 - INFO - Checking file 11 / 140
+2025-12-14 07:32:44,140 - INFO - Tuning 11 (1/2) / 140: square_gemm_128_128_128_f16_f32_tB.mlir - llvmgpu_vector_distribute
+2025-12-14 07:32:44,140 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/square_gemm_128_128_128_f16_f32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-14 07:46:35,179 - INFO - 2025-12-14T07:46:35 - square_gemm_128_128_128_f16_f32_tB.mlir: completed in 831.04
+2025-12-14 07:46:35,180 - DEBUG - Copied square_gemm_128_128_128_f16_f32_tB.csv -> /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/tuning_database_vd
+2025-12-14 07:46:35,181 - INFO - Tuning 11 (2/2) / 140: square_gemm_128_128_128_f16_f32_tB.mlir - llvmgpu_tile_and_fuse
+2025-12-14 07:46:35,181 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/square_gemm_128_128_128_f16_f32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-14 08:00:38,699 - INFO - 2025-12-14T08:00:38 - square_gemm_128_128_128_f16_f32_tB.mlir: completed in 843.52
+2025-12-14 08:00:38,701 - DEBUG - Copied square_gemm_128_128_128_f16_f32_tB.csv -> /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/tuning_database_tf
+2025-12-14 08:00:38,701 - INFO - Checking file 12 / 140
+2025-12-14 08:00:38,701 - INFO - Tuning 12 (1/2) / 140: square_gemm_128_128_128_f32_f32_tB.mlir - llvmgpu_vector_distribute
+2025-12-14 08:00:38,701 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/square_gemm_128_128_128_f32_f32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-14 08:05:27,589 - INFO - 2025-12-14T08:05:27 - square_gemm_128_128_128_f32_f32_tB.mlir: completed in 288.89
+2025-12-14 08:05:27,590 - DEBUG - Copied square_gemm_128_128_128_f32_f32_tB.csv -> /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/tuning_database_vd
+2025-12-14 08:05:27,590 - INFO - Tuning 12 (2/2) / 140: square_gemm_128_128_128_f32_f32_tB.mlir - llvmgpu_tile_and_fuse
+2025-12-14 08:05:27,590 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/square_gemm_128_128_128_f32_f32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-14 08:17:54,637 - INFO - 2025-12-14T08:17:54 - square_gemm_128_128_128_f32_f32_tB.mlir: completed in 747.05
+2025-12-14 08:17:54,639 - DEBUG - Copied square_gemm_128_128_128_f32_f32_tB.csv -> /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/tuning_database_tf
+2025-12-14 08:17:54,639 - INFO - Checking file 13 / 140
+2025-12-14 08:17:54,639 - INFO - Tuning 13 (1/2) / 140: square_gemm_128_128_128_f8E4M3FNUZ_f32_tB.mlir - llvmgpu_vector_distribute
+2025-12-14 08:17:54,639 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/square_gemm_128_128_128_f8E4M3FNUZ_f32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-14 08:24:34,514 - INFO - 2025-12-14T08:24:34 - square_gemm_128_128_128_f8E4M3FNUZ_f32_tB.mlir: completed in 399.87
+2025-12-14 08:24:34,515 - DEBUG - Copied square_gemm_128_128_128_f8E4M3FNUZ_f32_tB.csv -> /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/tuning_database_vd
+2025-12-14 08:24:34,515 - INFO - Tuning 13 (2/2) / 140: square_gemm_128_128_128_f8E4M3FNUZ_f32_tB.mlir - llvmgpu_tile_and_fuse
+2025-12-14 08:24:34,515 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/square_gemm_128_128_128_f8E4M3FNUZ_f32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-14 08:35:51,990 - INFO - 2025-12-14T08:35:51 - square_gemm_128_128_128_f8E4M3FNUZ_f32_tB.mlir: completed in 677.48
+2025-12-14 08:35:51,993 - DEBUG - Copied square_gemm_128_128_128_f8E4M3FNUZ_f32_tB.csv -> /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/tuning_database_tf
+2025-12-14 08:35:51,993 - INFO - Checking file 14 / 140
+2025-12-14 08:35:51,993 - INFO - Tuning 14 (1/2) / 140: square_gemm_128_128_128_i32_i32_tB.mlir - llvmgpu_vector_distribute
+2025-12-14 08:35:51,994 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/square_gemm_128_128_128_i32_i32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-14 08:35:52,693 - WARNING - 2025-12-14T08:35:52 - square_gemm_128_128_128_i32_i32_tB.mlir: 'FAIL(1)' in 0.70
+2025-12-14 08:35:52,693 - INFO - Tuning 14 (2/2) / 140: square_gemm_128_128_128_i32_i32_tB.mlir - llvmgpu_tile_and_fuse
+2025-12-14 08:35:52,693 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/square_gemm_128_128_128_i32_i32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-14 08:35:53,409 - WARNING - 2025-12-14T08:35:53 - square_gemm_128_128_128_i32_i32_tB.mlir: 'FAIL(1)' in 0.72
+2025-12-14 08:35:53,409 - INFO - Checking file 15 / 140
+2025-12-14 08:35:53,409 - INFO - Tuning 15 (1/2) / 140: square_gemm_128_128_128_i8_i32_tB.mlir - llvmgpu_vector_distribute
+2025-12-14 08:35:53,409 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/square_gemm_128_128_128_i8_i32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-14 08:42:44,787 - INFO - 2025-12-14T08:42:44 - square_gemm_128_128_128_i8_i32_tB.mlir: completed in 411.38
+2025-12-14 08:42:44,789 - DEBUG - Copied square_gemm_128_128_128_i8_i32_tB.csv -> /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/tuning_database_vd
+2025-12-14 08:42:44,789 - INFO - Tuning 15 (2/2) / 140: square_gemm_128_128_128_i8_i32_tB.mlir - llvmgpu_tile_and_fuse
+2025-12-14 08:42:44,789 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/square_gemm_128_128_128_i8_i32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-14 08:53:50,991 - INFO - 2025-12-14T08:53:50 - square_gemm_128_128_128_i8_i32_tB.mlir: completed in 666.20
+2025-12-14 08:53:50,993 - DEBUG - Copied square_gemm_128_128_128_i8_i32_tB.csv -> /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/tuning_database_tf
+2025-12-14 08:53:50,993 - INFO - Checking file 16 / 140
+2025-12-14 08:53:50,993 - INFO - Tuning 16 (1/2) / 140: square_gemm_2048_2048_2048_f16_f32_tB.mlir - llvmgpu_vector_distribute
+2025-12-14 08:53:50,993 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/square_gemm_2048_2048_2048_f16_f32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-14 09:28:40,800 - INFO - 2025-12-14T09:28:40 - square_gemm_2048_2048_2048_f16_f32_tB.mlir: completed in 2089.81
+2025-12-14 09:28:40,801 - DEBUG - Copied square_gemm_2048_2048_2048_f16_f32_tB.csv -> /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/tuning_database_vd
+2025-12-14 09:28:40,801 - INFO - Tuning 16 (2/2) / 140: square_gemm_2048_2048_2048_f16_f32_tB.mlir - llvmgpu_tile_and_fuse
+2025-12-14 09:28:40,801 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/square_gemm_2048_2048_2048_f16_f32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-14 10:02:07,928 - INFO - 2025-12-14T10:02:07 - square_gemm_2048_2048_2048_f16_f32_tB.mlir: completed in 2007.13
+2025-12-14 10:02:07,930 - DEBUG - Copied square_gemm_2048_2048_2048_f16_f32_tB.csv -> /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/tuning_database_tf
+2025-12-14 10:02:07,930 - INFO - Checking file 17 / 140
+2025-12-14 10:02:07,930 - INFO - Tuning 17 (1/2) / 140: square_gemm_2048_2048_2048_f32_f32_tB.mlir - llvmgpu_vector_distribute
+2025-12-14 10:02:07,930 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/square_gemm_2048_2048_2048_f32_f32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-14 10:11:55,677 - INFO - 2025-12-14T10:11:55 - square_gemm_2048_2048_2048_f32_f32_tB.mlir: completed in 587.75
+2025-12-14 10:11:55,678 - DEBUG - Copied square_gemm_2048_2048_2048_f32_f32_tB.csv -> /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/tuning_database_vd
+2025-12-14 10:11:55,679 - INFO - Tuning 17 (2/2) / 140: square_gemm_2048_2048_2048_f32_f32_tB.mlir - llvmgpu_tile_and_fuse
+2025-12-14 10:11:55,679 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/square_gemm_2048_2048_2048_f32_f32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-14 10:36:18,906 - INFO - 2025-12-14T10:36:18 - square_gemm_2048_2048_2048_f32_f32_tB.mlir: completed in 1463.23
+2025-12-14 10:36:18,909 - DEBUG - Copied square_gemm_2048_2048_2048_f32_f32_tB.csv -> /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/tuning_database_tf
+2025-12-14 10:36:18,909 - INFO - Checking file 18 / 140
+2025-12-14 10:36:18,909 - INFO - Tuning 18 (1/2) / 140: square_gemm_2048_2048_2048_f8E4M3FNUZ_f32_tB.mlir - llvmgpu_vector_distribute
+2025-12-14 10:36:18,909 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/square_gemm_2048_2048_2048_f8E4M3FNUZ_f32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-14 11:00:25,168 - INFO - 2025-12-14T11:00:25 - square_gemm_2048_2048_2048_f8E4M3FNUZ_f32_tB.mlir: completed in 1446.26
+2025-12-14 11:00:25,169 - DEBUG - Copied square_gemm_2048_2048_2048_f8E4M3FNUZ_f32_tB.csv -> /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/tuning_database_vd
+2025-12-14 11:00:25,169 - INFO - Tuning 18 (2/2) / 140: square_gemm_2048_2048_2048_f8E4M3FNUZ_f32_tB.mlir - llvmgpu_tile_and_fuse
+2025-12-14 11:00:25,169 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/square_gemm_2048_2048_2048_f8E4M3FNUZ_f32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-14 11:34:05,412 - INFO - 2025-12-14T11:34:05 - square_gemm_2048_2048_2048_f8E4M3FNUZ_f32_tB.mlir: completed in 2020.24
+2025-12-14 11:34:05,413 - DEBUG - Copied square_gemm_2048_2048_2048_f8E4M3FNUZ_f32_tB.csv -> /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/tuning_database_tf
+2025-12-14 11:34:05,413 - INFO - Checking file 19 / 140
+2025-12-14 11:34:05,414 - INFO - Tuning 19 (1/2) / 140: square_gemm_2048_2048_2048_i32_i32_tB.mlir - llvmgpu_vector_distribute
+2025-12-14 11:34:05,414 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/square_gemm_2048_2048_2048_i32_i32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-14 11:34:06,129 - WARNING - 2025-12-14T11:34:06 - square_gemm_2048_2048_2048_i32_i32_tB.mlir: 'FAIL(1)' in 0.72
+2025-12-14 11:34:06,129 - INFO - Tuning 19 (2/2) / 140: square_gemm_2048_2048_2048_i32_i32_tB.mlir - llvmgpu_tile_and_fuse
+2025-12-14 11:34:06,129 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/square_gemm_2048_2048_2048_i32_i32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-14 11:34:06,825 - WARNING - 2025-12-14T11:34:06 - square_gemm_2048_2048_2048_i32_i32_tB.mlir: 'FAIL(1)' in 0.70
+2025-12-14 11:34:06,825 - INFO - Checking file 20 / 140
+2025-12-14 11:34:06,825 - INFO - Tuning 20 (1/2) / 140: square_gemm_2048_2048_2048_i8_i32_tB.mlir - llvmgpu_vector_distribute
+2025-12-14 11:34:06,825 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/square_gemm_2048_2048_2048_i8_i32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-14 11:58:16,201 - INFO - 2025-12-14T11:58:16 - square_gemm_2048_2048_2048_i8_i32_tB.mlir: completed in 1449.38
+2025-12-14 11:58:16,203 - DEBUG - Copied square_gemm_2048_2048_2048_i8_i32_tB.csv -> /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/tuning_database_vd
+2025-12-14 11:58:16,203 - INFO - Tuning 20 (2/2) / 140: square_gemm_2048_2048_2048_i8_i32_tB.mlir - llvmgpu_tile_and_fuse
+2025-12-14 11:58:16,203 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/square_gemm_2048_2048_2048_i8_i32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-14 12:31:57,409 - INFO - 2025-12-14T12:31:57 - square_gemm_2048_2048_2048_i8_i32_tB.mlir: completed in 2021.21
+2025-12-14 12:31:57,411 - DEBUG - Copied square_gemm_2048_2048_2048_i8_i32_tB.csv -> /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/tuning_database_tf
+2025-12-14 12:31:57,411 - INFO - Checking file 21 / 140
+2025-12-14 12:31:57,411 - INFO - Tuning 21 (1/2) / 140: square_gemm_256_256_256_f16_f32_tB.mlir - llvmgpu_vector_distribute
+2025-12-14 12:31:57,411 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/square_gemm_256_256_256_f16_f32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-14 12:58:59,529 - INFO - 2025-12-14T12:58:59 - square_gemm_256_256_256_f16_f32_tB.mlir: completed in 1622.12
+2025-12-14 12:58:59,531 - DEBUG - Copied square_gemm_256_256_256_f16_f32_tB.csv -> /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/tuning_database_vd
+2025-12-14 12:58:59,531 - INFO - Tuning 21 (2/2) / 140: square_gemm_256_256_256_f16_f32_tB.mlir - llvmgpu_tile_and_fuse
+2025-12-14 12:58:59,531 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/square_gemm_256_256_256_f16_f32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-14 13:24:53,742 - INFO - 2025-12-14T13:24:53 - square_gemm_256_256_256_f16_f32_tB.mlir: completed in 1554.21
+2025-12-14 13:24:53,745 - DEBUG - Copied square_gemm_256_256_256_f16_f32_tB.csv -> /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/tuning_database_tf
+2025-12-14 13:24:53,745 - INFO - Checking file 22 / 140
+2025-12-14 13:24:53,745 - INFO - Tuning 22 (1/2) / 140: square_gemm_256_256_256_f32_f32_tB.mlir - llvmgpu_vector_distribute
+2025-12-14 13:24:53,745 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/square_gemm_256_256_256_f32_f32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-14 13:32:57,471 - INFO - 2025-12-14T13:32:57 - square_gemm_256_256_256_f32_f32_tB.mlir: completed in 483.73
+2025-12-14 13:32:57,472 - DEBUG - Copied square_gemm_256_256_256_f32_f32_tB.csv -> /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/tuning_database_vd
+2025-12-14 13:32:57,472 - INFO - Tuning 22 (2/2) / 140: square_gemm_256_256_256_f32_f32_tB.mlir - llvmgpu_tile_and_fuse
+2025-12-14 13:32:57,472 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/square_gemm_256_256_256_f32_f32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-14 13:52:24,275 - INFO - 2025-12-14T13:52:24 - square_gemm_256_256_256_f32_f32_tB.mlir: completed in 1166.80
+2025-12-14 13:52:24,276 - DEBUG - Copied square_gemm_256_256_256_f32_f32_tB.csv -> /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/tuning_database_tf
+2025-12-14 13:52:24,277 - INFO - Checking file 23 / 140
+2025-12-14 13:52:24,277 - INFO - Tuning 23 (1/2) / 140: square_gemm_256_256_256_f8E4M3FNUZ_f32_tB.mlir - llvmgpu_vector_distribute
+2025-12-14 13:52:24,277 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/square_gemm_256_256_256_f8E4M3FNUZ_f32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-14 14:09:16,935 - INFO - 2025-12-14T14:09:16 - square_gemm_256_256_256_f8E4M3FNUZ_f32_tB.mlir: completed in 1012.66
+2025-12-14 14:09:16,937 - DEBUG - Copied square_gemm_256_256_256_f8E4M3FNUZ_f32_tB.csv -> /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/tuning_database_vd
+2025-12-14 14:09:16,937 - INFO - Tuning 23 (2/2) / 140: square_gemm_256_256_256_f8E4M3FNUZ_f32_tB.mlir - llvmgpu_tile_and_fuse
+2025-12-14 14:09:16,937 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/square_gemm_256_256_256_f8E4M3FNUZ_f32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-14 14:33:46,488 - INFO - 2025-12-14T14:33:46 - square_gemm_256_256_256_f8E4M3FNUZ_f32_tB.mlir: completed in 1469.55
+2025-12-14 14:33:46,490 - DEBUG - Copied square_gemm_256_256_256_f8E4M3FNUZ_f32_tB.csv -> /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/tuning_database_tf
+2025-12-14 14:33:46,491 - INFO - Checking file 24 / 140
+2025-12-14 14:33:46,491 - INFO - Tuning 24 (1/2) / 140: square_gemm_256_256_256_i32_i32_tB.mlir - llvmgpu_vector_distribute
+2025-12-14 14:33:46,491 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/square_gemm_256_256_256_i32_i32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-14 14:33:47,193 - WARNING - 2025-12-14T14:33:47 - square_gemm_256_256_256_i32_i32_tB.mlir: 'FAIL(1)' in 0.70
+2025-12-14 14:33:47,193 - INFO - Tuning 24 (2/2) / 140: square_gemm_256_256_256_i32_i32_tB.mlir - llvmgpu_tile_and_fuse
+2025-12-14 14:33:47,193 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/square_gemm_256_256_256_i32_i32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-14 14:33:47,893 - WARNING - 2025-12-14T14:33:47 - square_gemm_256_256_256_i32_i32_tB.mlir: 'FAIL(1)' in 0.70
+2025-12-14 14:33:47,893 - INFO - Checking file 25 / 140
+2025-12-14 14:33:47,893 - INFO - Tuning 25 (1/2) / 140: square_gemm_256_256_256_i8_i32_tB.mlir - llvmgpu_vector_distribute
+2025-12-14 14:33:47,893 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/square_gemm_256_256_256_i8_i32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-14 14:50:54,762 - INFO - 2025-12-14T14:50:54 - square_gemm_256_256_256_i8_i32_tB.mlir: completed in 1026.87
+2025-12-14 14:50:54,764 - DEBUG - Copied square_gemm_256_256_256_i8_i32_tB.csv -> /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/tuning_database_vd
+2025-12-14 14:50:54,764 - INFO - Tuning 25 (2/2) / 140: square_gemm_256_256_256_i8_i32_tB.mlir - llvmgpu_tile_and_fuse
+2025-12-14 14:50:54,764 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/square_gemm_256_256_256_i8_i32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-14 15:15:40,432 - INFO - 2025-12-14T15:15:40 - square_gemm_256_256_256_i8_i32_tB.mlir: completed in 1485.67
+2025-12-14 15:15:40,433 - DEBUG - Copied square_gemm_256_256_256_i8_i32_tB.csv -> /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/tuning_database_tf
+2025-12-14 15:15:40,433 - INFO - Checking file 26 / 140
+2025-12-14 15:15:40,434 - INFO - Tuning 26 (1/2) / 140: square_gemm_4096_4096_4096_f16_f32_tB.mlir - llvmgpu_vector_distribute
+2025-12-14 15:15:40,434 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/square_gemm_4096_4096_4096_f16_f32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-14 15:49:53,744 - INFO - 2025-12-14T15:49:53 - square_gemm_4096_4096_4096_f16_f32_tB.mlir: completed in 2053.31
+2025-12-14 15:49:53,746 - DEBUG - Copied square_gemm_4096_4096_4096_f16_f32_tB.csv -> /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/tuning_database_vd
+2025-12-14 15:49:53,746 - INFO - Tuning 26 (2/2) / 140: square_gemm_4096_4096_4096_f16_f32_tB.mlir - llvmgpu_tile_and_fuse
+2025-12-14 15:49:53,746 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/square_gemm_4096_4096_4096_f16_f32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-14 16:22:35,039 - INFO - 2025-12-14T16:22:35 - square_gemm_4096_4096_4096_f16_f32_tB.mlir: completed in 1961.29
+2025-12-14 16:22:35,041 - DEBUG - Copied square_gemm_4096_4096_4096_f16_f32_tB.csv -> /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/tuning_database_tf
+2025-12-14 16:22:35,041 - INFO - Checking file 27 / 140
+2025-12-14 16:22:35,042 - INFO - Tuning 27 (1/2) / 140: square_gemm_4096_4096_4096_f32_f32_tB.mlir - llvmgpu_vector_distribute
+2025-12-14 16:22:35,042 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/square_gemm_4096_4096_4096_f32_f32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-14 16:31:58,983 - INFO - 2025-12-14T16:31:58 - square_gemm_4096_4096_4096_f32_f32_tB.mlir: completed in 563.94
+2025-12-14 16:31:58,985 - DEBUG - Copied square_gemm_4096_4096_4096_f32_f32_tB.csv -> /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/tuning_database_vd
+2025-12-14 16:31:58,985 - INFO - Tuning 27 (2/2) / 140: square_gemm_4096_4096_4096_f32_f32_tB.mlir - llvmgpu_tile_and_fuse
+2025-12-14 16:31:58,985 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/square_gemm_4096_4096_4096_f32_f32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-14 16:56:06,220 - INFO - 2025-12-14T16:56:06 - square_gemm_4096_4096_4096_f32_f32_tB.mlir: completed in 1447.23
+2025-12-14 16:56:06,222 - DEBUG - Copied square_gemm_4096_4096_4096_f32_f32_tB.csv -> /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/tuning_database_tf
+2025-12-14 16:56:06,222 - INFO - Checking file 28 / 140
+2025-12-14 16:56:06,222 - INFO - Tuning 28 (1/2) / 140: square_gemm_4096_4096_4096_f8E4M3FNUZ_f32_tB.mlir - llvmgpu_vector_distribute
+2025-12-14 16:56:06,222 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/square_gemm_4096_4096_4096_f8E4M3FNUZ_f32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-14 17:19:32,266 - INFO - 2025-12-14T17:19:32 - square_gemm_4096_4096_4096_f8E4M3FNUZ_f32_tB.mlir: completed in 1406.04
+2025-12-14 17:19:32,270 - DEBUG - Copied square_gemm_4096_4096_4096_f8E4M3FNUZ_f32_tB.csv -> /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/tuning_database_vd
+2025-12-14 17:19:32,270 - INFO - Tuning 28 (2/2) / 140: square_gemm_4096_4096_4096_f8E4M3FNUZ_f32_tB.mlir - llvmgpu_tile_and_fuse
+2025-12-14 17:19:32,270 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/square_gemm_4096_4096_4096_f8E4M3FNUZ_f32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-14 17:52:12,987 - INFO - 2025-12-14T17:52:12 - square_gemm_4096_4096_4096_f8E4M3FNUZ_f32_tB.mlir: completed in 1960.72
+2025-12-14 17:52:12,990 - DEBUG - Copied square_gemm_4096_4096_4096_f8E4M3FNUZ_f32_tB.csv -> /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/tuning_database_tf
+2025-12-14 17:52:12,990 - INFO - Checking file 29 / 140
+2025-12-14 17:52:12,990 - INFO - Tuning 29 (1/2) / 140: square_gemm_4096_4096_4096_i32_i32_tB.mlir - llvmgpu_vector_distribute
+2025-12-14 17:52:12,990 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/square_gemm_4096_4096_4096_i32_i32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-14 17:52:13,717 - WARNING - 2025-12-14T17:52:13 - square_gemm_4096_4096_4096_i32_i32_tB.mlir: 'FAIL(1)' in 0.73
+2025-12-14 17:52:13,717 - INFO - Tuning 29 (2/2) / 140: square_gemm_4096_4096_4096_i32_i32_tB.mlir - llvmgpu_tile_and_fuse
+2025-12-14 17:52:13,717 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/square_gemm_4096_4096_4096_i32_i32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-14 17:52:14,421 - WARNING - 2025-12-14T17:52:14 - square_gemm_4096_4096_4096_i32_i32_tB.mlir: 'FAIL(1)' in 0.70
+2025-12-14 17:52:14,421 - INFO - Checking file 30 / 140
+2025-12-14 17:52:14,421 - INFO - Tuning 30 (1/2) / 140: square_gemm_4096_4096_4096_i8_i32_tB.mlir - llvmgpu_vector_distribute
+2025-12-14 17:52:14,421 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/square_gemm_4096_4096_4096_i8_i32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-14 18:15:46,558 - INFO - 2025-12-14T18:15:46 - square_gemm_4096_4096_4096_i8_i32_tB.mlir: completed in 1412.14
+2025-12-14 18:15:46,560 - DEBUG - Copied square_gemm_4096_4096_4096_i8_i32_tB.csv -> /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/tuning_database_vd
+2025-12-14 18:15:46,560 - INFO - Tuning 30 (2/2) / 140: square_gemm_4096_4096_4096_i8_i32_tB.mlir - llvmgpu_tile_and_fuse
+2025-12-14 18:15:46,560 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/square_gemm_4096_4096_4096_i8_i32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-14 18:48:34,967 - INFO - 2025-12-14T18:48:34 - square_gemm_4096_4096_4096_i8_i32_tB.mlir: completed in 1968.41
+2025-12-14 18:48:34,969 - DEBUG - Copied square_gemm_4096_4096_4096_i8_i32_tB.csv -> /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/tuning_database_tf
+2025-12-14 18:48:34,969 - INFO - Checking file 31 / 140
+2025-12-14 18:48:34,969 - INFO - Tuning 31 (1/2) / 140: square_gemm_512_512_512_f16_f32_tB.mlir - llvmgpu_vector_distribute
+2025-12-14 18:48:34,969 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/square_gemm_512_512_512_f16_f32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-14 19:25:02,184 - INFO - 2025-12-14T19:25:02 - square_gemm_512_512_512_f16_f32_tB.mlir: completed in 2187.21
+2025-12-14 19:25:02,186 - DEBUG - Copied square_gemm_512_512_512_f16_f32_tB.csv -> /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/tuning_database_vd
+2025-12-14 19:25:02,186 - INFO - Tuning 31 (2/2) / 140: square_gemm_512_512_512_f16_f32_tB.mlir - llvmgpu_tile_and_fuse
+2025-12-14 19:25:02,186 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/square_gemm_512_512_512_f16_f32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-14 20:00:21,992 - INFO - 2025-12-14T20:00:21 - square_gemm_512_512_512_f16_f32_tB.mlir: completed in 2119.81
+2025-12-14 20:00:21,995 - DEBUG - Copied square_gemm_512_512_512_f16_f32_tB.csv -> /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/tuning_database_tf
+2025-12-14 20:00:21,995 - INFO - Checking file 32 / 140
+2025-12-14 20:00:21,996 - INFO - Tuning 32 (1/2) / 140: square_gemm_512_512_512_f32_f32_tB.mlir - llvmgpu_vector_distribute
+2025-12-14 20:00:21,996 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/square_gemm_512_512_512_f32_f32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-14 20:10:18,721 - INFO - 2025-12-14T20:10:18 - square_gemm_512_512_512_f32_f32_tB.mlir: completed in 596.73
+2025-12-14 20:10:18,723 - DEBUG - Copied square_gemm_512_512_512_f32_f32_tB.csv -> /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/tuning_database_vd
+2025-12-14 20:10:18,723 - INFO - Tuning 32 (2/2) / 140: square_gemm_512_512_512_f32_f32_tB.mlir - llvmgpu_tile_and_fuse
+2025-12-14 20:10:18,723 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/square_gemm_512_512_512_f32_f32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-14 20:35:40,613 - INFO - 2025-12-14T20:35:40 - square_gemm_512_512_512_f32_f32_tB.mlir: completed in 1521.89
+2025-12-14 20:35:40,615 - DEBUG - Copied square_gemm_512_512_512_f32_f32_tB.csv -> /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/tuning_database_tf
+2025-12-14 20:35:40,615 - INFO - Checking file 33 / 140
+2025-12-14 20:35:40,615 - INFO - Tuning 33 (1/2) / 140: square_gemm_512_512_512_f8E4M3FNUZ_f32_tB.mlir - llvmgpu_vector_distribute
+2025-12-14 20:35:40,615 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/square_gemm_512_512_512_f8E4M3FNUZ_f32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-14 21:00:41,169 - INFO - 2025-12-14T21:00:41 - square_gemm_512_512_512_f8E4M3FNUZ_f32_tB.mlir: completed in 1500.55
+2025-12-14 21:00:41,171 - DEBUG - Copied square_gemm_512_512_512_f8E4M3FNUZ_f32_tB.csv -> /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/tuning_database_vd
+2025-12-14 21:00:41,171 - INFO - Tuning 33 (2/2) / 140: square_gemm_512_512_512_f8E4M3FNUZ_f32_tB.mlir - llvmgpu_tile_and_fuse
+2025-12-14 21:00:41,171 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/square_gemm_512_512_512_f8E4M3FNUZ_f32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-14 21:35:24,861 - INFO - 2025-12-14T21:35:24 - square_gemm_512_512_512_f8E4M3FNUZ_f32_tB.mlir: completed in 2083.69
+2025-12-14 21:35:24,864 - DEBUG - Copied square_gemm_512_512_512_f8E4M3FNUZ_f32_tB.csv -> /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/tuning_database_tf
+2025-12-14 21:35:24,864 - INFO - Checking file 34 / 140
+2025-12-14 21:35:24,864 - INFO - Tuning 34 (1/2) / 140: square_gemm_512_512_512_i32_i32_tB.mlir - llvmgpu_vector_distribute
+2025-12-14 21:35:24,865 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/square_gemm_512_512_512_i32_i32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-14 21:35:25,585 - WARNING - 2025-12-14T21:35:25 - square_gemm_512_512_512_i32_i32_tB.mlir: 'FAIL(1)' in 0.72
+2025-12-14 21:35:25,585 - INFO - Tuning 34 (2/2) / 140: square_gemm_512_512_512_i32_i32_tB.mlir - llvmgpu_tile_and_fuse
+2025-12-14 21:35:25,585 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/square_gemm_512_512_512_i32_i32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-14 21:35:26,313 - WARNING - 2025-12-14T21:35:26 - square_gemm_512_512_512_i32_i32_tB.mlir: 'FAIL(1)' in 0.73
+2025-12-14 21:35:26,313 - INFO - Checking file 35 / 140
+2025-12-14 21:35:26,313 - INFO - Tuning 35 (1/2) / 140: square_gemm_512_512_512_i8_i32_tB.mlir - llvmgpu_vector_distribute
+2025-12-14 21:35:26,313 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/square_gemm_512_512_512_i8_i32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-14 22:00:19,085 - INFO - 2025-12-14T22:00:19 - square_gemm_512_512_512_i8_i32_tB.mlir: completed in 1492.77
+2025-12-14 22:00:19,087 - DEBUG - Copied square_gemm_512_512_512_i8_i32_tB.csv -> /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/tuning_database_vd
+2025-12-14 22:00:19,087 - INFO - Tuning 35 (2/2) / 140: square_gemm_512_512_512_i8_i32_tB.mlir - llvmgpu_tile_and_fuse
+2025-12-14 22:00:19,087 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/square_gemm_512_512_512_i8_i32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-14 22:35:04,069 - INFO - 2025-12-14T22:35:04 - square_gemm_512_512_512_i8_i32_tB.mlir: completed in 2084.98
+2025-12-14 22:35:04,071 - DEBUG - Copied square_gemm_512_512_512_i8_i32_tB.csv -> /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/tuning_database_tf
+2025-12-14 22:35:04,071 - INFO - Checking file 36 / 140
+2025-12-14 22:35:04,071 - INFO - Tuning 36 (1/2) / 140: square_gemm_8192_8192_8192_f16_f32_tB.mlir - llvmgpu_vector_distribute
+2025-12-14 22:35:04,071 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/square_gemm_8192_8192_8192_f16_f32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-14 23:08:50,346 - INFO - 2025-12-14T23:08:50 - square_gemm_8192_8192_8192_f16_f32_tB.mlir: completed in 2026.27
+2025-12-14 23:08:50,348 - DEBUG - Copied square_gemm_8192_8192_8192_f16_f32_tB.csv -> /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/tuning_database_vd
+2025-12-14 23:08:50,348 - INFO - Tuning 36 (2/2) / 140: square_gemm_8192_8192_8192_f16_f32_tB.mlir - llvmgpu_tile_and_fuse
+2025-12-14 23:08:50,348 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/square_gemm_8192_8192_8192_f16_f32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-14 23:41:08,603 - INFO - 2025-12-14T23:41:08 - square_gemm_8192_8192_8192_f16_f32_tB.mlir: completed in 1938.26
+2025-12-14 23:41:08,605 - DEBUG - Copied square_gemm_8192_8192_8192_f16_f32_tB.csv -> /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/tuning_database_tf
+2025-12-14 23:41:08,605 - INFO - Checking file 37 / 140
+2025-12-14 23:41:08,605 - INFO - Tuning 37 (1/2) / 140: square_gemm_8192_8192_8192_f32_f32_tB.mlir - llvmgpu_vector_distribute
+2025-12-14 23:41:08,606 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/square_gemm_8192_8192_8192_f32_f32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-14 23:50:26,443 - INFO - 2025-12-14T23:50:26 - square_gemm_8192_8192_8192_f32_f32_tB.mlir: completed in 557.84
+2025-12-14 23:50:26,444 - DEBUG - Copied square_gemm_8192_8192_8192_f32_f32_tB.csv -> /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/tuning_database_vd
+2025-12-14 23:50:26,444 - INFO - Tuning 37 (2/2) / 140: square_gemm_8192_8192_8192_f32_f32_tB.mlir - llvmgpu_tile_and_fuse
+2025-12-14 23:50:26,444 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/square_gemm_8192_8192_8192_f32_f32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-15 00:14:07,272 - INFO - 2025-12-15T00:14:07 - square_gemm_8192_8192_8192_f32_f32_tB.mlir: completed in 1420.83
+2025-12-15 00:14:07,275 - DEBUG - Copied square_gemm_8192_8192_8192_f32_f32_tB.csv -> /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/tuning_database_tf
+2025-12-15 00:14:07,275 - INFO - Checking file 38 / 140
+2025-12-15 00:14:07,276 - INFO - Tuning 38 (1/2) / 140: square_gemm_8192_8192_8192_f8E4M3FNUZ_f32_tB.mlir - llvmgpu_vector_distribute
+2025-12-15 00:14:07,276 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/square_gemm_8192_8192_8192_f8E4M3FNUZ_f32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-15 00:37:05,120 - INFO - 2025-12-15T00:37:05 - square_gemm_8192_8192_8192_f8E4M3FNUZ_f32_tB.mlir: completed in 1377.84
+2025-12-15 00:37:05,123 - DEBUG - Copied square_gemm_8192_8192_8192_f8E4M3FNUZ_f32_tB.csv -> /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/tuning_database_vd
+2025-12-15 00:37:05,123 - INFO - Tuning 38 (2/2) / 140: square_gemm_8192_8192_8192_f8E4M3FNUZ_f32_tB.mlir - llvmgpu_tile_and_fuse
+2025-12-15 00:37:05,123 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/square_gemm_8192_8192_8192_f8E4M3FNUZ_f32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-15 01:09:08,603 - INFO - 2025-12-15T01:09:08 - square_gemm_8192_8192_8192_f8E4M3FNUZ_f32_tB.mlir: completed in 1923.48
+2025-12-15 01:09:08,605 - DEBUG - Copied square_gemm_8192_8192_8192_f8E4M3FNUZ_f32_tB.csv -> /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/tuning_database_tf
+2025-12-15 01:09:08,605 - INFO - Checking file 39 / 140
+2025-12-15 01:09:08,605 - INFO - Tuning 39 (1/2) / 140: square_gemm_8192_8192_8192_i32_i32_tB.mlir - llvmgpu_vector_distribute
+2025-12-15 01:09:08,605 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/square_gemm_8192_8192_8192_i32_i32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-15 01:09:09,305 - WARNING - 2025-12-15T01:09:09 - square_gemm_8192_8192_8192_i32_i32_tB.mlir: 'FAIL(1)' in 0.70
+2025-12-15 01:09:09,305 - INFO - Tuning 39 (2/2) / 140: square_gemm_8192_8192_8192_i32_i32_tB.mlir - llvmgpu_tile_and_fuse
+2025-12-15 01:09:09,305 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/square_gemm_8192_8192_8192_i32_i32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-15 01:09:10,009 - WARNING - 2025-12-15T01:09:10 - square_gemm_8192_8192_8192_i32_i32_tB.mlir: 'FAIL(1)' in 0.70
+2025-12-15 01:09:10,009 - INFO - Checking file 40 / 140
+2025-12-15 01:09:10,009 - INFO - Tuning 40 (1/2) / 140: square_gemm_8192_8192_8192_i8_i32_tB.mlir - llvmgpu_vector_distribute
+2025-12-15 01:09:10,009 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/square_gemm_8192_8192_8192_i8_i32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-15 01:32:07,377 - INFO - 2025-12-15T01:32:07 - square_gemm_8192_8192_8192_i8_i32_tB.mlir: completed in 1377.37
+2025-12-15 01:32:07,379 - DEBUG - Copied square_gemm_8192_8192_8192_i8_i32_tB.csv -> /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/tuning_database_vd
+2025-12-15 01:32:07,379 - INFO - Tuning 40 (2/2) / 140: square_gemm_8192_8192_8192_i8_i32_tB.mlir - llvmgpu_tile_and_fuse
+2025-12-15 01:32:07,379 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/square_gemm_8192_8192_8192_i8_i32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-15 02:04:05,186 - INFO - 2025-12-15T02:04:05 - square_gemm_8192_8192_8192_i8_i32_tB.mlir: completed in 1917.81
+2025-12-15 02:04:05,189 - DEBUG - Copied square_gemm_8192_8192_8192_i8_i32_tB.csv -> /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/tuning_database_tf
+2025-12-15 02:04:05,189 - INFO - Checking file 41 / 140
+2025-12-15 02:04:05,190 - INFO - Tuning 41 (1/2) / 140: tk_gemm_128_1280_2048_f16_f32_tB.mlir - llvmgpu_vector_distribute
+2025-12-15 02:04:05,190 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/tk_gemm_128_1280_2048_f16_f32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-15 02:29:57,626 - INFO - 2025-12-15T02:29:57 - tk_gemm_128_1280_2048_f16_f32_tB.mlir: completed in 1552.44
+2025-12-15 02:29:57,628 - DEBUG - Copied tk_gemm_128_1280_2048_f16_f32_tB.csv -> /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/tuning_database_vd
+2025-12-15 02:29:57,628 - INFO - Tuning 41 (2/2) / 140: tk_gemm_128_1280_2048_f16_f32_tB.mlir - llvmgpu_tile_and_fuse
+2025-12-15 02:29:57,628 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/tk_gemm_128_1280_2048_f16_f32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-15 02:59:14,570 - INFO - 2025-12-15T02:59:14 - tk_gemm_128_1280_2048_f16_f32_tB.mlir: completed in 1756.94
+2025-12-15 02:59:14,573 - DEBUG - Copied tk_gemm_128_1280_2048_f16_f32_tB.csv -> /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/tuning_database_tf
+2025-12-15 02:59:14,573 - INFO - Checking file 42 / 140
+2025-12-15 02:59:14,573 - INFO - Tuning 42 (1/2) / 140: tk_gemm_128_1280_2048_f32_f32_tB.mlir - llvmgpu_vector_distribute
+2025-12-15 02:59:14,573 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/tk_gemm_128_1280_2048_f32_f32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-15 03:07:35,386 - INFO - 2025-12-15T03:07:35 - tk_gemm_128_1280_2048_f32_f32_tB.mlir: completed in 500.81
+2025-12-15 03:07:35,389 - DEBUG - Copied tk_gemm_128_1280_2048_f32_f32_tB.csv -> /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/tuning_database_vd
+2025-12-15 03:07:35,389 - INFO - Tuning 42 (2/2) / 140: tk_gemm_128_1280_2048_f32_f32_tB.mlir - llvmgpu_tile_and_fuse
+2025-12-15 03:07:35,390 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/tk_gemm_128_1280_2048_f32_f32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-15 03:31:19,834 - INFO - 2025-12-15T03:31:19 - tk_gemm_128_1280_2048_f32_f32_tB.mlir: completed in 1424.44
+2025-12-15 03:31:19,836 - DEBUG - Copied tk_gemm_128_1280_2048_f32_f32_tB.csv -> /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/tuning_database_tf
+2025-12-15 03:31:19,836 - INFO - Checking file 43 / 140
+2025-12-15 03:31:19,836 - INFO - Tuning 43 (1/2) / 140: tk_gemm_128_1280_2048_f8E4M3FNUZ_f32_tB.mlir - llvmgpu_vector_distribute
+2025-12-15 03:31:19,837 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/tk_gemm_128_1280_2048_f8E4M3FNUZ_f32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-15 03:47:30,190 - INFO - 2025-12-15T03:47:30 - tk_gemm_128_1280_2048_f8E4M3FNUZ_f32_tB.mlir: completed in 970.35
+2025-12-15 03:47:30,192 - DEBUG - Copied tk_gemm_128_1280_2048_f8E4M3FNUZ_f32_tB.csv -> /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/tuning_database_vd
+2025-12-15 03:47:30,192 - INFO - Tuning 43 (2/2) / 140: tk_gemm_128_1280_2048_f8E4M3FNUZ_f32_tB.mlir - llvmgpu_tile_and_fuse
+2025-12-15 03:47:30,192 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/tk_gemm_128_1280_2048_f8E4M3FNUZ_f32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-15 04:16:40,397 - INFO - 2025-12-15T04:16:40 - tk_gemm_128_1280_2048_f8E4M3FNUZ_f32_tB.mlir: completed in 1750.20
+2025-12-15 04:16:40,400 - DEBUG - Copied tk_gemm_128_1280_2048_f8E4M3FNUZ_f32_tB.csv -> /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/tuning_database_tf
+2025-12-15 04:16:40,400 - INFO - Checking file 44 / 140
+2025-12-15 04:16:40,400 - INFO - Tuning 44 (1/2) / 140: tk_gemm_128_1280_2048_i32_i32_tB.mlir - llvmgpu_vector_distribute
+2025-12-15 04:16:40,400 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/tk_gemm_128_1280_2048_i32_i32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-15 04:16:41,113 - WARNING - 2025-12-15T04:16:41 - tk_gemm_128_1280_2048_i32_i32_tB.mlir: 'FAIL(1)' in 0.71
+2025-12-15 04:16:41,113 - INFO - Tuning 44 (2/2) / 140: tk_gemm_128_1280_2048_i32_i32_tB.mlir - llvmgpu_tile_and_fuse
+2025-12-15 04:16:41,113 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/tk_gemm_128_1280_2048_i32_i32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-15 04:16:41,813 - WARNING - 2025-12-15T04:16:41 - tk_gemm_128_1280_2048_i32_i32_tB.mlir: 'FAIL(1)' in 0.70
+2025-12-15 04:16:41,813 - INFO - Checking file 45 / 140
+2025-12-15 04:16:41,813 - INFO - Tuning 45 (1/2) / 140: tk_gemm_128_1280_2048_i8_i32_tB.mlir - llvmgpu_vector_distribute
+2025-12-15 04:16:41,813 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/tk_gemm_128_1280_2048_i8_i32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-15 04:32:44,436 - INFO - 2025-12-15T04:32:44 - tk_gemm_128_1280_2048_i8_i32_tB.mlir: completed in 962.62
+2025-12-15 04:32:44,439 - DEBUG - Copied tk_gemm_128_1280_2048_i8_i32_tB.csv -> /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/tuning_database_vd
+2025-12-15 04:32:44,439 - INFO - Tuning 45 (2/2) / 140: tk_gemm_128_1280_2048_i8_i32_tB.mlir - llvmgpu_tile_and_fuse
+2025-12-15 04:32:44,439 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/tk_gemm_128_1280_2048_i8_i32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-15 05:02:09,615 - INFO - 2025-12-15T05:02:09 - tk_gemm_128_1280_2048_i8_i32_tB.mlir: completed in 1765.18
+2025-12-15 05:02:09,617 - DEBUG - Copied tk_gemm_128_1280_2048_i8_i32_tB.csv -> /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/tuning_database_tf
+2025-12-15 05:02:09,617 - INFO - Checking file 46 / 140
+2025-12-15 05:02:09,617 - INFO - Tuning 46 (1/2) / 140: tk_gemm_2048_10240_1280_f16_f32_tB.mlir - llvmgpu_vector_distribute
+2025-12-15 05:02:09,617 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/tk_gemm_2048_10240_1280_f16_f32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-15 05:46:32,574 - INFO - 2025-12-15T05:46:32 - tk_gemm_2048_10240_1280_f16_f32_tB.mlir: completed in 2662.96
+2025-12-15 05:46:32,577 - DEBUG - Copied tk_gemm_2048_10240_1280_f16_f32_tB.csv -> /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/tuning_database_vd
+2025-12-15 05:46:32,577 - INFO - Tuning 46 (2/2) / 140: tk_gemm_2048_10240_1280_f16_f32_tB.mlir - llvmgpu_tile_and_fuse
+2025-12-15 05:46:32,577 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/tk_gemm_2048_10240_1280_f16_f32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-15 06:50:28,816 - INFO - 2025-12-15T06:50:28 - tk_gemm_2048_10240_1280_f16_f32_tB.mlir: completed in 3836.24
+2025-12-15 06:50:28,819 - DEBUG - Copied tk_gemm_2048_10240_1280_f16_f32_tB.csv -> /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/tuning_database_tf
+2025-12-15 06:50:28,819 - INFO - Checking file 47 / 140
+2025-12-15 06:50:28,820 - INFO - Tuning 47 (1/2) / 140: tk_gemm_2048_10240_1280_f32_f32_tB.mlir - llvmgpu_vector_distribute
+2025-12-15 06:50:28,820 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/tk_gemm_2048_10240_1280_f32_f32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-15 07:03:01,068 - INFO - 2025-12-15T07:03:01 - tk_gemm_2048_10240_1280_f32_f32_tB.mlir: completed in 752.25
+2025-12-15 07:03:01,070 - DEBUG - Copied tk_gemm_2048_10240_1280_f32_f32_tB.csv -> /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/tuning_database_vd
+2025-12-15 07:03:01,070 - INFO - Tuning 47 (2/2) / 140: tk_gemm_2048_10240_1280_f32_f32_tB.mlir - llvmgpu_tile_and_fuse
+2025-12-15 07:03:01,070 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/tk_gemm_2048_10240_1280_f32_f32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-15 07:55:44,301 - INFO - 2025-12-15T07:55:44 - tk_gemm_2048_10240_1280_f32_f32_tB.mlir: completed in 3163.23
+2025-12-15 07:55:44,304 - DEBUG - Copied tk_gemm_2048_10240_1280_f32_f32_tB.csv -> /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/tuning_database_tf
+2025-12-15 07:55:44,304 - INFO - Checking file 48 / 140
+2025-12-15 07:55:44,304 - INFO - Tuning 48 (1/2) / 140: tk_gemm_2048_10240_1280_f8E4M3FNUZ_f32_tB.mlir - llvmgpu_vector_distribute
+2025-12-15 07:55:44,304 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/tk_gemm_2048_10240_1280_f8E4M3FNUZ_f32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-15 08:25:13,328 - INFO - 2025-12-15T08:25:13 - tk_gemm_2048_10240_1280_f8E4M3FNUZ_f32_tB.mlir: completed in 1769.02
+2025-12-15 08:25:13,332 - DEBUG - Copied tk_gemm_2048_10240_1280_f8E4M3FNUZ_f32_tB.csv -> /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/tuning_database_vd
+2025-12-15 08:25:13,332 - INFO - Tuning 48 (2/2) / 140: tk_gemm_2048_10240_1280_f8E4M3FNUZ_f32_tB.mlir - llvmgpu_tile_and_fuse
+2025-12-15 08:25:13,332 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/tk_gemm_2048_10240_1280_f8E4M3FNUZ_f32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-15 09:28:05,310 - INFO - 2025-12-15T09:28:05 - tk_gemm_2048_10240_1280_f8E4M3FNUZ_f32_tB.mlir: completed in 3771.98
+2025-12-15 09:28:05,311 - DEBUG - Copied tk_gemm_2048_10240_1280_f8E4M3FNUZ_f32_tB.csv -> /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/tuning_database_tf
+2025-12-15 09:28:05,311 - INFO - Checking file 49 / 140
+2025-12-15 09:28:05,311 - INFO - Tuning 49 (1/2) / 140: tk_gemm_2048_10240_1280_i32_i32_tB.mlir - llvmgpu_vector_distribute
+2025-12-15 09:28:05,311 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/tk_gemm_2048_10240_1280_i32_i32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-15 09:28:06,924 - WARNING - 2025-12-15T09:28:06 - tk_gemm_2048_10240_1280_i32_i32_tB.mlir: 'FAIL(1)' in 1.61
+2025-12-15 09:28:06,924 - INFO - Tuning 49 (2/2) / 140: tk_gemm_2048_10240_1280_i32_i32_tB.mlir - llvmgpu_tile_and_fuse
+2025-12-15 09:28:06,924 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/tk_gemm_2048_10240_1280_i32_i32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-15 09:28:08,246 - WARNING - 2025-12-15T09:28:08 - tk_gemm_2048_10240_1280_i32_i32_tB.mlir: 'FAIL(1)' in 1.32
+2025-12-15 09:28:08,248 - INFO - Checking file 50 / 140
+2025-12-15 09:28:08,249 - INFO - Tuning 50 (1/2) / 140: tk_gemm_2048_10240_1280_i8_i32_tB.mlir - llvmgpu_vector_distribute
+2025-12-15 09:28:08,249 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/tk_gemm_2048_10240_1280_i8_i32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-15 09:58:35,694 - INFO - 2025-12-15T09:58:35 - tk_gemm_2048_10240_1280_i8_i32_tB.mlir: completed in 1827.45
+2025-12-15 09:58:35,695 - DEBUG - Copied tk_gemm_2048_10240_1280_i8_i32_tB.csv -> /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/tuning_database_vd
+2025-12-15 09:58:35,695 - INFO - Tuning 50 (2/2) / 140: tk_gemm_2048_10240_1280_i8_i32_tB.mlir - llvmgpu_tile_and_fuse
+2025-12-15 09:58:35,695 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/tk_gemm_2048_10240_1280_i8_i32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-15 11:03:07,727 - INFO - 2025-12-15T11:03:07 - tk_gemm_2048_10240_1280_i8_i32_tB.mlir: completed in 3872.03
+2025-12-15 11:03:07,729 - DEBUG - Copied tk_gemm_2048_10240_1280_i8_i32_tB.csv -> /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/tuning_database_tf
+2025-12-15 11:03:07,729 - INFO - Checking file 51 / 140
+2025-12-15 11:03:07,730 - INFO - Tuning 51 (1/2) / 140: tk_gemm_2048_1280_1280_f16_f32_tB.mlir - llvmgpu_vector_distribute
+2025-12-15 11:03:07,730 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/tk_gemm_2048_1280_1280_f16_f32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-15 11:44:15,430 - INFO - 2025-12-15T11:44:15 - tk_gemm_2048_1280_1280_f16_f32_tB.mlir: completed in 2467.70
+2025-12-15 11:44:15,432 - DEBUG - Copied tk_gemm_2048_1280_1280_f16_f32_tB.csv -> /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/tuning_database_vd
+2025-12-15 11:44:15,432 - INFO - Tuning 51 (2/2) / 140: tk_gemm_2048_1280_1280_f16_f32_tB.mlir - llvmgpu_tile_and_fuse
+2025-12-15 11:44:15,432 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/tk_gemm_2048_1280_1280_f16_f32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-15 12:46:38,748 - INFO - 2025-12-15T12:46:38 - tk_gemm_2048_1280_1280_f16_f32_tB.mlir: completed in 3743.32
+2025-12-15 12:46:38,751 - DEBUG - Copied tk_gemm_2048_1280_1280_f16_f32_tB.csv -> /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/tuning_database_tf
+2025-12-15 12:46:38,751 - INFO - Checking file 52 / 140
+2025-12-15 12:46:38,751 - INFO - Tuning 52 (1/2) / 140: tk_gemm_2048_1280_1280_f32_f32_tB.mlir - llvmgpu_vector_distribute
+2025-12-15 12:46:38,751 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/tk_gemm_2048_1280_1280_f32_f32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-15 12:58:41,046 - INFO - 2025-12-15T12:58:41 - tk_gemm_2048_1280_1280_f32_f32_tB.mlir: completed in 722.29
+2025-12-15 12:58:41,048 - DEBUG - Copied tk_gemm_2048_1280_1280_f32_f32_tB.csv -> /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/tuning_database_vd
+2025-12-15 12:58:41,048 - INFO - Tuning 52 (2/2) / 140: tk_gemm_2048_1280_1280_f32_f32_tB.mlir - llvmgpu_tile_and_fuse
+2025-12-15 12:58:41,048 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/tk_gemm_2048_1280_1280_f32_f32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-15 13:49:38,286 - INFO - 2025-12-15T13:49:38 - tk_gemm_2048_1280_1280_f32_f32_tB.mlir: completed in 3057.24
+2025-12-15 13:49:38,289 - DEBUG - Copied tk_gemm_2048_1280_1280_f32_f32_tB.csv -> /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/tuning_database_tf
+2025-12-15 13:49:38,289 - INFO - Checking file 53 / 140
+2025-12-15 13:49:38,289 - INFO - Tuning 53 (1/2) / 140: tk_gemm_2048_1280_1280_f8E4M3FNUZ_f32_tB.mlir - llvmgpu_vector_distribute
+2025-12-15 13:49:38,289 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/tk_gemm_2048_1280_1280_f8E4M3FNUZ_f32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-15 14:15:37,287 - INFO - 2025-12-15T14:15:37 - tk_gemm_2048_1280_1280_f8E4M3FNUZ_f32_tB.mlir: completed in 1559.00
+2025-12-15 14:15:37,290 - DEBUG - Copied tk_gemm_2048_1280_1280_f8E4M3FNUZ_f32_tB.csv -> /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/tuning_database_vd
+2025-12-15 14:15:37,290 - INFO - Tuning 53 (2/2) / 140: tk_gemm_2048_1280_1280_f8E4M3FNUZ_f32_tB.mlir - llvmgpu_tile_and_fuse
+2025-12-15 14:15:37,290 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/tk_gemm_2048_1280_1280_f8E4M3FNUZ_f32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-15 15:14:16,670 - INFO - 2025-12-15T15:14:16 - tk_gemm_2048_1280_1280_f8E4M3FNUZ_f32_tB.mlir: completed in 3519.38
+2025-12-15 15:14:16,673 - DEBUG - Copied tk_gemm_2048_1280_1280_f8E4M3FNUZ_f32_tB.csv -> /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/tuning_database_tf
+2025-12-15 15:14:16,673 - INFO - Checking file 54 / 140
+2025-12-15 15:14:16,673 - INFO - Tuning 54 (1/2) / 140: tk_gemm_2048_1280_1280_i32_i32_tB.mlir - llvmgpu_vector_distribute
+2025-12-15 15:14:16,673 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/tk_gemm_2048_1280_1280_i32_i32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-15 15:14:17,369 - WARNING - 2025-12-15T15:14:17 - tk_gemm_2048_1280_1280_i32_i32_tB.mlir: 'FAIL(1)' in 0.70
+2025-12-15 15:14:17,369 - INFO - Tuning 54 (2/2) / 140: tk_gemm_2048_1280_1280_i32_i32_tB.mlir - llvmgpu_tile_and_fuse
+2025-12-15 15:14:17,369 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/tk_gemm_2048_1280_1280_i32_i32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-15 15:14:18,073 - WARNING - 2025-12-15T15:14:18 - tk_gemm_2048_1280_1280_i32_i32_tB.mlir: 'FAIL(1)' in 0.70
+2025-12-15 15:14:18,073 - INFO - Checking file 55 / 140
+2025-12-15 15:14:18,073 - INFO - Tuning 55 (1/2) / 140: tk_gemm_2048_1280_1280_i8_i32_tB.mlir - llvmgpu_vector_distribute
+2025-12-15 15:14:18,073 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/tk_gemm_2048_1280_1280_i8_i32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-15 15:39:50,331 - INFO - 2025-12-15T15:39:50 - tk_gemm_2048_1280_1280_i8_i32_tB.mlir: completed in 1532.26
+2025-12-15 15:39:50,333 - DEBUG - Copied tk_gemm_2048_1280_1280_i8_i32_tB.csv -> /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/tuning_database_vd
+2025-12-15 15:39:50,333 - INFO - Tuning 55 (2/2) / 140: tk_gemm_2048_1280_1280_i8_i32_tB.mlir - llvmgpu_tile_and_fuse
+2025-12-15 15:39:50,333 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/tk_gemm_2048_1280_1280_i8_i32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-15 16:37:33,175 - INFO - 2025-12-15T16:37:33 - tk_gemm_2048_1280_1280_i8_i32_tB.mlir: completed in 3462.84
+2025-12-15 16:37:33,177 - DEBUG - Copied tk_gemm_2048_1280_1280_i8_i32_tB.csv -> /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/tuning_database_tf
+2025-12-15 16:37:33,177 - INFO - Checking file 56 / 140
+2025-12-15 16:37:33,178 - INFO - Tuning 56 (1/2) / 140: tk_gemm_2048_1280_5120_f16_f32_tB.mlir - llvmgpu_vector_distribute
+2025-12-15 16:37:33,178 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/tk_gemm_2048_1280_5120_f16_f32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-15 17:16:55,109 - INFO - 2025-12-15T17:16:55 - tk_gemm_2048_1280_5120_f16_f32_tB.mlir: completed in 2361.93
+2025-12-15 17:16:55,111 - DEBUG - Copied tk_gemm_2048_1280_5120_f16_f32_tB.csv -> /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/tuning_database_vd
+2025-12-15 17:16:55,112 - INFO - Tuning 56 (2/2) / 140: tk_gemm_2048_1280_5120_f16_f32_tB.mlir - llvmgpu_tile_and_fuse
+2025-12-15 17:16:55,112 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/tk_gemm_2048_1280_5120_f16_f32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-15 18:16:03,968 - INFO - 2025-12-15T18:16:03 - tk_gemm_2048_1280_5120_f16_f32_tB.mlir: completed in 3548.86
+2025-12-15 18:16:03,971 - DEBUG - Copied tk_gemm_2048_1280_5120_f16_f32_tB.csv -> /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/tuning_database_tf
+2025-12-15 18:16:03,971 - INFO - Checking file 57 / 140
+2025-12-15 18:16:03,971 - INFO - Tuning 57 (1/2) / 140: tk_gemm_2048_1280_5120_f32_f32_tB.mlir - llvmgpu_vector_distribute
+2025-12-15 18:16:03,971 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/tk_gemm_2048_1280_5120_f32_f32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-15 18:27:39,684 - INFO - 2025-12-15T18:27:39 - tk_gemm_2048_1280_5120_f32_f32_tB.mlir: completed in 695.71
+2025-12-15 18:27:39,688 - DEBUG - Copied tk_gemm_2048_1280_5120_f32_f32_tB.csv -> /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/tuning_database_vd
+2025-12-15 18:27:39,688 - INFO - Tuning 57 (2/2) / 140: tk_gemm_2048_1280_5120_f32_f32_tB.mlir - llvmgpu_tile_and_fuse
+2025-12-15 18:27:39,688 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/tk_gemm_2048_1280_5120_f32_f32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-15 19:16:36,798 - INFO - 2025-12-15T19:16:36 - tk_gemm_2048_1280_5120_f32_f32_tB.mlir: completed in 2937.11
+2025-12-15 19:16:36,800 - DEBUG - Copied tk_gemm_2048_1280_5120_f32_f32_tB.csv -> /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/tuning_database_tf
+2025-12-15 19:16:36,800 - INFO - Checking file 58 / 140
+2025-12-15 19:16:36,801 - INFO - Tuning 58 (1/2) / 140: tk_gemm_2048_1280_5120_f8E4M3FNUZ_f32_tB.mlir - llvmgpu_vector_distribute
+2025-12-15 19:16:36,801 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/tk_gemm_2048_1280_5120_f8E4M3FNUZ_f32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-15 19:42:17,549 - INFO - 2025-12-15T19:42:17 - tk_gemm_2048_1280_5120_f8E4M3FNUZ_f32_tB.mlir: completed in 1540.75
+2025-12-15 19:42:17,551 - DEBUG - Copied tk_gemm_2048_1280_5120_f8E4M3FNUZ_f32_tB.csv -> /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/tuning_database_vd
+2025-12-15 19:42:17,552 - INFO - Tuning 58 (2/2) / 140: tk_gemm_2048_1280_5120_f8E4M3FNUZ_f32_tB.mlir - llvmgpu_tile_and_fuse
+2025-12-15 19:42:17,552 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/tk_gemm_2048_1280_5120_f8E4M3FNUZ_f32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-15 20:40:18,677 - INFO - 2025-12-15T20:40:18 - tk_gemm_2048_1280_5120_f8E4M3FNUZ_f32_tB.mlir: completed in 3481.12
+2025-12-15 20:40:18,680 - DEBUG - Copied tk_gemm_2048_1280_5120_f8E4M3FNUZ_f32_tB.csv -> /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/tuning_database_tf
+2025-12-15 20:40:18,680 - INFO - Checking file 59 / 140
+2025-12-15 20:40:18,680 - INFO - Tuning 59 (1/2) / 140: tk_gemm_2048_1280_5120_i32_i32_tB.mlir - llvmgpu_vector_distribute
+2025-12-15 20:40:18,680 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/tk_gemm_2048_1280_5120_i32_i32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-15 20:40:19,379 - WARNING - 2025-12-15T20:40:19 - tk_gemm_2048_1280_5120_i32_i32_tB.mlir: 'FAIL(1)' in 0.70
+2025-12-15 20:40:19,379 - INFO - Tuning 59 (2/2) / 140: tk_gemm_2048_1280_5120_i32_i32_tB.mlir - llvmgpu_tile_and_fuse
+2025-12-15 20:40:19,379 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/tk_gemm_2048_1280_5120_i32_i32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-15 20:40:20,059 - WARNING - 2025-12-15T20:40:20 - tk_gemm_2048_1280_5120_i32_i32_tB.mlir: 'FAIL(1)' in 0.68
+2025-12-15 20:40:20,059 - INFO - Checking file 60 / 140
+2025-12-15 20:40:20,060 - INFO - Tuning 60 (1/2) / 140: tk_gemm_2048_1280_5120_i8_i32_tB.mlir - llvmgpu_vector_distribute
+2025-12-15 20:40:20,060 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/tk_gemm_2048_1280_5120_i8_i32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-15 21:06:02,991 - INFO - 2025-12-15T21:06:02 - tk_gemm_2048_1280_5120_i8_i32_tB.mlir: completed in 1542.93
+2025-12-15 21:06:02,994 - DEBUG - Copied tk_gemm_2048_1280_5120_i8_i32_tB.csv -> /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/tuning_database_vd
+2025-12-15 21:06:02,994 - INFO - Tuning 60 (2/2) / 140: tk_gemm_2048_1280_5120_i8_i32_tB.mlir - llvmgpu_tile_and_fuse
+2025-12-15 21:06:02,994 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/tk_gemm_2048_1280_5120_i8_i32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-15 22:04:06,462 - INFO - 2025-12-15T22:04:06 - tk_gemm_2048_1280_5120_i8_i32_tB.mlir: completed in 3483.47
+2025-12-15 22:04:06,465 - DEBUG - Copied tk_gemm_2048_1280_5120_i8_i32_tB.csv -> /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/tuning_database_tf
+2025-12-15 22:04:06,465 - INFO - Checking file 61 / 140
+2025-12-15 22:04:06,465 - INFO - Tuning 61 (1/2) / 140: tk_gemm_8192_5120_640_f16_f32_tB.mlir - llvmgpu_vector_distribute
+2025-12-15 22:04:06,465 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/tk_gemm_8192_5120_640_f16_f32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-15 22:48:07,051 - INFO - 2025-12-15T22:48:07 - tk_gemm_8192_5120_640_f16_f32_tB.mlir: completed in 2640.59
+2025-12-15 22:48:07,054 - DEBUG - Copied tk_gemm_8192_5120_640_f16_f32_tB.csv -> /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/tuning_database_vd
+2025-12-15 22:48:07,054 - INFO - Tuning 61 (2/2) / 140: tk_gemm_8192_5120_640_f16_f32_tB.mlir - llvmgpu_tile_and_fuse
+2025-12-15 22:48:07,054 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/tk_gemm_8192_5120_640_f16_f32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-15 23:51:25,040 - INFO - 2025-12-15T23:51:25 - tk_gemm_8192_5120_640_f16_f32_tB.mlir: completed in 3797.99
+2025-12-15 23:51:25,044 - DEBUG - Copied tk_gemm_8192_5120_640_f16_f32_tB.csv -> /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/tuning_database_tf
+2025-12-15 23:51:25,044 - INFO - Checking file 62 / 140
+2025-12-15 23:51:25,044 - INFO - Tuning 62 (1/2) / 140: tk_gemm_8192_5120_640_f32_f32_tB.mlir - llvmgpu_vector_distribute
+2025-12-15 23:51:25,044 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/tk_gemm_8192_5120_640_f32_f32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-16 00:03:51,994 - INFO - 2025-12-16T00:03:51 - tk_gemm_8192_5120_640_f32_f32_tB.mlir: completed in 746.95
+2025-12-16 00:03:51,997 - DEBUG - Copied tk_gemm_8192_5120_640_f32_f32_tB.csv -> /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/tuning_database_vd
+2025-12-16 00:03:51,997 - INFO - Tuning 62 (2/2) / 140: tk_gemm_8192_5120_640_f32_f32_tB.mlir - llvmgpu_tile_and_fuse
+2025-12-16 00:03:51,997 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/tk_gemm_8192_5120_640_f32_f32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-16 00:56:21,890 - INFO - 2025-12-16T00:56:21 - tk_gemm_8192_5120_640_f32_f32_tB.mlir: completed in 3149.89
+2025-12-16 00:56:21,895 - DEBUG - Copied tk_gemm_8192_5120_640_f32_f32_tB.csv -> /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/tuning_database_tf
+2025-12-16 00:56:21,895 - INFO - Checking file 63 / 140
+2025-12-16 00:56:21,895 - INFO - Tuning 63 (1/2) / 140: tk_gemm_8192_5120_640_f8E4M3FNUZ_f32_tB.mlir - llvmgpu_vector_distribute
+2025-12-16 00:56:21,895 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/tk_gemm_8192_5120_640_f8E4M3FNUZ_f32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-16 01:23:27,366 - INFO - 2025-12-16T01:23:27 - tk_gemm_8192_5120_640_f8E4M3FNUZ_f32_tB.mlir: completed in 1625.47
+2025-12-16 01:23:27,369 - DEBUG - Copied tk_gemm_8192_5120_640_f8E4M3FNUZ_f32_tB.csv -> /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/tuning_database_vd
+2025-12-16 01:23:27,369 - INFO - Tuning 63 (2/2) / 140: tk_gemm_8192_5120_640_f8E4M3FNUZ_f32_tB.mlir - llvmgpu_tile_and_fuse
+2025-12-16 01:23:27,369 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/tk_gemm_8192_5120_640_f8E4M3FNUZ_f32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-16 02:22:04,205 - INFO - 2025-12-16T02:22:04 - tk_gemm_8192_5120_640_f8E4M3FNUZ_f32_tB.mlir: completed in 3516.84
+2025-12-16 02:22:04,208 - DEBUG - Copied tk_gemm_8192_5120_640_f8E4M3FNUZ_f32_tB.csv -> /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/tuning_database_tf
+2025-12-16 02:22:04,208 - INFO - Checking file 64 / 140
+2025-12-16 02:22:04,209 - INFO - Tuning 64 (1/2) / 140: tk_gemm_8192_5120_640_i32_i32_tB.mlir - llvmgpu_vector_distribute
+2025-12-16 02:22:04,209 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/tk_gemm_8192_5120_640_i32_i32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-16 02:22:04,914 - WARNING - 2025-12-16T02:22:04 - tk_gemm_8192_5120_640_i32_i32_tB.mlir: 'FAIL(1)' in 0.71
+2025-12-16 02:22:04,914 - INFO - Tuning 64 (2/2) / 140: tk_gemm_8192_5120_640_i32_i32_tB.mlir - llvmgpu_tile_and_fuse
+2025-12-16 02:22:04,914 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/tk_gemm_8192_5120_640_i32_i32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-16 02:22:05,598 - WARNING - 2025-12-16T02:22:05 - tk_gemm_8192_5120_640_i32_i32_tB.mlir: 'FAIL(1)' in 0.68
+2025-12-16 02:22:05,599 - INFO - Checking file 65 / 140
+2025-12-16 02:22:05,599 - INFO - Tuning 65 (1/2) / 140: tk_gemm_8192_5120_640_i8_i32_tB.mlir - llvmgpu_vector_distribute
+2025-12-16 02:22:05,599 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/tk_gemm_8192_5120_640_i8_i32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-16 02:49:05,597 - INFO - 2025-12-16T02:49:05 - tk_gemm_8192_5120_640_i8_i32_tB.mlir: completed in 1620.00
+2025-12-16 02:49:05,600 - DEBUG - Copied tk_gemm_8192_5120_640_i8_i32_tB.csv -> /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/tuning_database_vd
+2025-12-16 02:49:05,600 - INFO - Tuning 65 (2/2) / 140: tk_gemm_8192_5120_640_i8_i32_tB.mlir - llvmgpu_tile_and_fuse
+2025-12-16 02:49:05,600 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/tk_gemm_8192_5120_640_i8_i32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-16 03:47:42,620 - INFO - 2025-12-16T03:47:42 - tk_gemm_8192_5120_640_i8_i32_tB.mlir: completed in 3517.02
+2025-12-16 03:47:42,623 - DEBUG - Copied tk_gemm_8192_5120_640_i8_i32_tB.csv -> /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/tuning_database_tf
+2025-12-16 03:47:42,623 - INFO - Checking file 66 / 140
+2025-12-16 03:47:42,623 - INFO - Tuning 66 (1/2) / 140: unet_gemm_1024_10240_1280_f16_f32_tB.mlir - llvmgpu_vector_distribute
+2025-12-16 03:47:42,623 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/unet_gemm_1024_10240_1280_f16_f32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-16 04:32:25,399 - INFO - 2025-12-16T04:32:25 - unet_gemm_1024_10240_1280_f16_f32_tB.mlir: completed in 2682.78
+2025-12-16 04:32:25,403 - DEBUG - Copied unet_gemm_1024_10240_1280_f16_f32_tB.csv -> /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/tuning_database_vd
+2025-12-16 04:32:25,403 - INFO - Tuning 66 (2/2) / 140: unet_gemm_1024_10240_1280_f16_f32_tB.mlir - llvmgpu_tile_and_fuse
+2025-12-16 04:32:25,403 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/unet_gemm_1024_10240_1280_f16_f32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-16 05:37:04,264 - INFO - 2025-12-16T05:37:04 - unet_gemm_1024_10240_1280_f16_f32_tB.mlir: completed in 3878.86
+2025-12-16 05:37:04,268 - DEBUG - Copied unet_gemm_1024_10240_1280_f16_f32_tB.csv -> /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/tuning_database_tf
+2025-12-16 05:37:04,268 - INFO - Checking file 67 / 140
+2025-12-16 05:37:04,268 - INFO - Tuning 67 (1/2) / 140: unet_gemm_1024_10240_1280_f32_f32_tB.mlir - llvmgpu_vector_distribute
+2025-12-16 05:37:04,268 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/unet_gemm_1024_10240_1280_f32_f32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-16 05:49:52,694 - INFO - 2025-12-16T05:49:52 - unet_gemm_1024_10240_1280_f32_f32_tB.mlir: completed in 768.43
+2025-12-16 05:49:52,697 - DEBUG - Copied unet_gemm_1024_10240_1280_f32_f32_tB.csv -> /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/tuning_database_vd
+2025-12-16 05:49:52,697 - INFO - Tuning 67 (2/2) / 140: unet_gemm_1024_10240_1280_f32_f32_tB.mlir - llvmgpu_tile_and_fuse
+2025-12-16 05:49:52,697 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/unet_gemm_1024_10240_1280_f32_f32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-16 06:43:55,879 - INFO - 2025-12-16T06:43:55 - unet_gemm_1024_10240_1280_f32_f32_tB.mlir: completed in 3243.18
+2025-12-16 06:43:55,883 - DEBUG - Copied unet_gemm_1024_10240_1280_f32_f32_tB.csv -> /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/tuning_database_tf
+2025-12-16 06:43:55,883 - INFO - Checking file 68 / 140
+2025-12-16 06:43:55,883 - INFO - Tuning 68 (1/2) / 140: unet_gemm_1024_10240_1280_f8E4M3FNUZ_f32_tB.mlir - llvmgpu_vector_distribute
+2025-12-16 06:43:55,883 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/unet_gemm_1024_10240_1280_f8E4M3FNUZ_f32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-16 07:13:51,766 - INFO - 2025-12-16T07:13:51 - unet_gemm_1024_10240_1280_f8E4M3FNUZ_f32_tB.mlir: completed in 1795.88
+2025-12-16 07:13:51,770 - DEBUG - Copied unet_gemm_1024_10240_1280_f8E4M3FNUZ_f32_tB.csv -> /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/tuning_database_vd
+2025-12-16 07:13:51,771 - INFO - Tuning 68 (2/2) / 140: unet_gemm_1024_10240_1280_f8E4M3FNUZ_f32_tB.mlir - llvmgpu_tile_and_fuse
+2025-12-16 07:13:51,771 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/unet_gemm_1024_10240_1280_f8E4M3FNUZ_f32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-16 08:17:32,627 - INFO - 2025-12-16T08:17:32 - unet_gemm_1024_10240_1280_f8E4M3FNUZ_f32_tB.mlir: completed in 3820.86
+2025-12-16 08:17:32,631 - DEBUG - Copied unet_gemm_1024_10240_1280_f8E4M3FNUZ_f32_tB.csv -> /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/tuning_database_tf
+2025-12-16 08:17:32,632 - INFO - Checking file 69 / 140
+2025-12-16 08:17:32,632 - INFO - Tuning 69 (1/2) / 140: unet_gemm_1024_10240_1280_i32_i32_tB.mlir - llvmgpu_vector_distribute
+2025-12-16 08:17:32,632 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/unet_gemm_1024_10240_1280_i32_i32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-16 08:17:33,338 - WARNING - 2025-12-16T08:17:33 - unet_gemm_1024_10240_1280_i32_i32_tB.mlir: 'FAIL(1)' in 0.71
+2025-12-16 08:17:33,338 - INFO - Tuning 69 (2/2) / 140: unet_gemm_1024_10240_1280_i32_i32_tB.mlir - llvmgpu_tile_and_fuse
+2025-12-16 08:17:33,339 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/unet_gemm_1024_10240_1280_i32_i32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-16 08:17:34,026 - WARNING - 2025-12-16T08:17:34 - unet_gemm_1024_10240_1280_i32_i32_tB.mlir: 'FAIL(1)' in 0.69
+2025-12-16 08:17:34,026 - INFO - Checking file 70 / 140
+2025-12-16 08:17:34,027 - INFO - Tuning 70 (1/2) / 140: unet_gemm_1024_10240_1280_i8_i32_tB.mlir - llvmgpu_vector_distribute
+2025-12-16 08:17:34,027 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/unet_gemm_1024_10240_1280_i8_i32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-16 08:47:24,570 - INFO - 2025-12-16T08:47:24 - unet_gemm_1024_10240_1280_i8_i32_tB.mlir: completed in 1790.54
+2025-12-16 08:47:24,573 - DEBUG - Copied unet_gemm_1024_10240_1280_i8_i32_tB.csv -> /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/tuning_database_vd
+2025-12-16 08:47:24,573 - INFO - Tuning 70 (2/2) / 140: unet_gemm_1024_10240_1280_i8_i32_tB.mlir - llvmgpu_tile_and_fuse
+2025-12-16 08:47:24,573 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/unet_gemm_1024_10240_1280_i8_i32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-16 09:51:09,803 - INFO - 2025-12-16T09:51:09 - unet_gemm_1024_10240_1280_i8_i32_tB.mlir: completed in 3825.23
+2025-12-16 09:51:09,807 - DEBUG - Copied unet_gemm_1024_10240_1280_i8_i32_tB.csv -> /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/tuning_database_tf
+2025-12-16 09:51:09,807 - INFO - Checking file 71 / 140
+2025-12-16 09:51:09,807 - INFO - Tuning 71 (1/2) / 140: unet_gemm_1024_1280_1280_f16_f32_tB.mlir - llvmgpu_vector_distribute
+2025-12-16 09:51:09,807 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/unet_gemm_1024_1280_1280_f16_f32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-16 10:31:33,155 - INFO - 2025-12-16T10:31:33 - unet_gemm_1024_1280_1280_f16_f32_tB.mlir: completed in 2423.35
+2025-12-16 10:31:33,158 - DEBUG - Copied unet_gemm_1024_1280_1280_f16_f32_tB.csv -> /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/tuning_database_vd
+2025-12-16 10:31:33,158 - INFO - Tuning 71 (2/2) / 140: unet_gemm_1024_1280_1280_f16_f32_tB.mlir - llvmgpu_tile_and_fuse
+2025-12-16 10:31:33,159 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/unet_gemm_1024_1280_1280_f16_f32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-16 11:31:40,496 - INFO - 2025-12-16T11:31:40 - unet_gemm_1024_1280_1280_f16_f32_tB.mlir: completed in 3607.34
+2025-12-16 11:31:40,501 - DEBUG - Copied unet_gemm_1024_1280_1280_f16_f32_tB.csv -> /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/tuning_database_tf
+2025-12-16 11:31:40,501 - INFO - Checking file 72 / 140
+2025-12-16 11:31:40,501 - INFO - Tuning 72 (1/2) / 140: unet_gemm_1024_1280_1280_f32_f32_tB.mlir - llvmgpu_vector_distribute
+2025-12-16 11:31:40,501 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/unet_gemm_1024_1280_1280_f32_f32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-16 11:43:29,106 - INFO - 2025-12-16T11:43:29 - unet_gemm_1024_1280_1280_f32_f32_tB.mlir: completed in 708.60
+2025-12-16 11:43:29,108 - DEBUG - Copied unet_gemm_1024_1280_1280_f32_f32_tB.csv -> /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/tuning_database_vd
+2025-12-16 11:43:29,108 - INFO - Tuning 72 (2/2) / 140: unet_gemm_1024_1280_1280_f32_f32_tB.mlir - llvmgpu_tile_and_fuse
+2025-12-16 11:43:29,108 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/unet_gemm_1024_1280_1280_f32_f32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-16 12:33:59,198 - INFO - 2025-12-16T12:33:59 - unet_gemm_1024_1280_1280_f32_f32_tB.mlir: completed in 3030.09
+2025-12-16 12:33:59,201 - DEBUG - Copied unet_gemm_1024_1280_1280_f32_f32_tB.csv -> /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/tuning_database_tf
+2025-12-16 12:33:59,201 - INFO - Checking file 73 / 140
+2025-12-16 12:33:59,201 - INFO - Tuning 73 (1/2) / 140: unet_gemm_1024_1280_1280_f8E4M3FNUZ_f32_tB.mlir - llvmgpu_vector_distribute
+2025-12-16 12:33:59,201 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/unet_gemm_1024_1280_1280_f8E4M3FNUZ_f32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-16 12:59:51,762 - INFO - 2025-12-16T12:59:51 - unet_gemm_1024_1280_1280_f8E4M3FNUZ_f32_tB.mlir: completed in 1552.56
+2025-12-16 12:59:51,765 - DEBUG - Copied unet_gemm_1024_1280_1280_f8E4M3FNUZ_f32_tB.csv -> /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/tuning_database_vd
+2025-12-16 12:59:51,765 - INFO - Tuning 73 (2/2) / 140: unet_gemm_1024_1280_1280_f8E4M3FNUZ_f32_tB.mlir - llvmgpu_tile_and_fuse
+2025-12-16 12:59:51,765 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/unet_gemm_1024_1280_1280_f8E4M3FNUZ_f32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-16 13:58:23,134 - INFO - 2025-12-16T13:58:23 - unet_gemm_1024_1280_1280_f8E4M3FNUZ_f32_tB.mlir: completed in 3511.37
+2025-12-16 13:58:23,139 - DEBUG - Copied unet_gemm_1024_1280_1280_f8E4M3FNUZ_f32_tB.csv -> /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/tuning_database_tf
+2025-12-16 13:58:23,139 - INFO - Checking file 74 / 140
+2025-12-16 13:58:23,139 - INFO - Tuning 74 (1/2) / 140: unet_gemm_1024_1280_1280_i32_i32_tB.mlir - llvmgpu_vector_distribute
+2025-12-16 13:58:23,139 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/unet_gemm_1024_1280_1280_i32_i32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-16 13:58:23,822 - WARNING - 2025-12-16T13:58:23 - unet_gemm_1024_1280_1280_i32_i32_tB.mlir: 'FAIL(1)' in 0.68
+2025-12-16 13:58:23,823 - INFO - Tuning 74 (2/2) / 140: unet_gemm_1024_1280_1280_i32_i32_tB.mlir - llvmgpu_tile_and_fuse
+2025-12-16 13:58:23,823 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/unet_gemm_1024_1280_1280_i32_i32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-16 13:58:24,502 - WARNING - 2025-12-16T13:58:24 - unet_gemm_1024_1280_1280_i32_i32_tB.mlir: 'FAIL(1)' in 0.68
+2025-12-16 13:58:24,502 - INFO - Checking file 75 / 140
+2025-12-16 13:58:24,503 - INFO - Tuning 75 (1/2) / 140: unet_gemm_1024_1280_1280_i8_i32_tB.mlir - llvmgpu_vector_distribute
+2025-12-16 13:58:24,503 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/unet_gemm_1024_1280_1280_i8_i32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-16 14:24:21,890 - INFO - 2025-12-16T14:24:21 - unet_gemm_1024_1280_1280_i8_i32_tB.mlir: completed in 1557.39
+2025-12-16 14:24:21,893 - DEBUG - Copied unet_gemm_1024_1280_1280_i8_i32_tB.csv -> /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/tuning_database_vd
+2025-12-16 14:24:21,893 - INFO - Tuning 75 (2/2) / 140: unet_gemm_1024_1280_1280_i8_i32_tB.mlir - llvmgpu_tile_and_fuse
+2025-12-16 14:24:21,893 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/unet_gemm_1024_1280_1280_i8_i32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-16 15:22:45,174 - INFO - 2025-12-16T15:22:45 - unet_gemm_1024_1280_1280_i8_i32_tB.mlir: completed in 3503.28
+2025-12-16 15:22:45,178 - DEBUG - Copied unet_gemm_1024_1280_1280_i8_i32_tB.csv -> /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/tuning_database_tf
+2025-12-16 15:22:45,178 - INFO - Checking file 76 / 140
+2025-12-16 15:22:45,178 - INFO - Tuning 76 (1/2) / 140: unet_gemm_1024_1280_5120_f16_f32_tB.mlir - llvmgpu_vector_distribute
+2025-12-16 15:22:45,178 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/unet_gemm_1024_1280_5120_f16_f32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-16 16:02:00,164 - INFO - 2025-12-16T16:02:00 - unet_gemm_1024_1280_5120_f16_f32_tB.mlir: completed in 2354.99
+2025-12-16 16:02:00,167 - DEBUG - Copied unet_gemm_1024_1280_5120_f16_f32_tB.csv -> /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/tuning_database_vd
+2025-12-16 16:02:00,168 - INFO - Tuning 76 (2/2) / 140: unet_gemm_1024_1280_5120_f16_f32_tB.mlir - llvmgpu_tile_and_fuse
+2025-12-16 16:02:00,168 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/unet_gemm_1024_1280_5120_f16_f32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-16 17:00:57,908 - INFO - 2025-12-16T17:00:57 - unet_gemm_1024_1280_5120_f16_f32_tB.mlir: completed in 3537.74
+2025-12-16 17:00:57,912 - DEBUG - Copied unet_gemm_1024_1280_5120_f16_f32_tB.csv -> /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/tuning_database_tf
+2025-12-16 17:00:57,912 - INFO - Checking file 77 / 140
+2025-12-16 17:00:57,912 - INFO - Tuning 77 (1/2) / 140: unet_gemm_1024_1280_5120_f32_f32_tB.mlir - llvmgpu_vector_distribute
+2025-12-16 17:00:57,912 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/unet_gemm_1024_1280_5120_f32_f32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-16 17:12:35,373 - INFO - 2025-12-16T17:12:35 - unet_gemm_1024_1280_5120_f32_f32_tB.mlir: completed in 697.46
+2025-12-16 17:12:35,376 - DEBUG - Copied unet_gemm_1024_1280_5120_f32_f32_tB.csv -> /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/tuning_database_vd
+2025-12-16 17:12:35,376 - INFO - Tuning 77 (2/2) / 140: unet_gemm_1024_1280_5120_f32_f32_tB.mlir - llvmgpu_tile_and_fuse
+2025-12-16 17:12:35,376 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/unet_gemm_1024_1280_5120_f32_f32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-16 18:02:04,075 - INFO - 2025-12-16T18:02:04 - unet_gemm_1024_1280_5120_f32_f32_tB.mlir: completed in 2968.70
+2025-12-16 18:02:04,078 - DEBUG - Copied unet_gemm_1024_1280_5120_f32_f32_tB.csv -> /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/tuning_database_tf
+2025-12-16 18:02:04,078 - INFO - Checking file 78 / 140
+2025-12-16 18:02:04,078 - INFO - Tuning 78 (1/2) / 140: unet_gemm_1024_1280_5120_f8E4M3FNUZ_f32_tB.mlir - llvmgpu_vector_distribute
+2025-12-16 18:02:04,078 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/unet_gemm_1024_1280_5120_f8E4M3FNUZ_f32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-16 18:27:53,718 - INFO - 2025-12-16T18:27:53 - unet_gemm_1024_1280_5120_f8E4M3FNUZ_f32_tB.mlir: completed in 1549.64
+2025-12-16 18:27:53,721 - DEBUG - Copied unet_gemm_1024_1280_5120_f8E4M3FNUZ_f32_tB.csv -> /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/tuning_database_vd
+2025-12-16 18:27:53,721 - INFO - Tuning 78 (2/2) / 140: unet_gemm_1024_1280_5120_f8E4M3FNUZ_f32_tB.mlir - llvmgpu_tile_and_fuse
+2025-12-16 18:27:53,721 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/unet_gemm_1024_1280_5120_f8E4M3FNUZ_f32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-16 19:26:23,575 - INFO - 2025-12-16T19:26:23 - unet_gemm_1024_1280_5120_f8E4M3FNUZ_f32_tB.mlir: completed in 3509.85
+2025-12-16 19:26:23,578 - DEBUG - Copied unet_gemm_1024_1280_5120_f8E4M3FNUZ_f32_tB.csv -> /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/tuning_database_tf
+2025-12-16 19:26:23,578 - INFO - Checking file 79 / 140
+2025-12-16 19:26:23,579 - INFO - Tuning 79 (1/2) / 140: unet_gemm_1024_1280_5120_i32_i32_tB.mlir - llvmgpu_vector_distribute
+2025-12-16 19:26:23,579 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/unet_gemm_1024_1280_5120_i32_i32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-16 19:26:24,276 - WARNING - 2025-12-16T19:26:24 - unet_gemm_1024_1280_5120_i32_i32_tB.mlir: 'FAIL(1)' in 0.70
+2025-12-16 19:26:24,277 - INFO - Tuning 79 (2/2) / 140: unet_gemm_1024_1280_5120_i32_i32_tB.mlir - llvmgpu_tile_and_fuse
+2025-12-16 19:26:24,277 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/unet_gemm_1024_1280_5120_i32_i32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-16 19:26:24,992 - WARNING - 2025-12-16T19:26:24 - unet_gemm_1024_1280_5120_i32_i32_tB.mlir: 'FAIL(1)' in 0.72
+2025-12-16 19:26:24,993 - INFO - Checking file 80 / 140
+2025-12-16 19:26:24,993 - INFO - Tuning 80 (1/2) / 140: unet_gemm_1024_1280_5120_i8_i32_tB.mlir - llvmgpu_vector_distribute
+2025-12-16 19:26:24,993 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/unet_gemm_1024_1280_5120_i8_i32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-16 19:52:15,105 - INFO - 2025-12-16T19:52:15 - unet_gemm_1024_1280_5120_i8_i32_tB.mlir: completed in 1550.11
+2025-12-16 19:52:15,108 - DEBUG - Copied unet_gemm_1024_1280_5120_i8_i32_tB.csv -> /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/tuning_database_vd
+2025-12-16 19:52:15,108 - INFO - Tuning 80 (2/2) / 140: unet_gemm_1024_1280_5120_i8_i32_tB.mlir - llvmgpu_tile_and_fuse
+2025-12-16 19:52:15,108 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/unet_gemm_1024_1280_5120_i8_i32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-16 20:50:43,522 - INFO - 2025-12-16T20:50:43 - unet_gemm_1024_1280_5120_i8_i32_tB.mlir: completed in 3508.41
+2025-12-16 20:50:43,527 - DEBUG - Copied unet_gemm_1024_1280_5120_i8_i32_tB.csv -> /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/tuning_database_tf
+2025-12-16 20:50:43,527 - INFO - Checking file 81 / 140
+2025-12-16 20:50:43,527 - INFO - Tuning 81 (1/2) / 140: unet_gemm_128_1280_2048_f16_f32_tB.mlir - llvmgpu_vector_distribute
+2025-12-16 20:50:43,527 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/unet_gemm_128_1280_2048_f16_f32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-16 21:16:52,098 - INFO - 2025-12-16T21:16:52 - unet_gemm_128_1280_2048_f16_f32_tB.mlir: completed in 1568.57
+2025-12-16 21:16:52,102 - DEBUG - Copied unet_gemm_128_1280_2048_f16_f32_tB.csv -> /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/tuning_database_vd
+2025-12-16 21:16:52,103 - INFO - Tuning 81 (2/2) / 140: unet_gemm_128_1280_2048_f16_f32_tB.mlir - llvmgpu_tile_and_fuse
+2025-12-16 21:16:52,103 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/unet_gemm_128_1280_2048_f16_f32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-16 21:46:50,127 - INFO - 2025-12-16T21:46:50 - unet_gemm_128_1280_2048_f16_f32_tB.mlir: completed in 1798.02
+2025-12-16 21:46:50,131 - DEBUG - Copied unet_gemm_128_1280_2048_f16_f32_tB.csv -> /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/tuning_database_tf
+2025-12-16 21:46:50,131 - INFO - Checking file 82 / 140
+2025-12-16 21:46:50,131 - INFO - Tuning 82 (1/2) / 140: unet_gemm_128_1280_2048_f32_f32_tB.mlir - llvmgpu_vector_distribute
+2025-12-16 21:46:50,131 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/unet_gemm_128_1280_2048_f32_f32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-16 21:55:17,617 - INFO - 2025-12-16T21:55:17 - unet_gemm_128_1280_2048_f32_f32_tB.mlir: completed in 507.49
+2025-12-16 21:55:17,620 - DEBUG - Copied unet_gemm_128_1280_2048_f32_f32_tB.csv -> /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/tuning_database_vd
+2025-12-16 21:55:17,620 - INFO - Tuning 82 (2/2) / 140: unet_gemm_128_1280_2048_f32_f32_tB.mlir - llvmgpu_tile_and_fuse
+2025-12-16 21:55:17,620 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/unet_gemm_128_1280_2048_f32_f32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-16 22:19:24,912 - INFO - 2025-12-16T22:19:24 - unet_gemm_128_1280_2048_f32_f32_tB.mlir: completed in 1447.29
+2025-12-16 22:19:24,916 - DEBUG - Copied unet_gemm_128_1280_2048_f32_f32_tB.csv -> /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/tuning_database_tf
+2025-12-16 22:19:24,916 - INFO - Checking file 83 / 140
+2025-12-16 22:19:24,916 - INFO - Tuning 83 (1/2) / 140: unet_gemm_128_1280_2048_f8E4M3FNUZ_f32_tB.mlir - llvmgpu_vector_distribute
+2025-12-16 22:19:24,916 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/unet_gemm_128_1280_2048_f8E4M3FNUZ_f32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-16 22:35:44,454 - INFO - 2025-12-16T22:35:44 - unet_gemm_128_1280_2048_f8E4M3FNUZ_f32_tB.mlir: completed in 979.54
+2025-12-16 22:35:44,457 - DEBUG - Copied unet_gemm_128_1280_2048_f8E4M3FNUZ_f32_tB.csv -> /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/tuning_database_vd
+2025-12-16 22:35:44,457 - INFO - Tuning 83 (2/2) / 140: unet_gemm_128_1280_2048_f8E4M3FNUZ_f32_tB.mlir - llvmgpu_tile_and_fuse
+2025-12-16 22:35:44,457 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/unet_gemm_128_1280_2048_f8E4M3FNUZ_f32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-16 23:05:38,202 - INFO - 2025-12-16T23:05:38 - unet_gemm_128_1280_2048_f8E4M3FNUZ_f32_tB.mlir: completed in 1793.74
+2025-12-16 23:05:38,205 - DEBUG - Copied unet_gemm_128_1280_2048_f8E4M3FNUZ_f32_tB.csv -> /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/tuning_database_tf
+2025-12-16 23:05:38,206 - INFO - Checking file 84 / 140
+2025-12-16 23:05:38,206 - INFO - Tuning 84 (1/2) / 140: unet_gemm_128_1280_2048_i32_i32_tB.mlir - llvmgpu_vector_distribute
+2025-12-16 23:05:38,206 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/unet_gemm_128_1280_2048_i32_i32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-16 23:05:38,912 - WARNING - 2025-12-16T23:05:38 - unet_gemm_128_1280_2048_i32_i32_tB.mlir: 'FAIL(1)' in 0.71
+2025-12-16 23:05:38,913 - INFO - Tuning 84 (2/2) / 140: unet_gemm_128_1280_2048_i32_i32_tB.mlir - llvmgpu_tile_and_fuse
+2025-12-16 23:05:38,913 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/unet_gemm_128_1280_2048_i32_i32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-16 23:05:39,612 - WARNING - 2025-12-16T23:05:39 - unet_gemm_128_1280_2048_i32_i32_tB.mlir: 'FAIL(1)' in 0.70
+2025-12-16 23:05:39,612 - INFO - Checking file 85 / 140
+2025-12-16 23:05:39,613 - INFO - Tuning 85 (1/2) / 140: unet_gemm_128_1280_2048_i8_i32_tB.mlir - llvmgpu_vector_distribute
+2025-12-16 23:05:39,613 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/unet_gemm_128_1280_2048_i8_i32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-16 23:22:07,205 - INFO - 2025-12-16T23:22:07 - unet_gemm_128_1280_2048_i8_i32_tB.mlir: completed in 987.59
+2025-12-16 23:22:07,208 - DEBUG - Copied unet_gemm_128_1280_2048_i8_i32_tB.csv -> /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/tuning_database_vd
+2025-12-16 23:22:07,208 - INFO - Tuning 85 (2/2) / 140: unet_gemm_128_1280_2048_i8_i32_tB.mlir - llvmgpu_tile_and_fuse
+2025-12-16 23:22:07,208 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/unet_gemm_128_1280_2048_i8_i32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-16 23:51:59,358 - INFO - 2025-12-16T23:51:59 - unet_gemm_128_1280_2048_i8_i32_tB.mlir: completed in 1792.15
+2025-12-16 23:51:59,360 - DEBUG - Copied unet_gemm_128_1280_2048_i8_i32_tB.csv -> /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/tuning_database_tf
+2025-12-16 23:51:59,360 - INFO - Checking file 86 / 140
+2025-12-16 23:51:59,360 - INFO - Tuning 86 (1/2) / 140: unet_gemm_2048_10240_1280_f16_f32_tB.mlir - llvmgpu_vector_distribute
+2025-12-16 23:51:59,360 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/unet_gemm_2048_10240_1280_f16_f32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-17 00:36:56,742 - INFO - 2025-12-17T00:36:56 - unet_gemm_2048_10240_1280_f16_f32_tB.mlir: completed in 2697.38
+2025-12-17 00:36:56,748 - DEBUG - Copied unet_gemm_2048_10240_1280_f16_f32_tB.csv -> /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/tuning_database_vd
+2025-12-17 00:36:56,748 - INFO - Tuning 86 (2/2) / 140: unet_gemm_2048_10240_1280_f16_f32_tB.mlir - llvmgpu_tile_and_fuse
+2025-12-17 00:36:56,748 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/unet_gemm_2048_10240_1280_f16_f32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-17 01:41:52,783 - INFO - 2025-12-17T01:41:52 - unet_gemm_2048_10240_1280_f16_f32_tB.mlir: completed in 3896.03
+2025-12-17 01:41:52,787 - DEBUG - Copied unet_gemm_2048_10240_1280_f16_f32_tB.csv -> /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/tuning_database_tf
+2025-12-17 01:41:52,787 - INFO - Checking file 87 / 140
+2025-12-17 01:41:52,787 - INFO - Tuning 87 (1/2) / 140: unet_gemm_2048_10240_1280_f32_f32_tB.mlir - llvmgpu_vector_distribute
+2025-12-17 01:41:52,787 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/unet_gemm_2048_10240_1280_f32_f32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-17 01:54:17,272 - INFO - 2025-12-17T01:54:17 - unet_gemm_2048_10240_1280_f32_f32_tB.mlir: completed in 744.48
+2025-12-17 01:54:17,274 - DEBUG - Copied unet_gemm_2048_10240_1280_f32_f32_tB.csv -> /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/tuning_database_vd
+2025-12-17 01:54:17,275 - INFO - Tuning 87 (2/2) / 140: unet_gemm_2048_10240_1280_f32_f32_tB.mlir - llvmgpu_tile_and_fuse
+2025-12-17 01:54:17,275 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/unet_gemm_2048_10240_1280_f32_f32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-17 02:47:03,996 - INFO - 2025-12-17T02:47:03 - unet_gemm_2048_10240_1280_f32_f32_tB.mlir: completed in 3166.72
+2025-12-17 02:47:03,999 - DEBUG - Copied unet_gemm_2048_10240_1280_f32_f32_tB.csv -> /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/tuning_database_tf
+2025-12-17 02:47:04,000 - INFO - Checking file 88 / 140
+2025-12-17 02:47:04,000 - INFO - Tuning 88 (1/2) / 140: unet_gemm_2048_10240_1280_f8E4M3FNUZ_f32_tB.mlir - llvmgpu_vector_distribute
+2025-12-17 02:47:04,000 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/unet_gemm_2048_10240_1280_f8E4M3FNUZ_f32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-17 03:16:39,743 - INFO - 2025-12-17T03:16:39 - unet_gemm_2048_10240_1280_f8E4M3FNUZ_f32_tB.mlir: completed in 1775.74
+2025-12-17 03:16:39,747 - DEBUG - Copied unet_gemm_2048_10240_1280_f8E4M3FNUZ_f32_tB.csv -> /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/tuning_database_vd
+2025-12-17 03:16:39,748 - INFO - Tuning 88 (2/2) / 140: unet_gemm_2048_10240_1280_f8E4M3FNUZ_f32_tB.mlir - llvmgpu_tile_and_fuse
+2025-12-17 03:16:39,748 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/unet_gemm_2048_10240_1280_f8E4M3FNUZ_f32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-17 04:19:25,152 - INFO - 2025-12-17T04:19:25 - unet_gemm_2048_10240_1280_f8E4M3FNUZ_f32_tB.mlir: completed in 3765.40
+2025-12-17 04:19:25,156 - DEBUG - Copied unet_gemm_2048_10240_1280_f8E4M3FNUZ_f32_tB.csv -> /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/tuning_database_tf
+2025-12-17 04:19:25,156 - INFO - Checking file 89 / 140
+2025-12-17 04:19:25,156 - INFO - Tuning 89 (1/2) / 140: unet_gemm_2048_10240_1280_i32_i32_tB.mlir - llvmgpu_vector_distribute
+2025-12-17 04:19:25,156 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/unet_gemm_2048_10240_1280_i32_i32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-17 04:19:25,852 - WARNING - 2025-12-17T04:19:25 - unet_gemm_2048_10240_1280_i32_i32_tB.mlir: 'FAIL(1)' in 0.70
+2025-12-17 04:19:25,852 - INFO - Tuning 89 (2/2) / 140: unet_gemm_2048_10240_1280_i32_i32_tB.mlir - llvmgpu_tile_and_fuse
+2025-12-17 04:19:25,853 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/unet_gemm_2048_10240_1280_i32_i32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-17 04:19:26,548 - WARNING - 2025-12-17T04:19:26 - unet_gemm_2048_10240_1280_i32_i32_tB.mlir: 'FAIL(1)' in 0.70
+2025-12-17 04:19:26,548 - INFO - Checking file 90 / 140
+2025-12-17 04:19:26,549 - INFO - Tuning 90 (1/2) / 140: unet_gemm_2048_10240_1280_i8_i32_tB.mlir - llvmgpu_vector_distribute
+2025-12-17 04:19:26,549 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/unet_gemm_2048_10240_1280_i8_i32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-17 04:49:06,944 - INFO - 2025-12-17T04:49:06 - unet_gemm_2048_10240_1280_i8_i32_tB.mlir: completed in 1780.40
+2025-12-17 04:49:06,947 - DEBUG - Copied unet_gemm_2048_10240_1280_i8_i32_tB.csv -> /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/tuning_database_vd
+2025-12-17 04:49:06,947 - INFO - Tuning 90 (2/2) / 140: unet_gemm_2048_10240_1280_i8_i32_tB.mlir - llvmgpu_tile_and_fuse
+2025-12-17 04:49:06,948 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/unet_gemm_2048_10240_1280_i8_i32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-17 05:51:33,494 - INFO - 2025-12-17T05:51:33 - unet_gemm_2048_10240_1280_i8_i32_tB.mlir: completed in 3746.55
+2025-12-17 05:51:33,499 - DEBUG - Copied unet_gemm_2048_10240_1280_i8_i32_tB.csv -> /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/tuning_database_tf
+2025-12-17 05:51:33,499 - INFO - Checking file 91 / 140
+2025-12-17 05:51:33,500 - INFO - Tuning 91 (1/2) / 140: unet_gemm_2048_1280_1280_f16_f32_tB.mlir - llvmgpu_vector_distribute
+2025-12-17 05:51:33,500 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/unet_gemm_2048_1280_1280_f16_f32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-17 06:32:09,693 - INFO - 2025-12-17T06:32:09 - unet_gemm_2048_1280_1280_f16_f32_tB.mlir: completed in 2436.19
+2025-12-17 06:32:09,696 - DEBUG - Copied unet_gemm_2048_1280_1280_f16_f32_tB.csv -> /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/tuning_database_vd
+2025-12-17 06:32:09,696 - INFO - Tuning 91 (2/2) / 140: unet_gemm_2048_1280_1280_f16_f32_tB.mlir - llvmgpu_tile_and_fuse
+2025-12-17 06:32:09,696 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/unet_gemm_2048_1280_1280_f16_f32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-17 07:32:03,896 - INFO - 2025-12-17T07:32:03 - unet_gemm_2048_1280_1280_f16_f32_tB.mlir: completed in 3594.20
+2025-12-17 07:32:03,900 - DEBUG - Copied unet_gemm_2048_1280_1280_f16_f32_tB.csv -> /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/tuning_database_tf
+2025-12-17 07:32:03,900 - INFO - Checking file 92 / 140
+2025-12-17 07:32:03,901 - INFO - Tuning 92 (1/2) / 140: unet_gemm_2048_1280_1280_f32_f32_tB.mlir - llvmgpu_vector_distribute
+2025-12-17 07:32:03,901 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/unet_gemm_2048_1280_1280_f32_f32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-17 07:43:57,053 - INFO - 2025-12-17T07:43:57 - unet_gemm_2048_1280_1280_f32_f32_tB.mlir: completed in 713.15
+2025-12-17 07:43:57,056 - DEBUG - Copied unet_gemm_2048_1280_1280_f32_f32_tB.csv -> /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/tuning_database_vd
+2025-12-17 07:43:57,056 - INFO - Tuning 92 (2/2) / 140: unet_gemm_2048_1280_1280_f32_f32_tB.mlir - llvmgpu_tile_and_fuse
+2025-12-17 07:43:57,056 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/unet_gemm_2048_1280_1280_f32_f32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-17 08:34:38,766 - INFO - 2025-12-17T08:34:38 - unet_gemm_2048_1280_1280_f32_f32_tB.mlir: completed in 3041.71
+2025-12-17 08:34:38,768 - DEBUG - Copied unet_gemm_2048_1280_1280_f32_f32_tB.csv -> /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/tuning_database_tf
+2025-12-17 08:34:38,768 - INFO - Checking file 93 / 140
+2025-12-17 08:34:38,768 - INFO - Tuning 93 (1/2) / 140: unet_gemm_2048_1280_1280_f8E4M3FNUZ_f32_tB.mlir - llvmgpu_vector_distribute
+2025-12-17 08:34:38,768 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/unet_gemm_2048_1280_1280_f8E4M3FNUZ_f32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-17 09:00:37,403 - INFO - 2025-12-17T09:00:37 - unet_gemm_2048_1280_1280_f8E4M3FNUZ_f32_tB.mlir: completed in 1558.63
+2025-12-17 09:00:37,406 - DEBUG - Copied unet_gemm_2048_1280_1280_f8E4M3FNUZ_f32_tB.csv -> /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/tuning_database_vd
+2025-12-17 09:00:37,406 - INFO - Tuning 93 (2/2) / 140: unet_gemm_2048_1280_1280_f8E4M3FNUZ_f32_tB.mlir - llvmgpu_tile_and_fuse
+2025-12-17 09:00:37,406 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/unet_gemm_2048_1280_1280_f8E4M3FNUZ_f32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-17 09:58:44,605 - INFO - 2025-12-17T09:58:44 - unet_gemm_2048_1280_1280_f8E4M3FNUZ_f32_tB.mlir: completed in 3487.20
+2025-12-17 09:58:44,609 - DEBUG - Copied unet_gemm_2048_1280_1280_f8E4M3FNUZ_f32_tB.csv -> /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/tuning_database_tf
+2025-12-17 09:58:44,609 - INFO - Checking file 94 / 140
+2025-12-17 09:58:44,609 - INFO - Tuning 94 (1/2) / 140: unet_gemm_2048_1280_1280_i32_i32_tB.mlir - llvmgpu_vector_distribute
+2025-12-17 09:58:44,609 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/unet_gemm_2048_1280_1280_i32_i32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-17 09:58:45,316 - WARNING - 2025-12-17T09:58:45 - unet_gemm_2048_1280_1280_i32_i32_tB.mlir: 'FAIL(1)' in 0.71
+2025-12-17 09:58:45,316 - INFO - Tuning 94 (2/2) / 140: unet_gemm_2048_1280_1280_i32_i32_tB.mlir - llvmgpu_tile_and_fuse
+2025-12-17 09:58:45,316 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/unet_gemm_2048_1280_1280_i32_i32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-17 09:58:46,016 - WARNING - 2025-12-17T09:58:46 - unet_gemm_2048_1280_1280_i32_i32_tB.mlir: 'FAIL(1)' in 0.70
+2025-12-17 09:58:46,016 - INFO - Checking file 95 / 140
+2025-12-17 09:58:46,017 - INFO - Tuning 95 (1/2) / 140: unet_gemm_2048_1280_1280_i8_i32_tB.mlir - llvmgpu_vector_distribute
+2025-12-17 09:58:46,017 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/unet_gemm_2048_1280_1280_i8_i32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-17 10:24:44,104 - INFO - 2025-12-17T10:24:44 - unet_gemm_2048_1280_1280_i8_i32_tB.mlir: completed in 1558.09
+2025-12-17 10:24:44,107 - DEBUG - Copied unet_gemm_2048_1280_1280_i8_i32_tB.csv -> /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/tuning_database_vd
+2025-12-17 10:24:44,107 - INFO - Tuning 95 (2/2) / 140: unet_gemm_2048_1280_1280_i8_i32_tB.mlir - llvmgpu_tile_and_fuse
+2025-12-17 10:24:44,107 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/unet_gemm_2048_1280_1280_i8_i32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-17 11:22:17,580 - INFO - 2025-12-17T11:22:17 - unet_gemm_2048_1280_1280_i8_i32_tB.mlir: completed in 3453.47
+2025-12-17 11:22:17,582 - DEBUG - Copied unet_gemm_2048_1280_1280_i8_i32_tB.csv -> /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/tuning_database_tf
+2025-12-17 11:22:17,582 - INFO - Checking file 96 / 140
+2025-12-17 11:22:17,582 - INFO - Tuning 96 (1/2) / 140: unet_gemm_2048_1280_5120_f16_f32_tB.mlir - llvmgpu_vector_distribute
+2025-12-17 11:22:17,582 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/unet_gemm_2048_1280_5120_f16_f32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-17 12:02:25,069 - INFO - 2025-12-17T12:02:25 - unet_gemm_2048_1280_5120_f16_f32_tB.mlir: completed in 2407.49
+2025-12-17 12:02:25,072 - DEBUG - Copied unet_gemm_2048_1280_5120_f16_f32_tB.csv -> /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/tuning_database_vd
+2025-12-17 12:02:25,072 - INFO - Tuning 96 (2/2) / 140: unet_gemm_2048_1280_5120_f16_f32_tB.mlir - llvmgpu_tile_and_fuse
+2025-12-17 12:02:25,072 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/unet_gemm_2048_1280_5120_f16_f32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-17 13:01:01,348 - INFO - 2025-12-17T13:01:01 - unet_gemm_2048_1280_5120_f16_f32_tB.mlir: completed in 3516.28
+2025-12-17 13:01:01,351 - DEBUG - Copied unet_gemm_2048_1280_5120_f16_f32_tB.csv -> /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/tuning_database_tf
+2025-12-17 13:01:01,351 - INFO - Checking file 97 / 140
+2025-12-17 13:01:01,351 - INFO - Tuning 97 (1/2) / 140: unet_gemm_2048_1280_5120_f32_f32_tB.mlir - llvmgpu_vector_distribute
+2025-12-17 13:01:01,351 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/unet_gemm_2048_1280_5120_f32_f32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-17 13:12:33,148 - INFO - 2025-12-17T13:12:33 - unet_gemm_2048_1280_5120_f32_f32_tB.mlir: completed in 691.80
+2025-12-17 13:12:33,151 - DEBUG - Copied unet_gemm_2048_1280_5120_f32_f32_tB.csv -> /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/tuning_database_vd
+2025-12-17 13:12:33,151 - INFO - Tuning 97 (2/2) / 140: unet_gemm_2048_1280_5120_f32_f32_tB.mlir - llvmgpu_tile_and_fuse
+2025-12-17 13:12:33,152 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/unet_gemm_2048_1280_5120_f32_f32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-17 14:01:22,313 - INFO - 2025-12-17T14:01:22 - unet_gemm_2048_1280_5120_f32_f32_tB.mlir: completed in 2929.16
+2025-12-17 14:01:22,316 - DEBUG - Copied unet_gemm_2048_1280_5120_f32_f32_tB.csv -> /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/tuning_database_tf
+2025-12-17 14:01:22,317 - INFO - Checking file 98 / 140
+2025-12-17 14:01:22,317 - INFO - Tuning 98 (1/2) / 140: unet_gemm_2048_1280_5120_f8E4M3FNUZ_f32_tB.mlir - llvmgpu_vector_distribute
+2025-12-17 14:01:22,317 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/unet_gemm_2048_1280_5120_f8E4M3FNUZ_f32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-17 14:27:03,936 - INFO - 2025-12-17T14:27:03 - unet_gemm_2048_1280_5120_f8E4M3FNUZ_f32_tB.mlir: completed in 1541.62
+2025-12-17 14:27:03,939 - DEBUG - Copied unet_gemm_2048_1280_5120_f8E4M3FNUZ_f32_tB.csv -> /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/tuning_database_vd
+2025-12-17 14:27:03,939 - INFO - Tuning 98 (2/2) / 140: unet_gemm_2048_1280_5120_f8E4M3FNUZ_f32_tB.mlir - llvmgpu_tile_and_fuse
+2025-12-17 14:27:03,939 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/unet_gemm_2048_1280_5120_f8E4M3FNUZ_f32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-17 15:24:58,055 - INFO - 2025-12-17T15:24:58 - unet_gemm_2048_1280_5120_f8E4M3FNUZ_f32_tB.mlir: completed in 3474.12
+2025-12-17 15:24:58,059 - DEBUG - Copied unet_gemm_2048_1280_5120_f8E4M3FNUZ_f32_tB.csv -> /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/tuning_database_tf
+2025-12-17 15:24:58,059 - INFO - Checking file 99 / 140
+2025-12-17 15:24:58,059 - INFO - Tuning 99 (1/2) / 140: unet_gemm_2048_1280_5120_i32_i32_tB.mlir - llvmgpu_vector_distribute
+2025-12-17 15:24:58,059 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/unet_gemm_2048_1280_5120_i32_i32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-17 15:24:58,784 - WARNING - 2025-12-17T15:24:58 - unet_gemm_2048_1280_5120_i32_i32_tB.mlir: 'FAIL(1)' in 0.73
+2025-12-17 15:24:58,784 - INFO - Tuning 99 (2/2) / 140: unet_gemm_2048_1280_5120_i32_i32_tB.mlir - llvmgpu_tile_and_fuse
+2025-12-17 15:24:58,784 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/unet_gemm_2048_1280_5120_i32_i32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-17 15:24:59,476 - WARNING - 2025-12-17T15:24:59 - unet_gemm_2048_1280_5120_i32_i32_tB.mlir: 'FAIL(1)' in 0.69
+2025-12-17 15:24:59,476 - INFO - Checking file 100 / 140
+2025-12-17 15:24:59,476 - INFO - Tuning 100 (1/2) / 140: unet_gemm_2048_1280_5120_i8_i32_tB.mlir - llvmgpu_vector_distribute
+2025-12-17 15:24:59,477 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/unet_gemm_2048_1280_5120_i8_i32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-17 15:50:38,077 - INFO - 2025-12-17T15:50:38 - unet_gemm_2048_1280_5120_i8_i32_tB.mlir: completed in 1538.60
+2025-12-17 15:50:38,079 - DEBUG - Copied unet_gemm_2048_1280_5120_i8_i32_tB.csv -> /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/tuning_database_vd
+2025-12-17 15:50:38,079 - INFO - Tuning 100 (2/2) / 140: unet_gemm_2048_1280_5120_i8_i32_tB.mlir - llvmgpu_tile_and_fuse
+2025-12-17 15:50:38,079 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/unet_gemm_2048_1280_5120_i8_i32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-17 16:48:08,731 - INFO - 2025-12-17T16:48:08 - unet_gemm_2048_1280_5120_i8_i32_tB.mlir: completed in 3450.65
+2025-12-17 16:48:08,735 - DEBUG - Copied unet_gemm_2048_1280_5120_i8_i32_tB.csv -> /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/tuning_database_tf
+2025-12-17 16:48:08,735 - INFO - Checking file 101 / 140
+2025-12-17 16:48:08,735 - INFO - Tuning 101 (1/2) / 140: unet_gemm_4096_5120_640_f16_f32_tB.mlir - llvmgpu_vector_distribute
+2025-12-17 16:48:08,735 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/unet_gemm_4096_5120_640_f16_f32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-17 17:32:15,126 - INFO - 2025-12-17T17:32:15 - unet_gemm_4096_5120_640_f16_f32_tB.mlir: completed in 2646.39
+2025-12-17 17:32:15,130 - DEBUG - Copied unet_gemm_4096_5120_640_f16_f32_tB.csv -> /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/tuning_database_vd
+2025-12-17 17:32:15,130 - INFO - Tuning 101 (2/2) / 140: unet_gemm_4096_5120_640_f16_f32_tB.mlir - llvmgpu_tile_and_fuse
+2025-12-17 17:32:15,130 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/unet_gemm_4096_5120_640_f16_f32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-17 18:35:39,224 - INFO - 2025-12-17T18:35:39 - unet_gemm_4096_5120_640_f16_f32_tB.mlir: completed in 3804.09
+2025-12-17 18:35:39,229 - DEBUG - Copied unet_gemm_4096_5120_640_f16_f32_tB.csv -> /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/tuning_database_tf
+2025-12-17 18:35:39,230 - INFO - Checking file 102 / 140
+2025-12-17 18:35:39,230 - INFO - Tuning 102 (1/2) / 140: unet_gemm_4096_5120_640_f32_f32_tB.mlir - llvmgpu_vector_distribute
+2025-12-17 18:35:39,230 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/unet_gemm_4096_5120_640_f32_f32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-17 18:48:30,075 - INFO - 2025-12-17T18:48:30 - unet_gemm_4096_5120_640_f32_f32_tB.mlir: completed in 770.85
+2025-12-17 18:48:30,078 - DEBUG - Copied unet_gemm_4096_5120_640_f32_f32_tB.csv -> /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/tuning_database_vd
+2025-12-17 18:48:30,078 - INFO - Tuning 102 (2/2) / 140: unet_gemm_4096_5120_640_f32_f32_tB.mlir - llvmgpu_tile_and_fuse
+2025-12-17 18:48:30,078 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/unet_gemm_4096_5120_640_f32_f32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-17 19:42:49,948 - INFO - 2025-12-17T19:42:49 - unet_gemm_4096_5120_640_f32_f32_tB.mlir: completed in 3259.87
+2025-12-17 19:42:49,952 - DEBUG - Copied unet_gemm_4096_5120_640_f32_f32_tB.csv -> /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/tuning_database_tf
+2025-12-17 19:42:49,952 - INFO - Checking file 103 / 140
+2025-12-17 19:42:49,953 - INFO - Tuning 103 (1/2) / 140: unet_gemm_4096_5120_640_f8E4M3FNUZ_f32_tB.mlir - llvmgpu_vector_distribute
+2025-12-17 19:42:49,953 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/unet_gemm_4096_5120_640_f8E4M3FNUZ_f32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-17 20:10:50,470 - INFO - 2025-12-17T20:10:50 - unet_gemm_4096_5120_640_f8E4M3FNUZ_f32_tB.mlir: completed in 1680.52
+2025-12-17 20:10:50,473 - DEBUG - Copied unet_gemm_4096_5120_640_f8E4M3FNUZ_f32_tB.csv -> /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/tuning_database_vd
+2025-12-17 20:10:50,473 - INFO - Tuning 103 (2/2) / 140: unet_gemm_4096_5120_640_f8E4M3FNUZ_f32_tB.mlir - llvmgpu_tile_and_fuse
+2025-12-17 20:10:50,473 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/unet_gemm_4096_5120_640_f8E4M3FNUZ_f32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-17 21:10:14,683 - INFO - 2025-12-17T21:10:14 - unet_gemm_4096_5120_640_f8E4M3FNUZ_f32_tB.mlir: completed in 3564.21
+2025-12-17 21:10:14,687 - DEBUG - Copied unet_gemm_4096_5120_640_f8E4M3FNUZ_f32_tB.csv -> /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/tuning_database_tf
+2025-12-17 21:10:14,687 - INFO - Checking file 104 / 140
+2025-12-17 21:10:14,687 - INFO - Tuning 104 (1/2) / 140: unet_gemm_4096_5120_640_i32_i32_tB.mlir - llvmgpu_vector_distribute
+2025-12-17 21:10:14,687 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/unet_gemm_4096_5120_640_i32_i32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-17 21:10:15,380 - WARNING - 2025-12-17T21:10:15 - unet_gemm_4096_5120_640_i32_i32_tB.mlir: 'FAIL(1)' in 0.69
+2025-12-17 21:10:15,380 - INFO - Tuning 104 (2/2) / 140: unet_gemm_4096_5120_640_i32_i32_tB.mlir - llvmgpu_tile_and_fuse
+2025-12-17 21:10:15,381 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/unet_gemm_4096_5120_640_i32_i32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-17 21:10:16,100 - WARNING - 2025-12-17T21:10:16 - unet_gemm_4096_5120_640_i32_i32_tB.mlir: 'FAIL(1)' in 0.72
+2025-12-17 21:10:16,100 - INFO - Checking file 105 / 140
+2025-12-17 21:10:16,101 - INFO - Tuning 105 (1/2) / 140: unet_gemm_4096_5120_640_i8_i32_tB.mlir - llvmgpu_vector_distribute
+2025-12-17 21:10:16,101 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/unet_gemm_4096_5120_640_i8_i32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-17 21:38:12,472 - INFO - 2025-12-17T21:38:12 - unet_gemm_4096_5120_640_i8_i32_tB.mlir: completed in 1676.37
+2025-12-17 21:38:12,475 - DEBUG - Copied unet_gemm_4096_5120_640_i8_i32_tB.csv -> /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/tuning_database_vd
+2025-12-17 21:38:12,475 - INFO - Tuning 105 (2/2) / 140: unet_gemm_4096_5120_640_i8_i32_tB.mlir - llvmgpu_tile_and_fuse
+2025-12-17 21:38:12,475 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/unet_gemm_4096_5120_640_i8_i32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-17 22:37:38,988 - INFO - 2025-12-17T22:37:38 - unet_gemm_4096_5120_640_i8_i32_tB.mlir: completed in 3566.51
+2025-12-17 22:37:38,994 - DEBUG - Copied unet_gemm_4096_5120_640_i8_i32_tB.csv -> /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/tuning_database_tf
+2025-12-17 22:37:38,994 - INFO - Checking file 106 / 140
+2025-12-17 22:37:38,995 - INFO - Tuning 106 (1/2) / 140: unet_gemm_4096_640_2560_f16_f32_tB.mlir - llvmgpu_vector_distribute
+2025-12-17 22:37:38,995 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/unet_gemm_4096_640_2560_f16_f32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-17 23:09:21,289 - INFO - 2025-12-17T23:09:21 - unet_gemm_4096_640_2560_f16_f32_tB.mlir: completed in 1902.29
+2025-12-17 23:09:21,292 - DEBUG - Copied unet_gemm_4096_640_2560_f16_f32_tB.csv -> /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/tuning_database_vd
+2025-12-17 23:09:21,292 - INFO - Tuning 106 (2/2) / 140: unet_gemm_4096_640_2560_f16_f32_tB.mlir - llvmgpu_tile_and_fuse
+2025-12-17 23:09:21,292 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/unet_gemm_4096_640_2560_f16_f32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-17 23:59:16,068 - INFO - 2025-12-17T23:59:16 - unet_gemm_4096_640_2560_f16_f32_tB.mlir: completed in 2994.78
+2025-12-17 23:59:16,072 - DEBUG - Copied unet_gemm_4096_640_2560_f16_f32_tB.csv -> /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/tuning_database_tf
+2025-12-17 23:59:16,072 - INFO - Checking file 107 / 140
+2025-12-17 23:59:16,072 - INFO - Tuning 107 (1/2) / 140: unet_gemm_4096_640_2560_f32_f32_tB.mlir - llvmgpu_vector_distribute
+2025-12-17 23:59:16,072 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/unet_gemm_4096_640_2560_f32_f32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-18 00:09:09,832 - INFO - 2025-12-18T00:09:09 - unet_gemm_4096_640_2560_f32_f32_tB.mlir: completed in 593.76
+2025-12-18 00:09:09,836 - DEBUG - Copied unet_gemm_4096_640_2560_f32_f32_tB.csv -> /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/tuning_database_vd
+2025-12-18 00:09:09,836 - INFO - Tuning 107 (2/2) / 140: unet_gemm_4096_640_2560_f32_f32_tB.mlir - llvmgpu_tile_and_fuse
+2025-12-18 00:09:09,836 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/unet_gemm_4096_640_2560_f32_f32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-18 00:52:55,913 - INFO - 2025-12-18T00:52:55 - unet_gemm_4096_640_2560_f32_f32_tB.mlir: completed in 2626.08
+2025-12-18 00:52:55,917 - DEBUG - Copied unet_gemm_4096_640_2560_f32_f32_tB.csv -> /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/tuning_database_tf
+2025-12-18 00:52:55,917 - INFO - Checking file 108 / 140
+2025-12-18 00:52:55,917 - INFO - Tuning 108 (1/2) / 140: unet_gemm_4096_640_2560_f8E4M3FNUZ_f32_tB.mlir - llvmgpu_vector_distribute
+2025-12-18 00:52:55,917 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/unet_gemm_4096_640_2560_f8E4M3FNUZ_f32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-18 01:13:37,632 - INFO - 2025-12-18T01:13:37 - unet_gemm_4096_640_2560_f8E4M3FNUZ_f32_tB.mlir: completed in 1241.71
+2025-12-18 01:13:37,635 - DEBUG - Copied unet_gemm_4096_640_2560_f8E4M3FNUZ_f32_tB.csv -> /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/tuning_database_vd
+2025-12-18 01:13:37,635 - INFO - Tuning 108 (2/2) / 140: unet_gemm_4096_640_2560_f8E4M3FNUZ_f32_tB.mlir - llvmgpu_tile_and_fuse
+2025-12-18 01:13:37,635 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/unet_gemm_4096_640_2560_f8E4M3FNUZ_f32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-18 02:02:59,664 - INFO - 2025-12-18T02:02:59 - unet_gemm_4096_640_2560_f8E4M3FNUZ_f32_tB.mlir: completed in 2962.03
+2025-12-18 02:02:59,669 - DEBUG - Copied unet_gemm_4096_640_2560_f8E4M3FNUZ_f32_tB.csv -> /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/tuning_database_tf
+2025-12-18 02:02:59,669 - INFO - Checking file 109 / 140
+2025-12-18 02:02:59,669 - INFO - Tuning 109 (1/2) / 140: unet_gemm_4096_640_2560_i32_i32_tB.mlir - llvmgpu_vector_distribute
+2025-12-18 02:02:59,670 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/unet_gemm_4096_640_2560_i32_i32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-18 02:03:00,360 - WARNING - 2025-12-18T02:03:00 - unet_gemm_4096_640_2560_i32_i32_tB.mlir: 'FAIL(1)' in 0.69
+2025-12-18 02:03:00,360 - INFO - Tuning 109 (2/2) / 140: unet_gemm_4096_640_2560_i32_i32_tB.mlir - llvmgpu_tile_and_fuse
+2025-12-18 02:03:00,360 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/unet_gemm_4096_640_2560_i32_i32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-18 02:03:01,060 - WARNING - 2025-12-18T02:03:01 - unet_gemm_4096_640_2560_i32_i32_tB.mlir: 'FAIL(1)' in 0.70
+2025-12-18 02:03:01,060 - INFO - Checking file 110 / 140
+2025-12-18 02:03:01,060 - INFO - Tuning 110 (1/2) / 140: unet_gemm_4096_640_2560_i8_i32_tB.mlir - llvmgpu_vector_distribute
+2025-12-18 02:03:01,060 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/unet_gemm_4096_640_2560_i8_i32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-18 02:23:42,509 - INFO - 2025-12-18T02:23:42 - unet_gemm_4096_640_2560_i8_i32_tB.mlir: completed in 1241.45
+2025-12-18 02:23:42,512 - DEBUG - Copied unet_gemm_4096_640_2560_i8_i32_tB.csv -> /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/tuning_database_vd
+2025-12-18 02:23:42,513 - INFO - Tuning 110 (2/2) / 140: unet_gemm_4096_640_2560_i8_i32_tB.mlir - llvmgpu_tile_and_fuse
+2025-12-18 02:23:42,513 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/unet_gemm_4096_640_2560_i8_i32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-18 03:13:13,372 - INFO - 2025-12-18T03:13:13 - unet_gemm_4096_640_2560_i8_i32_tB.mlir: completed in 2970.86
+2025-12-18 03:13:13,376 - DEBUG - Copied unet_gemm_4096_640_2560_i8_i32_tB.csv -> /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/tuning_database_tf
+2025-12-18 03:13:13,376 - INFO - Checking file 111 / 140
+2025-12-18 03:13:13,376 - INFO - Tuning 111 (1/2) / 140: unet_gemm_4096_640_640_f16_f32_tB.mlir - llvmgpu_vector_distribute
+2025-12-18 03:13:13,376 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/unet_gemm_4096_640_640_f16_f32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-18 03:45:12,365 - INFO - 2025-12-18T03:45:12 - unet_gemm_4096_640_640_f16_f32_tB.mlir: completed in 1918.99
+2025-12-18 03:45:12,371 - DEBUG - Copied unet_gemm_4096_640_640_f16_f32_tB.csv -> /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/tuning_database_vd
+2025-12-18 03:45:12,371 - INFO - Tuning 111 (2/2) / 140: unet_gemm_4096_640_640_f16_f32_tB.mlir - llvmgpu_tile_and_fuse
+2025-12-18 03:45:12,371 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/unet_gemm_4096_640_640_f16_f32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-18 04:35:28,835 - INFO - 2025-12-18T04:35:28 - unet_gemm_4096_640_640_f16_f32_tB.mlir: completed in 3016.46
+2025-12-18 04:35:28,839 - DEBUG - Copied unet_gemm_4096_640_640_f16_f32_tB.csv -> /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/tuning_database_tf
+2025-12-18 04:35:28,839 - INFO - Checking file 112 / 140
+2025-12-18 04:35:28,839 - INFO - Tuning 112 (1/2) / 140: unet_gemm_4096_640_640_f32_f32_tB.mlir - llvmgpu_vector_distribute
+2025-12-18 04:35:28,839 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/unet_gemm_4096_640_640_f32_f32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-18 04:45:31,148 - INFO - 2025-12-18T04:45:31 - unet_gemm_4096_640_640_f32_f32_tB.mlir: completed in 602.31
+2025-12-18 04:45:31,152 - DEBUG - Copied unet_gemm_4096_640_640_f32_f32_tB.csv -> /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/tuning_database_vd
+2025-12-18 04:45:31,153 - INFO - Tuning 112 (2/2) / 140: unet_gemm_4096_640_640_f32_f32_tB.mlir - llvmgpu_tile_and_fuse
+2025-12-18 04:45:31,153 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/unet_gemm_4096_640_640_f32_f32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-18 05:29:38,988 - INFO - 2025-12-18T05:29:38 - unet_gemm_4096_640_640_f32_f32_tB.mlir: completed in 2647.84
+2025-12-18 05:29:38,992 - DEBUG - Copied unet_gemm_4096_640_640_f32_f32_tB.csv -> /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/tuning_database_tf
+2025-12-18 05:29:38,992 - INFO - Checking file 113 / 140
+2025-12-18 05:29:38,992 - INFO - Tuning 113 (1/2) / 140: unet_gemm_4096_640_640_f8E4M3FNUZ_f32_tB.mlir - llvmgpu_vector_distribute
+2025-12-18 05:29:38,992 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/unet_gemm_4096_640_640_f8E4M3FNUZ_f32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-18 05:48:14,297 - INFO - 2025-12-18T05:48:14 - unet_gemm_4096_640_640_f8E4M3FNUZ_f32_tB.mlir: completed in 1115.30
+2025-12-18 05:48:14,300 - DEBUG - Copied unet_gemm_4096_640_640_f8E4M3FNUZ_f32_tB.csv -> /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/tuning_database_vd
+2025-12-18 05:48:14,300 - INFO - Tuning 113 (2/2) / 140: unet_gemm_4096_640_640_f8E4M3FNUZ_f32_tB.mlir - llvmgpu_tile_and_fuse
+2025-12-18 05:48:14,301 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/unet_gemm_4096_640_640_f8E4M3FNUZ_f32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-18 06:34:01,045 - INFO - 2025-12-18T06:34:01 - unet_gemm_4096_640_640_f8E4M3FNUZ_f32_tB.mlir: completed in 2746.74
+2025-12-18 06:34:01,050 - DEBUG - Copied unet_gemm_4096_640_640_f8E4M3FNUZ_f32_tB.csv -> /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/tuning_database_tf
+2025-12-18 06:34:01,051 - INFO - Checking file 114 / 140
+2025-12-18 06:34:01,051 - INFO - Tuning 114 (1/2) / 140: unet_gemm_4096_640_640_i32_i32_tB.mlir - llvmgpu_vector_distribute
+2025-12-18 06:34:01,051 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/unet_gemm_4096_640_640_i32_i32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-18 06:34:01,744 - WARNING - 2025-12-18T06:34:01 - unet_gemm_4096_640_640_i32_i32_tB.mlir: 'FAIL(1)' in 0.69
+2025-12-18 06:34:01,745 - INFO - Tuning 114 (2/2) / 140: unet_gemm_4096_640_640_i32_i32_tB.mlir - llvmgpu_tile_and_fuse
+2025-12-18 06:34:01,745 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/unet_gemm_4096_640_640_i32_i32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-18 06:34:02,440 - WARNING - 2025-12-18T06:34:02 - unet_gemm_4096_640_640_i32_i32_tB.mlir: 'FAIL(1)' in 0.70
+2025-12-18 06:34:02,441 - INFO - Checking file 115 / 140
+2025-12-18 06:34:02,441 - INFO - Tuning 115 (1/2) / 140: unet_gemm_4096_640_640_i8_i32_tB.mlir - llvmgpu_vector_distribute
+2025-12-18 06:34:02,441 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/unet_gemm_4096_640_640_i8_i32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-18 06:52:29,816 - INFO - 2025-12-18T06:52:29 - unet_gemm_4096_640_640_i8_i32_tB.mlir: completed in 1107.38
+2025-12-18 06:52:29,820 - DEBUG - Copied unet_gemm_4096_640_640_i8_i32_tB.csv -> /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/tuning_database_vd
+2025-12-18 06:52:29,820 - INFO - Tuning 115 (2/2) / 140: unet_gemm_4096_640_640_i8_i32_tB.mlir - llvmgpu_tile_and_fuse
+2025-12-18 06:52:29,820 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/unet_gemm_4096_640_640_i8_i32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-18 07:38:29,677 - INFO - 2025-12-18T07:38:29 - unet_gemm_4096_640_640_i8_i32_tB.mlir: completed in 2759.86
+2025-12-18 07:38:29,681 - DEBUG - Copied unet_gemm_4096_640_640_i8_i32_tB.csv -> /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/tuning_database_tf
+2025-12-18 07:38:29,681 - INFO - Checking file 116 / 140
+2025-12-18 07:38:29,681 - INFO - Tuning 116 (1/2) / 140: unet_gemm_64_1280_2048_f16_f32_tB.mlir - llvmgpu_vector_distribute
+2025-12-18 07:38:29,681 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/unet_gemm_64_1280_2048_f16_f32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-18 07:54:05,863 - INFO - 2025-12-18T07:54:05 - unet_gemm_64_1280_2048_f16_f32_tB.mlir: completed in 936.18
+2025-12-18 07:54:05,866 - DEBUG - Copied unet_gemm_64_1280_2048_f16_f32_tB.csv -> /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/tuning_database_vd
+2025-12-18 07:54:05,866 - INFO - Tuning 116 (2/2) / 140: unet_gemm_64_1280_2048_f16_f32_tB.mlir - llvmgpu_tile_and_fuse
+2025-12-18 07:54:05,867 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/unet_gemm_64_1280_2048_f16_f32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-18 08:13:22,837 - INFO - 2025-12-18T08:13:22 - unet_gemm_64_1280_2048_f16_f32_tB.mlir: completed in 1156.97
+2025-12-18 08:13:22,841 - DEBUG - Copied unet_gemm_64_1280_2048_f16_f32_tB.csv -> /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/tuning_database_tf
+2025-12-18 08:13:22,841 - INFO - Checking file 117 / 140
+2025-12-18 08:13:22,841 - INFO - Tuning 117 (1/2) / 140: unet_gemm_64_1280_2048_f32_f32_tB.mlir - llvmgpu_vector_distribute
+2025-12-18 08:13:22,841 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/unet_gemm_64_1280_2048_f32_f32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-18 08:18:53,922 - INFO - 2025-12-18T08:18:53 - unet_gemm_64_1280_2048_f32_f32_tB.mlir: completed in 331.08
+2025-12-18 08:18:53,925 - DEBUG - Copied unet_gemm_64_1280_2048_f32_f32_tB.csv -> /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/tuning_database_vd
+2025-12-18 08:18:53,925 - INFO - Tuning 117 (2/2) / 140: unet_gemm_64_1280_2048_f32_f32_tB.mlir - llvmgpu_tile_and_fuse
+2025-12-18 08:18:53,925 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/unet_gemm_64_1280_2048_f32_f32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-18 08:35:29,668 - INFO - 2025-12-18T08:35:29 - unet_gemm_64_1280_2048_f32_f32_tB.mlir: completed in 995.74
+2025-12-18 08:35:29,674 - DEBUG - Copied unet_gemm_64_1280_2048_f32_f32_tB.csv -> /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/tuning_database_tf
+2025-12-18 08:35:29,674 - INFO - Checking file 118 / 140
+2025-12-18 08:35:29,674 - INFO - Tuning 118 (1/2) / 140: unet_gemm_64_1280_2048_f8E4M3FNUZ_f32_tB.mlir - llvmgpu_vector_distribute
+2025-12-18 08:35:29,674 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/unet_gemm_64_1280_2048_f8E4M3FNUZ_f32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-18 08:45:10,716 - INFO - 2025-12-18T08:45:10 - unet_gemm_64_1280_2048_f8E4M3FNUZ_f32_tB.mlir: completed in 581.04
+2025-12-18 08:45:10,719 - DEBUG - Copied unet_gemm_64_1280_2048_f8E4M3FNUZ_f32_tB.csv -> /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/tuning_database_vd
+2025-12-18 08:45:10,719 - INFO - Tuning 118 (2/2) / 140: unet_gemm_64_1280_2048_f8E4M3FNUZ_f32_tB.mlir - llvmgpu_tile_and_fuse
+2025-12-18 08:45:10,719 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/unet_gemm_64_1280_2048_f8E4M3FNUZ_f32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-18 09:04:19,746 - INFO - 2025-12-18T09:04:19 - unet_gemm_64_1280_2048_f8E4M3FNUZ_f32_tB.mlir: completed in 1149.03
+2025-12-18 09:04:19,749 - DEBUG - Copied unet_gemm_64_1280_2048_f8E4M3FNUZ_f32_tB.csv -> /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/tuning_database_tf
+2025-12-18 09:04:19,749 - INFO - Checking file 119 / 140
+2025-12-18 09:04:19,750 - INFO - Tuning 119 (1/2) / 140: unet_gemm_64_1280_2048_i32_i32_tB.mlir - llvmgpu_vector_distribute
+2025-12-18 09:04:19,750 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/unet_gemm_64_1280_2048_i32_i32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-18 09:04:20,449 - WARNING - 2025-12-18T09:04:20 - unet_gemm_64_1280_2048_i32_i32_tB.mlir: 'FAIL(1)' in 0.70
+2025-12-18 09:04:20,449 - INFO - Tuning 119 (2/2) / 140: unet_gemm_64_1280_2048_i32_i32_tB.mlir - llvmgpu_tile_and_fuse
+2025-12-18 09:04:20,449 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/unet_gemm_64_1280_2048_i32_i32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-18 09:04:21,149 - WARNING - 2025-12-18T09:04:21 - unet_gemm_64_1280_2048_i32_i32_tB.mlir: 'FAIL(1)' in 0.70
+2025-12-18 09:04:21,149 - INFO - Checking file 120 / 140
+2025-12-18 09:04:21,149 - INFO - Tuning 120 (1/2) / 140: unet_gemm_64_1280_2048_i8_i32_tB.mlir - llvmgpu_vector_distribute
+2025-12-18 09:04:21,149 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/unet_gemm_64_1280_2048_i8_i32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-18 09:13:49,814 - INFO - 2025-12-18T09:13:49 - unet_gemm_64_1280_2048_i8_i32_tB.mlir: completed in 568.66
+2025-12-18 09:13:49,815 - DEBUG - Copied unet_gemm_64_1280_2048_i8_i32_tB.csv -> /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/tuning_database_vd
+2025-12-18 09:13:49,815 - INFO - Tuning 120 (2/2) / 140: unet_gemm_64_1280_2048_i8_i32_tB.mlir - llvmgpu_tile_and_fuse
+2025-12-18 09:13:49,815 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/unet_gemm_64_1280_2048_i8_i32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-18 09:33:05,486 - INFO - 2025-12-18T09:33:05 - unet_gemm_64_1280_2048_i8_i32_tB.mlir: completed in 1155.67
+2025-12-18 09:33:05,491 - DEBUG - Copied unet_gemm_64_1280_2048_i8_i32_tB.csv -> /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/tuning_database_tf
+2025-12-18 09:33:05,491 - INFO - Checking file 121 / 140
+2025-12-18 09:33:05,491 - INFO - Tuning 121 (1/2) / 140: unet_gemm_64_640_2048_f16_f32_tB.mlir - llvmgpu_vector_distribute
+2025-12-18 09:33:05,491 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/unet_gemm_64_640_2048_f16_f32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-18 09:45:35,457 - INFO - 2025-12-18T09:45:35 - unet_gemm_64_640_2048_f16_f32_tB.mlir: completed in 749.97
+2025-12-18 09:45:35,460 - DEBUG - Copied unet_gemm_64_640_2048_f16_f32_tB.csv -> /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/tuning_database_vd
+2025-12-18 09:45:35,460 - INFO - Tuning 121 (2/2) / 140: unet_gemm_64_640_2048_f16_f32_tB.mlir - llvmgpu_tile_and_fuse
+2025-12-18 09:45:35,460 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/unet_gemm_64_640_2048_f16_f32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-18 10:02:20,863 - INFO - 2025-12-18T10:02:20 - unet_gemm_64_640_2048_f16_f32_tB.mlir: completed in 1005.40
+2025-12-18 10:02:20,868 - DEBUG - Copied unet_gemm_64_640_2048_f16_f32_tB.csv -> /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/tuning_database_tf
+2025-12-18 10:02:20,868 - INFO - Checking file 122 / 140
+2025-12-18 10:02:20,868 - INFO - Tuning 122 (1/2) / 140: unet_gemm_64_640_2048_f32_f32_tB.mlir - llvmgpu_vector_distribute
+2025-12-18 10:02:20,869 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/unet_gemm_64_640_2048_f32_f32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-18 10:07:05,055 - INFO - 2025-12-18T10:07:05 - unet_gemm_64_640_2048_f32_f32_tB.mlir: completed in 284.19
+2025-12-18 10:07:05,059 - DEBUG - Copied unet_gemm_64_640_2048_f32_f32_tB.csv -> /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/tuning_database_vd
+2025-12-18 10:07:05,059 - INFO - Tuning 122 (2/2) / 140: unet_gemm_64_640_2048_f32_f32_tB.mlir - llvmgpu_tile_and_fuse
+2025-12-18 10:07:05,059 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/unet_gemm_64_640_2048_f32_f32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-18 10:21:40,349 - INFO - 2025-12-18T10:21:40 - unet_gemm_64_640_2048_f32_f32_tB.mlir: completed in 875.29
+2025-12-18 10:21:40,353 - DEBUG - Copied unet_gemm_64_640_2048_f32_f32_tB.csv -> /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/tuning_database_tf
+2025-12-18 10:21:40,353 - INFO - Checking file 123 / 140
+2025-12-18 10:21:40,353 - INFO - Tuning 123 (1/2) / 140: unet_gemm_64_640_2048_f8E4M3FNUZ_f32_tB.mlir - llvmgpu_vector_distribute
+2025-12-18 10:21:40,353 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/unet_gemm_64_640_2048_f8E4M3FNUZ_f32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-18 10:29:22,843 - INFO - 2025-12-18T10:29:22 - unet_gemm_64_640_2048_f8E4M3FNUZ_f32_tB.mlir: completed in 462.49
+2025-12-18 10:29:22,847 - DEBUG - Copied unet_gemm_64_640_2048_f8E4M3FNUZ_f32_tB.csv -> /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/tuning_database_vd
+2025-12-18 10:29:22,847 - INFO - Tuning 123 (2/2) / 140: unet_gemm_64_640_2048_f8E4M3FNUZ_f32_tB.mlir - llvmgpu_tile_and_fuse
+2025-12-18 10:29:22,847 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/unet_gemm_64_640_2048_f8E4M3FNUZ_f32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-18 10:46:12,671 - INFO - 2025-12-18T10:46:12 - unet_gemm_64_640_2048_f8E4M3FNUZ_f32_tB.mlir: completed in 1009.82
+2025-12-18 10:46:12,677 - DEBUG - Copied unet_gemm_64_640_2048_f8E4M3FNUZ_f32_tB.csv -> /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/tuning_database_tf
+2025-12-18 10:46:12,677 - INFO - Checking file 124 / 140
+2025-12-18 10:46:12,677 - INFO - Tuning 124 (1/2) / 140: unet_gemm_64_640_2048_i32_i32_tB.mlir - llvmgpu_vector_distribute
+2025-12-18 10:46:12,677 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/unet_gemm_64_640_2048_i32_i32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-18 10:46:13,377 - WARNING - 2025-12-18T10:46:13 - unet_gemm_64_640_2048_i32_i32_tB.mlir: 'FAIL(1)' in 0.70
+2025-12-18 10:46:13,377 - INFO - Tuning 124 (2/2) / 140: unet_gemm_64_640_2048_i32_i32_tB.mlir - llvmgpu_tile_and_fuse
+2025-12-18 10:46:13,377 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/unet_gemm_64_640_2048_i32_i32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-18 10:46:14,057 - WARNING - 2025-12-18T10:46:14 - unet_gemm_64_640_2048_i32_i32_tB.mlir: 'FAIL(1)' in 0.68
+2025-12-18 10:46:14,057 - INFO - Checking file 125 / 140
+2025-12-18 10:46:14,057 - INFO - Tuning 125 (1/2) / 140: unet_gemm_64_640_2048_i8_i32_tB.mlir - llvmgpu_vector_distribute
+2025-12-18 10:46:14,058 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/unet_gemm_64_640_2048_i8_i32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-18 10:53:56,753 - INFO - 2025-12-18T10:53:56 - unet_gemm_64_640_2048_i8_i32_tB.mlir: completed in 462.70
+2025-12-18 10:53:56,757 - DEBUG - Copied unet_gemm_64_640_2048_i8_i32_tB.csv -> /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/tuning_database_vd
+2025-12-18 10:53:56,757 - INFO - Tuning 125 (2/2) / 140: unet_gemm_64_640_2048_i8_i32_tB.mlir - llvmgpu_tile_and_fuse
+2025-12-18 10:53:56,757 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/unet_gemm_64_640_2048_i8_i32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-18 11:10:30,144 - INFO - 2025-12-18T11:10:30 - unet_gemm_64_640_2048_i8_i32_tB.mlir: completed in 993.39
+2025-12-18 11:10:30,146 - DEBUG - Copied unet_gemm_64_640_2048_i8_i32_tB.csv -> /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/tuning_database_tf
+2025-12-18 11:10:30,146 - INFO - Checking file 126 / 140
+2025-12-18 11:10:30,146 - INFO - Tuning 126 (1/2) / 140: unet_gemm_8192_5120_640_f16_f32_tB.mlir - llvmgpu_vector_distribute
+2025-12-18 11:10:30,146 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/unet_gemm_8192_5120_640_f16_f32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-18 11:54:10,314 - INFO - 2025-12-18T11:54:10 - unet_gemm_8192_5120_640_f16_f32_tB.mlir: completed in 2620.17
+2025-12-18 11:54:10,318 - DEBUG - Copied unet_gemm_8192_5120_640_f16_f32_tB.csv -> /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/tuning_database_vd
+2025-12-18 11:54:10,318 - INFO - Tuning 126 (2/2) / 140: unet_gemm_8192_5120_640_f16_f32_tB.mlir - llvmgpu_tile_and_fuse
+2025-12-18 11:54:10,318 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/unet_gemm_8192_5120_640_f16_f32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-18 12:57:00,871 - INFO - 2025-12-18T12:57:00 - unet_gemm_8192_5120_640_f16_f32_tB.mlir: completed in 3770.55
+2025-12-18 12:57:00,876 - DEBUG - Copied unet_gemm_8192_5120_640_f16_f32_tB.csv -> /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/tuning_database_tf
+2025-12-18 12:57:00,876 - INFO - Checking file 127 / 140
+2025-12-18 12:57:00,876 - INFO - Tuning 127 (1/2) / 140: unet_gemm_8192_5120_640_f32_f32_tB.mlir - llvmgpu_vector_distribute
+2025-12-18 12:57:00,876 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/unet_gemm_8192_5120_640_f32_f32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-18 13:09:30,465 - INFO - 2025-12-18T13:09:30 - unet_gemm_8192_5120_640_f32_f32_tB.mlir: completed in 749.59
+2025-12-18 13:09:30,469 - DEBUG - Copied unet_gemm_8192_5120_640_f32_f32_tB.csv -> /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/tuning_database_vd
+2025-12-18 13:09:30,469 - INFO - Tuning 127 (2/2) / 140: unet_gemm_8192_5120_640_f32_f32_tB.mlir - llvmgpu_tile_and_fuse
+2025-12-18 13:09:30,469 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/unet_gemm_8192_5120_640_f32_f32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-18 14:01:57,546 - INFO - 2025-12-18T14:01:57 - unet_gemm_8192_5120_640_f32_f32_tB.mlir: completed in 3147.08
+2025-12-18 14:01:57,551 - DEBUG - Copied unet_gemm_8192_5120_640_f32_f32_tB.csv -> /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/tuning_database_tf
+2025-12-18 14:01:57,551 - INFO - Checking file 128 / 140
+2025-12-18 14:01:57,551 - INFO - Tuning 128 (1/2) / 140: unet_gemm_8192_5120_640_f8E4M3FNUZ_f32_tB.mlir - llvmgpu_vector_distribute
+2025-12-18 14:01:57,551 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/unet_gemm_8192_5120_640_f8E4M3FNUZ_f32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-18 14:28:53,579 - INFO - 2025-12-18T14:28:53 - unet_gemm_8192_5120_640_f8E4M3FNUZ_f32_tB.mlir: completed in 1616.03
+2025-12-18 14:28:53,584 - DEBUG - Copied unet_gemm_8192_5120_640_f8E4M3FNUZ_f32_tB.csv -> /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/tuning_database_vd
+2025-12-18 14:28:53,585 - INFO - Tuning 128 (2/2) / 140: unet_gemm_8192_5120_640_f8E4M3FNUZ_f32_tB.mlir - llvmgpu_tile_and_fuse
+2025-12-18 14:28:53,585 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/unet_gemm_8192_5120_640_f8E4M3FNUZ_f32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-18 15:27:13,341 - INFO - 2025-12-18T15:27:13 - unet_gemm_8192_5120_640_f8E4M3FNUZ_f32_tB.mlir: completed in 3499.76
+2025-12-18 15:27:13,346 - DEBUG - Copied unet_gemm_8192_5120_640_f8E4M3FNUZ_f32_tB.csv -> /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/tuning_database_tf
+2025-12-18 15:27:13,346 - INFO - Checking file 129 / 140
+2025-12-18 15:27:13,346 - INFO - Tuning 129 (1/2) / 140: unet_gemm_8192_5120_640_i32_i32_tB.mlir - llvmgpu_vector_distribute
+2025-12-18 15:27:13,346 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/unet_gemm_8192_5120_640_i32_i32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-18 15:27:14,041 - WARNING - 2025-12-18T15:27:14 - unet_gemm_8192_5120_640_i32_i32_tB.mlir: 'FAIL(1)' in 0.69
+2025-12-18 15:27:14,041 - INFO - Tuning 129 (2/2) / 140: unet_gemm_8192_5120_640_i32_i32_tB.mlir - llvmgpu_tile_and_fuse
+2025-12-18 15:27:14,041 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/unet_gemm_8192_5120_640_i32_i32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-18 15:27:14,744 - WARNING - 2025-12-18T15:27:14 - unet_gemm_8192_5120_640_i32_i32_tB.mlir: 'FAIL(1)' in 0.70
+2025-12-18 15:27:14,744 - INFO - Checking file 130 / 140
+2025-12-18 15:27:14,744 - INFO - Tuning 130 (1/2) / 140: unet_gemm_8192_5120_640_i8_i32_tB.mlir - llvmgpu_vector_distribute
+2025-12-18 15:27:14,744 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/unet_gemm_8192_5120_640_i8_i32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-18 15:54:11,036 - INFO - 2025-12-18T15:54:11 - unet_gemm_8192_5120_640_i8_i32_tB.mlir: completed in 1616.29
+2025-12-18 15:54:11,040 - DEBUG - Copied unet_gemm_8192_5120_640_i8_i32_tB.csv -> /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/tuning_database_vd
+2025-12-18 15:54:11,040 - INFO - Tuning 130 (2/2) / 140: unet_gemm_8192_5120_640_i8_i32_tB.mlir - llvmgpu_tile_and_fuse
+2025-12-18 15:54:11,040 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/unet_gemm_8192_5120_640_i8_i32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-18 16:52:40,598 - INFO - 2025-12-18T16:52:40 - unet_gemm_8192_5120_640_i8_i32_tB.mlir: completed in 3509.56
+2025-12-18 16:52:40,602 - DEBUG - Copied unet_gemm_8192_5120_640_i8_i32_tB.csv -> /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/tuning_database_tf
+2025-12-18 16:52:40,602 - INFO - Checking file 131 / 140
+2025-12-18 16:52:40,603 - INFO - Tuning 131 (1/2) / 140: unet_gemm_8192_640_2560_f16_f32_tB.mlir - llvmgpu_vector_distribute
+2025-12-18 16:52:40,603 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/unet_gemm_8192_640_2560_f16_f32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-18 17:24:17,237 - INFO - 2025-12-18T17:24:17 - unet_gemm_8192_640_2560_f16_f32_tB.mlir: completed in 1896.63
+2025-12-18 17:24:17,241 - DEBUG - Copied unet_gemm_8192_640_2560_f16_f32_tB.csv -> /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/tuning_database_vd
+2025-12-18 17:24:17,241 - INFO - Tuning 131 (2/2) / 140: unet_gemm_8192_640_2560_f16_f32_tB.mlir - llvmgpu_tile_and_fuse
+2025-12-18 17:24:17,241 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/unet_gemm_8192_640_2560_f16_f32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-18 18:14:14,451 - INFO - 2025-12-18T18:14:14 - unet_gemm_8192_640_2560_f16_f32_tB.mlir: completed in 2997.21
+2025-12-18 18:14:14,457 - DEBUG - Copied unet_gemm_8192_640_2560_f16_f32_tB.csv -> /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/tuning_database_tf
+2025-12-18 18:14:14,457 - INFO - Checking file 132 / 140
+2025-12-18 18:14:14,457 - INFO - Tuning 132 (1/2) / 140: unet_gemm_8192_640_2560_f32_f32_tB.mlir - llvmgpu_vector_distribute
+2025-12-18 18:14:14,457 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/unet_gemm_8192_640_2560_f32_f32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-18 18:24:03,343 - INFO - 2025-12-18T18:24:03 - unet_gemm_8192_640_2560_f32_f32_tB.mlir: completed in 588.89
+2025-12-18 18:24:03,347 - DEBUG - Copied unet_gemm_8192_640_2560_f32_f32_tB.csv -> /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/tuning_database_vd
+2025-12-18 18:24:03,347 - INFO - Tuning 132 (2/2) / 140: unet_gemm_8192_640_2560_f32_f32_tB.mlir - llvmgpu_tile_and_fuse
+2025-12-18 18:24:03,347 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/unet_gemm_8192_640_2560_f32_f32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-18 19:07:15,384 - INFO - 2025-12-18T19:07:15 - unet_gemm_8192_640_2560_f32_f32_tB.mlir: completed in 2592.04
+2025-12-18 19:07:15,388 - DEBUG - Copied unet_gemm_8192_640_2560_f32_f32_tB.csv -> /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/tuning_database_tf
+2025-12-18 19:07:15,388 - INFO - Checking file 133 / 140
+2025-12-18 19:07:15,388 - INFO - Tuning 133 (1/2) / 140: unet_gemm_8192_640_2560_f8E4M3FNUZ_f32_tB.mlir - llvmgpu_vector_distribute
+2025-12-18 19:07:15,388 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/unet_gemm_8192_640_2560_f8E4M3FNUZ_f32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-18 19:27:53,851 - INFO - 2025-12-18T19:27:53 - unet_gemm_8192_640_2560_f8E4M3FNUZ_f32_tB.mlir: completed in 1238.46
+2025-12-18 19:27:53,855 - DEBUG - Copied unet_gemm_8192_640_2560_f8E4M3FNUZ_f32_tB.csv -> /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/tuning_database_vd
+2025-12-18 19:27:53,855 - INFO - Tuning 133 (2/2) / 140: unet_gemm_8192_640_2560_f8E4M3FNUZ_f32_tB.mlir - llvmgpu_tile_and_fuse
+2025-12-18 19:27:53,856 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/unet_gemm_8192_640_2560_f8E4M3FNUZ_f32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-18 20:16:59,861 - INFO - 2025-12-18T20:16:59 - unet_gemm_8192_640_2560_f8E4M3FNUZ_f32_tB.mlir: completed in 2946.01
+2025-12-18 20:16:59,867 - DEBUG - Copied unet_gemm_8192_640_2560_f8E4M3FNUZ_f32_tB.csv -> /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/tuning_database_tf
+2025-12-18 20:16:59,867 - INFO - Checking file 134 / 140
+2025-12-18 20:16:59,867 - INFO - Tuning 134 (1/2) / 140: unet_gemm_8192_640_2560_i32_i32_tB.mlir - llvmgpu_vector_distribute
+2025-12-18 20:16:59,867 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/unet_gemm_8192_640_2560_i32_i32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-18 20:17:00,564 - WARNING - 2025-12-18T20:17:00 - unet_gemm_8192_640_2560_i32_i32_tB.mlir: 'FAIL(1)' in 0.70
+2025-12-18 20:17:00,564 - INFO - Tuning 134 (2/2) / 140: unet_gemm_8192_640_2560_i32_i32_tB.mlir - llvmgpu_tile_and_fuse
+2025-12-18 20:17:00,565 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/unet_gemm_8192_640_2560_i32_i32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-18 20:17:01,276 - WARNING - 2025-12-18T20:17:01 - unet_gemm_8192_640_2560_i32_i32_tB.mlir: 'FAIL(1)' in 0.71
+2025-12-18 20:17:01,276 - INFO - Checking file 135 / 140
+2025-12-18 20:17:01,276 - INFO - Tuning 135 (1/2) / 140: unet_gemm_8192_640_2560_i8_i32_tB.mlir - llvmgpu_vector_distribute
+2025-12-18 20:17:01,276 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/unet_gemm_8192_640_2560_i8_i32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-18 20:37:41,700 - INFO - 2025-12-18T20:37:41 - unet_gemm_8192_640_2560_i8_i32_tB.mlir: completed in 1240.42
+2025-12-18 20:37:41,704 - DEBUG - Copied unet_gemm_8192_640_2560_i8_i32_tB.csv -> /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/tuning_database_vd
+2025-12-18 20:37:41,705 - INFO - Tuning 135 (2/2) / 140: unet_gemm_8192_640_2560_i8_i32_tB.mlir - llvmgpu_tile_and_fuse
+2025-12-18 20:37:41,705 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/unet_gemm_8192_640_2560_i8_i32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-18 21:26:51,267 - INFO - 2025-12-18T21:26:51 - unet_gemm_8192_640_2560_i8_i32_tB.mlir: completed in 2949.56
+2025-12-18 21:26:51,272 - DEBUG - Copied unet_gemm_8192_640_2560_i8_i32_tB.csv -> /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/tuning_database_tf
+2025-12-18 21:26:51,272 - INFO - Checking file 136 / 140
+2025-12-18 21:26:51,272 - INFO - Tuning 136 (1/2) / 140: unet_gemm_8192_640_640_f16_f32_tB.mlir - llvmgpu_vector_distribute
+2025-12-18 21:26:51,272 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/unet_gemm_8192_640_640_f16_f32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-18 21:58:36,221 - INFO - 2025-12-18T21:58:36 - unet_gemm_8192_640_640_f16_f32_tB.mlir: completed in 1904.95
+2025-12-18 21:58:36,226 - DEBUG - Copied unet_gemm_8192_640_640_f16_f32_tB.csv -> /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/tuning_database_vd
+2025-12-18 21:58:36,227 - INFO - Tuning 136 (2/2) / 140: unet_gemm_8192_640_640_f16_f32_tB.mlir - llvmgpu_tile_and_fuse
+2025-12-18 21:58:36,227 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/unet_gemm_8192_640_640_f16_f32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-18 22:49:27,454 - INFO - 2025-12-18T22:49:27 - unet_gemm_8192_640_640_f16_f32_tB.mlir: completed in 3051.23
+2025-12-18 22:49:27,459 - DEBUG - Copied unet_gemm_8192_640_640_f16_f32_tB.csv -> /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/tuning_database_tf
+2025-12-18 22:49:27,459 - INFO - Checking file 137 / 140
+2025-12-18 22:49:27,459 - INFO - Tuning 137 (1/2) / 140: unet_gemm_8192_640_640_f32_f32_tB.mlir - llvmgpu_vector_distribute
+2025-12-18 22:49:27,459 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/unet_gemm_8192_640_640_f32_f32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-18 22:59:31,786 - INFO - 2025-12-18T22:59:31 - unet_gemm_8192_640_640_f32_f32_tB.mlir: completed in 604.33
+2025-12-18 22:59:31,790 - DEBUG - Copied unet_gemm_8192_640_640_f32_f32_tB.csv -> /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/tuning_database_vd
+2025-12-18 22:59:31,790 - INFO - Tuning 137 (2/2) / 140: unet_gemm_8192_640_640_f32_f32_tB.mlir - llvmgpu_tile_and_fuse
+2025-12-18 22:59:31,790 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/unet_gemm_8192_640_640_f32_f32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-18 23:43:38,154 - INFO - 2025-12-18T23:43:38 - unet_gemm_8192_640_640_f32_f32_tB.mlir: completed in 2646.36
+2025-12-18 23:43:38,159 - DEBUG - Copied unet_gemm_8192_640_640_f32_f32_tB.csv -> /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/tuning_database_tf
+2025-12-18 23:43:38,159 - INFO - Checking file 138 / 140
+2025-12-18 23:43:38,159 - INFO - Tuning 138 (1/2) / 140: unet_gemm_8192_640_640_f8E4M3FNUZ_f32_tB.mlir - llvmgpu_vector_distribute
+2025-12-18 23:43:38,159 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/unet_gemm_8192_640_640_f8E4M3FNUZ_f32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-19 00:02:13,299 - INFO - 2025-12-19T00:02:13 - unet_gemm_8192_640_640_f8E4M3FNUZ_f32_tB.mlir: completed in 1115.14
+2025-12-19 00:02:13,303 - DEBUG - Copied unet_gemm_8192_640_640_f8E4M3FNUZ_f32_tB.csv -> /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/tuning_database_vd
+2025-12-19 00:02:13,303 - INFO - Tuning 138 (2/2) / 140: unet_gemm_8192_640_640_f8E4M3FNUZ_f32_tB.mlir - llvmgpu_tile_and_fuse
+2025-12-19 00:02:13,303 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/unet_gemm_8192_640_640_f8E4M3FNUZ_f32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-19 00:47:57,326 - INFO - 2025-12-19T00:47:57 - unet_gemm_8192_640_640_f8E4M3FNUZ_f32_tB.mlir: completed in 2744.02
+2025-12-19 00:47:57,331 - DEBUG - Copied unet_gemm_8192_640_640_f8E4M3FNUZ_f32_tB.csv -> /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/tuning_database_tf
+2025-12-19 00:47:57,331 - INFO - Checking file 139 / 140
+2025-12-19 00:47:57,331 - INFO - Tuning 139 (1/2) / 140: unet_gemm_8192_640_640_i32_i32_tB.mlir - llvmgpu_vector_distribute
+2025-12-19 00:47:57,331 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/unet_gemm_8192_640_640_i32_i32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-19 00:47:58,014 - WARNING - 2025-12-19T00:47:58 - unet_gemm_8192_640_640_i32_i32_tB.mlir: 'FAIL(1)' in 0.68
+2025-12-19 00:47:58,014 - INFO - Tuning 139 (2/2) / 140: unet_gemm_8192_640_640_i32_i32_tB.mlir - llvmgpu_tile_and_fuse
+2025-12-19 00:47:58,014 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/unet_gemm_8192_640_640_i32_i32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-19 00:47:58,690 - WARNING - 2025-12-19T00:47:58 - unet_gemm_8192_640_640_i32_i32_tB.mlir: 'FAIL(1)' in 0.68
+2025-12-19 00:47:58,690 - INFO - Checking file 140 / 140
+2025-12-19 00:47:58,690 - INFO - Tuning 140 (1/2) / 140: unet_gemm_8192_640_640_i8_i32_tB.mlir - llvmgpu_vector_distribute
+2025-12-19 00:47:58,690 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/unet_gemm_8192_640_640_i8_i32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-19 01:06:10,824 - INFO - 2025-12-19T01:06:10 - unet_gemm_8192_640_640_i8_i32_tB.mlir: completed in 1092.13
+2025-12-19 01:06:10,828 - DEBUG - Copied unet_gemm_8192_640_640_i8_i32_tB.csv -> /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/tuning_database_vd
+2025-12-19 01:06:10,828 - INFO - Tuning 140 (2/2) / 140: unet_gemm_8192_640_640_i8_i32_tB.mlir - llvmgpu_tile_and_fuse
+2025-12-19 01:06:10,828 - DEBUG - File /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/dump/unet_gemm_8192_640_640_i8_i32_tB_benchmark.mlir started at 2025-12-14T00:20:22
+2025-12-19 01:51:31,068 - INFO - 2025-12-19T01:51:31 - unet_gemm_8192_640_640_i8_i32_tB.mlir: completed in 2720.24
+2025-12-19 01:51:31,072 - DEBUG - Copied unet_gemm_8192_640_640_i8_i32_tB.csv -> /home/amily/amd-shark-ai/amdsharktuner/dispatch_tuner/tuning_database_tf
+2025-12-19 01:51:31,072 - WARNING - Failed MLIR files 56):
+2025-12-19 01:51:31,072 - WARNING - - compute_gemm_4096_4096_8192_i32_i32_tB.mlir - llvmgpu_vector_distribute
+2025-12-19 01:51:31,072 - WARNING - - compute_gemm_4096_4096_8192_i32_i32_tB.mlir - llvmgpu_tile_and_fuse
+2025-12-19 01:51:31,073 - WARNING - - square_gemm_1024_1024_1024_i32_i32_tB.mlir - llvmgpu_vector_distribute
+2025-12-19 01:51:31,073 - WARNING - - square_gemm_1024_1024_1024_i32_i32_tB.mlir - llvmgpu_tile_and_fuse
+2025-12-19 01:51:31,073 - WARNING - - square_gemm_128_128_128_i32_i32_tB.mlir - llvmgpu_vector_distribute
+2025-12-19 01:51:31,073 - WARNING - - square_gemm_128_128_128_i32_i32_tB.mlir - llvmgpu_tile_and_fuse
+2025-12-19 01:51:31,073 - WARNING - - square_gemm_2048_2048_2048_i32_i32_tB.mlir - llvmgpu_vector_distribute
+2025-12-19 01:51:31,073 - WARNING - - square_gemm_2048_2048_2048_i32_i32_tB.mlir - llvmgpu_tile_and_fuse
+2025-12-19 01:51:31,073 - WARNING - - square_gemm_256_256_256_i32_i32_tB.mlir - llvmgpu_vector_distribute
+2025-12-19 01:51:31,073 - WARNING - - square_gemm_256_256_256_i32_i32_tB.mlir - llvmgpu_tile_and_fuse
+2025-12-19 01:51:31,073 - WARNING - - square_gemm_4096_4096_4096_i32_i32_tB.mlir - llvmgpu_vector_distribute
+2025-12-19 01:51:31,073 - WARNING - - square_gemm_4096_4096_4096_i32_i32_tB.mlir - llvmgpu_tile_and_fuse
+2025-12-19 01:51:31,073 - WARNING - - square_gemm_512_512_512_i32_i32_tB.mlir - llvmgpu_vector_distribute
+2025-12-19 01:51:31,073 - WARNING - - square_gemm_512_512_512_i32_i32_tB.mlir - llvmgpu_tile_and_fuse
+2025-12-19 01:51:31,073 - WARNING - - square_gemm_8192_8192_8192_i32_i32_tB.mlir - llvmgpu_vector_distribute
+2025-12-19 01:51:31,073 - WARNING - - square_gemm_8192_8192_8192_i32_i32_tB.mlir - llvmgpu_tile_and_fuse
+2025-12-19 01:51:31,073 - WARNING - - tk_gemm_128_1280_2048_i32_i32_tB.mlir - llvmgpu_vector_distribute
+2025-12-19 01:51:31,073 - WARNING - - tk_gemm_128_1280_2048_i32_i32_tB.mlir - llvmgpu_tile_and_fuse
+2025-12-19 01:51:31,073 - WARNING - - tk_gemm_2048_10240_1280_i32_i32_tB.mlir - llvmgpu_vector_distribute
+2025-12-19 01:51:31,073 - WARNING - - tk_gemm_2048_10240_1280_i32_i32_tB.mlir - llvmgpu_tile_and_fuse
+2025-12-19 01:51:31,073 - WARNING - - tk_gemm_2048_1280_1280_i32_i32_tB.mlir - llvmgpu_vector_distribute
+2025-12-19 01:51:31,073 - WARNING - - tk_gemm_2048_1280_1280_i32_i32_tB.mlir - llvmgpu_tile_and_fuse
+2025-12-19 01:51:31,073 - WARNING - - tk_gemm_2048_1280_5120_i32_i32_tB.mlir - llvmgpu_vector_distribute
+2025-12-19 01:51:31,073 - WARNING - - tk_gemm_2048_1280_5120_i32_i32_tB.mlir - llvmgpu_tile_and_fuse
+2025-12-19 01:51:31,073 - WARNING - - tk_gemm_8192_5120_640_i32_i32_tB.mlir - llvmgpu_vector_distribute
+2025-12-19 01:51:31,073 - WARNING - - tk_gemm_8192_5120_640_i32_i32_tB.mlir - llvmgpu_tile_and_fuse
+2025-12-19 01:51:31,073 - WARNING - - unet_gemm_1024_10240_1280_i32_i32_tB.mlir - llvmgpu_vector_distribute
+2025-12-19 01:51:31,074 - WARNING - - unet_gemm_1024_10240_1280_i32_i32_tB.mlir - llvmgpu_tile_and_fuse
+2025-12-19 01:51:31,074 - WARNING - - unet_gemm_1024_1280_1280_i32_i32_tB.mlir - llvmgpu_vector_distribute
+2025-12-19 01:51:31,074 - WARNING - - unet_gemm_1024_1280_1280_i32_i32_tB.mlir - llvmgpu_tile_and_fuse
+2025-12-19 01:51:31,074 - WARNING - - unet_gemm_1024_1280_5120_i32_i32_tB.mlir - llvmgpu_vector_distribute
+2025-12-19 01:51:31,074 - WARNING - - unet_gemm_1024_1280_5120_i32_i32_tB.mlir - llvmgpu_tile_and_fuse
+2025-12-19 01:51:31,074 - WARNING - - unet_gemm_128_1280_2048_i32_i32_tB.mlir - llvmgpu_vector_distribute
+2025-12-19 01:51:31,074 - WARNING - - unet_gemm_128_1280_2048_i32_i32_tB.mlir - llvmgpu_tile_and_fuse
+2025-12-19 01:51:31,074 - WARNING - - unet_gemm_2048_10240_1280_i32_i32_tB.mlir - llvmgpu_vector_distribute
+2025-12-19 01:51:31,074 - WARNING - - unet_gemm_2048_10240_1280_i32_i32_tB.mlir - llvmgpu_tile_and_fuse
+2025-12-19 01:51:31,074 - WARNING - - unet_gemm_2048_1280_1280_i32_i32_tB.mlir - llvmgpu_vector_distribute
+2025-12-19 01:51:31,074 - WARNING - - unet_gemm_2048_1280_1280_i32_i32_tB.mlir - llvmgpu_tile_and_fuse
+2025-12-19 01:51:31,074 - WARNING - - unet_gemm_2048_1280_5120_i32_i32_tB.mlir - llvmgpu_vector_distribute
+2025-12-19 01:51:31,074 - WARNING - - unet_gemm_2048_1280_5120_i32_i32_tB.mlir - llvmgpu_tile_and_fuse
+2025-12-19 01:51:31,074 - WARNING - - unet_gemm_4096_5120_640_i32_i32_tB.mlir - llvmgpu_vector_distribute
+2025-12-19 01:51:31,074 - WARNING - - unet_gemm_4096_5120_640_i32_i32_tB.mlir - llvmgpu_tile_and_fuse
+2025-12-19 01:51:31,074 - WARNING - - unet_gemm_4096_640_2560_i32_i32_tB.mlir - llvmgpu_vector_distribute
+2025-12-19 01:51:31,074 - WARNING - - unet_gemm_4096_640_2560_i32_i32_tB.mlir - llvmgpu_tile_and_fuse
+2025-12-19 01:51:31,074 - WARNING - - unet_gemm_4096_640_640_i32_i32_tB.mlir - llvmgpu_vector_distribute
+2025-12-19 01:51:31,074 - WARNING - - unet_gemm_4096_640_640_i32_i32_tB.mlir - llvmgpu_tile_and_fuse
+2025-12-19 01:51:31,074 - WARNING - - unet_gemm_64_1280_2048_i32_i32_tB.mlir - llvmgpu_vector_distribute
+2025-12-19 01:51:31,074 - WARNING - - unet_gemm_64_1280_2048_i32_i32_tB.mlir - llvmgpu_tile_and_fuse
+2025-12-19 01:51:31,074 - WARNING - - unet_gemm_64_640_2048_i32_i32_tB.mlir - llvmgpu_vector_distribute
+2025-12-19 01:51:31,074 - WARNING - - unet_gemm_64_640_2048_i32_i32_tB.mlir - llvmgpu_tile_and_fuse
+2025-12-19 01:51:31,074 - WARNING - - unet_gemm_8192_5120_640_i32_i32_tB.mlir - llvmgpu_vector_distribute
+2025-12-19 01:51:31,074 - WARNING - - unet_gemm_8192_5120_640_i32_i32_tB.mlir - llvmgpu_tile_and_fuse
+2025-12-19 01:51:31,075 - WARNING - - unet_gemm_8192_640_2560_i32_i32_tB.mlir - llvmgpu_vector_distribute
+2025-12-19 01:51:31,075 - WARNING - - unet_gemm_8192_640_2560_i32_i32_tB.mlir - llvmgpu_tile_and_fuse
+2025-12-19 01:51:31,075 - WARNING - - unet_gemm_8192_640_640_i32_i32_tB.mlir - llvmgpu_vector_distribute
+2025-12-19 01:51:31,075 - WARNING - - unet_gemm_8192_640_640_i32_i32_tB.mlir - llvmgpu_tile_and_fuse
+2025-12-19 01:51:31,075 - INFO - --------------------------------------------------------------------------------
+2025-12-19 01:51:31,075 - INFO - SUMMARY: Success: 224 | Fail: 56
+2025-12-19 01:51:31,075 - INFO - SUMMARY: Total elapsed: 437468.38s
+2025-12-19 01:51:31,075 - INFO - --------------------------------------------------------------------------------
