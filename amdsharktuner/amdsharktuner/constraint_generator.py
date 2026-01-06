@@ -13,7 +13,8 @@ from dataclasses import dataclass, fields
 from iree.compiler import ir  # type: ignore
 from iree.compiler.dialects import iree_codegen, iree_gpu, linalg  # type: ignore
 
-from . import common, dispatch_constraints, dispatch_parser
+from . import common, dispatch_constraints, dispatch_parser, process_utils
+import logging
 
 
 TScalar = TypeVar("TScalar", int, z3.ExprRef)
@@ -82,6 +83,18 @@ class ContractionZ3Constants(ContractionConstantsBase[z3.ExprRef]):
             sg_m_cnt=sg_m_cnt,
             sg_n_cnt=sg_n_cnt,
         )
+        
+    @classmethod
+    def from_meta(cls, meta: dict, ctx: z3.Context) -> "ContractionZ3Constants":
+        kwargs = {}
+        for f in fields(cls):
+            value = meta[f.name]
+            if isinstance(value, list):
+                kwargs[f.name] = [z3.Int(name, ctx=ctx) for name in value]
+            else:
+                kwargs[f.name] = z3.Int(value, ctx=ctx)
+
+        return cls(**kwargs)
 
     @property
     def symbols(self) -> list[z3.ExprRef]:
@@ -121,6 +134,18 @@ class ContractionZ3Constants(ContractionConstantsBase[z3.ExprRef]):
             sg_m_cnt=get(self.sg_m_cnt),
             sg_n_cnt=get(self.sg_n_cnt),
         )
+        
+    def to_meta(self) -> dict:
+        meta = {}
+    
+        for f in fields(self):
+            attr = getattr(self, f.name)
+            if isinstance(attr, list):
+                meta[f.name] = [v.decl().name() for v in attr]
+            else:
+                meta[f.name] = attr.decl().name()
+
+        return meta
 
 
 @dataclass
@@ -138,6 +163,12 @@ class ConstraintSet:
 
     solver: z3.Solver
     z3_constants: ContractionZ3Constants
+    
+@dataclass
+class ConstraintPayload:
+    z3_smt2: str
+    z3_constants_meta: dict
+    
 
 
 def adjust_problem_size_for_pipeline(
@@ -202,9 +233,20 @@ def generate_generic_contraction_z3_constraints(
     res_type: common.ShapedType,
     codegen_pipeline: iree_codegen.DispatchLoweringPassPipeline = iree_codegen.DispatchLoweringPassPipeline.LLVMGPUVectorDistribute,
     num_subgroups: int = 4,
-) -> ConstraintSet:
+) -> list[ConstraintSet]:
+        
     z3_constants = ContractionZ3Constants.from_sizes(matmul_size)
-    solver = z3.Solver()
+    
+    mma_intrinsic_constraints_list = dispatch_constraints.get_mma_intrinsic_constraints(
+        lhs_type,
+        rhs_type,
+        res_type,
+        z3_constants.intrinsic_mn,
+        z3_constants.intrinsic_mn,
+        z3_constants.intrinsic_k,
+        gpu_target_info.mma_intrinsics,
+    )
+
     match codegen_pipeline:
         case iree_codegen.DispatchLoweringPassPipeline.LLVMGPUVectorDistribute:
             constraints = dispatch_constraints.generate_vector_distribute_constraints(
@@ -247,11 +289,28 @@ def generate_generic_contraction_z3_constraints(
                 z3_constants.sg_n_cnt,
                 gpu_target_info,
             )
+            
+    mega_constraints_list = []
+    for i, mma_intrinsic_constraints in enumerate(mma_intrinsic_constraints_list, start=1):
+        solver = z3.Solver()
+        # print(constraints)
+        # print("wang")
+        # print(mma_intrinsic_constraints)
+        # print("miao")
+        final_constraints = constraints.copy() + [mma_intrinsic_constraints]
+        # print(final_constraints)
+        # exit()
+        solver.add(z3.simplify(z3.And(final_constraints)))
+        # exit()
+        # tuner_ctx.logger.debug(f"Z3 Constraints Solver[{i}]: {solver}")
+        mega_constraints_list.append(ConstraintSet(solver, z3_constants))
+        # mega_constraints_list.append(ConstraintPayload(solver.to_smt2(), z3_constants.to_meta()))
+    
+    # solver = z3.Solver()
+    # solver.add(z3.simplify(z3.And(constraints)))
+    # tuner_ctx.logger.debug(f"Initial constraints: {solver}")
 
-    solver.add(z3.simplify(z3.And(constraints)))
-    tuner_ctx.logger.debug(f"Initial constraints: {solver}")
-
-    return ConstraintSet(solver, z3_constants)
+    return mega_constraints_list
 
 
 def get_z3_solutions(
@@ -271,6 +330,15 @@ def get_z3_solutions(
         )
 
         yield z3_assignment
+        
+
+def solve_z3_contraint_payload(constraint_payload: ConstraintPayload):
+    ctx = z3.Context()
+    solver = z3.Solver(ctx=ctx)
+    solver.add(z3.parse_smt2_string(constraint_payload.z3_smt2, ctx=ctx))
+    z3_constants = ContractionZ3Constants.from_meta(constraint_payload.z3_constants_meta, ctx)
+    solution_iter = get_z3_solutions(ConstraintSet(solver=solver, z3_constants=z3_constants))
+    return list(solution_iter)
 
 
 def generate_generic_contraction_solutions(
@@ -322,7 +390,7 @@ def generate_generic_contraction_solutions(
         f"M={M}, N={N}, K={K}, overpadding_applied={overpadding_applied}"
     )
 
-    constraints = generate_generic_contraction_z3_constraints(
+    mega_constraints_list: list[ConstraintSet] = generate_generic_contraction_z3_constraints(
         tuner_ctx,
         gpu_target_info,
         dispatch_kind,
@@ -341,9 +409,25 @@ def generate_generic_contraction_solutions(
         + len(contraction_dims.batch)
     )
 
-    z3_solutions_iter = get_z3_solutions(constraints)
+    # mega_constraints_list
+    constraint_payload_list = [ConstraintPayload(mega_constraints.solver.to_smt2(), mega_constraints.z3_constants.to_meta()) for mega_constraints in mega_constraints_list]
+    logging.critical(
+        f"[{len(constraint_payload_list)}] constraint solvers"
+    )
+    executor = process_utils.MultiprocessExecutor(
+        num_workers=len(constraint_payload_list),
+    )
+    z3_solutions_list = executor.run(task_list=constraint_payload_list, worker_fn=solve_z3_contraint_payload)
+    # print(len(z3_solutions_list))
+    # print(z3_solutions_list[0][:10])
+    # print(z3_solutions_list[1][:10])
+    # exit()
+    # z3_solutions_iter = get_z3_solutions(constraints)
+    logging.critical(f"Search space sizes: {[len(i) for i in z3_solutions_list]}")
+    
+    z3_solutions_list = [x for sublist in z3_solutions_list for x in sublist]
 
-    for z3_assignment in z3_solutions_iter:
+    for z3_assignment in z3_solutions_list:
         intrinsic_mnk_shape = (
             z3_assignment.intrinsic_mn,
             z3_assignment.intrinsic_mn,
