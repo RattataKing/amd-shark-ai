@@ -173,7 +173,7 @@ def main():
                     elif codegen_pipeline == "llvmgpu_tile_and_fuse":
                         dst_dir = csv_dir_tf
                     shutil.copy2(csv_file, dst_dir)
-                    logging.debug(f"Copied {csv_file.name} -> {dst_dir}")
+                    logging.debug(f"Copied {csv_file} -> {dst_dir}")
             else:
                 fail += 1
                 failed_files.append(f"{mlir.name} - {codegen_pipeline}")
