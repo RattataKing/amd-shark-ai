@@ -34,19 +34,21 @@ def main():
         # Only rows where benchmark_rank_order < 50
         df1_sub = df1[df1["benchmark_rank_order"] < 10]
 
+        rank_diff = []
         for _, row in df1_sub.iterrows():
             gen_id = row["gen_id"]
             bro1 = row["benchmark_rank_order"]
 
             bro2 = df2_by_id.loc[gen_id, "benchmark_rank_order"]
 
-            if abs(bro1-bro2) > 10:
-                print(
-                    f"{name}: gen_id={gen_id} "
-                    f"benchmark_rank_order mismatch: df1={bro1} df2={bro2}"
-                )
+            # if abs(bro1-bro2) > 10:
+            rank_diff.append(abs(bro1-bro2))
+                # print(
+                #     f"{name}: gen_id={gen_id} "
+                #     f"benchmark_rank_order mismatch: df1={bro1} df2={bro2}"
+                # )
         # exit()
-
+    print(sum(rank_diff) / len(rank_diff))
     # print("All matched: benchmark_rank_order for rows with value < 50 (matched by gen_id).")
 
 

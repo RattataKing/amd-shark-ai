@@ -56,13 +56,30 @@ def geometric_mean(nums):
         product *= x
     return product ** (1/n)
 
+base_path = Path(__file__).resolve().parent
 
-files = glob.glob('./dispatch_tuner/tuning_database_vecdis/*.csv')
+suspicious_files = ["square_gemm_2048_2048_2048_f8E4M3FNUZ_f32_tB.csv",
+"square_gemm_4096_4096_4096_f8E4M3FNUZ_f32_tB.csv",
+"square_gemm_512_512_512_f8E4M3FNUZ_f32_tB.csv",
+"unet_gemm_1024_10240_1280_f16_f32_tB.csv",
+"unet_gemm_1024_1280_5120_f32_f32_tB.csv",
+
+
+
+
+"unet_gemm_2048_10240_1280_i8_i32_tB.csv",
+"tk_gemm_2048_10240_1280_i8_i32_tB.csv"]
+
+csv_path = base_path / "tuning_database_vd_2"
+files = csv_path.glob('*.csv')
 files = [
     f for f in files
     if all(pd.read_csv(f)[col].iloc[0] > 648 for col in ["knob_M", "knob_N", "knob_K"])
 ]
-# files = files[:7] + files[10:]
+files = [
+    f for f in files if
+    f.name not in suspicious_files
+]
 print(f"Found {len(files)} CSV files")
 
 results = []
@@ -70,6 +87,7 @@ for i, f in enumerate(files):
     df = pd.read_csv(f)
 
     # df = df[df["to_benchmark"] == True]
+    print(f)
     max_rank = int(df["benchmark_rank_order"].max(skipna=True))
     df["benchmark_rank_order"] = df["benchmark_rank_order"].fillna(max_rank + 1)
     df["benchmark_rank_order"] = df["benchmark_rank_order"].astype(int)
@@ -103,10 +121,15 @@ for i, f in enumerate(files):
     # print(f"Saved results to {save_path}")
     # exit()
 
-
-    df["shuffle_pred_rank"] = df["candidate_id"]
+    shuffle_ranks = list(range(1, len(df_sorted) + 1))
+    random.seed(42)
+    random.shuffle(shuffle_ranks)
+    df["shuffle_pred_rank"] = shuffle_ranks
     assert len(df) == len(df_sorted)
     df["heuristic_pred_rank"] = df_sorted.sort_values("candidate_id")["heuristic_pred_rank"].values
+    
+    # print(df.head(20))
+    # exit()
     
     optimal_tol = float(df["benchmark_speedup"].min() * 1.05)
     # print(optimal_tol)
