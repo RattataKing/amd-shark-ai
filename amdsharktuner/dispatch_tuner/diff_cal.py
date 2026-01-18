@@ -68,9 +68,10 @@ suspicious_files = ["square_gemm_2048_2048_2048_f8E4M3FNUZ_f32_tB.csv",
 
 
 "unet_gemm_2048_10240_1280_i8_i32_tB.csv",
-"tk_gemm_2048_10240_1280_i8_i32_tB.csv"]
+"tk_gemm_2048_10240_1280_i8_i32_tB.csv",
+"unet_gemm_2048_10240_1280_f8E4M3FNUZ_f32_tB.csv"]
 
-csv_path = base_path / "tuning_database_vd_2"
+csv_path = base_path / "tuning_database_tf_2"
 files = csv_path.glob('*.csv')
 files = [
     f for f in files
