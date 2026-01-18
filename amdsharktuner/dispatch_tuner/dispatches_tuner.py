@@ -23,7 +23,7 @@ failed_list = [
 ]
 
 
-DEVICE="hip://0,hip://1,hip://2,hip://3,hip://4,hip://5,hip://6,hip://7"
+DEVICE="hip://0"
 TUNING_TASKS=["llvmgpu_tile_and_fuse", "llvmgpu_vector_distribute"]
 NUM_CAN=10000
 TIMING_METHOD="rocprof"
@@ -194,11 +194,12 @@ def main():
         tuning_tasks = TUNING_TASKS
 
         for j, codegen_pipeline in enumerate(tuning_tasks, start=1):
-            for i, bench in enumerate(mlir_benchmark_files, start=1):
+            todo_count = 1
+            for k, bench in enumerate(mlir_benchmark_files, start=1):
                 mlir_filename = bench.name
                 if mlir_filename not in todo_list:
                     continue
-                logger.info(f"Checking file {i} / {todo_mlir_count}")
+                logger.info(f"Checking file {todo_count} / {todo_mlir_count}")
                 # Check list
                 if mlir_filename in ok_list:
                     logger.debug(f"Skipping file {mlir_filename} in OK list")
@@ -208,7 +209,7 @@ def main():
                     continue
 
 
-                logger.info(f"Tuning mlir {i} / {todo_mlir_count}: {bench.name} - {codegen_pipeline}")
+                logger.info(f"Tuning mlir {todo_count} / {todo_mlir_count}: {bench.name} - {codegen_pipeline}")
                 file_start = time.perf_counter()
                 logger.debug(f"File {bench} started at {start_dt.isoformat(timespec='seconds')}")
                 cmd = [
@@ -277,6 +278,8 @@ def main():
                     success=True if rc == 0 else False,
                     time_val=elapsed_min,
                 )
+                
+                todo_count +=1
 
         # --- summary logging ---
         if failed_files:
