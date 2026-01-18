@@ -124,9 +124,7 @@ tuning_tasks = TUNING_TASKS
 for j, codegen_pipeline in enumerate(tuning_tasks, start=1):
     for i, bench in enumerate(mlir_benchmark_files, start=1):
         mlir_filename = bench.name
-        if mlir_filename not in todo_list:
-            continue
-        logger.info(f"Checking file {i} / {todo_mlir_count}")
+        logger.info(f"Checking file {i} / {len(mlir_benchmark_files)}")
         # Check list
         if mlir_filename in ok_list:
             logger.debug(f"Skipping file {mlir_filename} in OK list")
@@ -142,7 +140,7 @@ for j, codegen_pipeline in enumerate(tuning_tasks, start=1):
             failed_files.append(bench.name)
             continue
 
-        logger.info(f"Tuning mlir {i} / {todo_mlir_count}: {bench.name} - {codegen_pipeline}")
+        logger.info(f"Tuning mlir {i} / {len(mlir_benchmark_files)}: {bench.name} - {codegen_pipeline}")
         file_start = time.perf_counter()
         logger.debug(f"File {bench} started at {start_dt.isoformat(timespec='seconds')}")
         cmd = [
