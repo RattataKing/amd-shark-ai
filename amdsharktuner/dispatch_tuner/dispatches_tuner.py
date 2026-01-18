@@ -149,10 +149,6 @@ def main():
     ensure_mlir_record(mlir_record_path)
     compile_flag_txt_path = base_path / "compile_flags.txt"
     update_compile_flags(compile_flag_txt_path, arch)
-    csv_dir_tf = base_path / f"{arch}_tuning_database_tf_{i}"
-    csv_dir_tf.mkdir(exist_ok=True)
-    csv_dir_vd = base_path / f"{arch}_tuning_database_vd_{i}"
-    csv_dir_vd.mkdir(exist_ok=True)
     
 
     logger.debug(f"Arch: {arch}")
@@ -179,6 +175,11 @@ def main():
         
     for i in range(1,TUNING_ROUNDS+1):
         logger.info(f"===== TUNING ROUND {i} / {TUNING_ROUNDS} =====")
+        
+        csv_dir_tf = base_path / f"{arch}_tuning_database_tf_{i}"
+        csv_dir_tf.mkdir(exist_ok=True)
+        csv_dir_vd = base_path / f"{arch}_tuning_database_vd_{i}"
+        csv_dir_vd.mkdir(exist_ok=True)
         
         failed_files = []
         ok = fail = 0
