@@ -98,6 +98,25 @@ def add_mlir_record_row(path: Path, sku: str, mlir: str, succuss: bool, time_val
     df.to_csv(path, index=False)
 
 
+def update_compile_flags(compile_flag_txt_path, arch) -> None:
+    lines = compile_flag_txt_path.read_text().splitlines()
+
+    new_lines = []
+    replaced = False
+
+    for line in lines:
+        if "--iree-hip-target=" in line:
+            new_lines.append(f"--iree-hip-target={arch}")
+            replaced = True
+        else:
+            new_lines.append(line)
+
+    if not replaced:
+        raise RuntimeError("No --iree-hip-target= line found in compile_flags.txt")
+
+    compile_flag_txt_path.write_text("\n".join(new_lines) + "\n")
+    
+    
 def main():
     if len(sys.argv) < 2:
         raise SystemExit("Usage: python dispatches_tuner.py <arch>\nExample: python dispatches_tuner.py gfx942")
@@ -107,6 +126,9 @@ def main():
     base_path = Path(os.path.dirname(os.path.abspath(__file__)))
     mlir_record_path = base_path / "mlir_record.csv"
     ensure_mlir_record(mlir_record_path)
+    compile_flag_txt_path = base_path / "compile_flags.txt"
+    update_compile_flags(compile_flag_txt_path, arch)
+
     
     logger.debug(f"Arch: {arch}")
     mlir_benchmark_folder_path = (base_path / "bench_dump").expanduser().resolve()
