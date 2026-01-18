@@ -23,38 +23,6 @@ failed_list = [
 todo_list = [
     # CDNA3 fp8 type = f8E4M3FNUZ
     # UDNA4 fp8 type = f8E4M3FN
-    "compute_gemm_4096_4096_8192_f32_f32_tB_benchmark.mlir",
-    "square_gemm_1024_1024_1024_i8_i32_tB_benchmark.mlir",
-    "square_gemm_2048_2048_2048_f32_f32_tB_benchmark.mlir",
-    "square_gemm_2048_2048_2048_i32_i32_tB_benchmark.mlir",
-    "square_gemm_256_256_256_f32_f32_tB_benchmark.mlir",
-    "square_gemm_512_512_512_f16_f32_tB_benchmark.mlir",
-    "square_gemm_512_512_512_f32_f32_tB_benchmark.mlir",
-    "square_gemm_512_512_512_f8E4M3FN_f32_tB_benchmark.mlir",
-    "square_gemm_8192_8192_8192_f32_f32_tB_benchmark.mlir",
-    "square_gemm_8192_8192_8192_i8_i32_tB_benchmark.mlir",
-    "tk_gemm_2048_10240_1280_i8_i32_tB_benchmark.mlir",
-    "tk_gemm_2048_1280_1280_f16_f32_tB_benchmark.mlir",
-    "tk_gemm_2048_1280_1280_f8E4M3FN_f32_tB_benchmark.mlir",
-    "tk_gemm_8192_5120_640_i32_i32_tB_benchmark.mlir",
-    "unet_gemm_1024_10240_1280_f16_f32_tB_benchmark.mlir",
-    "unet_gemm_1024_1280_5120_f32_f32_tB_benchmark.mlir",
-    "unet_gemm_128_1280_2048_i8_i32_tB_benchmark.mlir",
-    "unet_gemm_2048_10240_1280_i32_i32_tB_benchmark.mlir",
-    "unet_gemm_2048_1280_1280_f8E4M3FN_f32_tB_benchmark.mlir",
-    "unet_gemm_4096_5120_640_f16_f32_tB_benchmark.mlir",
-    "unet_gemm_4096_5120_640_f32_f32_tB_benchmark.mlir",
-    "unet_gemm_4096_5120_640_f8E4M3FN_f32_tB_benchmark.mlir",
-    "unet_gemm_4096_640_640_f16_f32_tB_benchmark.mlir",
-    "unet_gemm_64_1280_2048_f16_f32_tB_benchmark.mlir",
-    "unet_gemm_64_640_2048_f16_f32_tB_benchmark.mlir",
-    "unet_gemm_64_640_2048_f8E4M3FN_f32_tB_benchmark.mlir",
-    "unet_gemm_8192_5120_640_f16_f32_tB_benchmark.mlir",
-    "unet_gemm_8192_5120_640_f8E4M3FN_f32_tB_benchmark.mlir",
-    "unet_gemm_8192_5120_640_i32_i32_tB_benchmark.mlir",
-    "unet_gemm_8192_5120_640_i8_i32_tB_benchmark.mlir",
-    "unet_gemm_8192_640_2560_f8E4M3FN_f32_tB_benchmark.mlir",
-    "unet_gemm_8192_640_640_i32_i32_tB_benchmark.mlir",
 ]
 
 
@@ -64,6 +32,7 @@ NUM_CAN=10000
 TIMING_METHOD="rocprof"
 SORT_METHOD="heuristic"
 REP=5
+TUNING_ROUNDS=3
 
 
 def setup_logging() -> logging.Logger:
@@ -144,7 +113,7 @@ def main():
     logger.debug(f"In MLIR_benchmark folder {mlir_benchmark_folder_path}: ")
     mlir_benchmark_files = sorted(mlir_benchmark_folder_path.glob("*.mlir"))
     for f in mlir_benchmark_files:
-        logger.debug(f"{f.stem}")
+        logger.debug(f"{f.name}")
     
     logger.info(f"Found {len(mlir_benchmark_files)} benchmark file(s)")
     if todo_list:
@@ -156,130 +125,134 @@ def main():
                 logger.error(f"Can't find {todo} in mlir dir" )
                 assert False
     else:
+        todo_list = [f.name for f in mlir_benchmark_files]
         todo_mlir_count = len(mlir_benchmark_files)
-
-    failed_files = []
-    ok = fail = 0
-
-    csv_dir_tf = base_path / "tuning_database_tf"
-    csv_dir_tf.mkdir(exist_ok=True)
-    
-    csv_dir_vd = base_path / "tuning_database_vd"
-    csv_dir_vd.mkdir(exist_ok=True)
-
-    # --- timing + logging setup ---
-    start_dt = datetime.now()
-    start_perf = time.perf_counter()
-    logger.debug(f"Tuning started at {start_dt.isoformat(timespec='seconds')}")
-    var_list = [DEVICE, TUNING_TASKS, NUM_CAN, TIMING_METHOD, SORT_METHOD, REP]
-    logger.info(f"Tuning Vars: {var_list}")
-
-    tuning_tasks = TUNING_TASKS
-
-    for j, codegen_pipeline in enumerate(tuning_tasks, start=1):
-        for i, bench in enumerate(mlir_benchmark_files, start=1):
-            mlir_filename = bench.name
-            if mlir_filename not in todo_list:
-                continue
-            logger.info(f"Checking file {i} / {todo_mlir_count}")
-            # Check list
-            if mlir_filename in ok_list:
-                logger.debug(f"Skipping file {mlir_filename} in OK list")
-                continue
-            if mlir_filename in failed_list:
-                logger.debug(f"Skipping file {mlir_filename} in failed list")
-                continue
-
-            # Check file
-            if not bench.exists():
-                logger.warning(f"Can't find {bench}, skipping")
-                fail += 1
-                failed_files.append(bench.name)
-                continue
-
-            logger.info(f"Tuning mlir {i} / {todo_mlir_count}: {bench.name} - {codegen_pipeline}")
-            file_start = time.perf_counter()
-            logger.debug(f"File {bench} started at {start_dt.isoformat(timespec='seconds')}")
-            cmd = [
-                "python3", "-m", "dispatch_tuner",
-                str(bench),
-                str(bench),
-                "--compile-flags-file=dispatch_tuner/compile_flags.txt",
-                f"--devices={DEVICE}",
-                F"--num-candidates={NUM_CAN}",
-                f"--codegen-pipeline={codegen_pipeline}",
-                f"--benchmark-timing-method={TIMING_METHOD}",
-                f"--candidate-order={SORT_METHOD}",
-            ]
-            rc = subprocess.call(
-                cmd,
-                cwd=Path("~/amd-shark-ai/amdsharktuner").expanduser(),
-                stdout=subprocess.DEVNULL
-            )
         
-            # End timer
-            finished_at = datetime.now()
-            elapsed = time.perf_counter() - file_start
+    for i in range(1,TUNING_ROUNDS+1):
+        logger.info(f"===== TUNING ROUND {i} / {TUNING_ROUNDS} =====")
         
-            # Handle result
-            elapsed_min = elapsed / 60.0
-            if rc == 0:
-                ok += 1
-                logger.info(
-                    f"{finished_at.isoformat(timespec='seconds')} - "
-                    f"{bench.name}: completed in {elapsed_min:.2f} mins"
+        failed_files = []
+        ok = fail = 0
+
+        csv_dir_tf = base_path / f"tuning_database_tf_{i}"
+        csv_dir_tf.mkdir(exist_ok=True)
+        
+        csv_dir_vd = base_path / f"tuning_database_vd_{i}"
+        csv_dir_vd.mkdir(exist_ok=True)
+
+        # --- timing + logging setup ---
+        start_dt = datetime.now()
+        start_perf = time.perf_counter()
+        logger.debug(f"Tuning started at {start_dt.isoformat(timespec='seconds')}")
+        var_list = [DEVICE, TUNING_TASKS, NUM_CAN, TIMING_METHOD, SORT_METHOD, REP]
+        logger.info(f"Tuning Vars: {var_list}")
+
+        tuning_tasks = TUNING_TASKS
+
+        for j, codegen_pipeline in enumerate(tuning_tasks, start=1):
+            for i, bench in enumerate(mlir_benchmark_files, start=1):
+                mlir_filename = bench.name
+                if mlir_filename not in todo_list:
+                    continue
+                logger.info(f"Checking file {i} / {todo_mlir_count}")
+                # Check list
+                if mlir_filename in ok_list:
+                    logger.debug(f"Skipping file {mlir_filename} in OK list")
+                    continue
+                if mlir_filename in failed_list:
+                    logger.debug(f"Skipping file {mlir_filename} in failed list")
+                    continue
+
+                # Check file
+                if not bench.exists():
+                    logger.warning(f"Can't find {bench}, skipping")
+                    fail += 1
+                    failed_files.append(bench.name)
+                    continue
+
+                logger.info(f"Tuning mlir {i} / {todo_mlir_count}: {bench.name} - {codegen_pipeline}")
+                file_start = time.perf_counter()
+                logger.debug(f"File {bench} started at {start_dt.isoformat(timespec='seconds')}")
+                cmd = [
+                    "python3", "-m", "dispatch_tuner",
+                    str(bench),
+                    str(bench),
+                    "--compile-flags-file=dispatch_tuner/compile_flags.txt",
+                    f"--devices={DEVICE}",
+                    F"--num-candidates={NUM_CAN}",
+                    f"--codegen-pipeline={codegen_pipeline}",
+                    f"--benchmark-timing-method={TIMING_METHOD}",
+                    f"--candidate-order={SORT_METHOD}",
+                ]
+                rc = subprocess.call(
+                    cmd,
+                    cwd=Path("~/amd-shark-ai/amdsharktuner").expanduser(),
+                    stdout=subprocess.DEVNULL,
                 )
-                if elapsed < 60:
-                    time.sleep(60 - elapsed) # Make sure next tuning folder is a new folder
+            
+                # End timer
+                finished_at = datetime.now()
+                elapsed = time.perf_counter() - file_start
+            
+                # Handle result
+                elapsed_min = elapsed / 60.0
+                if rc == 0:
+                    ok += 1
+                    logger.info(
+                        f"{finished_at.isoformat(timespec='seconds')} - "
+                        f"{bench.name}: completed in {elapsed_min:.2f} mins"
+                    )
+                    if elapsed < 60:
+                        time.sleep(60 - elapsed) # Make sure next tuning folder is a new folder
 
-                # Move CSV to tuning database
-                folders = sorted(
-                    base_path.parent.glob("tuning_2026_*"),
-                    key=lambda p: p.stat().st_mtime,
-                    reverse=True
+                    # Move CSV to tuning database
+                    folders = sorted(
+                        base_path.parent.glob("tuning_2026_*"),
+                        key=lambda p: p.stat().st_mtime,
+                        reverse=True
+                    )
+                    latest_folder = folders[0]
+                    csv_files = list(latest_folder.glob("*.csv"))
+                    if len(csv_files) > 1:
+                        logger.warning(f"{latest_folder} has multiple csv")
+                    for csv_file in csv_files:
+                        if codegen_pipeline == "llvmgpu_vector_distribute":
+                            dst_dir = csv_dir_vd
+                        elif codegen_pipeline == "llvmgpu_tile_and_fuse":
+                            dst_dir = csv_dir_tf
+                        try:
+                            shutil.copy2(csv_file, dst_dir)
+                            logging.debug(f"Copied {csv_file} -> {dst_dir}")
+                        except:
+                            logging.error(f"Fail to copy {csv_file} -> {dst_dir}")
+                else:
+                    fail += 1
+                    if elapsed < 60:
+                        time.sleep(60 - elapsed) # Make sure next tuning folder is a new folder
+                    failed_files.append(f"{bench.name} - {codegen_pipeline}")
+                    logger.warning(f"{finished_at.isoformat(timespec='seconds')} - {bench.name}: 'FAIL({rc})' in {elapsed:.2f}s")
+            
+                add_mlir_record_row(
+                    mlir_record_path,
+                    sku=arch,
+                    mlir=bench.name,
+                    succuss=True if rc == 0 else False,
+                    time_val=elapsed_min,
                 )
-                latest_folder = folders[0]
-                csv_files = list(latest_folder.glob("*.csv"))
-                if len(csv_files) > 1:
-                    logger.warning(f"{latest_folder} has multiple csv")
-                for csv_file in csv_files:
-                    if codegen_pipeline == "llvmgpu_vector_distribute":
-                        dst_dir = csv_dir_vd
-                    elif codegen_pipeline == "llvmgpu_tile_and_fuse":
-                        dst_dir = csv_dir_tf
-                    try:
-                        shutil.copy2(csv_file, dst_dir)
-                        logging.debug(f"Copied {csv_file} -> {dst_dir}")
-                    except:
-                        logging.error(f"Fail to copy {csv_file} -> {dst_dir}")
-            else:
-                fail += 1
-                if elapsed < 60:
-                    time.sleep(60 - elapsed) # Make sure next tuning folder is a new folder
-                failed_files.append(f"{bench.name} - {codegen_pipeline}")
-                logger.warning(f"{finished_at.isoformat(timespec='seconds')} - {bench.name}: 'FAIL({rc})' in {elapsed:.2f}s")
-        
-            add_mlir_record_row(
-                mlir_record_path,
-                sku=arch,
-                mlir=bench.name,
-                succuss=True if rc == 0 else False,
-                time_val=elapsed_min,
-            )
 
-    # --- summary logging ---
-    if failed_files:
-        logger.warning(f"Failed bench files {len(failed_files)}):")
-        for name in failed_files:
-            logger.warning(f"- {name}")
+        # --- summary logging ---
+        if failed_files:
+            logger.warning(f"Failed bench files {len(failed_files)}:")
+            for name in failed_files:
+                logger.warning(f"{name}")
 
-    end_perf = time.perf_counter()
-    total_elapsed = end_perf - start_perf
+        end_perf = time.perf_counter()
+        total_elapsed = end_perf - start_perf
 
-    logger.info("-" * 80)
-    logger.info(f"SUMMARY: Success: {ok} | Fail: {fail}")
-    logger.info(f"SUMMARY: Total elapsed: {total_elapsed/60/60:.2f}hrs")
-    logger.info("-" * 80)
+        logger.info("-" * 80)
+        logger.info(f"SUMMARY: Success: {ok} | Fail: {fail}")
+        logger.info(f"SUMMARY: Total elapsed: {total_elapsed/60/60:.2f}hrs")
+        logger.info("-" * 80)
 
 
 if __name__ == "__main__":
