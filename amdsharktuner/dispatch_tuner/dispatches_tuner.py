@@ -153,7 +153,7 @@ def main():
         for todo in todo_list:
             mlir_benchmark_filenames = [f.stem for f in mlir_benchmark_files]
             if todo not in mlir_benchmark_filenames:
-                assert
+                raise
     else:
         todo_mlir_count = len(mlir_benchmark_files)
 
