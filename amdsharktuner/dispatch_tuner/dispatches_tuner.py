@@ -121,13 +121,13 @@ def prepare_todo_list(arch):
     match arch:
         case "gfx942":
             todo_list = tuning_list.cdna_list
-            f8_type = "f8E4M3FNUZ"
+            f8_type = "_f8E4M3FNUZ_"
         case "gfx950":
             todo_list = tuning_list.cdna_list
-            f8_type = "f8E4M3FN"
+            f8_type = "_f8E4M3FN_"
         case "gfx1201":
             todo_list = tuning_list.rdna_list
-            f8_type = "f8E4M3FN"
+            f8_type = "_f8E4M3FN_"
         case _:
             assert False
     
@@ -149,6 +149,10 @@ def main():
     ensure_mlir_record(mlir_record_path)
     compile_flag_txt_path = base_path / "compile_flags.txt"
     update_compile_flags(compile_flag_txt_path, arch)
+    csv_dir_tf = base_path / f"{arch}_tuning_database_tf_{i}"
+    csv_dir_tf.mkdir(exist_ok=True)
+    csv_dir_vd = base_path / f"{arch}_tuning_database_vd_{i}"
+    csv_dir_vd.mkdir(exist_ok=True)
     
 
     logger.debug(f"Arch: {arch}")
@@ -178,12 +182,6 @@ def main():
         
         failed_files = []
         ok = fail = 0
-
-        csv_dir_tf = base_path / f"tuning_database_tf_{i}"
-        csv_dir_tf.mkdir(exist_ok=True)
-        
-        csv_dir_vd = base_path / f"tuning_database_vd_{i}"
-        csv_dir_vd.mkdir(exist_ok=True)
 
         # --- timing + logging setup ---
         start_dt = datetime.now()
