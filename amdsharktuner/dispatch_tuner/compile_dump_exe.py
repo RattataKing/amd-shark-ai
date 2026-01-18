@@ -69,7 +69,7 @@ def main():
     print(f"Found {len(mlir_files)} MLIR files to process")
     
     # Ensure output directory exists
-    output_dir = Path(base_path) / "bench_dump"
+    output_dir = Path(base_path) / f"bench_dump_{arch}"
     dump_dir = output_dir / "tmp"
     output_dir.mkdir(exist_ok=True)
     dump_dir.mkdir(exist_ok=True)
