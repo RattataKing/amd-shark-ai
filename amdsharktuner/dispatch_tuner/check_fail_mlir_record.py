@@ -1,0 +1,208 @@
+import subprocess
+from pathlib import Path
+import os
+import random
+import time
+from datetime import datetime
+import logging
+import shutil
+import sys
+import pandas as pd
+
+ok_list = [
+
+]
+failed_list = [
+
+]
+
+
+
+DEVICE="hip://0"
+TUNING_TASKS=["llvmgpu_tile_and_fuse"]
+NUM_CAN=10000
+TIMING_METHOD="rocprof"
+SORT_METHOD="heuristic"
+REP=5
+
+
+def setup_logging() -> logging.Logger:
+    base_dir = Path(os.path.abspath(__file__)).parent
+    log_file_name = "checking.log"
+    run_log_path = base_dir / log_file_name
+
+    # Create file handler for logging to a file.
+    # file_handler = logging.FileHandler(run_log_path, mode="w")
+    file_handler = logging.FileHandler(run_log_path)
+    file_handler.setLevel(logging.DEBUG)
+
+    # Create stream handler for logging to the console (only warnings and higher).
+    console_handler = logging.StreamHandler()
+    console_handler.setLevel(logging.INFO)
+
+    # Create a formatter that dynamically adds [levelname] for ERROR and WARNING.
+    class CustomFormatter(logging.Formatter):
+        def format(self, record):
+            if record.levelno == logging.INFO:
+                return f"{record.message}"
+            else:
+                return f"[{record.levelname}] {record.message}"
+
+    file_formatter = logging.Formatter("%(asctime)s - %(levelname)s - %(message)s")
+    console_formatter = CustomFormatter()
+
+    # Set formatters to handlers.
+    file_handler.setFormatter(file_formatter)
+    console_handler.setFormatter(console_formatter)
+
+    # Configure the root logger.
+    logging.basicConfig(
+        level=logging.DEBUG,  # Set the root logger to the lowest level.
+        handlers=[file_handler, console_handler],
+    )
+
+    return logging.getLogger()
+
+
+def ensure_mlir_record(path: Path) -> pd.DataFrame:
+    if path.exists():
+        return pd.read_csv(path)
+    df = pd.DataFrame(columns=["sku", "mlir", "succuss", "time"])
+    df.to_csv(path, index=False)
+    return df
+
+
+def add_mlir_record_row(path: Path, sku: str, mlir: str, succuss: bool, time_val):
+    df = ensure_mlir_record(path)
+
+    # Only add if (sku, mlir) not already present
+    exists = ((df["sku"] == sku) & (df["mlir"] == mlir)).any()
+    if exists:
+        return
+
+    df.loc[len(df)] = {
+        "sku": sku,
+        "mlir": mlir,
+        "succuss": succuss,
+        "time": time_val,
+    }
+    df.to_csv(path, index=False)
+
+
+if len(sys.argv) < 2:
+    raise SystemExit("Usage: python dispatches_tuner.py <arch>\nExample: python dispatches_tuner.py gfx942")
+arch = sys.argv[1]
+
+logger = setup_logging()
+base_path = Path(os.path.dirname(os.path.abspath(__file__)))
+mlir_record_path = base_path / "check_fail_mlir_record.csv"
+ensure_mlir_record(mlir_record_path)
+
+logger.debug(f"Arch: {arch}")
+mlir_benchmark_folder_path = (base_path / "bench_dump").expanduser().resolve()
+logger.debug(f"In MLIR_benchmark folder {mlir_benchmark_folder_path}: ")
+mlir_benchmark_files = sorted(mlir_benchmark_folder_path.glob("*.mlir"))
+for f in mlir_benchmark_files:
+    logger.debug(f"{f.name}")
+
+logger.info(f"Found {len(mlir_benchmark_files)} benchmark file(s)")
+
+
+failed_files = []
+ok = fail = 0
+
+
+# --- timing + logging setup ---
+start_dt = datetime.now()
+start_perf = time.perf_counter()
+logger.debug(f"Tuning started at {start_dt.isoformat(timespec='seconds')}")
+var_list = [DEVICE, TUNING_TASKS, NUM_CAN, TIMING_METHOD, SORT_METHOD, REP]
+logger.info(f"Tuning Vars: {var_list}")
+
+tuning_tasks = TUNING_TASKS
+
+for j, codegen_pipeline in enumerate(tuning_tasks, start=1):
+    for i, bench in enumerate(mlir_benchmark_files, start=1):
+        mlir_filename = bench.name
+        if mlir_filename not in todo_list:
+            continue
+        logger.info(f"Checking file {i} / {todo_mlir_count}")
+        # Check list
+        if mlir_filename in ok_list:
+            logger.debug(f"Skipping file {mlir_filename} in OK list")
+            continue
+        if mlir_filename in failed_list:
+            logger.debug(f"Skipping file {mlir_filename} in failed list")
+            continue
+
+        # Check file
+        if not bench.exists():
+            logger.warning(f"Can't find {bench}, skipping")
+            fail += 1
+            failed_files.append(bench.name)
+            continue
+
+        logger.info(f"Tuning mlir {i} / {todo_mlir_count}: {bench.name} - {codegen_pipeline}")
+        file_start = time.perf_counter()
+        logger.debug(f"File {bench} started at {start_dt.isoformat(timespec='seconds')}")
+        cmd = [
+            "python3", "-m", "dispatch_tuner",
+            str(bench),
+            str(bench),
+            "--compile-flags-file=dispatch_tuner/compile_flags.txt",
+            f"--devices={DEVICE}",
+            F"--num-candidates={NUM_CAN}",
+            f"--codegen-pipeline={codegen_pipeline}",
+            f"--benchmark-timing-method={TIMING_METHOD}",
+            f"--candidate-order={SORT_METHOD}",
+        ]
+        try:
+            result = subprocess.run(
+                cmd,
+                cwd=Path("~/amd-shark-ai/amdsharktuner").expanduser(),
+                stdout=subprocess.DEVNULL,
+                stderr=subprocess.DEVNULL,
+                timeout=3,  # seconds
+            )
+            rc = result.returncode
+        except subprocess.TimeoutExpired:
+            rc = 0
+    
+        # End timer
+        finished_at = datetime.now()
+        elapsed = time.perf_counter() - file_start
+    
+        # Handle result
+        elapsed_min = elapsed / 60.0
+        if rc == 0:
+            ok += 1
+            logger.info(
+                f"{finished_at.isoformat(timespec='seconds')} - "
+                f"{bench.name}: completed in {elapsed_min:.2f} mins"
+            )
+        else:
+            fail += 1
+            failed_files.append(f"{bench.name} - {codegen_pipeline}")
+            logger.warning(f"{finished_at.isoformat(timespec='seconds')} - {bench.name}: 'FAIL({rc})' in {elapsed:.2f}s")
+    
+        add_mlir_record_row(
+            mlir_record_path,
+            sku=arch,
+            mlir=bench.name,
+            succuss=True if rc == 0 else False,
+            time_val=elapsed_min,
+        )
+
+# --- summary logging ---
+if failed_files:
+    logger.warning(f"Failed bench files {len(failed_files)}:")
+    for name in failed_files:
+        logger.warning(f"{name}")
+
+end_perf = time.perf_counter()
+total_elapsed = end_perf - start_perf
+
+logger.info("-" * 80)
+logger.info(f"SUMMARY: Success: {ok} | Fail: {fail}")
+logger.info(f"SUMMARY: Total elapsed: {total_elapsed/60/60:.2f}hrs")
+logger.info("-" * 80)
