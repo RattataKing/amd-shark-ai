@@ -151,9 +151,10 @@ def main():
         todo_mlir_count = len(todo_list) 
         logger.info(f"To-do list wants to tune {todo_mlir_count} files, checking...")
         for todo in todo_list:
-            mlir_benchmark_filenames = [f.stem for f in mlir_benchmark_files]
+            mlir_benchmark_filenames = [f.name for f in mlir_benchmark_files]
             if todo not in mlir_benchmark_filenames:
-                raise
+                logger.error(f"Can't find {todo} in mlir dir" )
+                assert False
     else:
         todo_mlir_count = len(mlir_benchmark_files)
 
@@ -177,7 +178,7 @@ def main():
 
     for j, codegen_pipeline in enumerate(tuning_tasks, start=1):
         for i, bench in enumerate(mlir_benchmark_files, start=1):
-            mlir_filename = bench.stem
+            mlir_filename = bench.name
             if mlir_filename not in todo_list:
                 continue
             logger.info(f"Checking file {i} / {todo_mlir_count}")
