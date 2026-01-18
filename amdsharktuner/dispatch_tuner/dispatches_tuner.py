@@ -9,6 +9,8 @@ import shutil
 import sys
 import pandas as pd
 
+import tuning_list
+
 
 redo_list = [
 
@@ -20,11 +22,6 @@ failed_list = [
 
 ]
 
-todo_list = [
-    # CDNA3 fp8 type = f8E4M3FNUZ
-    # UDNA4 fp8 type = f8E4M3FN
-]
-
 
 DEVICE="hip://0,hip://1,hip://2,hip://3,hip://4,hip://5,hip://6,hip://7"
 TUNING_TASKS=["llvmgpu_tile_and_fuse", "llvmgpu_vector_distribute"]
@@ -33,11 +30,12 @@ TIMING_METHOD="rocprof"
 SORT_METHOD="heuristic"
 REP=5
 TUNING_ROUNDS=3
+TUNE_ALL = False
 
 
-def setup_logging() -> logging.Logger:
+def setup_logging(arch) -> logging.Logger:
     base_dir = Path(os.path.abspath(__file__)).parent
-    log_file_name = "tuning.log"
+    log_file_name = f"{arch}_tuning.log"
     run_log_path = base_dir / log_file_name
 
     # Create file handler for logging to a file.
@@ -117,19 +115,42 @@ def update_compile_flags(compile_flag_txt_path, arch) -> None:
     compile_flag_txt_path.write_text("\n".join(new_lines) + "\n")
     
     
+def prepare_todo_list(arch):
+    # CDNA3 fp8 type = f8E4M3FNUZ
+    # UDNA4 fp8 type = f8E4M3FN
+    match arch:
+        case "gfx942":
+            todo_list = tuning_list.cdna_list
+            f8_type = "f8E4M3FNUZ"
+        case "gfx950":
+            todo_list = tuning_list.cdna_list
+            f8_type = "f8E4M3FN"
+        case "gfx1201":
+            todo_list = tuning_list.rdna_list
+            f8_type = "f8E4M3FN"
+        case _:
+            assert False
+    
+    todo_list = [
+        item.replace("_f8_", f8_type) if "_f8_" in item else item
+        for item in todo_list
+    ]
+
+    return todo_list
+
 def main():
     if len(sys.argv) < 2:
         raise SystemExit("Usage: python dispatches_tuner.py <arch>\nExample: python dispatches_tuner.py gfx942")
     arch = sys.argv[1]
     
-    logger = setup_logging()
+    logger = setup_logging(arch)
     base_path = Path(os.path.dirname(os.path.abspath(__file__)))
     mlir_record_path = base_path / "mlir_record.csv"
     ensure_mlir_record(mlir_record_path)
     compile_flag_txt_path = base_path / "compile_flags.txt"
     update_compile_flags(compile_flag_txt_path, arch)
-
     
+
     logger.debug(f"Arch: {arch}")
     mlir_benchmark_folder_path = (base_path / f"bench_dump_{arch}").expanduser().resolve()
     logger.debug(f"In MLIR_benchmark folder {mlir_benchmark_folder_path}: ")
@@ -138,17 +159,19 @@ def main():
         logger.debug(f"{f.name}")
     
     logger.info(f"Found {len(mlir_benchmark_files)} benchmark file(s)")
-    if todo_list:
+    mlir_benchmark_filenames = [f.name for f in mlir_benchmark_files]
+    if TUNE_ALL:
+        logger.info(f"Will tune all mlir in the dir")
+        todo_list = mlir_benchmark_filenames
+        todo_mlir_count = len(mlir_benchmark_files)
+    else:
+        todo_list = prepare_todo_list(arch)
         todo_mlir_count = len(todo_list) 
-        logger.info(f"To-do list wants to tune {todo_mlir_count} files, checking...")
+        logger.info(f"Selected todo list contains {todo_mlir_count} files, checking...")
         for todo in todo_list:
-            mlir_benchmark_filenames = [f.name for f in mlir_benchmark_files]
             if todo not in mlir_benchmark_filenames:
                 logger.error(f"Can't find {todo} in mlir dir" )
                 assert False
-    else:
-        todo_list = [f.name for f in mlir_benchmark_files]
-        todo_mlir_count = len(mlir_benchmark_files)
         
     for i in range(1,TUNING_ROUNDS+1):
         logger.info(f"===== TUNING ROUND {i} / {TUNING_ROUNDS} =====")
@@ -185,12 +208,6 @@ def main():
                     logger.debug(f"Skipping file {mlir_filename} in failed list")
                     continue
 
-                # Check file
-                if not bench.exists():
-                    logger.warning(f"Can't find {bench}, skipping")
-                    fail += 1
-                    failed_files.append(bench.name)
-                    continue
 
                 logger.info(f"Tuning mlir {i} / {todo_mlir_count}: {bench.name} - {codegen_pipeline}")
                 file_start = time.perf_counter()
