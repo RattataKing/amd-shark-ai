@@ -20,7 +20,45 @@ failed_list = [
 
 ]
 
-DEVICE="hip://0,hip://1,hip://2,hip://3,hip://4,hip://5,hip://6,hip://7"
+todo_list = [
+    # CDNA3 fp8 type = f8E4M3FNUZ
+    # UDNA4 fp8 type = f8E4M3FN
+    "compute_gemm_4096_4096_8192_f32_f32_tB_benchmark.mlir",
+    "square_gemm_1024_1024_1024_i8_i32_tB_benchmark.mlir",
+    "square_gemm_2048_2048_2048_f32_f32_tB_benchmark.mlir",
+    "square_gemm_2048_2048_2048_i32_i32_tB_benchmark.mlir",
+    "square_gemm_256_256_256_f32_f32_tB_benchmark.mlir",
+    "square_gemm_512_512_512_f16_f32_tB_benchmark.mlir",
+    "square_gemm_512_512_512_f32_f32_tB_benchmark.mlir",
+    "square_gemm_512_512_512_f8E4M3FN_f32_tB_benchmark.mlir",
+    "square_gemm_8192_8192_8192_f32_f32_tB_benchmark.mlir",
+    "square_gemm_8192_8192_8192_i8_i32_tB_benchmark.mlir",
+    "tk_gemm_2048_10240_1280_i8_i32_tB_benchmark.mlir",
+    "tk_gemm_2048_1280_1280_f16_f32_tB_benchmark.mlir",
+    "tk_gemm_2048_1280_1280_f8E4M3FN_f32_tB_benchmark.mlir",
+    "tk_gemm_8192_5120_640_i32_i32_tB_benchmark.mlir",
+    "unet_gemm_1024_10240_1280_f16_f32_tB_benchmark.mlir",
+    "unet_gemm_1024_1280_5120_f32_f32_tB_benchmark.mlir",
+    "unet_gemm_128_1280_2048_i8_i32_tB_benchmark.mlir",
+    "unet_gemm_2048_10240_1280_i32_i32_tB_benchmark.mlir",
+    "unet_gemm_2048_1280_1280_f8E4M3FN_f32_tB_benchmark.mlir",
+    "unet_gemm_4096_5120_640_f16_f32_tB_benchmark.mlir",
+    "unet_gemm_4096_5120_640_f32_f32_tB_benchmark.mlir",
+    "unet_gemm_4096_5120_640_f8E4M3FN_f32_tB_benchmark.mlir",
+    "unet_gemm_4096_640_640_f16_f32_tB_benchmark.mlir",
+    "unet_gemm_64_1280_2048_f16_f32_tB_benchmark.mlir",
+    "unet_gemm_64_640_2048_f16_f32_tB_benchmark.mlir",
+    "unet_gemm_64_640_2048_f8E4M3FN_f32_tB_benchmark.mlir",
+    "unet_gemm_8192_5120_640_f16_f32_tB_benchmark.mlir",
+    "unet_gemm_8192_5120_640_f8E4M3FN_f32_tB_benchmark.mlir",
+    "unet_gemm_8192_5120_640_i32_i32_tB_benchmark.mlir",
+    "unet_gemm_8192_5120_640_i8_i32_tB_benchmark.mlir",
+    "unet_gemm_8192_640_2560_f8E4M3FN_f32_tB_benchmark.mlir",
+    "unet_gemm_8192_640_640_i32_i32_tB_benchmark.mlir",
+]
+
+
+DEVICE="hip://0"
 TUNING_TASKS=["llvmgpu_tile_and_fuse", "llvmgpu_vector_distribute"]
 NUM_CAN=10000
 TIMING_METHOD="rocprof"
@@ -107,8 +145,17 @@ def main():
     mlir_benchmark_files = sorted(mlir_benchmark_folder_path.glob("*.mlir"))
     for f in mlir_benchmark_files:
         logger.debug(f"{f.stem}")
-
+    
     logger.info(f"Found {len(mlir_benchmark_files)} benchmark file(s)")
+    if todo_list:
+        todo_mlir_count = len(todo_list) 
+        logger.info(f"To-do list wants to tune {todo_mlir_count} files, checking...")
+        for todo in todo_list:
+            mlir_benchmark_filenames = [f.stem for f in mlir_benchmark_files]
+            if todo not in mlir_benchmark_filenames:
+                assert
+    else:
+        todo_mlir_count = len(mlir_benchmark_files)
 
     failed_files = []
     ok = fail = 0
@@ -127,11 +174,13 @@ def main():
     logger.info(f"Tuning Vars: {var_list}")
 
     tuning_tasks = TUNING_TASKS
+
     for j, codegen_pipeline in enumerate(tuning_tasks, start=1):
         for i, bench in enumerate(mlir_benchmark_files, start=1):
             mlir_filename = bench.stem
-            logger.info(f"Checking file {i} / {len(mlir_benchmark_files)}")
-
+            if mlir_filename not in todo_list:
+                continue
+            logger.info(f"Checking file {i} / {todo_mlir_count}")
             # Check list
             if mlir_filename in ok_list:
                 logger.debug(f"Skipping file {mlir_filename} in OK list")
@@ -147,7 +196,7 @@ def main():
                 failed_files.append(bench.name)
                 continue
 
-            logger.info(f"Tuning mlir {i} / {len(mlir_benchmark_files)}: {bench.name} - {codegen_pipeline}")
+            logger.info(f"Tuning mlir {i} / {todo_mlir_count}: {bench.name} - {codegen_pipeline}")
             file_start = time.perf_counter()
             logger.debug(f"File {bench} started at {start_dt.isoformat(timespec='seconds')}")
             cmd = [
