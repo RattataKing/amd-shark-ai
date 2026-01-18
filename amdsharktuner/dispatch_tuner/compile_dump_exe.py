@@ -60,7 +60,7 @@ def main():
     arch = sys.argv[1]
 
     base_path = Path(os.path.dirname(os.path.abspath(__file__)))
-    input_dir = base_path / "problem_mlir_dump"
+    input_dir = base_path / f"problem_mlir_dump_{arch}"
     
     print(f"Processing MLIR files in: {input_dir}")
     
