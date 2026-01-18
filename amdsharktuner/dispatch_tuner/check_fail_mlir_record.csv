@@ -1,4 +1,4 @@
-sku,mlir,succuss,time
+sku,mlir,success,time
 gfx1201,compute_gemm_4096_4096_8192_f16_f32_tB_benchmark.mlir,True,0.0502074647694826
 gfx1201,compute_gemm_4096_4096_8192_f32_f32_tB_benchmark.mlir,False,0.0069656571062902
 gfx1201,compute_gemm_4096_4096_8192_f8E4M3FN_f32_tB_benchmark.mlir,True,0.0502589541797836

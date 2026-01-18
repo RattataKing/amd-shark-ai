@@ -67,12 +67,12 @@ def setup_logging() -> logging.Logger:
 def ensure_mlir_record(path: Path) -> pd.DataFrame:
     if path.exists():
         return pd.read_csv(path)
-    df = pd.DataFrame(columns=["sku", "mlir", "succuss", "time"])
+    df = pd.DataFrame(columns=["sku", "mlir", "success", "time"])
     df.to_csv(path, index=False)
     return df
 
 
-def add_mlir_record_row(path: Path, sku: str, mlir: str, succuss: bool, time_val):
+def add_mlir_record_row(path: Path, sku: str, mlir: str, success: bool, time_val):
     df = ensure_mlir_record(path)
 
     # Only add if (sku, mlir) not already present
@@ -83,7 +83,7 @@ def add_mlir_record_row(path: Path, sku: str, mlir: str, succuss: bool, time_val
     df.loc[len(df)] = {
         "sku": sku,
         "mlir": mlir,
-        "succuss": succuss,
+        "success": success,
         "time": time_val,
     }
     df.to_csv(path, index=False)
@@ -213,7 +213,7 @@ for j, codegen_pipeline in enumerate(tuning_tasks, start=1):
             mlir_record_path,
             sku=arch,
             mlir=bench.name,
-            succuss=True if rc == 0 else False,
+            success=True if rc == 0 else False,
             time_val=elapsed_min,
         )
 
