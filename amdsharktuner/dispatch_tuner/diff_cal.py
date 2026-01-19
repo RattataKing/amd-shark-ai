@@ -71,7 +71,8 @@ suspicious_files = ["square_gemm_2048_2048_2048_f8E4M3FNUZ_f32_tB.csv",
 "tk_gemm_2048_10240_1280_i8_i32_tB.csv",
 "unet_gemm_2048_10240_1280_f8E4M3FNUZ_f32_tB.csv"]
 
-csv_path = base_path / "tuning_database_tf_2"
+csv_dir_name = "tuning_database_tf_2"
+csv_path = base_path / csv_dir_name
 files = csv_path.glob('*.csv')
 files = [
     f for f in files
@@ -88,7 +89,10 @@ for i, f in enumerate(files):
     df = pd.read_csv(f)
 
     # df = df[df["to_benchmark"] == True]
-    print(f)
+    max_val = df["benchmark_rank_order"].max(skipna=True)
+    if pd.isna(max_val):
+        print(f"Weird csv, skipping: {f.name}")
+        continue
     max_rank = int(df["benchmark_rank_order"].max(skipna=True))
     df["benchmark_rank_order"] = df["benchmark_rank_order"].fillna(max_rank + 1)
     df["benchmark_rank_order"] = df["benchmark_rank_order"].astype(int)
@@ -173,6 +177,7 @@ out_df["shuffle_avg"] = round(shuffle_avg,5)
 out_df["heuristic_avg"] = round(heuristic_avg,5)
 out_df["shuffle_gmean"] = round(shuffle_gmean,5)
 out_df["heuristic_gmean"] = round(heuristic_gmean, 5)
+print(csv_dir_name)
 print(f"shuffle_avg vs. heuristic_avg: {shuffle_avg:.2f} vs. {heuristic_avg:.2f}")
 print(f"shuffle_gmean vs. heuristic_gmean: {shuffle_gmean:.2f} vs. {heuristic_gmean:.2f}")
 out_df.to_csv(save_path, index=False)
