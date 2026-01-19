@@ -8,6 +8,7 @@ import logging
 import shutil
 import sys
 import pandas as pd
+from zoneinfo import ZoneInfo
 
 import tuning_list
 
@@ -185,8 +186,8 @@ def main():
         ok = fail = 0
 
         # --- timing + logging setup ---
-        start_dt = datetime.now()
         start_perf = time.perf_counter()
+        start_dt = datetime.now(ZoneInfo("America/Toronto"))
         logger.debug(f"Tuning started at {start_dt.isoformat(timespec='seconds')}")
         var_list = [DEVICE, TUNING_TASKS, NUM_CAN, TIMING_METHOD, SORT_METHOD, REP]
         logger.info(f"Tuning Vars: {var_list}")
@@ -211,6 +212,7 @@ def main():
 
                 logger.info(f"Tuning mlir {todo_count} / {todo_mlir_count}: {bench.name} - {codegen_pipeline}")
                 file_start = time.perf_counter()
+                start_dt = datetime.now(ZoneInfo("America/Toronto"))
                 logger.debug(f"File {bench} started at {start_dt.isoformat(timespec='seconds')}")
                 cmd = [
                     "python3", "-m", "dispatch_tuner",
@@ -230,7 +232,7 @@ def main():
                 )
             
                 # End timer
-                finished_at = datetime.now()
+                finished_at = datetime.now(ZoneInfo("America/Toronto"))
                 elapsed = time.perf_counter() - file_start
             
                 # Handle result
