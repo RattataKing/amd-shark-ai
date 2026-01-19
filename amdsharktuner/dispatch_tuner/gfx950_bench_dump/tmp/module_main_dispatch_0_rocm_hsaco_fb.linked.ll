@@ -1,0 +1,1105 @@
+; ModuleID = 'main_dispatch_0'
+source_filename = "main_dispatch_0"
+target datalayout = "e-m:e-p:64:64-p1:64:64-p2:32:32-p3:32:32-p4:64:64-p5:32:32-p6:32:32-p7:160:256:256:32-p8:128:128:128:48-p9:192:256:256:32-i64:64-v16:16-v24:32-v32:32-v48:64-v96:128-v192:256-v256:256-v512:512-v1024:1024-v2048:2048-n32:64-S32-A5-G1-ni:7:8:9"
+
+@__shared_memory___0 = private addrspace(3) global [128 x [264 x i8]] undef, align 16
+@__shared_memory__ = private addrspace(3) global [64 x [264 x i8]] undef, align 16
+
+; Function Attrs: alwaysinline
+define amdgpu_kernel void @main_dispatch_0_matmul_4096x640x2560_f8E4M3FNxf8E4M3FNxf32(ptr addrspace(1) inreg noalias noundef nonnull readonly align 16 %0, ptr addrspace(1) inreg noalias noundef nonnull readonly align 16 %1, ptr addrspace(1) inreg noalias noundef nonnull align 16 %2) #0 !reqd_work_group_size !2 {
+  %4 = call range(i32 0, 256) i32 @llvm.amdgcn.workitem.id.x()
+  %5 = sext i32 %4 to i64
+  call void @llvm.assume(i1 true) [ "align"(ptr addrspace(1) %0, i64 64) ]
+  %6 = call ptr addrspace(7) @llvm.amdgcn.make.buffer.rsrc.p7.p1(ptr addrspace(1) %0, i16 0, i64 10485760, i32 159744)
+  call void @llvm.assume(i1 true) [ "align"(ptr addrspace(1) %1, i64 64) ]
+  %7 = call ptr addrspace(7) @llvm.amdgcn.make.buffer.rsrc.p7.p1(ptr addrspace(1) %1, i16 0, i64 1638400, i32 159744)
+  call void @llvm.assume(i1 true) [ "align"(ptr addrspace(1) %2, i64 64) ]
+  %8 = call ptr addrspace(7) @llvm.amdgcn.make.buffer.rsrc.p7.p1(ptr addrspace(1) %2, i16 0, i64 10485760, i32 159744)
+  %9 = trunc i64 %5 to i32
+  %10 = udiv i32 %9, 128
+  %11 = urem i32 %9, 128
+  %12 = udiv i32 %11, 64
+  %13 = urem i32 %9, 64
+  %14 = udiv i32 %13, 16
+  %15 = urem i32 %13, 16
+  %16 = mul nsw i32 %14, 4
+  %17 = mul nsw i32 %14, 32
+  %18 = zext i32 %17 to i64
+  %19 = udiv i32 %9, 16
+  %20 = zext i32 %19 to i64
+  %21 = urem i32 %9, 16
+  %22 = add nsw i32 %9, 256
+  %23 = udiv i32 %22, 16
+  %24 = zext i32 %23 to i64
+  %25 = urem i32 %22, 16
+  %26 = add nsw i32 %9, 512
+  %27 = udiv i32 %26, 16
+  %28 = zext i32 %27 to i64
+  %29 = urem i32 %26, 16
+  %30 = add nsw i32 %9, 768
+  %31 = udiv i32 %30, 16
+  %32 = zext i32 %31 to i64
+  %33 = urem i32 %30, 16
+  %34 = add nsw i32 %9, 1024
+  %35 = udiv i32 %34, 16
+  %36 = zext i32 %35 to i64
+  %37 = urem i32 %34, 16
+  %38 = add nsw i32 %9, 1280
+  %39 = udiv i32 %38, 16
+  %40 = zext i32 %39 to i64
+  %41 = urem i32 %38, 16
+  %42 = add nsw i32 %9, 1536
+  %43 = udiv i32 %42, 16
+  %44 = zext i32 %43 to i64
+  %45 = urem i32 %42, 16
+  %46 = add nsw i32 %9, 1792
+  %47 = udiv i32 %46, 16
+  %48 = zext i32 %47 to i64
+  %49 = urem i32 %46, 16
+  %50 = mul nsw i32 %21, 16
+  %51 = zext i32 %50 to i64
+  %52 = mul nsw i32 %25, 16
+  %53 = zext i32 %52 to i64
+  %54 = mul nsw i32 %29, 16
+  %55 = zext i32 %54 to i64
+  %56 = mul nsw i32 %33, 16
+  %57 = zext i32 %56 to i64
+  %58 = mul nsw i32 %37, 16
+  %59 = zext i32 %58 to i64
+  %60 = mul nsw i32 %41, 16
+  %61 = zext i32 %60 to i64
+  %62 = mul nsw i32 %45, 16
+  %63 = zext i32 %62 to i64
+  %64 = mul nsw i32 %49, 16
+  %65 = zext i32 %64 to i64
+  %66 = call range(i32 0, 320) i32 @llvm.amdgcn.workgroup.id.x()
+  %67 = sext i32 %66 to i64
+  %68 = trunc i64 %67 to i32
+  %69 = udiv i32 %68, 5
+  %70 = urem i32 %68, 5
+  %71 = mul nsw i32 %69, 64
+  %72 = add i32 %19, %71
+  %73 = zext i32 %72 to i64
+  %74 = mul i64 %73, 2560
+  %75 = add i64 %74, %51
+  %76 = getelementptr i8, ptr addrspace(7) %6, i64 %75
+  %77 = load <16 x i8>, ptr addrspace(7) %76, align 1
+  %78 = add i32 %23, %71
+  %79 = zext i32 %78 to i64
+  %80 = mul i64 %79, 2560
+  %81 = add i64 %80, %53
+  %82 = getelementptr i8, ptr addrspace(7) %6, i64 %81
+  %83 = load <16 x i8>, ptr addrspace(7) %82, align 1
+  %84 = add i32 %27, %71
+  %85 = zext i32 %84 to i64
+  %86 = mul i64 %85, 2560
+  %87 = add i64 %86, %55
+  %88 = getelementptr i8, ptr addrspace(7) %6, i64 %87
+  %89 = load <16 x i8>, ptr addrspace(7) %88, align 1
+  %90 = add i32 %31, %71
+  %91 = zext i32 %90 to i64
+  %92 = mul i64 %91, 2560
+  %93 = add i64 %92, %57
+  %94 = getelementptr i8, ptr addrspace(7) %6, i64 %93
+  %95 = load <16 x i8>, ptr addrspace(7) %94, align 1
+  %96 = mul nsw i32 %70, 128
+  %97 = add i32 %19, %96
+  %98 = zext i32 %97 to i64
+  %99 = mul i64 %98, 2560
+  %100 = add i64 %99, %51
+  %101 = getelementptr i8, ptr addrspace(7) %7, i64 %100
+  %102 = load <16 x i8>, ptr addrspace(7) %101, align 1
+  %103 = add i32 %23, %96
+  %104 = zext i32 %103 to i64
+  %105 = mul i64 %104, 2560
+  %106 = add i64 %105, %53
+  %107 = getelementptr i8, ptr addrspace(7) %7, i64 %106
+  %108 = load <16 x i8>, ptr addrspace(7) %107, align 1
+  %109 = add i32 %27, %96
+  %110 = zext i32 %109 to i64
+  %111 = mul i64 %110, 2560
+  %112 = add i64 %111, %55
+  %113 = getelementptr i8, ptr addrspace(7) %7, i64 %112
+  %114 = load <16 x i8>, ptr addrspace(7) %113, align 1
+  %115 = add i32 %31, %96
+  %116 = zext i32 %115 to i64
+  %117 = mul i64 %116, 2560
+  %118 = add i64 %117, %57
+  %119 = getelementptr i8, ptr addrspace(7) %7, i64 %118
+  %120 = load <16 x i8>, ptr addrspace(7) %119, align 1
+  %121 = add i32 %35, %96
+  %122 = zext i32 %121 to i64
+  %123 = mul i64 %122, 2560
+  %124 = add i64 %123, %59
+  %125 = getelementptr i8, ptr addrspace(7) %7, i64 %124
+  %126 = load <16 x i8>, ptr addrspace(7) %125, align 1
+  %127 = add i32 %39, %96
+  %128 = zext i32 %127 to i64
+  %129 = mul i64 %128, 2560
+  %130 = add i64 %129, %61
+  %131 = getelementptr i8, ptr addrspace(7) %7, i64 %130
+  %132 = load <16 x i8>, ptr addrspace(7) %131, align 1
+  %133 = add i32 %43, %96
+  %134 = zext i32 %133 to i64
+  %135 = mul i64 %134, 2560
+  %136 = add i64 %135, %63
+  %137 = getelementptr i8, ptr addrspace(7) %7, i64 %136
+  %138 = load <16 x i8>, ptr addrspace(7) %137, align 1
+  %139 = add i32 %47, %96
+  %140 = zext i32 %139 to i64
+  %141 = mul i64 %140, 2560
+  %142 = add i64 %141, %65
+  %143 = getelementptr i8, ptr addrspace(7) %7, i64 %142
+  %144 = load <16 x i8>, ptr addrspace(7) %143, align 1
+  %145 = mul i64 %20, 264
+  %146 = add i64 %145, %51
+  %147 = getelementptr i8, ptr addrspace(3) @__shared_memory__, i64 %146
+  store <16 x i8> %77, ptr addrspace(3) %147, align 1
+  %148 = mul i64 %24, 264
+  %149 = add i64 %148, %53
+  %150 = getelementptr i8, ptr addrspace(3) @__shared_memory__, i64 %149
+  store <16 x i8> %83, ptr addrspace(3) %150, align 1
+  %151 = mul i64 %28, 264
+  %152 = add i64 %151, %55
+  %153 = getelementptr i8, ptr addrspace(3) @__shared_memory__, i64 %152
+  store <16 x i8> %89, ptr addrspace(3) %153, align 1
+  %154 = mul i64 %32, 264
+  %155 = add i64 %154, %57
+  %156 = getelementptr i8, ptr addrspace(3) @__shared_memory__, i64 %155
+  store <16 x i8> %95, ptr addrspace(3) %156, align 1
+  %157 = mul i64 %20, 264
+  %158 = add i64 %157, %51
+  %159 = getelementptr i8, ptr addrspace(3) @__shared_memory___0, i64 %158
+  store <16 x i8> %102, ptr addrspace(3) %159, align 1
+  %160 = mul i64 %24, 264
+  %161 = add i64 %160, %53
+  %162 = getelementptr i8, ptr addrspace(3) @__shared_memory___0, i64 %161
+  store <16 x i8> %108, ptr addrspace(3) %162, align 1
+  %163 = mul i64 %28, 264
+  %164 = add i64 %163, %55
+  %165 = getelementptr i8, ptr addrspace(3) @__shared_memory___0, i64 %164
+  store <16 x i8> %114, ptr addrspace(3) %165, align 1
+  %166 = mul i64 %32, 264
+  %167 = add i64 %166, %57
+  %168 = getelementptr i8, ptr addrspace(3) @__shared_memory___0, i64 %167
+  store <16 x i8> %120, ptr addrspace(3) %168, align 1
+  %169 = mul i64 %36, 264
+  %170 = add i64 %169, %59
+  %171 = getelementptr i8, ptr addrspace(3) @__shared_memory___0, i64 %170
+  store <16 x i8> %126, ptr addrspace(3) %171, align 1
+  %172 = mul i64 %40, 264
+  %173 = add i64 %172, %61
+  %174 = getelementptr i8, ptr addrspace(3) @__shared_memory___0, i64 %173
+  store <16 x i8> %132, ptr addrspace(3) %174, align 1
+  %175 = mul i64 %44, 264
+  %176 = add i64 %175, %63
+  %177 = getelementptr i8, ptr addrspace(3) @__shared_memory___0, i64 %176
+  store <16 x i8> %138, ptr addrspace(3) %177, align 1
+  %178 = mul i64 %48, 264
+  %179 = add i64 %178, %65
+  %180 = getelementptr i8, ptr addrspace(3) @__shared_memory___0, i64 %179
+  store <16 x i8> %144, ptr addrspace(3) %180, align 1
+  %181 = mul nsw i32 %10, 2
+  %182 = mul nsw i32 %10, 32
+  %183 = add nsw i32 %182, %15
+  %184 = zext i32 %183 to i64
+  %185 = add nsw i32 %17, 128
+  %186 = zext i32 %185 to i64
+  %187 = add nsw i32 %183, 16
+  %188 = zext i32 %187 to i64
+  %189 = mul nsw i32 %12, 4
+  %190 = mul nsw i32 %12, 64
+  %191 = add nsw i32 %190, %15
+  %192 = zext i32 %191 to i64
+  %193 = add nsw i32 %191, 16
+  %194 = zext i32 %193 to i64
+  %195 = add nsw i32 %191, 32
+  %196 = zext i32 %195 to i64
+  %197 = add nsw i32 %191, 48
+  %198 = zext i32 %197 to i64
+  br label %199
+
+199:                                              ; preds = %203, %3
+  %200 = phi i32 [ %204, %203 ], [ 0, %3 ]
+  %201 = phi [2 x [4 x [4 x <1 x float>]]] [ %565, %203 ], [ zeroinitializer, %3 ]
+  %202 = icmp slt i32 %200, 18
+  br i1 %202, label %203, label %602
+
+203:                                              ; preds = %199
+  %204 = add i32 %200, 2
+  %205 = mul nsw i32 %204, 128
+  %206 = add i32 %50, %205
+  %207 = zext i32 %206 to i64
+  %208 = mul i64 %73, 2560
+  %209 = add i64 %208, %207
+  %210 = getelementptr i8, ptr addrspace(7) %6, i64 %209
+  %211 = load <16 x i8>, ptr addrspace(7) %210, align 1
+  %212 = add i32 %52, %205
+  %213 = zext i32 %212 to i64
+  %214 = mul i64 %79, 2560
+  %215 = add i64 %214, %213
+  %216 = getelementptr i8, ptr addrspace(7) %6, i64 %215
+  %217 = load <16 x i8>, ptr addrspace(7) %216, align 1
+  %218 = add i32 %54, %205
+  %219 = zext i32 %218 to i64
+  %220 = mul i64 %85, 2560
+  %221 = add i64 %220, %219
+  %222 = getelementptr i8, ptr addrspace(7) %6, i64 %221
+  %223 = load <16 x i8>, ptr addrspace(7) %222, align 1
+  %224 = add i32 %56, %205
+  %225 = zext i32 %224 to i64
+  %226 = mul i64 %91, 2560
+  %227 = add i64 %226, %225
+  %228 = getelementptr i8, ptr addrspace(7) %6, i64 %227
+  %229 = load <16 x i8>, ptr addrspace(7) %228, align 1
+  %230 = mul i64 %98, 2560
+  %231 = add i64 %230, %207
+  %232 = getelementptr i8, ptr addrspace(7) %7, i64 %231
+  %233 = load <16 x i8>, ptr addrspace(7) %232, align 1
+  %234 = mul i64 %104, 2560
+  %235 = add i64 %234, %213
+  %236 = getelementptr i8, ptr addrspace(7) %7, i64 %235
+  %237 = load <16 x i8>, ptr addrspace(7) %236, align 1
+  %238 = mul i64 %110, 2560
+  %239 = add i64 %238, %219
+  %240 = getelementptr i8, ptr addrspace(7) %7, i64 %239
+  %241 = load <16 x i8>, ptr addrspace(7) %240, align 1
+  %242 = mul i64 %116, 2560
+  %243 = add i64 %242, %225
+  %244 = getelementptr i8, ptr addrspace(7) %7, i64 %243
+  %245 = load <16 x i8>, ptr addrspace(7) %244, align 1
+  %246 = add i32 %58, %205
+  %247 = zext i32 %246 to i64
+  %248 = mul i64 %122, 2560
+  %249 = add i64 %248, %247
+  %250 = getelementptr i8, ptr addrspace(7) %7, i64 %249
+  %251 = load <16 x i8>, ptr addrspace(7) %250, align 1
+  %252 = add i32 %60, %205
+  %253 = zext i32 %252 to i64
+  %254 = mul i64 %128, 2560
+  %255 = add i64 %254, %253
+  %256 = getelementptr i8, ptr addrspace(7) %7, i64 %255
+  %257 = load <16 x i8>, ptr addrspace(7) %256, align 1
+  %258 = add i32 %62, %205
+  %259 = zext i32 %258 to i64
+  %260 = mul i64 %134, 2560
+  %261 = add i64 %260, %259
+  %262 = getelementptr i8, ptr addrspace(7) %7, i64 %261
+  %263 = load <16 x i8>, ptr addrspace(7) %262, align 1
+  %264 = add i32 %64, %205
+  %265 = zext i32 %264 to i64
+  %266 = mul i64 %140, 2560
+  %267 = add i64 %266, %265
+  %268 = getelementptr i8, ptr addrspace(7) %7, i64 %267
+  %269 = load <16 x i8>, ptr addrspace(7) %268, align 1
+  fence syncscope("workgroup") release, !mmra !3
+  call void @llvm.amdgcn.s.barrier()
+  fence syncscope("workgroup") acquire, !mmra !3
+  %270 = mul i64 %184, 264
+  %271 = add i64 %270, %18
+  %272 = getelementptr i8, ptr addrspace(3) @__shared_memory__, i64 %271
+  %273 = load <32 x i8>, ptr addrspace(3) %272, align 1
+  %274 = mul i64 %184, 264
+  %275 = add i64 %274, %186
+  %276 = getelementptr i8, ptr addrspace(3) @__shared_memory__, i64 %275
+  %277 = load <32 x i8>, ptr addrspace(3) %276, align 1
+  %278 = mul i64 %188, 264
+  %279 = add i64 %278, %18
+  %280 = getelementptr i8, ptr addrspace(3) @__shared_memory__, i64 %279
+  %281 = load <32 x i8>, ptr addrspace(3) %280, align 1
+  %282 = mul i64 %188, 264
+  %283 = add i64 %282, %186
+  %284 = getelementptr i8, ptr addrspace(3) @__shared_memory__, i64 %283
+  %285 = load <32 x i8>, ptr addrspace(3) %284, align 1
+  %286 = mul i64 %192, 264
+  %287 = add i64 %286, %18
+  %288 = getelementptr i8, ptr addrspace(3) @__shared_memory___0, i64 %287
+  %289 = load <32 x i8>, ptr addrspace(3) %288, align 1
+  %290 = mul i64 %192, 264
+  %291 = add i64 %290, %186
+  %292 = getelementptr i8, ptr addrspace(3) @__shared_memory___0, i64 %291
+  %293 = load <32 x i8>, ptr addrspace(3) %292, align 1
+  %294 = mul i64 %194, 264
+  %295 = add i64 %294, %18
+  %296 = getelementptr i8, ptr addrspace(3) @__shared_memory___0, i64 %295
+  %297 = load <32 x i8>, ptr addrspace(3) %296, align 1
+  %298 = mul i64 %194, 264
+  %299 = add i64 %298, %186
+  %300 = getelementptr i8, ptr addrspace(3) @__shared_memory___0, i64 %299
+  %301 = load <32 x i8>, ptr addrspace(3) %300, align 1
+  %302 = mul i64 %196, 264
+  %303 = add i64 %302, %18
+  %304 = getelementptr i8, ptr addrspace(3) @__shared_memory___0, i64 %303
+  %305 = load <32 x i8>, ptr addrspace(3) %304, align 1
+  %306 = mul i64 %196, 264
+  %307 = add i64 %306, %186
+  %308 = getelementptr i8, ptr addrspace(3) @__shared_memory___0, i64 %307
+  %309 = load <32 x i8>, ptr addrspace(3) %308, align 1
+  %310 = mul i64 %198, 264
+  %311 = add i64 %310, %18
+  %312 = getelementptr i8, ptr addrspace(3) @__shared_memory___0, i64 %311
+  %313 = load <32 x i8>, ptr addrspace(3) %312, align 1
+  %314 = mul i64 %198, 264
+  %315 = add i64 %314, %186
+  %316 = getelementptr i8, ptr addrspace(3) @__shared_memory___0, i64 %315
+  %317 = load <32 x i8>, ptr addrspace(3) %316, align 1
+  %318 = extractvalue [2 x [4 x [4 x <1 x float>]]] %201, 0, 0, 0
+  %319 = extractelement <1 x float> %318, i64 0
+  %320 = insertelement <4 x float> poison, float %319, i64 0
+  %321 = extractvalue [2 x [4 x [4 x <1 x float>]]] %201, 0, 0, 1
+  %322 = extractelement <1 x float> %321, i64 0
+  %323 = insertelement <4 x float> %320, float %322, i64 1
+  %324 = extractvalue [2 x [4 x [4 x <1 x float>]]] %201, 0, 0, 2
+  %325 = extractelement <1 x float> %324, i64 0
+  %326 = insertelement <4 x float> %323, float %325, i64 2
+  %327 = extractvalue [2 x [4 x [4 x <1 x float>]]] %201, 0, 0, 3
+  %328 = extractelement <1 x float> %327, i64 0
+  %329 = insertelement <4 x float> %326, float %328, i64 3
+  %330 = bitcast <32 x i8> %273 to <8 x i32>
+  %331 = bitcast <32 x i8> %289 to <8 x i32>
+  %332 = call <4 x float> @llvm.amdgcn.mfma.scale.f32.16x16x128.f8f6f4.v8i32.v8i32(<8 x i32> %330, <8 x i32> %331, <4 x float> %329, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0)
+  %333 = extractvalue [2 x [4 x [4 x <1 x float>]]] %201, 0, 1, 0
+  %334 = extractelement <1 x float> %333, i64 0
+  %335 = insertelement <4 x float> poison, float %334, i64 0
+  %336 = extractvalue [2 x [4 x [4 x <1 x float>]]] %201, 0, 1, 1
+  %337 = extractelement <1 x float> %336, i64 0
+  %338 = insertelement <4 x float> %335, float %337, i64 1
+  %339 = extractvalue [2 x [4 x [4 x <1 x float>]]] %201, 0, 1, 2
+  %340 = extractelement <1 x float> %339, i64 0
+  %341 = insertelement <4 x float> %338, float %340, i64 2
+  %342 = extractvalue [2 x [4 x [4 x <1 x float>]]] %201, 0, 1, 3
+  %343 = extractelement <1 x float> %342, i64 0
+  %344 = insertelement <4 x float> %341, float %343, i64 3
+  %345 = bitcast <32 x i8> %273 to <8 x i32>
+  %346 = bitcast <32 x i8> %297 to <8 x i32>
+  %347 = call <4 x float> @llvm.amdgcn.mfma.scale.f32.16x16x128.f8f6f4.v8i32.v8i32(<8 x i32> %345, <8 x i32> %346, <4 x float> %344, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0)
+  %348 = extractvalue [2 x [4 x [4 x <1 x float>]]] %201, 0, 2, 0
+  %349 = extractelement <1 x float> %348, i64 0
+  %350 = insertelement <4 x float> poison, float %349, i64 0
+  %351 = extractvalue [2 x [4 x [4 x <1 x float>]]] %201, 0, 2, 1
+  %352 = extractelement <1 x float> %351, i64 0
+  %353 = insertelement <4 x float> %350, float %352, i64 1
+  %354 = extractvalue [2 x [4 x [4 x <1 x float>]]] %201, 0, 2, 2
+  %355 = extractelement <1 x float> %354, i64 0
+  %356 = insertelement <4 x float> %353, float %355, i64 2
+  %357 = extractvalue [2 x [4 x [4 x <1 x float>]]] %201, 0, 2, 3
+  %358 = extractelement <1 x float> %357, i64 0
+  %359 = insertelement <4 x float> %356, float %358, i64 3
+  %360 = bitcast <32 x i8> %273 to <8 x i32>
+  %361 = bitcast <32 x i8> %305 to <8 x i32>
+  %362 = call <4 x float> @llvm.amdgcn.mfma.scale.f32.16x16x128.f8f6f4.v8i32.v8i32(<8 x i32> %360, <8 x i32> %361, <4 x float> %359, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0)
+  %363 = extractvalue [2 x [4 x [4 x <1 x float>]]] %201, 0, 3, 0
+  %364 = extractelement <1 x float> %363, i64 0
+  %365 = insertelement <4 x float> poison, float %364, i64 0
+  %366 = extractvalue [2 x [4 x [4 x <1 x float>]]] %201, 0, 3, 1
+  %367 = extractelement <1 x float> %366, i64 0
+  %368 = insertelement <4 x float> %365, float %367, i64 1
+  %369 = extractvalue [2 x [4 x [4 x <1 x float>]]] %201, 0, 3, 2
+  %370 = extractelement <1 x float> %369, i64 0
+  %371 = insertelement <4 x float> %368, float %370, i64 2
+  %372 = extractvalue [2 x [4 x [4 x <1 x float>]]] %201, 0, 3, 3
+  %373 = extractelement <1 x float> %372, i64 0
+  %374 = insertelement <4 x float> %371, float %373, i64 3
+  %375 = bitcast <32 x i8> %273 to <8 x i32>
+  %376 = bitcast <32 x i8> %313 to <8 x i32>
+  %377 = call <4 x float> @llvm.amdgcn.mfma.scale.f32.16x16x128.f8f6f4.v8i32.v8i32(<8 x i32> %375, <8 x i32> %376, <4 x float> %374, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0)
+  %378 = extractvalue [2 x [4 x [4 x <1 x float>]]] %201, 1, 0, 0
+  %379 = extractelement <1 x float> %378, i64 0
+  %380 = insertelement <4 x float> poison, float %379, i64 0
+  %381 = extractvalue [2 x [4 x [4 x <1 x float>]]] %201, 1, 0, 1
+  %382 = extractelement <1 x float> %381, i64 0
+  %383 = insertelement <4 x float> %380, float %382, i64 1
+  %384 = extractvalue [2 x [4 x [4 x <1 x float>]]] %201, 1, 0, 2
+  %385 = extractelement <1 x float> %384, i64 0
+  %386 = insertelement <4 x float> %383, float %385, i64 2
+  %387 = extractvalue [2 x [4 x [4 x <1 x float>]]] %201, 1, 0, 3
+  %388 = extractelement <1 x float> %387, i64 0
+  %389 = insertelement <4 x float> %386, float %388, i64 3
+  %390 = bitcast <32 x i8> %281 to <8 x i32>
+  %391 = bitcast <32 x i8> %289 to <8 x i32>
+  %392 = call <4 x float> @llvm.amdgcn.mfma.scale.f32.16x16x128.f8f6f4.v8i32.v8i32(<8 x i32> %390, <8 x i32> %391, <4 x float> %389, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0)
+  %393 = extractvalue [2 x [4 x [4 x <1 x float>]]] %201, 1, 1, 0
+  %394 = extractelement <1 x float> %393, i64 0
+  %395 = insertelement <4 x float> poison, float %394, i64 0
+  %396 = extractvalue [2 x [4 x [4 x <1 x float>]]] %201, 1, 1, 1
+  %397 = extractelement <1 x float> %396, i64 0
+  %398 = insertelement <4 x float> %395, float %397, i64 1
+  %399 = extractvalue [2 x [4 x [4 x <1 x float>]]] %201, 1, 1, 2
+  %400 = extractelement <1 x float> %399, i64 0
+  %401 = insertelement <4 x float> %398, float %400, i64 2
+  %402 = extractvalue [2 x [4 x [4 x <1 x float>]]] %201, 1, 1, 3
+  %403 = extractelement <1 x float> %402, i64 0
+  %404 = insertelement <4 x float> %401, float %403, i64 3
+  %405 = bitcast <32 x i8> %281 to <8 x i32>
+  %406 = bitcast <32 x i8> %297 to <8 x i32>
+  %407 = call <4 x float> @llvm.amdgcn.mfma.scale.f32.16x16x128.f8f6f4.v8i32.v8i32(<8 x i32> %405, <8 x i32> %406, <4 x float> %404, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0)
+  %408 = extractvalue [2 x [4 x [4 x <1 x float>]]] %201, 1, 2, 0
+  %409 = extractelement <1 x float> %408, i64 0
+  %410 = insertelement <4 x float> poison, float %409, i64 0
+  %411 = extractvalue [2 x [4 x [4 x <1 x float>]]] %201, 1, 2, 1
+  %412 = extractelement <1 x float> %411, i64 0
+  %413 = insertelement <4 x float> %410, float %412, i64 1
+  %414 = extractvalue [2 x [4 x [4 x <1 x float>]]] %201, 1, 2, 2
+  %415 = extractelement <1 x float> %414, i64 0
+  %416 = insertelement <4 x float> %413, float %415, i64 2
+  %417 = extractvalue [2 x [4 x [4 x <1 x float>]]] %201, 1, 2, 3
+  %418 = extractelement <1 x float> %417, i64 0
+  %419 = insertelement <4 x float> %416, float %418, i64 3
+  %420 = bitcast <32 x i8> %281 to <8 x i32>
+  %421 = bitcast <32 x i8> %305 to <8 x i32>
+  %422 = call <4 x float> @llvm.amdgcn.mfma.scale.f32.16x16x128.f8f6f4.v8i32.v8i32(<8 x i32> %420, <8 x i32> %421, <4 x float> %419, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0)
+  %423 = extractvalue [2 x [4 x [4 x <1 x float>]]] %201, 1, 3, 0
+  %424 = extractelement <1 x float> %423, i64 0
+  %425 = insertelement <4 x float> poison, float %424, i64 0
+  %426 = extractvalue [2 x [4 x [4 x <1 x float>]]] %201, 1, 3, 1
+  %427 = extractelement <1 x float> %426, i64 0
+  %428 = insertelement <4 x float> %425, float %427, i64 1
+  %429 = extractvalue [2 x [4 x [4 x <1 x float>]]] %201, 1, 3, 2
+  %430 = extractelement <1 x float> %429, i64 0
+  %431 = insertelement <4 x float> %428, float %430, i64 2
+  %432 = extractvalue [2 x [4 x [4 x <1 x float>]]] %201, 1, 3, 3
+  %433 = extractelement <1 x float> %432, i64 0
+  %434 = insertelement <4 x float> %431, float %433, i64 3
+  %435 = bitcast <32 x i8> %281 to <8 x i32>
+  %436 = bitcast <32 x i8> %313 to <8 x i32>
+  %437 = call <4 x float> @llvm.amdgcn.mfma.scale.f32.16x16x128.f8f6f4.v8i32.v8i32(<8 x i32> %435, <8 x i32> %436, <4 x float> %434, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0)
+  %438 = bitcast <32 x i8> %277 to <8 x i32>
+  %439 = bitcast <32 x i8> %293 to <8 x i32>
+  %440 = call <4 x float> @llvm.amdgcn.mfma.scale.f32.16x16x128.f8f6f4.v8i32.v8i32(<8 x i32> %438, <8 x i32> %439, <4 x float> %332, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0)
+  %441 = extractelement <4 x float> %440, i64 0
+  %442 = insertelement <1 x float> poison, float %441, i64 0
+  %443 = insertvalue [4 x <1 x float>] poison, <1 x float> %442, 0
+  %444 = extractelement <4 x float> %440, i64 1
+  %445 = insertelement <1 x float> poison, float %444, i64 0
+  %446 = insertvalue [4 x <1 x float>] %443, <1 x float> %445, 1
+  %447 = extractelement <4 x float> %440, i64 2
+  %448 = insertelement <1 x float> poison, float %447, i64 0
+  %449 = insertvalue [4 x <1 x float>] %446, <1 x float> %448, 2
+  %450 = extractelement <4 x float> %440, i64 3
+  %451 = insertelement <1 x float> poison, float %450, i64 0
+  %452 = insertvalue [4 x <1 x float>] %449, <1 x float> %451, 3
+  %453 = bitcast <32 x i8> %277 to <8 x i32>
+  %454 = bitcast <32 x i8> %301 to <8 x i32>
+  %455 = call <4 x float> @llvm.amdgcn.mfma.scale.f32.16x16x128.f8f6f4.v8i32.v8i32(<8 x i32> %453, <8 x i32> %454, <4 x float> %347, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0)
+  %456 = extractelement <4 x float> %455, i64 0
+  %457 = insertelement <1 x float> poison, float %456, i64 0
+  %458 = insertvalue [4 x <1 x float>] poison, <1 x float> %457, 0
+  %459 = extractelement <4 x float> %455, i64 1
+  %460 = insertelement <1 x float> poison, float %459, i64 0
+  %461 = insertvalue [4 x <1 x float>] %458, <1 x float> %460, 1
+  %462 = extractelement <4 x float> %455, i64 2
+  %463 = insertelement <1 x float> poison, float %462, i64 0
+  %464 = insertvalue [4 x <1 x float>] %461, <1 x float> %463, 2
+  %465 = extractelement <4 x float> %455, i64 3
+  %466 = insertelement <1 x float> poison, float %465, i64 0
+  %467 = insertvalue [4 x <1 x float>] %464, <1 x float> %466, 3
+  %468 = bitcast <32 x i8> %277 to <8 x i32>
+  %469 = bitcast <32 x i8> %309 to <8 x i32>
+  %470 = call <4 x float> @llvm.amdgcn.mfma.scale.f32.16x16x128.f8f6f4.v8i32.v8i32(<8 x i32> %468, <8 x i32> %469, <4 x float> %362, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0)
+  %471 = extractelement <4 x float> %470, i64 0
+  %472 = insertelement <1 x float> poison, float %471, i64 0
+  %473 = insertvalue [4 x <1 x float>] poison, <1 x float> %472, 0
+  %474 = extractelement <4 x float> %470, i64 1
+  %475 = insertelement <1 x float> poison, float %474, i64 0
+  %476 = insertvalue [4 x <1 x float>] %473, <1 x float> %475, 1
+  %477 = extractelement <4 x float> %470, i64 2
+  %478 = insertelement <1 x float> poison, float %477, i64 0
+  %479 = insertvalue [4 x <1 x float>] %476, <1 x float> %478, 2
+  %480 = extractelement <4 x float> %470, i64 3
+  %481 = insertelement <1 x float> poison, float %480, i64 0
+  %482 = insertvalue [4 x <1 x float>] %479, <1 x float> %481, 3
+  %483 = bitcast <32 x i8> %277 to <8 x i32>
+  %484 = bitcast <32 x i8> %317 to <8 x i32>
+  %485 = call <4 x float> @llvm.amdgcn.mfma.scale.f32.16x16x128.f8f6f4.v8i32.v8i32(<8 x i32> %483, <8 x i32> %484, <4 x float> %377, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0)
+  %486 = extractelement <4 x float> %485, i64 0
+  %487 = insertelement <1 x float> poison, float %486, i64 0
+  %488 = insertvalue [4 x <1 x float>] poison, <1 x float> %487, 0
+  %489 = extractelement <4 x float> %485, i64 1
+  %490 = insertelement <1 x float> poison, float %489, i64 0
+  %491 = insertvalue [4 x <1 x float>] %488, <1 x float> %490, 1
+  %492 = extractelement <4 x float> %485, i64 2
+  %493 = insertelement <1 x float> poison, float %492, i64 0
+  %494 = insertvalue [4 x <1 x float>] %491, <1 x float> %493, 2
+  %495 = extractelement <4 x float> %485, i64 3
+  %496 = insertelement <1 x float> poison, float %495, i64 0
+  %497 = insertvalue [4 x <1 x float>] %494, <1 x float> %496, 3
+  %498 = bitcast <32 x i8> %285 to <8 x i32>
+  %499 = bitcast <32 x i8> %293 to <8 x i32>
+  %500 = call <4 x float> @llvm.amdgcn.mfma.scale.f32.16x16x128.f8f6f4.v8i32.v8i32(<8 x i32> %498, <8 x i32> %499, <4 x float> %392, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0)
+  %501 = extractelement <4 x float> %500, i64 0
+  %502 = insertelement <1 x float> poison, float %501, i64 0
+  %503 = insertvalue [4 x <1 x float>] poison, <1 x float> %502, 0
+  %504 = extractelement <4 x float> %500, i64 1
+  %505 = insertelement <1 x float> poison, float %504, i64 0
+  %506 = insertvalue [4 x <1 x float>] %503, <1 x float> %505, 1
+  %507 = extractelement <4 x float> %500, i64 2
+  %508 = insertelement <1 x float> poison, float %507, i64 0
+  %509 = insertvalue [4 x <1 x float>] %506, <1 x float> %508, 2
+  %510 = extractelement <4 x float> %500, i64 3
+  %511 = insertelement <1 x float> poison, float %510, i64 0
+  %512 = insertvalue [4 x <1 x float>] %509, <1 x float> %511, 3
+  %513 = bitcast <32 x i8> %285 to <8 x i32>
+  %514 = bitcast <32 x i8> %301 to <8 x i32>
+  %515 = call <4 x float> @llvm.amdgcn.mfma.scale.f32.16x16x128.f8f6f4.v8i32.v8i32(<8 x i32> %513, <8 x i32> %514, <4 x float> %407, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0)
+  %516 = extractelement <4 x float> %515, i64 0
+  %517 = insertelement <1 x float> poison, float %516, i64 0
+  %518 = insertvalue [4 x <1 x float>] poison, <1 x float> %517, 0
+  %519 = extractelement <4 x float> %515, i64 1
+  %520 = insertelement <1 x float> poison, float %519, i64 0
+  %521 = insertvalue [4 x <1 x float>] %518, <1 x float> %520, 1
+  %522 = extractelement <4 x float> %515, i64 2
+  %523 = insertelement <1 x float> poison, float %522, i64 0
+  %524 = insertvalue [4 x <1 x float>] %521, <1 x float> %523, 2
+  %525 = extractelement <4 x float> %515, i64 3
+  %526 = insertelement <1 x float> poison, float %525, i64 0
+  %527 = insertvalue [4 x <1 x float>] %524, <1 x float> %526, 3
+  %528 = bitcast <32 x i8> %285 to <8 x i32>
+  %529 = bitcast <32 x i8> %309 to <8 x i32>
+  %530 = call <4 x float> @llvm.amdgcn.mfma.scale.f32.16x16x128.f8f6f4.v8i32.v8i32(<8 x i32> %528, <8 x i32> %529, <4 x float> %422, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0)
+  %531 = extractelement <4 x float> %530, i64 0
+  %532 = insertelement <1 x float> poison, float %531, i64 0
+  %533 = insertvalue [4 x <1 x float>] poison, <1 x float> %532, 0
+  %534 = extractelement <4 x float> %530, i64 1
+  %535 = insertelement <1 x float> poison, float %534, i64 0
+  %536 = insertvalue [4 x <1 x float>] %533, <1 x float> %535, 1
+  %537 = extractelement <4 x float> %530, i64 2
+  %538 = insertelement <1 x float> poison, float %537, i64 0
+  %539 = insertvalue [4 x <1 x float>] %536, <1 x float> %538, 2
+  %540 = extractelement <4 x float> %530, i64 3
+  %541 = insertelement <1 x float> poison, float %540, i64 0
+  %542 = insertvalue [4 x <1 x float>] %539, <1 x float> %541, 3
+  %543 = bitcast <32 x i8> %285 to <8 x i32>
+  %544 = bitcast <32 x i8> %317 to <8 x i32>
+  %545 = call <4 x float> @llvm.amdgcn.mfma.scale.f32.16x16x128.f8f6f4.v8i32.v8i32(<8 x i32> %543, <8 x i32> %544, <4 x float> %437, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0)
+  %546 = extractelement <4 x float> %545, i64 0
+  %547 = insertelement <1 x float> poison, float %546, i64 0
+  %548 = insertvalue [4 x <1 x float>] poison, <1 x float> %547, 0
+  %549 = extractelement <4 x float> %545, i64 1
+  %550 = insertelement <1 x float> poison, float %549, i64 0
+  %551 = insertvalue [4 x <1 x float>] %548, <1 x float> %550, 1
+  %552 = extractelement <4 x float> %545, i64 2
+  %553 = insertelement <1 x float> poison, float %552, i64 0
+  %554 = insertvalue [4 x <1 x float>] %551, <1 x float> %553, 2
+  %555 = extractelement <4 x float> %545, i64 3
+  %556 = insertelement <1 x float> poison, float %555, i64 0
+  %557 = insertvalue [4 x <1 x float>] %554, <1 x float> %556, 3
+  %558 = insertvalue [2 x [4 x [4 x <1 x float>]]] zeroinitializer, [4 x <1 x float>] %452, 0, 0
+  %559 = insertvalue [2 x [4 x [4 x <1 x float>]]] %558, [4 x <1 x float>] %467, 0, 1
+  %560 = insertvalue [2 x [4 x [4 x <1 x float>]]] %559, [4 x <1 x float>] %482, 0, 2
+  %561 = insertvalue [2 x [4 x [4 x <1 x float>]]] %560, [4 x <1 x float>] %497, 0, 3
+  %562 = insertvalue [2 x [4 x [4 x <1 x float>]]] %561, [4 x <1 x float>] %512, 1, 0
+  %563 = insertvalue [2 x [4 x [4 x <1 x float>]]] %562, [4 x <1 x float>] %527, 1, 1
+  %564 = insertvalue [2 x [4 x [4 x <1 x float>]]] %563, [4 x <1 x float>] %542, 1, 2
+  %565 = insertvalue [2 x [4 x [4 x <1 x float>]]] %564, [4 x <1 x float>] %557, 1, 3
+  fence syncscope("workgroup") release, !mmra !3
+  call void @llvm.amdgcn.s.barrier()
+  fence syncscope("workgroup") acquire, !mmra !3
+  call void @llvm.amdgcn.sched.barrier(i32 0)
+  %566 = mul i64 %20, 264
+  %567 = add i64 %566, %51
+  %568 = getelementptr i8, ptr addrspace(3) @__shared_memory__, i64 %567
+  store <16 x i8> %211, ptr addrspace(3) %568, align 1
+  %569 = mul i64 %24, 264
+  %570 = add i64 %569, %53
+  %571 = getelementptr i8, ptr addrspace(3) @__shared_memory__, i64 %570
+  store <16 x i8> %217, ptr addrspace(3) %571, align 1
+  %572 = mul i64 %28, 264
+  %573 = add i64 %572, %55
+  %574 = getelementptr i8, ptr addrspace(3) @__shared_memory__, i64 %573
+  store <16 x i8> %223, ptr addrspace(3) %574, align 1
+  %575 = mul i64 %32, 264
+  %576 = add i64 %575, %57
+  %577 = getelementptr i8, ptr addrspace(3) @__shared_memory__, i64 %576
+  store <16 x i8> %229, ptr addrspace(3) %577, align 1
+  %578 = mul i64 %20, 264
+  %579 = add i64 %578, %51
+  %580 = getelementptr i8, ptr addrspace(3) @__shared_memory___0, i64 %579
+  store <16 x i8> %233, ptr addrspace(3) %580, align 1
+  %581 = mul i64 %24, 264
+  %582 = add i64 %581, %53
+  %583 = getelementptr i8, ptr addrspace(3) @__shared_memory___0, i64 %582
+  store <16 x i8> %237, ptr addrspace(3) %583, align 1
+  %584 = mul i64 %28, 264
+  %585 = add i64 %584, %55
+  %586 = getelementptr i8, ptr addrspace(3) @__shared_memory___0, i64 %585
+  store <16 x i8> %241, ptr addrspace(3) %586, align 1
+  %587 = mul i64 %32, 264
+  %588 = add i64 %587, %57
+  %589 = getelementptr i8, ptr addrspace(3) @__shared_memory___0, i64 %588
+  store <16 x i8> %245, ptr addrspace(3) %589, align 1
+  %590 = mul i64 %36, 264
+  %591 = add i64 %590, %59
+  %592 = getelementptr i8, ptr addrspace(3) @__shared_memory___0, i64 %591
+  store <16 x i8> %251, ptr addrspace(3) %592, align 1
+  %593 = mul i64 %40, 264
+  %594 = add i64 %593, %61
+  %595 = getelementptr i8, ptr addrspace(3) @__shared_memory___0, i64 %594
+  store <16 x i8> %257, ptr addrspace(3) %595, align 1
+  %596 = mul i64 %44, 264
+  %597 = add i64 %596, %63
+  %598 = getelementptr i8, ptr addrspace(3) @__shared_memory___0, i64 %597
+  store <16 x i8> %263, ptr addrspace(3) %598, align 1
+  %599 = mul i64 %48, 264
+  %600 = add i64 %599, %65
+  %601 = getelementptr i8, ptr addrspace(3) @__shared_memory___0, i64 %600
+  store <16 x i8> %269, ptr addrspace(3) %601, align 1
+  br label %199
+
+602:                                              ; preds = %199
+  fence syncscope("workgroup") release, !mmra !3
+  call void @llvm.amdgcn.s.barrier()
+  fence syncscope("workgroup") acquire, !mmra !3
+  %603 = mul i64 %184, 264
+  %604 = add i64 %603, %18
+  %605 = getelementptr i8, ptr addrspace(3) @__shared_memory__, i64 %604
+  %606 = load <32 x i8>, ptr addrspace(3) %605, align 1
+  %607 = mul i64 %184, 264
+  %608 = add i64 %607, %186
+  %609 = getelementptr i8, ptr addrspace(3) @__shared_memory__, i64 %608
+  %610 = load <32 x i8>, ptr addrspace(3) %609, align 1
+  %611 = mul i64 %188, 264
+  %612 = add i64 %611, %18
+  %613 = getelementptr i8, ptr addrspace(3) @__shared_memory__, i64 %612
+  %614 = load <32 x i8>, ptr addrspace(3) %613, align 1
+  %615 = mul i64 %188, 264
+  %616 = add i64 %615, %186
+  %617 = getelementptr i8, ptr addrspace(3) @__shared_memory__, i64 %616
+  %618 = load <32 x i8>, ptr addrspace(3) %617, align 1
+  %619 = mul i64 %192, 264
+  %620 = add i64 %619, %18
+  %621 = getelementptr i8, ptr addrspace(3) @__shared_memory___0, i64 %620
+  %622 = load <32 x i8>, ptr addrspace(3) %621, align 1
+  %623 = mul i64 %192, 264
+  %624 = add i64 %623, %186
+  %625 = getelementptr i8, ptr addrspace(3) @__shared_memory___0, i64 %624
+  %626 = load <32 x i8>, ptr addrspace(3) %625, align 1
+  %627 = mul i64 %194, 264
+  %628 = add i64 %627, %18
+  %629 = getelementptr i8, ptr addrspace(3) @__shared_memory___0, i64 %628
+  %630 = load <32 x i8>, ptr addrspace(3) %629, align 1
+  %631 = mul i64 %194, 264
+  %632 = add i64 %631, %186
+  %633 = getelementptr i8, ptr addrspace(3) @__shared_memory___0, i64 %632
+  %634 = load <32 x i8>, ptr addrspace(3) %633, align 1
+  %635 = mul i64 %196, 264
+  %636 = add i64 %635, %18
+  %637 = getelementptr i8, ptr addrspace(3) @__shared_memory___0, i64 %636
+  %638 = load <32 x i8>, ptr addrspace(3) %637, align 1
+  %639 = mul i64 %196, 264
+  %640 = add i64 %639, %186
+  %641 = getelementptr i8, ptr addrspace(3) @__shared_memory___0, i64 %640
+  %642 = load <32 x i8>, ptr addrspace(3) %641, align 1
+  %643 = mul i64 %198, 264
+  %644 = add i64 %643, %18
+  %645 = getelementptr i8, ptr addrspace(3) @__shared_memory___0, i64 %644
+  %646 = load <32 x i8>, ptr addrspace(3) %645, align 1
+  %647 = mul i64 %198, 264
+  %648 = add i64 %647, %186
+  %649 = getelementptr i8, ptr addrspace(3) @__shared_memory___0, i64 %648
+  %650 = load <32 x i8>, ptr addrspace(3) %649, align 1
+  %651 = extractvalue [2 x [4 x [4 x <1 x float>]]] %201, 0, 0, 0
+  %652 = extractelement <1 x float> %651, i64 0
+  %653 = insertelement <4 x float> poison, float %652, i64 0
+  %654 = extractvalue [2 x [4 x [4 x <1 x float>]]] %201, 0, 0, 1
+  %655 = extractelement <1 x float> %654, i64 0
+  %656 = insertelement <4 x float> %653, float %655, i64 1
+  %657 = extractvalue [2 x [4 x [4 x <1 x float>]]] %201, 0, 0, 2
+  %658 = extractelement <1 x float> %657, i64 0
+  %659 = insertelement <4 x float> %656, float %658, i64 2
+  %660 = extractvalue [2 x [4 x [4 x <1 x float>]]] %201, 0, 0, 3
+  %661 = extractelement <1 x float> %660, i64 0
+  %662 = insertelement <4 x float> %659, float %661, i64 3
+  %663 = bitcast <32 x i8> %606 to <8 x i32>
+  %664 = bitcast <32 x i8> %622 to <8 x i32>
+  %665 = call <4 x float> @llvm.amdgcn.mfma.scale.f32.16x16x128.f8f6f4.v8i32.v8i32(<8 x i32> %663, <8 x i32> %664, <4 x float> %662, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0)
+  %666 = extractvalue [2 x [4 x [4 x <1 x float>]]] %201, 0, 1, 0
+  %667 = extractelement <1 x float> %666, i64 0
+  %668 = insertelement <4 x float> poison, float %667, i64 0
+  %669 = extractvalue [2 x [4 x [4 x <1 x float>]]] %201, 0, 1, 1
+  %670 = extractelement <1 x float> %669, i64 0
+  %671 = insertelement <4 x float> %668, float %670, i64 1
+  %672 = extractvalue [2 x [4 x [4 x <1 x float>]]] %201, 0, 1, 2
+  %673 = extractelement <1 x float> %672, i64 0
+  %674 = insertelement <4 x float> %671, float %673, i64 2
+  %675 = extractvalue [2 x [4 x [4 x <1 x float>]]] %201, 0, 1, 3
+  %676 = extractelement <1 x float> %675, i64 0
+  %677 = insertelement <4 x float> %674, float %676, i64 3
+  %678 = bitcast <32 x i8> %606 to <8 x i32>
+  %679 = bitcast <32 x i8> %630 to <8 x i32>
+  %680 = call <4 x float> @llvm.amdgcn.mfma.scale.f32.16x16x128.f8f6f4.v8i32.v8i32(<8 x i32> %678, <8 x i32> %679, <4 x float> %677, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0)
+  %681 = extractvalue [2 x [4 x [4 x <1 x float>]]] %201, 0, 2, 0
+  %682 = extractelement <1 x float> %681, i64 0
+  %683 = insertelement <4 x float> poison, float %682, i64 0
+  %684 = extractvalue [2 x [4 x [4 x <1 x float>]]] %201, 0, 2, 1
+  %685 = extractelement <1 x float> %684, i64 0
+  %686 = insertelement <4 x float> %683, float %685, i64 1
+  %687 = extractvalue [2 x [4 x [4 x <1 x float>]]] %201, 0, 2, 2
+  %688 = extractelement <1 x float> %687, i64 0
+  %689 = insertelement <4 x float> %686, float %688, i64 2
+  %690 = extractvalue [2 x [4 x [4 x <1 x float>]]] %201, 0, 2, 3
+  %691 = extractelement <1 x float> %690, i64 0
+  %692 = insertelement <4 x float> %689, float %691, i64 3
+  %693 = bitcast <32 x i8> %606 to <8 x i32>
+  %694 = bitcast <32 x i8> %638 to <8 x i32>
+  %695 = call <4 x float> @llvm.amdgcn.mfma.scale.f32.16x16x128.f8f6f4.v8i32.v8i32(<8 x i32> %693, <8 x i32> %694, <4 x float> %692, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0)
+  %696 = extractvalue [2 x [4 x [4 x <1 x float>]]] %201, 0, 3, 0
+  %697 = extractelement <1 x float> %696, i64 0
+  %698 = insertelement <4 x float> poison, float %697, i64 0
+  %699 = extractvalue [2 x [4 x [4 x <1 x float>]]] %201, 0, 3, 1
+  %700 = extractelement <1 x float> %699, i64 0
+  %701 = insertelement <4 x float> %698, float %700, i64 1
+  %702 = extractvalue [2 x [4 x [4 x <1 x float>]]] %201, 0, 3, 2
+  %703 = extractelement <1 x float> %702, i64 0
+  %704 = insertelement <4 x float> %701, float %703, i64 2
+  %705 = extractvalue [2 x [4 x [4 x <1 x float>]]] %201, 0, 3, 3
+  %706 = extractelement <1 x float> %705, i64 0
+  %707 = insertelement <4 x float> %704, float %706, i64 3
+  %708 = bitcast <32 x i8> %606 to <8 x i32>
+  %709 = bitcast <32 x i8> %646 to <8 x i32>
+  %710 = call <4 x float> @llvm.amdgcn.mfma.scale.f32.16x16x128.f8f6f4.v8i32.v8i32(<8 x i32> %708, <8 x i32> %709, <4 x float> %707, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0)
+  %711 = extractvalue [2 x [4 x [4 x <1 x float>]]] %201, 1, 0, 0
+  %712 = extractelement <1 x float> %711, i64 0
+  %713 = insertelement <4 x float> poison, float %712, i64 0
+  %714 = extractvalue [2 x [4 x [4 x <1 x float>]]] %201, 1, 0, 1
+  %715 = extractelement <1 x float> %714, i64 0
+  %716 = insertelement <4 x float> %713, float %715, i64 1
+  %717 = extractvalue [2 x [4 x [4 x <1 x float>]]] %201, 1, 0, 2
+  %718 = extractelement <1 x float> %717, i64 0
+  %719 = insertelement <4 x float> %716, float %718, i64 2
+  %720 = extractvalue [2 x [4 x [4 x <1 x float>]]] %201, 1, 0, 3
+  %721 = extractelement <1 x float> %720, i64 0
+  %722 = insertelement <4 x float> %719, float %721, i64 3
+  %723 = bitcast <32 x i8> %614 to <8 x i32>
+  %724 = bitcast <32 x i8> %622 to <8 x i32>
+  %725 = call <4 x float> @llvm.amdgcn.mfma.scale.f32.16x16x128.f8f6f4.v8i32.v8i32(<8 x i32> %723, <8 x i32> %724, <4 x float> %722, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0)
+  %726 = extractvalue [2 x [4 x [4 x <1 x float>]]] %201, 1, 1, 0
+  %727 = extractelement <1 x float> %726, i64 0
+  %728 = insertelement <4 x float> poison, float %727, i64 0
+  %729 = extractvalue [2 x [4 x [4 x <1 x float>]]] %201, 1, 1, 1
+  %730 = extractelement <1 x float> %729, i64 0
+  %731 = insertelement <4 x float> %728, float %730, i64 1
+  %732 = extractvalue [2 x [4 x [4 x <1 x float>]]] %201, 1, 1, 2
+  %733 = extractelement <1 x float> %732, i64 0
+  %734 = insertelement <4 x float> %731, float %733, i64 2
+  %735 = extractvalue [2 x [4 x [4 x <1 x float>]]] %201, 1, 1, 3
+  %736 = extractelement <1 x float> %735, i64 0
+  %737 = insertelement <4 x float> %734, float %736, i64 3
+  %738 = bitcast <32 x i8> %614 to <8 x i32>
+  %739 = bitcast <32 x i8> %630 to <8 x i32>
+  %740 = call <4 x float> @llvm.amdgcn.mfma.scale.f32.16x16x128.f8f6f4.v8i32.v8i32(<8 x i32> %738, <8 x i32> %739, <4 x float> %737, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0)
+  %741 = extractvalue [2 x [4 x [4 x <1 x float>]]] %201, 1, 2, 0
+  %742 = extractelement <1 x float> %741, i64 0
+  %743 = insertelement <4 x float> poison, float %742, i64 0
+  %744 = extractvalue [2 x [4 x [4 x <1 x float>]]] %201, 1, 2, 1
+  %745 = extractelement <1 x float> %744, i64 0
+  %746 = insertelement <4 x float> %743, float %745, i64 1
+  %747 = extractvalue [2 x [4 x [4 x <1 x float>]]] %201, 1, 2, 2
+  %748 = extractelement <1 x float> %747, i64 0
+  %749 = insertelement <4 x float> %746, float %748, i64 2
+  %750 = extractvalue [2 x [4 x [4 x <1 x float>]]] %201, 1, 2, 3
+  %751 = extractelement <1 x float> %750, i64 0
+  %752 = insertelement <4 x float> %749, float %751, i64 3
+  %753 = bitcast <32 x i8> %614 to <8 x i32>
+  %754 = bitcast <32 x i8> %638 to <8 x i32>
+  %755 = call <4 x float> @llvm.amdgcn.mfma.scale.f32.16x16x128.f8f6f4.v8i32.v8i32(<8 x i32> %753, <8 x i32> %754, <4 x float> %752, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0)
+  %756 = extractvalue [2 x [4 x [4 x <1 x float>]]] %201, 1, 3, 0
+  %757 = extractelement <1 x float> %756, i64 0
+  %758 = insertelement <4 x float> poison, float %757, i64 0
+  %759 = extractvalue [2 x [4 x [4 x <1 x float>]]] %201, 1, 3, 1
+  %760 = extractelement <1 x float> %759, i64 0
+  %761 = insertelement <4 x float> %758, float %760, i64 1
+  %762 = extractvalue [2 x [4 x [4 x <1 x float>]]] %201, 1, 3, 2
+  %763 = extractelement <1 x float> %762, i64 0
+  %764 = insertelement <4 x float> %761, float %763, i64 2
+  %765 = extractvalue [2 x [4 x [4 x <1 x float>]]] %201, 1, 3, 3
+  %766 = extractelement <1 x float> %765, i64 0
+  %767 = insertelement <4 x float> %764, float %766, i64 3
+  %768 = bitcast <32 x i8> %614 to <8 x i32>
+  %769 = bitcast <32 x i8> %646 to <8 x i32>
+  %770 = call <4 x float> @llvm.amdgcn.mfma.scale.f32.16x16x128.f8f6f4.v8i32.v8i32(<8 x i32> %768, <8 x i32> %769, <4 x float> %767, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0)
+  %771 = bitcast <32 x i8> %610 to <8 x i32>
+  %772 = bitcast <32 x i8> %626 to <8 x i32>
+  %773 = call <4 x float> @llvm.amdgcn.mfma.scale.f32.16x16x128.f8f6f4.v8i32.v8i32(<8 x i32> %771, <8 x i32> %772, <4 x float> %665, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0)
+  %774 = extractelement <4 x float> %773, i64 0
+  %775 = insertelement <1 x float> poison, float %774, i64 0
+  %776 = extractelement <4 x float> %773, i64 1
+  %777 = insertelement <1 x float> poison, float %776, i64 0
+  %778 = extractelement <4 x float> %773, i64 2
+  %779 = insertelement <1 x float> poison, float %778, i64 0
+  %780 = extractelement <4 x float> %773, i64 3
+  %781 = insertelement <1 x float> poison, float %780, i64 0
+  %782 = bitcast <32 x i8> %610 to <8 x i32>
+  %783 = bitcast <32 x i8> %634 to <8 x i32>
+  %784 = call <4 x float> @llvm.amdgcn.mfma.scale.f32.16x16x128.f8f6f4.v8i32.v8i32(<8 x i32> %782, <8 x i32> %783, <4 x float> %680, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0)
+  %785 = extractelement <4 x float> %784, i64 0
+  %786 = insertelement <1 x float> poison, float %785, i64 0
+  %787 = extractelement <4 x float> %784, i64 1
+  %788 = insertelement <1 x float> poison, float %787, i64 0
+  %789 = extractelement <4 x float> %784, i64 2
+  %790 = insertelement <1 x float> poison, float %789, i64 0
+  %791 = extractelement <4 x float> %784, i64 3
+  %792 = insertelement <1 x float> poison, float %791, i64 0
+  %793 = bitcast <32 x i8> %610 to <8 x i32>
+  %794 = bitcast <32 x i8> %642 to <8 x i32>
+  %795 = call <4 x float> @llvm.amdgcn.mfma.scale.f32.16x16x128.f8f6f4.v8i32.v8i32(<8 x i32> %793, <8 x i32> %794, <4 x float> %695, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0)
+  %796 = extractelement <4 x float> %795, i64 0
+  %797 = insertelement <1 x float> poison, float %796, i64 0
+  %798 = extractelement <4 x float> %795, i64 1
+  %799 = insertelement <1 x float> poison, float %798, i64 0
+  %800 = extractelement <4 x float> %795, i64 2
+  %801 = insertelement <1 x float> poison, float %800, i64 0
+  %802 = extractelement <4 x float> %795, i64 3
+  %803 = insertelement <1 x float> poison, float %802, i64 0
+  %804 = bitcast <32 x i8> %610 to <8 x i32>
+  %805 = bitcast <32 x i8> %650 to <8 x i32>
+  %806 = call <4 x float> @llvm.amdgcn.mfma.scale.f32.16x16x128.f8f6f4.v8i32.v8i32(<8 x i32> %804, <8 x i32> %805, <4 x float> %710, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0)
+  %807 = extractelement <4 x float> %806, i64 0
+  %808 = insertelement <1 x float> poison, float %807, i64 0
+  %809 = extractelement <4 x float> %806, i64 1
+  %810 = insertelement <1 x float> poison, float %809, i64 0
+  %811 = extractelement <4 x float> %806, i64 2
+  %812 = insertelement <1 x float> poison, float %811, i64 0
+  %813 = extractelement <4 x float> %806, i64 3
+  %814 = insertelement <1 x float> poison, float %813, i64 0
+  %815 = bitcast <32 x i8> %618 to <8 x i32>
+  %816 = bitcast <32 x i8> %626 to <8 x i32>
+  %817 = call <4 x float> @llvm.amdgcn.mfma.scale.f32.16x16x128.f8f6f4.v8i32.v8i32(<8 x i32> %815, <8 x i32> %816, <4 x float> %725, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0)
+  %818 = extractelement <4 x float> %817, i64 0
+  %819 = insertelement <1 x float> poison, float %818, i64 0
+  %820 = extractelement <4 x float> %817, i64 1
+  %821 = insertelement <1 x float> poison, float %820, i64 0
+  %822 = extractelement <4 x float> %817, i64 2
+  %823 = insertelement <1 x float> poison, float %822, i64 0
+  %824 = extractelement <4 x float> %817, i64 3
+  %825 = insertelement <1 x float> poison, float %824, i64 0
+  %826 = bitcast <32 x i8> %618 to <8 x i32>
+  %827 = bitcast <32 x i8> %634 to <8 x i32>
+  %828 = call <4 x float> @llvm.amdgcn.mfma.scale.f32.16x16x128.f8f6f4.v8i32.v8i32(<8 x i32> %826, <8 x i32> %827, <4 x float> %740, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0)
+  %829 = extractelement <4 x float> %828, i64 0
+  %830 = insertelement <1 x float> poison, float %829, i64 0
+  %831 = extractelement <4 x float> %828, i64 1
+  %832 = insertelement <1 x float> poison, float %831, i64 0
+  %833 = extractelement <4 x float> %828, i64 2
+  %834 = insertelement <1 x float> poison, float %833, i64 0
+  %835 = extractelement <4 x float> %828, i64 3
+  %836 = insertelement <1 x float> poison, float %835, i64 0
+  %837 = bitcast <32 x i8> %618 to <8 x i32>
+  %838 = bitcast <32 x i8> %642 to <8 x i32>
+  %839 = call <4 x float> @llvm.amdgcn.mfma.scale.f32.16x16x128.f8f6f4.v8i32.v8i32(<8 x i32> %837, <8 x i32> %838, <4 x float> %755, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0)
+  %840 = extractelement <4 x float> %839, i64 0
+  %841 = insertelement <1 x float> poison, float %840, i64 0
+  %842 = extractelement <4 x float> %839, i64 1
+  %843 = insertelement <1 x float> poison, float %842, i64 0
+  %844 = extractelement <4 x float> %839, i64 2
+  %845 = insertelement <1 x float> poison, float %844, i64 0
+  %846 = extractelement <4 x float> %839, i64 3
+  %847 = insertelement <1 x float> poison, float %846, i64 0
+  %848 = bitcast <32 x i8> %618 to <8 x i32>
+  %849 = bitcast <32 x i8> %650 to <8 x i32>
+  %850 = call <4 x float> @llvm.amdgcn.mfma.scale.f32.16x16x128.f8f6f4.v8i32.v8i32(<8 x i32> %848, <8 x i32> %849, <4 x float> %770, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0)
+  %851 = extractelement <4 x float> %850, i64 0
+  %852 = insertelement <1 x float> poison, float %851, i64 0
+  %853 = extractelement <4 x float> %850, i64 1
+  %854 = insertelement <1 x float> poison, float %853, i64 0
+  %855 = extractelement <4 x float> %850, i64 2
+  %856 = insertelement <1 x float> poison, float %855, i64 0
+  %857 = extractelement <4 x float> %850, i64 3
+  %858 = insertelement <1 x float> poison, float %857, i64 0
+  %859 = mul nsw i32 %69, 4
+  %860 = add i32 %181, %859
+  %861 = mul nsw i32 %70, 8
+  %862 = add i32 %189, %861
+  %863 = mul nsw i32 %860, 16
+  %864 = add nsw i32 %863, %16
+  %865 = zext i32 %864 to i64
+  %866 = mul nsw i32 %862, 16
+  %867 = add nsw i32 %866, %15
+  %868 = zext i32 %867 to i64
+  %869 = mul i64 %865, 640
+  %870 = add i64 %869, %868
+  %871 = getelementptr float, ptr addrspace(7) %8, i64 %870
+  store <1 x float> %775, ptr addrspace(7) %871, align 4
+  %872 = add nsw i32 %867, 16
+  %873 = zext i32 %872 to i64
+  %874 = mul i64 %865, 640
+  %875 = add i64 %874, %873
+  %876 = getelementptr float, ptr addrspace(7) %8, i64 %875
+  store <1 x float> %786, ptr addrspace(7) %876, align 4
+  %877 = add nsw i32 %867, 32
+  %878 = zext i32 %877 to i64
+  %879 = mul i64 %865, 640
+  %880 = add i64 %879, %878
+  %881 = getelementptr float, ptr addrspace(7) %8, i64 %880
+  store <1 x float> %797, ptr addrspace(7) %881, align 4
+  %882 = add nsw i32 %867, 48
+  %883 = zext i32 %882 to i64
+  %884 = mul i64 %865, 640
+  %885 = add i64 %884, %883
+  %886 = getelementptr float, ptr addrspace(7) %8, i64 %885
+  store <1 x float> %808, ptr addrspace(7) %886, align 4
+  %887 = add nsw i32 %864, 1
+  %888 = zext i32 %887 to i64
+  %889 = mul i64 %888, 640
+  %890 = add i64 %889, %868
+  %891 = getelementptr float, ptr addrspace(7) %8, i64 %890
+  store <1 x float> %777, ptr addrspace(7) %891, align 4
+  %892 = mul i64 %888, 640
+  %893 = add i64 %892, %873
+  %894 = getelementptr float, ptr addrspace(7) %8, i64 %893
+  store <1 x float> %788, ptr addrspace(7) %894, align 4
+  %895 = mul i64 %888, 640
+  %896 = add i64 %895, %878
+  %897 = getelementptr float, ptr addrspace(7) %8, i64 %896
+  store <1 x float> %799, ptr addrspace(7) %897, align 4
+  %898 = mul i64 %888, 640
+  %899 = add i64 %898, %883
+  %900 = getelementptr float, ptr addrspace(7) %8, i64 %899
+  store <1 x float> %810, ptr addrspace(7) %900, align 4
+  %901 = add nsw i32 %864, 2
+  %902 = zext i32 %901 to i64
+  %903 = mul i64 %902, 640
+  %904 = add i64 %903, %868
+  %905 = getelementptr float, ptr addrspace(7) %8, i64 %904
+  store <1 x float> %779, ptr addrspace(7) %905, align 4
+  %906 = mul i64 %902, 640
+  %907 = add i64 %906, %873
+  %908 = getelementptr float, ptr addrspace(7) %8, i64 %907
+  store <1 x float> %790, ptr addrspace(7) %908, align 4
+  %909 = mul i64 %902, 640
+  %910 = add i64 %909, %878
+  %911 = getelementptr float, ptr addrspace(7) %8, i64 %910
+  store <1 x float> %801, ptr addrspace(7) %911, align 4
+  %912 = mul i64 %902, 640
+  %913 = add i64 %912, %883
+  %914 = getelementptr float, ptr addrspace(7) %8, i64 %913
+  store <1 x float> %812, ptr addrspace(7) %914, align 4
+  %915 = add nsw i32 %864, 3
+  %916 = zext i32 %915 to i64
+  %917 = mul i64 %916, 640
+  %918 = add i64 %917, %868
+  %919 = getelementptr float, ptr addrspace(7) %8, i64 %918
+  store <1 x float> %781, ptr addrspace(7) %919, align 4
+  %920 = mul i64 %916, 640
+  %921 = add i64 %920, %873
+  %922 = getelementptr float, ptr addrspace(7) %8, i64 %921
+  store <1 x float> %792, ptr addrspace(7) %922, align 4
+  %923 = mul i64 %916, 640
+  %924 = add i64 %923, %878
+  %925 = getelementptr float, ptr addrspace(7) %8, i64 %924
+  store <1 x float> %803, ptr addrspace(7) %925, align 4
+  %926 = mul i64 %916, 640
+  %927 = add i64 %926, %883
+  %928 = getelementptr float, ptr addrspace(7) %8, i64 %927
+  store <1 x float> %814, ptr addrspace(7) %928, align 4
+  %929 = add nsw i32 %864, 16
+  %930 = zext i32 %929 to i64
+  %931 = mul i64 %930, 640
+  %932 = add i64 %931, %868
+  %933 = getelementptr float, ptr addrspace(7) %8, i64 %932
+  store <1 x float> %819, ptr addrspace(7) %933, align 4
+  %934 = mul i64 %930, 640
+  %935 = add i64 %934, %873
+  %936 = getelementptr float, ptr addrspace(7) %8, i64 %935
+  store <1 x float> %830, ptr addrspace(7) %936, align 4
+  %937 = mul i64 %930, 640
+  %938 = add i64 %937, %878
+  %939 = getelementptr float, ptr addrspace(7) %8, i64 %938
+  store <1 x float> %841, ptr addrspace(7) %939, align 4
+  %940 = mul i64 %930, 640
+  %941 = add i64 %940, %883
+  %942 = getelementptr float, ptr addrspace(7) %8, i64 %941
+  store <1 x float> %852, ptr addrspace(7) %942, align 4
+  %943 = add nsw i32 %864, 17
+  %944 = zext i32 %943 to i64
+  %945 = mul i64 %944, 640
+  %946 = add i64 %945, %868
+  %947 = getelementptr float, ptr addrspace(7) %8, i64 %946
+  store <1 x float> %821, ptr addrspace(7) %947, align 4
+  %948 = mul i64 %944, 640
+  %949 = add i64 %948, %873
+  %950 = getelementptr float, ptr addrspace(7) %8, i64 %949
+  store <1 x float> %832, ptr addrspace(7) %950, align 4
+  %951 = mul i64 %944, 640
+  %952 = add i64 %951, %878
+  %953 = getelementptr float, ptr addrspace(7) %8, i64 %952
+  store <1 x float> %843, ptr addrspace(7) %953, align 4
+  %954 = mul i64 %944, 640
+  %955 = add i64 %954, %883
+  %956 = getelementptr float, ptr addrspace(7) %8, i64 %955
+  store <1 x float> %854, ptr addrspace(7) %956, align 4
+  %957 = add nsw i32 %864, 18
+  %958 = zext i32 %957 to i64
+  %959 = mul i64 %958, 640
+  %960 = add i64 %959, %868
+  %961 = getelementptr float, ptr addrspace(7) %8, i64 %960
+  store <1 x float> %823, ptr addrspace(7) %961, align 4
+  %962 = mul i64 %958, 640
+  %963 = add i64 %962, %873
+  %964 = getelementptr float, ptr addrspace(7) %8, i64 %963
+  store <1 x float> %834, ptr addrspace(7) %964, align 4
+  %965 = mul i64 %958, 640
+  %966 = add i64 %965, %878
+  %967 = getelementptr float, ptr addrspace(7) %8, i64 %966
+  store <1 x float> %845, ptr addrspace(7) %967, align 4
+  %968 = mul i64 %958, 640
+  %969 = add i64 %968, %883
+  %970 = getelementptr float, ptr addrspace(7) %8, i64 %969
+  store <1 x float> %856, ptr addrspace(7) %970, align 4
+  %971 = add nsw i32 %864, 19
+  %972 = zext i32 %971 to i64
+  %973 = mul i64 %972, 640
+  %974 = add i64 %973, %868
+  %975 = getelementptr float, ptr addrspace(7) %8, i64 %974
+  store <1 x float> %825, ptr addrspace(7) %975, align 4
+  %976 = mul i64 %972, 640
+  %977 = add i64 %976, %873
+  %978 = getelementptr float, ptr addrspace(7) %8, i64 %977
+  store <1 x float> %836, ptr addrspace(7) %978, align 4
+  %979 = mul i64 %972, 640
+  %980 = add i64 %979, %878
+  %981 = getelementptr float, ptr addrspace(7) %8, i64 %980
+  store <1 x float> %847, ptr addrspace(7) %981, align 4
+  %982 = mul i64 %972, 640
+  %983 = add i64 %982, %883
+  %984 = getelementptr float, ptr addrspace(7) %8, i64 %983
+  store <1 x float> %858, ptr addrspace(7) %984, align 4
+  fence syncscope("workgroup") release, !mmra !3
+  call void @llvm.amdgcn.s.barrier()
+  fence syncscope("workgroup") acquire, !mmra !3
+  ret void
+}
+
+; Function Attrs: alwaysinline nocallback nofree nosync nounwind speculatable willreturn memory(none)
+declare noundef range(i32 0, 1024) i32 @llvm.amdgcn.workitem.id.x() #1
+
+; Function Attrs: alwaysinline nocallback nofree nosync nounwind willreturn memory(inaccessiblemem: write)
+declare void @llvm.assume(i1 noundef) #2
+
+; Function Attrs: alwaysinline nocallback nocreateundeforpoison nofree nosync nounwind speculatable willreturn memory(none)
+declare ptr addrspace(7) @llvm.amdgcn.make.buffer.rsrc.p7.p1(ptr addrspace(1) readnone, i16, i64, i32) #3
+
+; Function Attrs: alwaysinline nocallback nofree nosync nounwind speculatable willreturn memory(none)
+declare noundef i32 @llvm.amdgcn.workgroup.id.x() #1
+
+; Function Attrs: alwaysinline convergent nocallback nofree nounwind willreturn
+declare void @llvm.amdgcn.s.barrier() #4
+
+; Function Attrs: alwaysinline convergent nocallback nocreateundeforpoison nofree nosync nounwind willreturn memory(none)
+declare <4 x float> @llvm.amdgcn.mfma.scale.f32.16x16x128.f8f6f4.v8i32.v8i32(<8 x i32>, <8 x i32>, <4 x float>, i32 immarg, i32 immarg, i32 immarg, i32, i32 immarg, i32) #5
+
+; Function Attrs: alwaysinline convergent nocallback nofree nounwind willreturn
+declare void @llvm.amdgcn.sched.barrier(i32 immarg) #4
+
+attributes #0 = { alwaysinline "amdgpu-flat-work-group-size"="256,256" "uniform-work-group-size"="true" }
+attributes #1 = { alwaysinline nocallback nofree nosync nounwind speculatable willreturn memory(none) }
+attributes #2 = { alwaysinline nocallback nofree nosync nounwind willreturn memory(inaccessiblemem: write) }
+attributes #3 = { alwaysinline nocallback nocreateundeforpoison nofree nosync nounwind speculatable willreturn memory(none) }
+attributes #4 = { alwaysinline convergent nocallback nofree nounwind willreturn }
+attributes #5 = { alwaysinline convergent nocallback nocreateundeforpoison nofree nosync nounwind willreturn memory(none) }
+
+!llvm.module.flags = !{!0, !1}
+
+!0 = !{i32 2, !"Debug Info Version", i32 3}
+!1 = !{i32 1, !"amdhsa_code_object_version", i32 500}
+!2 = !{i32 256, i32 1, i32 1}
+!3 = !{!"amdgpu-synchronize-as", !"local"}

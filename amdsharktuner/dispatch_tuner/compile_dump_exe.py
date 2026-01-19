@@ -60,7 +60,7 @@ def main():
     arch = sys.argv[1]
 
     base_path = Path(os.path.dirname(os.path.abspath(__file__)))
-    input_dir = base_path / f"problem_mlir_dump_{arch}"
+    input_dir = base_path / f"{arch}_problem_mlir_dump"
     
     print(f"Processing MLIR files in: {input_dir}")
     
@@ -69,7 +69,7 @@ def main():
     print(f"Found {len(mlir_files)} MLIR files to process")
     
     # Ensure output directory exists
-    output_dir = Path(base_path) / f"bench_dump_{arch}"
+    output_dir = Path(base_path) / f"{arch}_bench_dump"
     dump_dir = output_dir / "tmp"
     output_dir.mkdir(exist_ok=True)
     dump_dir.mkdir(exist_ok=True)
