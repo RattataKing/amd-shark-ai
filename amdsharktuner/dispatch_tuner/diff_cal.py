@@ -27,6 +27,13 @@ def quantization_inefficiency(M, tile_m, N, tile_n, cu_num: int = 256):
 def compute_sort_columns(df):
     df = df.copy()
     df["tile_k_is_pow2"] = df["knob_tile_k"].apply(is_pow2)
+    df["tile_m_is_pow2"] = df["knob_tile_m"].apply(is_pow2)
+    df["tile_n_is_pow2"] = df["knob_tile_n"].apply(is_pow2)
+    
+    m = df["knob_tile_m"]
+    n = df["knob_tile_n"]
+
+    df["tile_mn_ratio"] = m.combine(n, lambda a, b: min(a, b) / max(a, b))
 
     df["simd_is_mult4"] = (
         (df["knob_subgroup_m_cnt"] * df["knob_subgroup_n_cnt"])
@@ -58,15 +65,17 @@ def geometric_mean(nums):
 
 base_path = Path(__file__).resolve().parent
 
-csv_dir_name = "gfx1201_tuning_database_vd_1/"
-
+"""
+Remember to update CU number for q_ie
+"""
 csv_dir_name_list = [
     # "gfx1201_tuning_database_vd_1/", 
-    "gfx1201_tuning_database_tf_1/",
-    "gfx942_tuning_database_vd_1/", 
-    "gfx942_tuning_database_tf_1/",
+    # "gfx1201_tuning_database_tf_1/",
+    # "gfx942_tuning_database_vd_1/", 
+    # "gfx942_tuning_database_tf_1/",
     "gfx950_tuning_database_vd_1/", 
-    "gfx950_tuning_database_tf_1/",]
+    "gfx950_tuning_database_tf_1/",
+]
 
 for csv_dir_name in csv_dir_name_list:
     print(csv_dir_name)
@@ -86,7 +95,7 @@ for csv_dir_name in csv_dir_name_list:
         # df = df[df["to_benchmark"] == True]
         max_val = df["benchmark_rank_order"].max(skipna=True)
         if pd.isna(max_val):
-            print(f"Weird csv, skipping: {f.name}")
+            print(f"No candidates better than baseline, skipping: {f.name}")
             continue
         max_rank = int(df["benchmark_rank_order"].max(skipna=True))
         df["benchmark_rank_order"] = df["benchmark_rank_order"].fillna(max_rank + 1)
@@ -95,31 +104,27 @@ for csv_dir_name in csv_dir_name_list:
 
 
         df2 = compute_sort_columns(df)
-
+        
+        # MI350X GFX950
         df_sorted = df2.sort_values(
-            by=["tile_k_is_pow2", "simd_is_mult4", "ai", "q_ie"],
-            ascending=[False, False, True, True]
+            by=["tile_k_is_pow2","ai", "q_ie", "tile_mn_ratio"],
+            ascending=[False, False, True, False]
         )
-
+        
+        # MI300X GFX942 TF
         # df_sorted = df2.sort_values(
-        #     by=["tile_k_is_pow2", "simd_is_mult4", "ai"],
-        #     ascending=[False, False, True]
+        #     by=["tile_k_is_pow2", "ai", "knob_tile_k", "q_ie"],
+        #     ascending=[False, True, False, True]
         # )
-
+        
+        # MI300X GFX942 VD + 9070XT GFX1201
         # df_sorted = df2.sort_values(
-        #     by=["tile_k_is_pow2"],
-        #     ascending=[False]
+        #     by=["tile_k_is_pow2","simd_is_mult4", "ai","q_ie"],
+        #     ascending=[False,False, True, True]
         # )
 
         df_sorted["heuristic_pred_rank"] = range(1, len(df_sorted) + 1)
 
-
-        # base_path = os.path.dirname(os.path.abspath(__file__))
-        # save_path = os.path.join(base_path, f"df_sorted.csv")
-        # df_sorted.to_csv(save_path, index=False)
-        # print(f)
-        # print(f"Saved results to {save_path}")
-        # exit()
 
         shuffle_ranks = list(range(1, len(df_sorted) + 1))
         random.seed(42)
