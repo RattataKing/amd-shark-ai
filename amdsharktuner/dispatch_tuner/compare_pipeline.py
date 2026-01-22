@@ -47,12 +47,12 @@ for csv_dir_list in csv_dir_name_list:
             tie += 1
     print(f"{csv_dir_name.split('_')[0]}")
     
-    
+    # print([float(round(d, 3)) for d in diff])
     diff_avg = sum(diff) / len(diff) if diff else None
     if diff_avg < 0:
-        print(f"VD faster: {abs(diff_avg)*100:.2f}% of baseline benchmark time in avg")
+        print(f"VD faster: save {abs(diff_avg)*100:.2f}% of baseline benchmark time in avg")
     else:
-        print(f"TF faster: {abs(diff_avg)*100:.2f}% of baseline benchmark time in avg")
+        print(f"TF faster: save {abs(diff_avg)*100:.2f}% of baseline benchmark time in avg")
 
     
     tie = len(sorted(vd_dir.glob("*.csv"))) - (tf_win+vd_win)
