@@ -432,7 +432,7 @@ def parse_arguments(
     candidate_gen_args.add_argument(
         "--codegen-pipeline",
         choices=[x.value for x in CodegenPipelines],
-        default=CodegenPipelines.llvmgpu_vector_distribute,
+        default=CodegenPipelines.llvmgpu_tile_and_fuse,
         help="Codegen pipeline to tune for",
     )
     candidate_gen_args.add_argument(

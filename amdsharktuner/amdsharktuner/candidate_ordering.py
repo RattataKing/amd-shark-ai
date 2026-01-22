@@ -59,7 +59,7 @@ def llvm_gpu_contraction_sort_key(
         not is_mult_simd_num(
             knob.subgroup_m_cnt * knob.subgroup_n_cnt, target_info.simds_per_workgroup
         ),
-        arith_intensity(knob.intrinsic_mn, knob.intrinsic_mn, knob.intrinsic_k),
+        not arith_intensity(knob.intrinsic_mn, knob.intrinsic_mn, knob.intrinsic_k),
         quantization_inefficiency(
             knob.M, knob.tile_m, knob.N, knob.tile_n, target_info.workgroup_count
         ),
