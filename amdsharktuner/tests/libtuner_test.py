@@ -322,6 +322,7 @@ def test_baseline_result_handler_speedup():
         (candidates[1], 0.3 / 0.5),
         (candidates[2], 1.0 / 1.2),
     ]
+    assert handler.has_faster_candidate == True
     top_candidates_with_speedup = all_candidates_with_speedup[:2]
     assert [candidate.candidate_id for candidate, _ in top_candidates_with_speedup] == [
         4,
@@ -364,17 +365,8 @@ def test_baseline_result_handler_speedup():
         libtuner.BenchmarkResult(1, 2.0, "hip://0"),
         libtuner.BenchmarkResult(2, 3.0, "hip://0"),
     ]
-    assert (
-        handler.get_candidates_ordered_by_speedup(
-            slower_candidates, prune_slow_candidates=True
-        )
-        == []
-    )
-
-    candidates_with_speedup = handler.get_candidates_ordered_by_speedup(
-        slower_candidates, prune_slow_candidates=False
-    )
-    assert [c.candidate_id for c, _ in candidates_with_speedup] == [1, 2]
+    handler.get_candidates_ordered_by_speedup(slower_candidates)
+    assert handler.has_faster_candidate == False
 
 
 def test_compute_rocprof_avg_kernel_time(caplog):

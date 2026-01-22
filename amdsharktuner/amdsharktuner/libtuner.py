@@ -1139,6 +1139,7 @@ class BaselineResultHandler:
         self.device_baseline_results: dict[str, list[BenchmarkResult]] = defaultdict(
             list
         )
+        self.has_faster_candidate: Optional[bool] = None
 
     def add_run(self, results: list[BenchmarkResult]) -> None:
         if not BaselineResultHandler.are_baseline_devices_unique(results):
@@ -1235,9 +1236,7 @@ class BaselineResultHandler:
         return False
 
     def get_candidates_ordered_by_speedup(
-        self,
-        candidate_results: list[BenchmarkResult],
-        prune_slow_candidates: bool = False,
+        self, candidate_results: list[BenchmarkResult]
     ) -> list[tuple[BenchmarkResult, float]]:
         """
         Returns a list of tuples (BenchmarkResult, speedup) sorted in ascending order based on speedup
@@ -1256,14 +1255,8 @@ class BaselineResultHandler:
 
         Args:
             candidate_results: List of benchmark results to sort.
-            prune_slow_candidates: If True and all candidates are slower than baseline,
-                returns empty list. Otherwise, returns all sorted candidates regardless.
         """
-        # Check if all candidates are slower than baseline and should be pruned.
-        if prune_slow_candidates and not self.is_better_than_baseline(
-            candidate_results
-        ):
-            return []
+        self.has_faster_candidate = self.is_better_than_baseline(candidate_results)
 
         if not self.is_valid():
             logging.warning("No valid baseline times available.")
@@ -1487,9 +1480,9 @@ def benchmark(
 
     all_candidates_with_speedup = baseline_handler.get_candidates_ordered_by_speedup(
         candidate_results,
-        prune_slow_candidates=tuning_client.should_prune_slower_candidates(),
     )
 
+    # Log benchmark results to the tuning record.
     # Best candidate gets rank 1.
     for i, handler_res in enumerate(all_candidates_with_speedup, start=1):
         benchmark_res, speedup = handler_res
@@ -1500,6 +1493,14 @@ def benchmark(
         )
         tuning_client.tuning_records[cid].benchmark_speedup = round(speedup, 5)
         tuning_client.tuning_records[cid].benchmark_rank_order = i
+
+    # Check if all candidates are slower than baseline and should be pruned.
+    all_candidates_with_speedup = (
+        []
+        if tuning_client.should_prune_slower_candidates()
+        and not baseline_handler.has_faster_candidate
+        else all_candidates_with_speedup
+    )
 
     top_candidates_with_speedup = (
         all_candidates_with_speedup[:num_candidates]
