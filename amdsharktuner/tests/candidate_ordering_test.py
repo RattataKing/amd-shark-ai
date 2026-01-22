@@ -101,6 +101,16 @@ def test_math_expression() -> None:
     expected = (2 * 2 * 3 * 4) / (2 * (2 * 3 + 3 * 4 + 2 * 4))
     assert math.isclose(ai, expected, rel_tol=1e-9)
 
+    q_ie = candidate_ordering.quantization_inefficiency(2048, 256, 1024, 32, 32)
+    assert q_ie == 0
+    q_ie = candidate_ordering.quantization_inefficiency(10, 4, 10, 4, 4)
+    assert q_ie == 0.21875
+
+    assert candidate_ordering.size_ratio(256, 32) == 0.125
+    assert candidate_ordering.size_ratio(32, 256) == 0.125
+    assert candidate_ordering.size_ratio(32, 1024) == 0.03125
+    assert candidate_ordering.size_ratio(256, 256) == 1
+
 
 def test_reorder_assignments(
     target_info: iree_gpu.TargetInfo,

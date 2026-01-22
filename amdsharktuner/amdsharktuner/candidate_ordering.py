@@ -36,7 +36,7 @@ def arith_intensity(x: int, y: int, z: int) -> float:
     return num_flops / num_byte_access
 
 
-def quantization_inefficiency(problem_m, tile_m, problem_n, tile_n, cu_num):
+def quantization_inefficiency(problem_m, tile_m, problem_n, tile_n, cu_num) -> float:
     # Inefficiency of tiling when problem sizes do not divide evenly,
     # resulting in wasted computation in the final tiling round.
     num_workgroups = (problem_m / tile_m) * (problem_n / tile_n)
@@ -45,7 +45,7 @@ def quantization_inefficiency(problem_m, tile_m, problem_n, tile_n, cu_num):
     return q_ie
 
 
-def size_ratio(x: int, y: int):
+def size_ratio(x: int, y: int) -> float:
     return min(x, y) / max(x, y)
 
 
@@ -124,7 +124,7 @@ def reorder_assignments(
                 sorted_list = sorted(
                     indexed_list, key=lambda pair: key_fn_to_use(pair[1])
                 )
-            logging.info(f"Heuristic candidate reordering applied.")
+            logging.warning(f"Heuristic candidate reordering applied.")
             indices = [i for i, _ in sorted_list]
             return indices
         case _:
