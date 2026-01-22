@@ -373,11 +373,11 @@ def generate_generic_contraction_solutions(
 
         knob_assignment = None
         for compilation_info in compilation_infos:
-            if (
-                codegen_pipeline
-                == iree_codegen.DispatchLoweringPassPipeline.LLVMGPUVectorDistribute
+            if codegen_pipeline in (
+                iree_codegen.DispatchLoweringPassPipeline.LLVMGPUVectorDistribute,
+                iree_codegen.DispatchLoweringPassPipeline.LLVMGPUTileAndFuse,
             ):
-                knob_assignment = rocm_common.LLVMGPUVectorDistributeContractionKnobs(
+                knob_assignment = rocm_common.LLVMGPUContractionKnobs(
                     M=int(math.prod(M)),
                     N=int(math.prod(N)),
                     K=int(math.prod(K)),

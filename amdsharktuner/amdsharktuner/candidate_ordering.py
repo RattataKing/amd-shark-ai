@@ -37,7 +37,7 @@ def arith_intensity(x: int, y: int, z: int) -> float:
 
 def llvm_gpu_vector_distribute_contraction_sort_key(
     target_info: iree_gpu.TargetInfo,
-    knob: rocm_common.LLVMGPUVectorDistributeContractionKnobs,
+    knob: rocm_common.LLVMGPUContractionKnobs,
 ) -> tuple[bool, bool, float]:
     return (
         not is_pow2(knob.tile_k),
@@ -51,7 +51,7 @@ def llvm_gpu_vector_distribute_contraction_sort_key(
 
 
 SORT_KEY_MAP: dict[type[common.KnobAssignment | None], Callable | None] = {
-    rocm_common.LLVMGPUVectorDistributeContractionKnobs: llvm_gpu_vector_distribute_contraction_sort_key,
+    rocm_common.LLVMGPUContractionKnobs: llvm_gpu_vector_distribute_contraction_sort_key,
     type(None): None,
     # TODO: Add key() for conv, attention, and other dispatch kinds.
 }
