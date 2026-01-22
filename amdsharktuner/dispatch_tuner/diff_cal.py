@@ -18,13 +18,13 @@ def arith_intensity(x: int, y: int, z: int) -> float:
     num_byte_access = 2 * (x * y + y * z + x * z)
     return num_flops / num_byte_access
 
-def quantization_inefficiency(M, tile_m, N, tile_n, cu_num: int = 256):
+def quantization_inefficiency(cu_num, M, tile_m, N, tile_n):
     num_workgroups = (M / tile_m) * (N / tile_n)
     ceil_val = np.ceil(num_workgroups / cu_num)
     q_ie = (ceil_val - num_workgroups / cu_num) / ceil_val
     return q_ie
 
-def compute_sort_columns(df):
+def compute_sort_columns(df, cu):
     df = df.copy()
     df["tile_k_is_pow2"] = df["knob_tile_k"].apply(is_pow2)
     df["tile_m_is_pow2"] = df["knob_tile_m"].apply(is_pow2)
@@ -47,6 +47,7 @@ def compute_sort_columns(df):
     )
 
     df["q_ie"] = quantization_inefficiency(
+        cu,
         df["knob_M"],
         df["knob_tile_m"],
         df["knob_N"],
@@ -65,17 +66,23 @@ def geometric_mean(nums):
 
 base_path = Path(__file__).resolve().parent
 
-"""
-Remember to update CU number for q_ie
-"""
 csv_dir_name_list = [
-    # "gfx1201_tuning_database_vd_1/", 
-    # "gfx1201_tuning_database_tf_1/",
-    # "gfx942_tuning_database_vd_1/", 
-    # "gfx942_tuning_database_tf_1/",
+    "gfx1201_tuning_database_vd_1/", 
+    "gfx1201_tuning_database_tf_1/",
+    "gfx942_tuning_database_vd_1/", 
+    "gfx942_tuning_database_tf_1/",
     "gfx950_tuning_database_vd_1/", 
     "gfx950_tuning_database_tf_1/",
 ]
+for csv_dir_name in csv_dir_name_list:
+    if "gfx942" in csv_dir_name:
+        cu=304
+    elif "gfx950" in csv_dir_name:
+        cu=256
+    elif "gfx1201" in csv_dir_name:
+        cu=32
+    else:
+        assert False
 
 for csv_dir_name in csv_dir_name_list:
     print(csv_dir_name)
@@ -95,7 +102,7 @@ for csv_dir_name in csv_dir_name_list:
         # df = df[df["to_benchmark"] == True]
         max_val = df["benchmark_rank_order"].max(skipna=True)
         if pd.isna(max_val):
-            print(f"No candidates better than baseline, skipping: {f.name}")
+            # print(f"No candidates better than baseline, skipping: {f.name}")
             continue
         max_rank = int(df["benchmark_rank_order"].max(skipna=True))
         df["benchmark_rank_order"] = df["benchmark_rank_order"].fillna(max_rank + 1)
@@ -103,13 +110,13 @@ for csv_dir_name in csv_dir_name_list:
         # df["benchmark_queue_position"] = df["benchmark_queue_position"].astype(int)
 
 
-        df2 = compute_sort_columns(df)
+        df2 = compute_sort_columns(df, cu)
         
         # MI350X GFX950
-        df_sorted = df2.sort_values(
-            by=["tile_k_is_pow2","ai", "q_ie", "tile_mn_ratio"],
-            ascending=[False, False, True, False]
-        )
+        # df_sorted = df2.sort_values(
+        #     by=["tile_k_is_pow2","ai", "q_ie", "tile_mn_ratio"],
+        #     ascending=[False, False, True, False]
+        # )
         
         # MI300X GFX942 TF
         # df_sorted = df2.sort_values(
@@ -122,6 +129,13 @@ for csv_dir_name in csv_dir_name_list:
         #     by=["tile_k_is_pow2","simd_is_mult4", "ai","q_ie"],
         #     ascending=[False,False, True, True]
         # )
+        
+        # Global
+        df_sorted = df2.sort_values(
+            by=["tile_k_is_pow2","simd_is_mult4", "ai", "q_ie", "tile_mn_ratio"],
+            ascending=[False, False, False, True, False]
+        )
+        
 
         df_sorted["heuristic_pred_rank"] = range(1, len(df_sorted) + 1)
 

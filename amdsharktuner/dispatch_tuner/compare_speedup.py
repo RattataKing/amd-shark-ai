@@ -70,6 +70,10 @@ def setup_logging() -> logging.Logger:
 
     return logging.getLogger()
 
+base_dir = Path(__file__).resolve().parent
+dir_tf = base_dir /  "gfx942_tuning_database_tf_1"
+dir_vd = base_dir /  "gfx942_tuning_database_vd_1"
+
 skip_list = []
 win_list = []
 data_diff_thre = 0.05
@@ -78,7 +82,7 @@ def main():
     logger = setup_logging()
     tf_win = 0
     vd_win = 0
-    for file in sorted(dir_tf1.glob("*.csv")):
+    for file in sorted(dir_tf.glob("*.csv")):
         name = file.name
         logging.debug(name)
         compare_avf = []
