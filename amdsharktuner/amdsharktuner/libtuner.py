@@ -47,7 +47,7 @@ from . import (
     dispatch_parser,
     process_utils,
 )
-from .rocm import rocm_dispatch_constraints
+from .rocm import rocm_candidate_ordering, rocm_dispatch_constraints
 
 
 # Default random seed.
@@ -938,6 +938,7 @@ def generate_candidate_specs(
             knobs=knobs,
             strategy=args.candidate_order,
             target_info=tuning_client.target_info,
+            sort_key_map=rocm_candidate_ordering.ROCM_SORT_KEY_MAP,
         )
         solutions = [solutions[i] for i in sorted_order] if sorted_order else solutions
         solutions = solutions[: args.num_candidates]
