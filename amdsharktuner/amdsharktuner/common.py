@@ -558,3 +558,33 @@ def calculate_padded_dimensions(
 
     any_padding_applied = M_padded != M or N_padded != N
     return M_padded, N_padded, any_padding_applied
+
+
+_AttrT = TypeVar("_AttrT", bound=ir.Attribute)
+
+
+@dataclass(frozen=True)
+class AttrKey(Generic[_AttrT]):
+    """A compilation info dictionary key with its expected MLIR attribute type."""
+
+    name: str
+    attr_type: type[_AttrT]
+
+
+class CompilationInfoKeys(ABC):
+    """Abstract base defining key name namespaces for compilation info attrs.
+
+    Backends subclass this and provide concrete LoweringConfig and
+    TranslationInfo inner classes with the string keys used in their
+    respective attribute dictionaries. This allows backend-specific
+    materializers to be written generically against the key names.
+    """
+
+    class LoweringConfig(ABC):
+        """Key names for the backend's lowering config attribute dictionary."""
+
+        pass
+
+    class TranslationInfo(ABC):
+        """Key names for the backend's translation info attribute fields."""
+        pass
