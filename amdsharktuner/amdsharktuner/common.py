@@ -10,7 +10,7 @@ from dataclasses import dataclass, field, asdict
 from enum import Enum
 from types import TracebackType
 from typing import Optional, Any, Callable, Protocol
-from abc import ABC
+from abc import ABC, abstractmethod
 import os
 import time
 import z3  # type: ignore
@@ -571,13 +571,12 @@ class AttrKey(Generic[_AttrT]):
     attr_type: type[_AttrT]
 
 
-class CompilationInfoKeys(ABC):
-    """Abstract base defining key name namespaces for compilation info attrs.
+class CompilationInfoBuilder(ABC):
+    """Abstract base for building compilation info attrs.
 
     Backends subclass this and provide concrete LoweringConfig and
-    TranslationInfo inner classes with the string keys used in their
-    respective attribute dictionaries. This allows backend-specific
-    materializers to be written generically against the key names.
+    TranslationInfo inner classes with key names and build logic for their
+    respective attribute dictionaries.
     """
 
     class LoweringConfig(ABC):
@@ -587,4 +586,14 @@ class CompilationInfoKeys(ABC):
 
     class TranslationInfo(ABC):
         """Key names for the backend's translation info attribute fields."""
+
         pass
+
+    @classmethod
+    @abstractmethod
+    def build_compilation_info_attr(
+        cls,
+        constraints_op: iree_codegen.ConstraintsOp,
+        knob_assignment: Any,
+    ) -> iree_codegen.CompilationInfoAttr:
+        ...

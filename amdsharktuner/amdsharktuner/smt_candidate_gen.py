@@ -5,57 +5,67 @@
 # SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 
 
+from typing import Iterator, Optional, override
+
 from iree.compiler import ir  # type: ignore
 from iree.compiler.dialects import iree_codegen, iree_gpu  # type: ignore
 import z3  # type: ignore
-from typing import Iterator
 
-from .common import AttrKey, CompilationInfoKeys
+from .common import AttrKey, CompilationInfoBuilder
 
 
 class KnobSymbols(dict[str, z3.ExprRef]):
     """Maps knob names to z3 symbolic constants (pre-solving)."""
+
     pass
+
 
 class KnobAssignment(dict[str, int]):
     """Maps knob names to integer values (post-solving)."""
+
     pass
 
 
-def resolve_knob_array_template_entry(
+def _resolve_knob_array_attr_template(
     template_entry: ir.ArrayAttr,
     knob_assignment: KnobAssignment,
 ) -> list[int]:
     """Resolve IntKnobAttr placeholders to knob assignment values.
-    E.g. 
+    E.g.
     template_entry = [#iree_codegen.smt.int_knob<"wg_m">, #iree_codegen.smt.int_knob<"wg_n">]
     knob_assignment = {"wg_m": 4, "wg_n": 5}
     result = [4, 5].
     """
     result: list[int] = []
     for elem in template_entry:
-        
         if not isinstance(elem, iree_codegen.IntKnobAttr):
             raise ValueError(f"Unexpected element in array template entry: {elem}")
 
-        assert elem.name in knob_assignment, f"Knob '{elem.name}' not found in assignment."
+        assert (
+            elem.name in knob_assignment
+        ), f"Knob '{elem.name}' not found in assignment."
         result.append(knob_assignment[elem.name])
 
     return result
 
 
-def i64_array_attr(vals: list[int]) -> ir.ArrayAttr:
-    """Build an ArrayAttr of i64 IntegerAttrs from a list of ints."""
-    i64 = ir.IntegerType.get_signless(64)
-    return ir.ArrayAttr.get([ir.IntegerAttr.get(i64, v) for v in vals])
+def _get_template_entry(
+    knob_template: ir.DictAttr,
+    attr_key: AttrKey,
+) -> Optional[ir.Attribute]:
+    if attr_key.name not in knob_template:
+        return None
+    template_entry = knob_template[attr_key.name]
+    assert isinstance(template_entry, attr_key.attr_type)
+    return template_entry
 
 
-class GPUCompilationInfoKeys(CompilationInfoKeys):
-    """Key names for GPU compilation info attrs, matching IREE's
+class GPUCompilationInfoBuilder(CompilationInfoBuilder):
+    """Key names and builders for GPU compilation info attrs, matching IREE's
     GPULoweringConfigUtils.cpp conventions.
     """
 
-    class LoweringConfig(CompilationInfoKeys.LoweringConfig):
+    class LoweringConfig(CompilationInfoBuilder.LoweringConfig):
         """Key names used in iree_gpu.LoweringConfigAttr's DictionaryAttr."""
 
         # Tiling levels.
@@ -74,9 +84,103 @@ class GPUCompilationInfoKeys(CompilationInfoKeys):
         SUBGROUP_BASIS_COUNTS: AttrKey[ir.ArrayAttr] = AttrKey("counts", ir.ArrayAttr)
         SUBGROUP_BASIS_MAPPING: AttrKey[ir.ArrayAttr] = AttrKey("mapping", ir.ArrayAttr)
 
-        TILING_LEVELS = (WORKGROUP, REDUCTION, THREAD, SUBGROUP)
+        @classmethod
+        def _get_i64_array_attr(cls, vals: list[int]) -> ir.ArrayAttr:
+            """Build an ArrayAttr of i64 IntegerAttrs from a list of ints."""
+            i64 = ir.IntegerType.get_signless(64)
+            return ir.ArrayAttr.get([ir.IntegerAttr.get(i64, v) for v in vals])
 
-    class TranslationInfo(CompilationInfoKeys.TranslationInfo):
+        @classmethod
+        def _add_tiling_level_config_entry(
+            cls,
+            knob_template: ir.DictAttr,
+            knob_assignment: KnobAssignment,
+            config_entries: dict[str, ir.Attribute],
+        ) -> None:
+            # Tiling levels: workgroup, reduction, thread, subgroup.
+            # template_attr: ArrayAttr<IntKnobAttr>.
+            for key in (cls.WORKGROUP, cls.REDUCTION, cls.THREAD, cls.SUBGROUP):
+                template_attr = _get_template_entry(knob_template, key)
+                if not template_attr:
+                    continue
+                config_entries[key.name] = cls._get_i64_array_attr(
+                    _resolve_knob_array_attr_template(template_attr, knob_assignment)
+                )
+
+        @classmethod
+        def _add_mma_kind_config_entry(
+            cls,
+            knob_template: ir.DictAttr,
+            knob_assignment: KnobAssignment,
+            config_entries: dict[str, ir.Attribute],
+        ) -> None:
+            # MMA kind: OneOfKnobAttr holds options; knob_assignment gives the index.
+            # mma_kind_tmpl: OneOfKnobAttr.
+            mma_kind_tmpl = _get_template_entry(knob_template, cls.MMA_KIND)
+            if not mma_kind_tmpl:
+                return
+            smt_var_name = mma_kind_tmpl.name
+            mma_idx = knob_assignment[smt_var_name]
+            config_entries[cls.MMA_KIND.name] = mma_kind_tmpl.options[mma_idx]
+
+        @classmethod
+        def _add_subgroup_basis_config_entry(
+            cls,
+            knob_template: ir.DictAttr,
+            knob_assignment: KnobAssignment,
+            config_entries: dict[str, ir.Attribute],
+        ) -> None:
+            # Subgroup basis: stored as [[counts...], [mapping...]] in the config.
+            # subgroup_basis_tmpl: DictAttr.
+            # counts_tmpl: ArrayAttr<IntKnobAttr>.
+            # mapping_tmpl: ArrayAttr<IntKnobAttr>.
+            subgroup_basis_tmpl = _get_template_entry(knob_template, cls.SUBGROUP_BASIS)
+            if not subgroup_basis_tmpl:
+                return
+            counts_tmpl = _get_template_entry(
+                subgroup_basis_tmpl, cls.SUBGROUP_BASIS_COUNTS
+            )
+            mapping_tmpl = _get_template_entry(
+                subgroup_basis_tmpl, cls.SUBGROUP_BASIS_MAPPING
+            )
+            if not counts_tmpl:
+                return
+            counts = _resolve_knob_array_attr_template(counts_tmpl, knob_assignment)
+            if not mapping_tmpl:
+                # Default mapping: [0, 1, ...].
+                mapping = list(range(len(counts)))
+            else:
+                mapping = _resolve_knob_array_attr_template(
+                    mapping_tmpl, knob_assignment
+                )
+            config_entries[cls.SUBGROUP_BASIS.name] = ir.ArrayAttr.get(
+                [cls._get_i64_array_attr(counts), cls._get_i64_array_attr(mapping)]
+            )
+
+        @classmethod
+        def build_lowering_config_attr(
+            cls,
+            constraints_op: iree_codegen.ConstraintsOp,
+            knob_assignment: KnobAssignment,
+        ) -> iree_gpu.LoweringConfigAttr:
+            knob_template: ir.DictAttr = constraints_op.knobs
+            config_entries: dict[
+                str, ir.Attribute
+            ] = {}  # built up and passed to LoweringConfigAttr.
+
+            cls._add_tiling_level_config_entry(
+                knob_template, knob_assignment, config_entries
+            )
+            cls._add_mma_kind_config_entry(
+                knob_template, knob_assignment, config_entries
+            )
+            cls._add_subgroup_basis_config_entry(
+                knob_template, knob_assignment, config_entries
+            )
+
+            return iree_gpu.LoweringConfigAttr.get(ir.DictAttr.get(config_entries))
+
+    class TranslationInfo(CompilationInfoBuilder.TranslationInfo):
         """Key names in the knobs dict for iree_codegen.TranslationInfoAttr."""
 
         WORKGROUP_SIZE: AttrKey[ir.ArrayAttr] = AttrKey("workgroup_size", ir.ArrayAttr)
@@ -84,101 +188,64 @@ class GPUCompilationInfoKeys(CompilationInfoKeys):
             "subgroup_size", iree_codegen.IntKnobAttr
         )
 
+        @classmethod
+        def _resolve_workgroup_size(
+            cls,
+            knob_template: ir.DictAttr,
+            knob_assignment: KnobAssignment,
+        ) -> Optional[list[int]]:
+            workgroup_size_tmpl = _get_template_entry(knob_template, cls.WORKGROUP_SIZE)
+            if not workgroup_size_tmpl:
+                return
+            return _resolve_knob_array_attr_template(
+                workgroup_size_tmpl, knob_assignment
+            )
 
+        @classmethod
+        def _resolve_subgroup_size(
+            cls,
+            knob_template: ir.DictAttr,
+            knob_assignment: KnobAssignment,
+        ) -> Optional[int]:
+            subgroup_size_tmpl = _get_template_entry(knob_template, cls.SUBGROUP_SIZE)
+            if not subgroup_size_tmpl:
+                return
+            return knob_assignment[subgroup_size_tmpl.name]
 
-def build_gpu_compilation_info(
-    constraints_op: iree_codegen.ConstraintsOp,
-    knob_assignment: KnobAssignment,
-) -> iree_codegen.CompilationInfoAttr:
-    """Build a concrete CompilationInfoAttr for a GPU backend.
+        @classmethod
+        def build_translation_info_attr(
+            cls,
+            constraints_op: iree_codegen.ConstraintsOp,
+            knob_assignment: KnobAssignment,
+        ) -> iree_codegen.TranslationInfoAttr:
 
-    Resolves all IntKnobAttr and OneOfKnobAttr placeholders in the knobs
-    template using `knob_assignment`, then constructs the corresponding
-    iree_gpu.LoweringConfigAttr and iree_codegen.TranslationInfoAttr.
-    """
-    lc_keys = GPUCompilationInfoKeys.LoweringConfig
-    ti_keys = GPUCompilationInfoKeys.TranslationInfo
-    knob_template: ir.DictAttr = constraints_op.knobs
-    pipeline: ir.Attribute = constraints_op.pipeline
+            knob_template: ir.DictAttr = constraints_op.knobs
 
-    # --- Build iree_gpu.LoweringConfigAttr ---
-    config_entries: dict[str, ir.Attribute] = {}  # built up and passed to LoweringConfigAttr.
+            workgroup_size = cls._resolve_workgroup_size(knob_template, knob_assignment)
+            subgroup_size = cls._resolve_subgroup_size(knob_template, knob_assignment)
 
-    # Tiling levels: workgroup, reduction, thread, subgroup.
-    for key in lc_keys.TILING_LEVELS:
-        tiling_attr = knob_template.get(key.name)
-        if tiling_attr is None:
-            continue
+            pipeline: ir.Attribute = constraints_op.pipeline
 
-        assert isinstance(tiling_attr, key.attr_type)
-        config_entries[key.name] = i64_array_attr(
-            resolve_knob_array_template_entry(tiling_attr, knob_assignment)
+            return iree_codegen.TranslationInfoAttr.get(
+                pipeline,
+                workgroup_size=workgroup_size,
+                subgroup_size=subgroup_size,
+            )
+
+    @override
+    @classmethod
+    def build_compilation_info_attr(
+        cls,
+        constraints_op: iree_codegen.ConstraintsOp,
+        knob_assignment: KnobAssignment,
+    ) -> iree_codegen.CompilationInfoAttr:
+        lowering_config = cls.LoweringConfig.build_lowering_config_attr(
+            constraints_op, knob_assignment
         )
-
-    # MMA kind: OneOfKnobAttr holds options; knob_assignment gives the index.
-    mma_template = knob_template.get(lc_keys.MMA_KIND.name)
-    if mma_template is None:
-        continue
-
-        assert isinstance(mma_template, lc_keys.MMA_KIND.attr_type)
-        idx = knob_assignment[mma_template.name]
-        options = mma_template.options
-        if idx < 0 or idx >= len(options):
-            raise ValueError(
-                f"mma_kind index {idx} out of range [0, {len(options)})."
-            )
-        # Store the selected MMA attr directly, e.g. #iree_gpu.mma<...>.
-        config_entries[lc_keys.MMA_KIND.name] = options[idx]
-
-    # Subgroup basis: stored as [[counts...], [mapping...]] in the config.
-    sg_basis_template = knob_template.get(lc_keys.SUBGROUP_BASIS.name)
-    if sg_basis_template is not None:
-        assert isinstance(sg_basis_template, lc_keys.SUBGROUP_BASIS.attr_type)
-        counts_template = sg_basis_template.get(lc_keys.SUBGROUP_BASIS_COUNTS.name)
-        if counts_template is not None:
-            assert isinstance(counts_template, lc_keys.SUBGROUP_BASIS_COUNTS.attr_type)
-            counts = resolve_knob_array_template_entry(counts_template, knob_assignment)
-            mapping_template = sg_basis_template.get(
-                lc_keys.SUBGROUP_BASIS_MAPPING.name
-            )
-            if mapping_template is not None:
-                assert isinstance(
-                    mapping_template, lc_keys.SUBGROUP_BASIS_MAPPING.attr_type
-                )
-                mapping = resolve_knob_array_template_entry(mapping_template, knob_assignment)
-            else:
-                # Default mapping: [0, 1, ...].
-                mapping = list(range(len(counts)))
-            config_entries[lc_keys.SUBGROUP_BASIS.name] = ir.ArrayAttr.get(
-                [i64_array_attr(counts), i64_array_attr(mapping)]
-            )
-
-    lowering_config = iree_gpu.LoweringConfigAttr.get(
-        ir.DictAttr.get(config_entries)
-    )
-
-    # --- Build iree_codegen.TranslationInfoAttr ---
-    # workgroup_size and subgroup_size live at the top level of the knobs dict.
-    workgroup_size: list[int] | None = None
-    subgroup_size: int | None = None
-
-    wg_size_template = knob_template.get(ti_keys.WORKGROUP_SIZE.name)
-    if wg_size_template is not None:
-        assert isinstance(wg_size_template, ti_keys.WORKGROUP_SIZE.attr_type)
-        workgroup_size = resolve_knob_array_template_entry(wg_size_template, knob_assignment)
-
-    sg_size_template = knob_template.get(ti_keys.SUBGROUP_SIZE.name)
-    if sg_size_template is not None:
-        assert isinstance(sg_size_template, ti_keys.SUBGROUP_SIZE.attr_type)
-        subgroup_size = knob_assignment.get(sg_size_template.name)
-
-    translation_info = iree_codegen.TranslationInfoAttr.get(
-        pipeline,
-        workgroup_size=workgroup_size,
-        subgroup_size=subgroup_size,
-    )
-
-    return iree_codegen.CompilationInfoAttr.get(lowering_config, translation_info)
+        translation_info = cls.TranslationInfo.build_translation_info_attr(
+            constraints_op, knob_assignment
+        )
+        return iree_codegen.CompilationInfoAttr.get(lowering_config, translation_info)
 
 
 def get_z3_assignment_from_model(
@@ -192,10 +259,10 @@ def get_z3_assignment_from_model(
             val
         ), f"Unassigned or non-concrete constant: {v} -> {val}"
         return val.as_long()
+
     return KnobAssignment(
         {name: get_z3_const_val(expr) for name, expr in z3_const_exprs.items()}
     )
-
 
 
 def get_knobs_from_constraint_op(
@@ -239,7 +306,9 @@ def get_knobs_from_constraint_op(
 def generate_solutions_from_constraint_op(
     constraints_op: iree_codegen.ConstraintsOp,
 ) -> Iterator[KnobAssignment]:
-    smtlib = iree_codegen.convert_constraints_op_to_smtlib(constraints_op, emit_reset=False)
+    smtlib = iree_codegen.convert_constraints_op_to_smtlib(
+        constraints_op, emit_reset=False
+    )
 
     z3_const_exprs = get_knobs_from_constraint_op(constraints_op)
     z3_vars = list(z3_const_exprs.values())
@@ -251,8 +320,6 @@ def generate_solutions_from_constraint_op(
         model = solver.model()
 
         # Add new constraints to find the next solution.
-        solver.add(
-            z3.Or([v != model.eval(v, model_completion=True) for v in z3_vars])
-        )
+        solver.add(z3.Or([v != model.eval(v, model_completion=True) for v in z3_vars]))
 
         yield get_z3_assignment_from_model(model, z3_const_exprs)
