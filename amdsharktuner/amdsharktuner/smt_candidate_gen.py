@@ -32,7 +32,8 @@ def _resolve_knob_array_attr_template(
 ) -> list[int]:
     """Resolve IntKnobAttr placeholders to knob assignment values.
     E.g.
-    template_entry = [#iree_codegen.smt.int_knob<"wg_m">, #iree_codegen.smt.int_knob<"wg_n">]
+    template_entry = [#iree_codegen.smt.int_knob<"wg_m">,
+                      #iree_codegen.smt.int_knob<"wg_n">]
     knob_assignment = {"wg_m": 4, "wg_n": 5}
     result = [4, 5].
     """
@@ -53,6 +54,17 @@ def _get_template_entry(
     knob_template: ir.DictAttr,
     attr_key: AttrKey,
 ) -> Optional[ir.Attribute]:
+    """Return the knob entry for `attr_key` if present.
+
+    E.g.
+    knob_template = {wg_m = #iree_codegen.smt.int_knob<"wg_m">,
+                     mma = #iree_codegen.smt.one_of_knob<"mma", ["a", "b"]>}
+    attr_key = AttrKey("wg_n", IntKnobAttr)
+    result = None.
+    attr_key = AttrKey("mma", OneOfKnobAttr)
+    result = #iree_codegen.smt.one_of_knob<"mma", ["a", "b"]>.
+
+    """
     if attr_key.name not in knob_template:
         return None
     template_entry = knob_template[attr_key.name]
@@ -166,7 +178,7 @@ class GPUCompilationInfoBuilder(CompilationInfoBuilder):
             knob_template: ir.DictAttr = constraints_op.knobs
             config_entries: dict[
                 str, ir.Attribute
-            ] = {}  # built up and passed to LoweringConfigAttr.
+            ] = {}  # Built up and passed to LoweringConfigAttr.
 
             cls._add_tiling_level_config_entry(
                 knob_template, knob_assignment, config_entries
@@ -196,7 +208,7 @@ class GPUCompilationInfoBuilder(CompilationInfoBuilder):
         ) -> Optional[list[int]]:
             workgroup_size_tmpl = _get_template_entry(knob_template, cls.WORKGROUP_SIZE)
             if not workgroup_size_tmpl:
-                return
+                return None
             return _resolve_knob_array_attr_template(
                 workgroup_size_tmpl, knob_assignment
             )
@@ -209,7 +221,7 @@ class GPUCompilationInfoBuilder(CompilationInfoBuilder):
         ) -> Optional[int]:
             subgroup_size_tmpl = _get_template_entry(knob_template, cls.SUBGROUP_SIZE)
             if not subgroup_size_tmpl:
-                return
+                return None
             return knob_assignment[subgroup_size_tmpl.name]
 
         @classmethod
@@ -279,19 +291,20 @@ def get_knobs_from_constraint_op(
     def collect(attr: ir.Attribute) -> None:
         if isinstance(attr, iree_codegen.IntKnobAttr):
             # E.g. #iree_codegen.smt.int_knob<"wg_m">.
-            knob_names.append(attr.name)  # e.g. "wg_m"
+            knob_names.append(attr.name)  # E.g. "wg_m".
         elif isinstance(attr, iree_codegen.OneOfKnobAttr):
             # E.g. #iree_codegen.smt.one_of_knob<"mma_idx", [...]>.
-            knob_names.append(attr.name)  # e.g. "mma_idx"
+            knob_names.append(attr.name)  # E.g. "mma_idx".
         elif isinstance(attr, ir.ArrayAttr):
             # E.g. workgroup = [#iree_codegen.smt.int_knob<"wg_m">,
             #                   #iree_codegen.smt.int_knob<"wg_n">].
             for elem in attr:
                 collect(elem)
         elif isinstance(attr, ir.DictAttr):
-            # E.g. subgroup_basis = {counts = [#iree_codegen.smt.int_knob<"sg_x">,
-            #                                   #iree_codegen.smt.int_knob<"sg_y">],
-            #                        mapping = [0, 1]},
+            # E.g. subgroup_basis = {
+            #   counts = [#iree_codegen.smt.int_knob<"sg_x">,
+            #             #iree_codegen.smt.int_knob<"sg_y">],
+            #   mapping = [0, 1]},
             # where entry.name = "counts", entry.attr = [...].
             for entry in attr:
                 collect(entry.attr)
@@ -309,7 +322,7 @@ def generate_solutions_from_constraint_op(
         constraints_op, emit_reset=False
     )
     # Prevent solving hangs.
-    assert "(reset)" is not in smtlib, "Unexpected reset in SMTLIB."
+    assert "(reset)" not in smtlib, "Unexpected reset in SMTLIB."
 
     z3_const_exprs = get_knobs_from_constraint_op(constraints_op)
     z3_vars = list(z3_const_exprs.values())
