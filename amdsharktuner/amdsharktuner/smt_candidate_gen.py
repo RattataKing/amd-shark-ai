@@ -268,12 +268,11 @@ def get_z3_assignment_from_model(
 def get_knobs_from_constraint_op(
     constraints_op: iree_codegen.ConstraintsOp,
 ) -> KnobSymbols:
-    """Extract all SMT knob names from a ConstraintsOp and create z3 constants.
+    """Extract knob names from a ConstraintsOp and return z3 Int constants.
 
     Recursively walks the knobs DictAttr, collecting the name of every
-    IntKnobAttr and OneOfKnobAttr leaf. Returns a map from each name to a
-    fresh z3 Int constant with the same name, matching the SMT-LIB declarations
-    produced by `convert_constraints_op_to_smtlib`.
+    IntKnobAttr and OneOfKnobAttr leaf. Returns one z3 Int constant per name,
+    consistent with the declarations in `convert_constraints_op_to_smtlib`.
     """
     knob_names: list[str] = []
 
@@ -309,6 +308,8 @@ def generate_solutions_from_constraint_op(
     smtlib = iree_codegen.convert_constraints_op_to_smtlib(
         constraints_op, emit_reset=False
     )
+    # Prevent solving hangs.
+    assert "(reset)" is not in smtlib, "Unexpected reset in SMTLIB."
 
     z3_const_exprs = get_knobs_from_constraint_op(constraints_op)
     z3_vars = list(z3_const_exprs.values())

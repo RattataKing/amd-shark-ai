@@ -9,7 +9,7 @@ from collections.abc import Sequence
 from dataclasses import dataclass, field, asdict
 from enum import Enum
 from types import TracebackType
-from typing import Optional, Any, Callable, Protocol
+from typing import Generic, Optional, Any, Callable, Protocol, TypeVar
 from abc import ABC, abstractmethod
 import os
 import time
