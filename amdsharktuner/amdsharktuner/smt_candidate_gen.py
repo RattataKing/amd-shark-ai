@@ -291,11 +291,21 @@ def get_knobs_from_constraint_op(
     Example:
     given knobs = {workgroup_size = #iree_codegen.smt.int_knob<"wg_m">,
                    mma_kind = #iree_codegen.smt.one_of_knob<"mma_idx", ["a", "b"]>}
+                   subgroup_basis = {
+                       counts = [#iree_codegen.smt.int_knob<"sg_x">,
+                                 #iree_codegen.smt.int_knob<"sg_y">],
+                       mapping = [#iree_codegen.smt.int_knob<"map_0">,
+                                  #iree_codegen.smt.int_knob<"map_1">]
+                    }
     returns
     KnobSymbols(
         {
             "wg_m": z3.Int("wg_m"),
-            "mma_idx": z3.Int("mma_idx") # Dict key name `mma_kind` is ignored
+            "mma_idx": z3.Int("mma_idx")
+            "sg_x": z3.Int("sg_x"),
+            "sg_y": z3.Int("sg_y"),
+            "map_0": z3.Int("map_0"),
+            "map_1": z3.Int("map_1"),
         }
     ).
     """
@@ -303,22 +313,13 @@ def get_knobs_from_constraint_op(
 
     def collect(attr: ir.Attribute) -> None:
         if isinstance(attr, iree_codegen.IntKnobAttr):
-            # E.g. #iree_codegen.smt.int_knob<"wg_m">.
-            knob_names.append(attr.name)  # E.g. "wg_m".
+            knob_names.append(attr.name)
         elif isinstance(attr, iree_codegen.OneOfKnobAttr):
-            # E.g. #iree_codegen.smt.one_of_knob<"mma_idx", [...]>.
-            knob_names.append(attr.name)  # E.g. "mma_idx".
+            knob_names.append(attr.name)
         elif isinstance(attr, ir.ArrayAttr):
-            # E.g. workgroup = [#iree_codegen.smt.int_knob<"wg_m">,
-            #                   #iree_codegen.smt.int_knob<"wg_n">].
             for elem in attr:
                 collect(elem)
         elif isinstance(attr, ir.DictAttr):
-            # E.g. subgroup_basis = {
-            #   counts = [#iree_codegen.smt.int_knob<"sg_x">,
-            #             #iree_codegen.smt.int_knob<"sg_y">],
-            #   mapping = [0, 1]},
-            # where entry.name = "counts", entry.attr = [...].
             for entry in attr:
                 collect(entry.attr)
         else:
