@@ -284,6 +284,7 @@ def get_z3_assignment_from_model(
 
 def get_knobs_from_constraint_op(
     constraints_op: iree_codegen.ConstraintsOp,
+    z3_ctx: z3.Context,
 ) -> KnobSymbols:
     """Extract knob names from a ConstraintsOp and return z3 Int constants.
 
@@ -312,7 +313,6 @@ def get_knobs_from_constraint_op(
         }
     ).
     """
-    ctx = z3.Context()
     knob_names: list[str] = []
 
     def collect(attr: ir.Attribute) -> None:
@@ -330,11 +330,13 @@ def get_knobs_from_constraint_op(
             raise TypeError(f"Unknown knob attribute type: {type(attr)}")
 
     collect(constraints_op.knobs)
-    return KnobSymbols({name: z3.Int(name, ctx=ctx) for name in knob_names})
+
+    return KnobSymbols({name: z3.Int(name, ctx=z3_ctx) for name in knob_names})
 
 
 def generate_solutions_from_constraint_op(
     constraints_op: iree_codegen.ConstraintsOp,
+    z3_ctx: Optional[z3.Context] = None,
 ) -> Iterator[SMTKnobAssignment]:
     smtlib = iree_codegen.convert_constraints_op_to_smtlib(
         constraints_op, emit_reset=False
@@ -342,11 +344,11 @@ def generate_solutions_from_constraint_op(
     # Prevent solving hangs.
     assert "(reset)" not in smtlib, "Unexpected reset in SMTLIB."
 
-    z3_const_exprs = get_knobs_from_constraint_op(constraints_op)
+    z3_const_exprs = get_knobs_from_constraint_op(constraints_op, z3_ctx)
     z3_vars = list(z3_const_exprs.values())
 
-    solver = z3.Solver()
-    solver.add(z3.parse_smt2_string(smtlib))
+    solver = z3.Solver(ctx=z3_ctx)
+    solver.add(z3.parse_smt2_string(smtlib, ctx=z3_ctx))
 
     while solver.check() == z3.sat:
         model = solver.model()
