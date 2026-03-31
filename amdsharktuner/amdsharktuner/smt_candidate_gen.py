@@ -21,15 +21,18 @@ class KnobSymbols(dict[str, z3.ExprRef]):
     pass
 
 
-class KnobAssignment(dict[str, int]):
+class SMTKnobAssignment(dict[str, int]):
     """Maps knob names to integer values (post-solving)."""
+
+    # TODO(Amily): temporarily named `SMTKnobAssignment` to avoid confusion
+    # with `common.KnobAssignment`. Rename after constraints are refactored.
 
     pass
 
 
 def _resolve_knob_array_attr_template(
     template_entry: ir.ArrayAttr,
-    knob_assignment: KnobAssignment,
+    knob_assignment: SMTKnobAssignment,
 ) -> list[int]:
     """Resolve IntKnobAttr placeholders to knob assignment values.
     E.g.
@@ -108,7 +111,7 @@ class GPUCompilationInfoBuilder(CompilationInfoBuilder):
         def _add_tiling_level_config_entry(
             cls,
             knob_template: ir.DictAttr,
-            knob_assignment: KnobAssignment,
+            knob_assignment: SMTKnobAssignment,
             config_entries: dict[str, ir.Attribute],
         ) -> None:
             # Tiling levels: workgroup, reduction, thread, subgroup.
@@ -125,7 +128,7 @@ class GPUCompilationInfoBuilder(CompilationInfoBuilder):
         def _add_mma_kind_config_entry(
             cls,
             knob_template: ir.DictAttr,
-            knob_assignment: KnobAssignment,
+            knob_assignment: SMTKnobAssignment,
             config_entries: dict[str, ir.Attribute],
         ) -> None:
             # MMA kind: OneOfKnobAttr holds options; knob_assignment gives the index.
@@ -141,7 +144,7 @@ class GPUCompilationInfoBuilder(CompilationInfoBuilder):
         def _add_subgroup_basis_config_entry(
             cls,
             knob_template: ir.DictAttr,
-            knob_assignment: KnobAssignment,
+            knob_assignment: SMTKnobAssignment,
             config_entries: dict[str, ir.Attribute],
         ) -> None:
             # Subgroup basis: stored as [[counts...], [mapping...]] in the config.
@@ -175,7 +178,7 @@ class GPUCompilationInfoBuilder(CompilationInfoBuilder):
         def build_lowering_config_attr(
             cls,
             constraints_op: iree_codegen.ConstraintsOp,
-            knob_assignment: KnobAssignment,
+            knob_assignment: SMTKnobAssignment,
         ) -> iree_gpu.LoweringConfigAttr:
             knob_template: ir.DictAttr = constraints_op.knobs
             config_entries: dict[
@@ -206,7 +209,7 @@ class GPUCompilationInfoBuilder(CompilationInfoBuilder):
         def _resolve_workgroup_size(
             cls,
             knob_template: ir.DictAttr,
-            knob_assignment: KnobAssignment,
+            knob_assignment: SMTKnobAssignment,
         ) -> Optional[list[int]]:
             workgroup_size_tmpl = _get_template_entry(knob_template, cls.WORKGROUP_SIZE)
             if not workgroup_size_tmpl:
@@ -219,7 +222,7 @@ class GPUCompilationInfoBuilder(CompilationInfoBuilder):
         def _resolve_subgroup_size(
             cls,
             knob_template: ir.DictAttr,
-            knob_assignment: KnobAssignment,
+            knob_assignment: SMTKnobAssignment,
         ) -> Optional[int]:
             subgroup_size_tmpl = _get_template_entry(knob_template, cls.SUBGROUP_SIZE)
             if not subgroup_size_tmpl:
@@ -230,7 +233,7 @@ class GPUCompilationInfoBuilder(CompilationInfoBuilder):
         def build_translation_info_attr(
             cls,
             constraints_op: iree_codegen.ConstraintsOp,
-            knob_assignment: KnobAssignment,
+            knob_assignment: SMTKnobAssignment,
         ) -> iree_codegen.TranslationInfoAttr:
 
             knob_template: ir.DictAttr = constraints_op.knobs
@@ -251,7 +254,7 @@ class GPUCompilationInfoBuilder(CompilationInfoBuilder):
     def build_compilation_info_attr(
         cls,
         constraints_op: iree_codegen.ConstraintsOp,
-        knob_assignment: KnobAssignment,
+        knob_assignment: SMTKnobAssignment,
     ) -> iree_codegen.CompilationInfoAttr:
         lowering_config = cls.LoweringConfig.build_lowering_config_attr(
             constraints_op, knob_assignment
@@ -265,7 +268,7 @@ class GPUCompilationInfoBuilder(CompilationInfoBuilder):
 def get_z3_assignment_from_model(
     model: z3.ModelRef,
     z3_const_exprs: KnobSymbols,
-) -> KnobAssignment:
+) -> SMTKnobAssignment:
     def get_z3_const_val(v: z3.ExprRef) -> int:
         # Evaluate arbitrary expressions over a model, convert z3 expr to int.
         val = model.eval(v)
@@ -274,7 +277,7 @@ def get_z3_assignment_from_model(
         ), f"Unassigned or non-concrete constant: {v} -> {val}"
         return val.as_long()
 
-    return KnobAssignment(
+    return SMTKnobAssignment(
         {name: get_z3_const_val(expr) for name, expr in z3_const_exprs.items()}
     )
 
@@ -331,7 +334,7 @@ def get_knobs_from_constraint_op(
 
 def generate_solutions_from_constraint_op(
     constraints_op: iree_codegen.ConstraintsOp,
-) -> Iterator[KnobAssignment]:
+) -> Iterator[SMTKnobAssignment]:
     smtlib = iree_codegen.convert_constraints_op_to_smtlib(
         constraints_op, emit_reset=False
     )

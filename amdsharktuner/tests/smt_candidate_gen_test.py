@@ -48,8 +48,8 @@ def sample_constraints_op() -> Generator[iree_codegen.ConstraintsOp, None, None]
 
 
 @pytest.fixture
-def sample_knob_assignment() -> smt_candidate_gen.KnobAssignment:
-    assignment = smt_candidate_gen.KnobAssignment(
+def sample_knob_assignment() -> smt_candidate_gen.SMTKnobAssignment:
+    assignment = smt_candidate_gen.SMTKnobAssignment(
         {
             "wg_m": 128,
             "wg_n": 64,
@@ -109,14 +109,14 @@ def test_resolve_knob_array_attr_template() -> None:
             '[#iree_codegen.smt.int_knob<"wg_m">, '
             '#iree_codegen.smt.int_knob<"wg_n">]'
         )
-        assignment = smt_candidate_gen.KnobAssignment({"wg_m": 64, "wg_n": 128})
+        assignment = smt_candidate_gen.SMTKnobAssignment({"wg_m": 64, "wg_n": 128})
         result = smt_candidate_gen._resolve_knob_array_attr_template(arr, assignment)
         assert result == [64, 128]
 
         # Missing knob raises assertion error.
         with pytest.raises(AssertionError, match="wg_m"):
             smt_candidate_gen._resolve_knob_array_attr_template(
-                arr, smt_candidate_gen.KnobAssignment({})
+                arr, smt_candidate_gen.SMTKnobAssignment({})
             )
 
 
@@ -218,14 +218,14 @@ def test_generate_solutions_yields_assignments() -> None:
         # Check no duplicate solutions.
         assert key not in seen, f"Duplicate solution: {sol}"
         seen.add(key)
-        assert isinstance(sol, smt_candidate_gen.KnobAssignment)
+        assert isinstance(sol, smt_candidate_gen.SMTKnobAssignment)
         assert "wg_m" in sol
         assert 4 <= sol["wg_m"] <= 8
 
 
 def test_build_lowering_config_attr(
     sample_constraints_op: iree_codegen.ConstraintsOp,
-    sample_knob_assignment: smt_candidate_gen.KnobAssignment,
+    sample_knob_assignment: smt_candidate_gen.SMTKnobAssignment,
 ) -> None:
     config = smt_candidate_gen.GPUCompilationInfoBuilder.LoweringConfig.build_lowering_config_attr(
         sample_constraints_op, sample_knob_assignment
@@ -244,7 +244,7 @@ def test_build_lowering_config_attr(
 
 def test_build_translation_info_attr(
     sample_constraints_op: iree_codegen.ConstraintsOp,
-    sample_knob_assignment: smt_candidate_gen.KnobAssignment,
+    sample_knob_assignment: smt_candidate_gen.SMTKnobAssignment,
 ) -> None:
     translation_info = smt_candidate_gen.GPUCompilationInfoBuilder.TranslationInfo.build_translation_info_attr(
         sample_constraints_op, sample_knob_assignment
@@ -258,7 +258,7 @@ def test_build_translation_info_attr(
 
 def test_build_compilation_info_attr(
     sample_constraints_op: iree_codegen.ConstraintsOp,
-    sample_knob_assignment: smt_candidate_gen.KnobAssignment,
+    sample_knob_assignment: smt_candidate_gen.SMTKnobAssignment,
 ) -> None:
     compilation_info = (
         smt_candidate_gen.GPUCompilationInfoBuilder.build_compilation_info_attr(
