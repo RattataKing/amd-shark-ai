@@ -68,6 +68,7 @@ def sample_knob_assignment() -> smt_candidate_gen.SMTKnobAssignment:
     )
     return assignment
 
+
 def test_get_z3_assignment_from_model() -> None:
     a = z3.Int("a")
     b = z3.Int("b")
@@ -120,7 +121,9 @@ def test_get_knobs_from_constraint_op(
     sample_constraints_op: iree_codegen.ConstraintsOp,
     sample_knob_assignment: smt_candidate_gen.SMTKnobAssignment,
 ) -> None:
-    symbols = smt_candidate_gen.get_knobs_from_constraint_op(sample_constraints_op, z3_ctx=z3.Context())
+    symbols = smt_candidate_gen.get_knobs_from_constraint_op(
+        sample_constraints_op, z3_ctx=z3.Context()
+    )
     expected_keys = sample_knob_assignment.keys()
 
     assert set(symbols.keys()) == expected_keys
@@ -153,7 +156,9 @@ def test_generate_solutions_yields_assignments() -> None:
         module = ir.Module.parse(unsolvable_mlir_str)
         ops = ir.get_ops_of_type(module, iree_codegen.ConstraintsOp)
         solutions = list(
-            smt_candidate_gen.generate_solutions_from_constraint_op(ops[0], z3_ctx=z3.Context())
+            smt_candidate_gen.generate_solutions_from_constraint_op(
+                ops[0], z3_ctx=z3.Context()
+            )
         )
     assert (
         len(solutions) == 0
@@ -181,7 +186,9 @@ def test_generate_solutions_yields_assignments() -> None:
         module = ir.Module.parse(solvable_mlir_str)
         ops = ir.get_ops_of_type(module, iree_codegen.ConstraintsOp)
         solutions = list(
-            smt_candidate_gen.generate_solutions_from_constraint_op(ops[0], z3_ctx=z3.Context())
+            smt_candidate_gen.generate_solutions_from_constraint_op(
+                ops[0], z3_ctx=z3.Context()
+            )
         )
     assert len(solutions) > 0, "Expected solutions for solvable constraints."
     seen: set[tuple] = set()
