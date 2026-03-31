@@ -51,6 +51,7 @@ def sample_constraints_op() -> Generator[iree_codegen.ConstraintsOp, None, None]
 def sample_knob_assignment() -> smt_candidate_gen.SMTKnobAssignment:
     assignment = smt_candidate_gen.SMTKnobAssignment(
         {
+            "test": 100,
             "wg_m": 128,
             "wg_n": 64,
             "wg_k": 64,
@@ -66,26 +67,6 @@ def sample_knob_assignment() -> smt_candidate_gen.SMTKnobAssignment:
         }
     )
     return assignment
-
-
-@pytest.fixture
-def sample_knob_symbols_keys() -> set[str]:
-    return {
-        "test",
-        "wg_m",
-        "wg_n",
-        "wg_k",
-        "wg_x",
-        "wg_y",
-        "wg_z",
-        "sg_size",
-        "mma_idx",
-        "sg_x",
-        "sg_y",
-        "map_0",
-        "map_1",
-    }
-
 
 def test_get_z3_assignment_from_model() -> None:
     a = z3.Int("a")
@@ -137,10 +118,10 @@ def test_get_template_entry() -> None:
 
 def test_get_knobs_from_constraint_op(
     sample_constraints_op: iree_codegen.ConstraintsOp,
-    sample_knob_symbols_keys: set[str],
+    sample_knob_assignment: smt_candidate_gen.SMTKnobAssignment,
 ) -> None:
     symbols = smt_candidate_gen.get_knobs_from_constraint_op(sample_constraints_op)
-    expected_keys = sample_knob_symbols_keys
+    expected_keys = sample_knob_assignment.keys()
 
     assert set(symbols.keys()) == expected_keys
     for name, expr in symbols.items():
