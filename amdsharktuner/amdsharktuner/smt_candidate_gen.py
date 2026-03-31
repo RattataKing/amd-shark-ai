@@ -312,6 +312,7 @@ def get_knobs_from_constraint_op(
         }
     ).
     """
+    ctx = z3.Context()
     knob_names: list[str] = []
 
     def collect(attr: ir.Attribute) -> None:
@@ -329,7 +330,7 @@ def get_knobs_from_constraint_op(
             raise TypeError(f"Unknown knob attribute type: {type(attr)}")
 
     collect(constraints_op.knobs)
-    return KnobSymbols({name: z3.Int(name) for name in knob_names})
+    return KnobSymbols({name: z3.Int(name, ctx=ctx) for name in knob_names})
 
 
 def generate_solutions_from_constraint_op(
