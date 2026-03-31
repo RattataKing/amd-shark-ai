@@ -41,7 +41,7 @@ def _resolve_knob_array_attr_template(
     result: list[int] = []
     for elem in template_entry:
         if not isinstance(elem, iree_codegen.IntKnobAttr):
-            raise ValueError(f"Unexpected element in array template entry: {elem}")
+            raise TypeError(f"Unexpected element in array template entry: {elem}")
 
         assert elem.name in knob_assignment, (
             f"Knob '{elem.name}' not found in assignment.\n"
@@ -322,7 +322,7 @@ def get_knobs_from_constraint_op(
             for entry in attr:
                 collect(entry.attr)
         else:
-            raise ValueError(f"Unknown knob attribute type: {type(attr)}")
+            raise TypeError(f"Unknown knob attribute type: {type(attr)}")
 
     collect(constraints_op.knobs)
     return KnobSymbols({name: z3.Int(name) for name in knob_names})
