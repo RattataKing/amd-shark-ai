@@ -95,7 +95,6 @@ def test_get_z3_assignment_from_model() -> None:
     solver.add(b == 6)
     assert solver.check() == z3.sat
     model = solver.model()
-    # Evaluate a derived expression: a + b.
     symbols = smt_candidate_gen.KnobSymbols({"a": a, "b": b, "sum": a + b})
     result = smt_candidate_gen.get_z3_assignment_from_model(model, symbols)
     assert result["a"] == 4
@@ -113,7 +112,6 @@ def test_resolve_knob_array_attr_template() -> None:
         result = smt_candidate_gen._resolve_knob_array_attr_template(arr, assignment)
         assert result == [64, 128]
 
-        # Missing knob raises assertion error.
         with pytest.raises(AssertionError, match="wg_m"):
             smt_candidate_gen._resolve_knob_array_attr_template(
                 arr, smt_candidate_gen.SMTKnobAssignment({})
@@ -130,10 +128,8 @@ def test_get_template_entry() -> None:
     result = smt_candidate_gen._get_template_entry(knob_template, key)
 
     assert result is not None
-    # Check result has expected type.
     assert isinstance(result, iree_codegen.IntKnobAttr)
     assert result.name == "wg_m"
-    # Check missing knob returns None.
     key = common.AttrKey("test", iree_codegen.IntKnobAttr)
     result = smt_candidate_gen._get_template_entry(knob_template, key)
     assert result is None
@@ -148,14 +144,12 @@ def test_get_knobs_from_constraint_op(
 
     assert set(symbols.keys()) == expected_keys
     for name, expr in symbols.items():
-        # Check Z3 variable is an int.
         assert z3.is_int(expr)
         # Check Z3 variable is created with the expected name.
         assert expr.decl().name() == name
 
 
 def test_generate_solutions_yields_assignments() -> None:
-    # Constraints are unsatisfiable: wg_m >= 8 and wg_m <= 4.
     unsolvable_mlir_str = """
     module {
         iree_codegen.smt.constraints
@@ -174,7 +168,6 @@ def test_generate_solutions_yields_assignments() -> None:
             }
     }
     """
-    # Test unsolvable constraints yield no solutions.
     with ir.Context():
         module = ir.Module.parse(unsolvable_mlir_str)
         ops = ir.get_ops_of_type(module, iree_codegen.ConstraintsOp)
@@ -185,7 +178,6 @@ def test_generate_solutions_yields_assignments() -> None:
         len(solutions) == 0
     ), f"Expected no solutions for unsolvable constraints, got {len(solutions)} solutions."
 
-    # Constraints are solvable: 4 <= wg_m <= 8.
     solvable_mlir_str = """
     module {
         iree_codegen.smt.constraints
@@ -204,7 +196,6 @@ def test_generate_solutions_yields_assignments() -> None:
             }
     }
     """
-    # Test solvable constraints.
     with ir.Context():
         module = ir.Module.parse(solvable_mlir_str)
         ops = ir.get_ops_of_type(module, iree_codegen.ConstraintsOp)
@@ -215,7 +206,6 @@ def test_generate_solutions_yields_assignments() -> None:
     seen: set[tuple] = set()
     for sol in solutions:
         key = tuple(sorted(sol.items()))
-        # Check no duplicate solutions.
         assert key not in seen, f"Duplicate solution: {sol}"
         seen.add(key)
         assert isinstance(sol, smt_candidate_gen.SMTKnobAssignment)
