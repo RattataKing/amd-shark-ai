@@ -572,11 +572,18 @@ class AttrKey(Generic[_AttrT]):
 
 
 class CompilationInfoBuilder(ABC):
-    """Abstract base for building compilation info attrs.
+    """Abstract base for building iree_codegen.CompilationInfoAttr.
 
-    Backends subclass this and provide concrete LoweringConfig and
-    TranslationInfo inner classes with key names and build logic for their
-    respective attribute dictionaries.
+    Each backend subclass converts a ConstraintsOp and its SMT solver knob
+    assignments into a CompilationInfoAttr. The inner LoweringConfig and
+    TranslationInfo classes declare AttrKey constants that map MLIR attribute
+    key names to their expected ir attribute types.
+
+    For example, given a ConstraintsOp for GPU backend with:
+        knobs = {workgroup = #iree_codegen.smt.int_knob<"wg_m">}
+
+    The LoweringConfig subclass should declare:
+        WORKGROUP: AttrKey[ir.ArrayAttr] = AttrKey("workgroup", ir.ArrayAttr)
     """
 
     class LoweringConfig(ABC):
