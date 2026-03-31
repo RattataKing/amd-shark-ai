@@ -43,9 +43,10 @@ def _resolve_knob_array_attr_template(
         if not isinstance(elem, iree_codegen.IntKnobAttr):
             raise ValueError(f"Unexpected element in array template entry: {elem}")
 
-        assert (
-            elem.name in knob_assignment
-        ), f"Knob '{elem.name}' not found in assignment."
+        assert elem.name in knob_assignment, (
+            f"Knob '{elem.name}' not found in assignment.\n"
+            f"Available knobs: \n{list(knob_assignment.keys())}"
+        )
         result.append(knob_assignment[elem.name])
 
     return result
@@ -286,6 +287,17 @@ def get_knobs_from_constraint_op(
     Recursively walks the knobs DictAttr, collecting the name of every
     IntKnobAttr and OneOfKnobAttr leaf. Returns one z3 Int constant per name,
     consistent with the declarations in `convert_constraints_op_to_smtlib`.
+
+    Example:
+    given knobs = {workgroup_size = #iree_codegen.smt.int_knob<"wg_m">,
+                   mma_kind = #iree_codegen.smt.one_of_knob<"mma_idx", ["a", "b"]>}
+    returns
+    KnobSymbols(
+        {
+            "wg_m": z3.Int("wg_m"),
+            "mma_idx": z3.Int("mma_idx") # Dict key name `mma_kind` is ignored
+        }
+    ).
     """
     knob_names: list[str] = []
 
