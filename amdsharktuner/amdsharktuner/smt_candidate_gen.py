@@ -4,7 +4,7 @@
 # See https://llvm.org/LICENSE.txt for license information.
 # SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 
-
+import logging
 from typing import Iterator, Optional
 from typing_extensions import override
 
@@ -13,6 +13,9 @@ from iree.compiler.dialects import iree_codegen, iree_gpu  # type: ignore
 import z3  # type: ignore
 
 from .common import AttrKey, CompilationInfoBuilder
+
+
+logger = logging.getLogger("smt_candidate_gen")
 
 
 class KnobSymbols(dict[str, z3.ExprRef]):
@@ -341,7 +344,8 @@ def generate_solutions_from_constraint_op(
         constraints_op, emit_reset=False
     )
     # Prevent solving hangs.
-    assert "(reset)" not in smtlib, "Unexpected reset in SMTLIB."
+    if "(reset)" in smtlib:
+        raise RuntimeError(f"Unexpected reset string in SMTLIB: \n{smtlib}")
 
     z3_const_exprs = get_knobs_from_constraint_op(constraints_op, z3_ctx)
     z3_vars = list(z3_const_exprs.values())
@@ -349,10 +353,14 @@ def generate_solutions_from_constraint_op(
     solver = z3.Solver(ctx=z3_ctx)
     solver.add(z3.parse_smt2_string(smtlib, ctx=z3_ctx))
 
+    count = 0
     while solver.check() == z3.sat:
         model = solver.model()
 
         # Add new constraints to find the next solution.
         solver.add(z3.Or([v != model.eval(v, model_completion=True) for v in z3_vars]))
 
-        yield get_z3_assignment_from_model(model, z3_const_exprs)
+        z3_assignment = get_z3_assignment_from_model(model, z3_const_exprs)
+        count += 1
+        logger.debug(f"Solution #{count}: {z3_assignment}")
+        yield z3_assignment

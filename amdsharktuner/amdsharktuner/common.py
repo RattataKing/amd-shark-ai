@@ -563,7 +563,7 @@ def calculate_padded_dimensions(
 _AttrT = TypeVar("_AttrT", bound=ir.Attribute)
 
 
-@dataclass(frozen=True)
+@dataclass(frozen=True, slots=True)
 class AttrKey(Generic[_AttrT]):
     """A compilation info dictionary key with its expected MLIR attribute type."""
 
