@@ -316,18 +316,17 @@ def get_knobs_from_constraint_op(
     knob_names: list[str] = []
 
     def collect(attr: ir.Attribute) -> None:
-        if isinstance(attr, iree_codegen.IntKnobAttr):
-            knob_names.append(attr.name)
-        elif isinstance(attr, iree_codegen.OneOfKnobAttr):
-            knob_names.append(attr.name)
-        elif isinstance(attr, ir.ArrayAttr):
-            for elem in attr:
-                collect(elem)
-        elif isinstance(attr, ir.DictAttr):
-            for entry in attr:
-                collect(entry.attr)
-        else:
-            raise TypeError(f"Unknown knob attribute type: {type(attr)}")
+        match attr:
+            case iree_codegen.IntKnobAttr() | iree_codegen.OneOfKnobAttr():
+                knob_names.append(attr.name)
+            case ir.ArrayAttr():
+                for elem in attr:
+                    collect(elem)
+            case ir.DictAttr():
+                for entry in attr:
+                    collect(entry.attr)
+            case _:
+                raise TypeError(f"Unknown knob attribute type: {type(attr)}")
 
     collect(constraints_op.knobs)
 
