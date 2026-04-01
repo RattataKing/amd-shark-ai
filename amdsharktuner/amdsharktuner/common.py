@@ -560,6 +560,21 @@ def calculate_padded_dimensions(
     return M_padded, N_padded, any_padding_applied
 
 
+class KnobSymbols(dict[str, z3.ExprRef]):
+    """Maps knob names to z3 symbolic constants (pre-solving)."""
+
+    pass
+
+
+class SMTKnobAssignment(dict[str, int]):
+    """Maps knob names to integer values (post-solving)."""
+
+    # TODO(Amily): temporarily named `SMTKnobAssignment` to avoid confusion
+    # with `KnobAssignment`. Rename after constraints are refactored.
+
+    pass
+
+
 _AttrT = TypeVar("_AttrT", bound=ir.Attribute)
 
 
@@ -601,6 +616,6 @@ class CompilationInfoBuilder(ABC):
     def build_compilation_info_attr(
         cls,
         constraints_op: iree_codegen.ConstraintsOp,
-        knob_assignment: Any,
+        knob_assignment: SMTKnobAssignment,
     ) -> iree_codegen.CompilationInfoAttr:
         ...

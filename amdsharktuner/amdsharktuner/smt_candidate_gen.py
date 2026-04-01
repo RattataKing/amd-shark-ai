@@ -12,25 +12,15 @@ from iree.compiler import ir  # type: ignore
 from iree.compiler.dialects import iree_codegen, iree_gpu  # type: ignore
 import z3  # type: ignore
 
-from .common import AttrKey, CompilationInfoBuilder
+from .common import (
+    AttrKey,
+    CompilationInfoBuilder,
+    KnobSymbols,
+    SMTKnobAssignment,
+)
 
 
 logger = logging.getLogger("smt_candidate_gen")
-
-
-class KnobSymbols(dict[str, z3.ExprRef]):
-    """Maps knob names to z3 symbolic constants (pre-solving)."""
-
-    pass
-
-
-class SMTKnobAssignment(dict[str, int]):
-    """Maps knob names to integer values (post-solving)."""
-
-    # TODO(Amily): temporarily named `SMTKnobAssignment` to avoid confusion
-    # with `common.KnobAssignment`. Rename after constraints are refactored.
-
-    pass
 
 
 def _resolve_knob_array_attr_template(
@@ -106,7 +96,6 @@ class GPUCompilationInfoBuilder(CompilationInfoBuilder):
 
         @classmethod
         def _get_i64_array_attr(cls, vals: list[int]) -> ir.ArrayAttr:
-            """Build an ArrayAttr of i64 IntegerAttrs from a list of ints."""
             i64 = ir.IntegerType.get_signless(64)
             return ir.ArrayAttr.get([ir.IntegerAttr.get(i64, v) for v in vals])
 
@@ -117,7 +106,6 @@ class GPUCompilationInfoBuilder(CompilationInfoBuilder):
             knob_assignment: SMTKnobAssignment,
             config_entries: dict[str, ir.Attribute],
         ) -> None:
-            # Tiling levels: workgroup, reduction, thread, subgroup.
             # template_attr: ArrayAttr<IntKnobAttr>.
             for key in (cls.WORKGROUP, cls.REDUCTION, cls.THREAD, cls.SUBGROUP):
                 template_attr = _get_template_entry(knob_template, key)
@@ -338,7 +326,7 @@ def get_knobs_from_constraint_op(
 
 def generate_solutions_from_constraint_op(
     constraints_op: iree_codegen.ConstraintsOp,
-    z3_ctx: Optional[z3.Context] = None,
+    z3_ctx: z3.Context,
 ) -> Iterator[SMTKnobAssignment]:
     smtlib = iree_codegen.convert_constraints_op_to_smtlib(
         constraints_op, emit_reset=False

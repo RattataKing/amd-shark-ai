@@ -48,8 +48,8 @@ def sample_constraints_op() -> Generator[iree_codegen.ConstraintsOp, None, None]
 
 
 @pytest.fixture
-def sample_knob_assignment() -> smt_candidate_gen.SMTKnobAssignment:
-    assignment = smt_candidate_gen.SMTKnobAssignment(
+def sample_knob_assignment() -> common.SMTKnobAssignment:
+    assignment = common.SMTKnobAssignment(
         {
             "test": 100,
             "wg_m": 128,
@@ -77,7 +77,7 @@ def test_get_z3_assignment_from_model() -> None:
     solver.add(b == 6)
     assert solver.check() == z3.sat
     model = solver.model()
-    symbols = smt_candidate_gen.KnobSymbols({"a": a, "b": b, "sum": a + b})
+    symbols = common.KnobSymbols({"a": a, "b": b, "sum": a + b})
     result = smt_candidate_gen.get_z3_assignment_from_model(model, symbols)
     assert result["a"] == 4
     assert result["b"] == 6
@@ -90,13 +90,13 @@ def test_resolve_knob_array_attr_template() -> None:
             '[#iree_codegen.smt.int_knob<"wg_m">, '
             '#iree_codegen.smt.int_knob<"wg_n">]'
         )
-        assignment = smt_candidate_gen.SMTKnobAssignment({"wg_m": 64, "wg_n": 128})
+        assignment = common.SMTKnobAssignment({"wg_m": 64, "wg_n": 128})
         result = smt_candidate_gen._resolve_knob_array_attr_template(arr, assignment)
         assert result == [64, 128]
 
         with pytest.raises(AssertionError, match="wg_m"):
             smt_candidate_gen._resolve_knob_array_attr_template(
-                arr, smt_candidate_gen.SMTKnobAssignment({})
+                arr, common.SMTKnobAssignment({})
             )
 
 
@@ -119,7 +119,7 @@ def test_get_template_entry() -> None:
 
 def test_get_knobs_from_constraint_op(
     sample_constraints_op: iree_codegen.ConstraintsOp,
-    sample_knob_assignment: smt_candidate_gen.SMTKnobAssignment,
+    sample_knob_assignment: common.SMTKnobAssignment,
 ) -> None:
     symbols = smt_candidate_gen.get_knobs_from_constraint_op(
         sample_constraints_op, z3_ctx=z3.Context()
@@ -196,14 +196,14 @@ def test_generate_solutions_yields_assignments() -> None:
         key = tuple(sorted(sol.items()))
         assert key not in seen, f"Duplicate solution: {sol}"
         seen.add(key)
-        assert isinstance(sol, smt_candidate_gen.SMTKnobAssignment)
+        assert isinstance(sol, common.SMTKnobAssignment)
         assert "wg_m" in sol
         assert 4 <= sol["wg_m"] <= 8
 
 
 def test_build_lowering_config_attr(
     sample_constraints_op: iree_codegen.ConstraintsOp,
-    sample_knob_assignment: smt_candidate_gen.SMTKnobAssignment,
+    sample_knob_assignment: common.SMTKnobAssignment,
 ) -> None:
     config = smt_candidate_gen.GPUCompilationInfoBuilder.LoweringConfig.build_lowering_config_attr(
         sample_constraints_op, sample_knob_assignment
@@ -222,7 +222,7 @@ def test_build_lowering_config_attr(
 
 def test_build_translation_info_attr(
     sample_constraints_op: iree_codegen.ConstraintsOp,
-    sample_knob_assignment: smt_candidate_gen.SMTKnobAssignment,
+    sample_knob_assignment: common.SMTKnobAssignment,
 ) -> None:
     translation_info = smt_candidate_gen.GPUCompilationInfoBuilder.TranslationInfo.build_translation_info_attr(
         sample_constraints_op, sample_knob_assignment
@@ -236,7 +236,7 @@ def test_build_translation_info_attr(
 
 def test_build_compilation_info_attr(
     sample_constraints_op: iree_codegen.ConstraintsOp,
-    sample_knob_assignment: smt_candidate_gen.SMTKnobAssignment,
+    sample_knob_assignment: common.SMTKnobAssignment,
 ) -> None:
     compilation_info = (
         smt_candidate_gen.GPUCompilationInfoBuilder.build_compilation_info_attr(
