@@ -351,11 +351,17 @@ def compute_rocprof_avg_kernel_time(trace_rows: list[dict]) -> float:
 
 @dataclass
 class RocProfBenchmarkResult:
-    """Result from rocprof benchmarking (converted to BenchmarkResult by libtuner)."""
+    """Mirrors libtuner's BenchmarkResult for rocprof benchmarking."""
 
     candidate_id: int
     time: float
     device_id: str
+
+    def is_valid(self) -> bool:
+        return math.isfinite(self.time)
+
+    def __iter__(self):
+        return iter((self.candidate_id, self.time, self.device_id))
 
 
 def run_rocprof_command(benchmark_pack: Any) -> RocProfBenchmarkResult:
