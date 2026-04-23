@@ -351,7 +351,12 @@ def compute_rocprof_avg_kernel_time(trace_rows: list[dict]) -> float:
 
 @dataclass
 class RocProfBenchmarkResult:
-    """Mirrors libtuner's BenchmarkResult for rocprof benchmarking."""
+    """
+    Benchmark result from rocprof kernel timing.
+
+    Must provide the same interface as libtuner's BenchmarkResult for compatibility. See issue
+    https://github.com/nod-ai/amd-shark-ai/issues/2908 for more details.
+    """
 
     candidate_id: int
     time: float
