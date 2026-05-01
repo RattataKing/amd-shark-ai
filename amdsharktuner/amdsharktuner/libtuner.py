@@ -1083,7 +1083,7 @@ def benchmark_baseline(
     logging.debug(
         f"Baseline benchmarking subprocess running time list is: {running_time_s}\n"
     )
-    subprocess_timeout_reference = max(running_time_s) * DEFAULT_TIMEOUT_MUL
+    subprocess_timeout_reference = max(running_time_s) + 5
     return baseline_results, subprocess_timeout_reference
 
 
